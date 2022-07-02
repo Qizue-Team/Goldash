@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int ciao;
+
+
+    // Start is called before the first frame update 
     void Start()
     {
         
