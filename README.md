@@ -1,2 +1,2 @@
-# Qizue-Team-Game
+# Goldash
 Game created for the DBGA's joint project 
