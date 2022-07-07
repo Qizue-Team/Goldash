@@ -10,11 +10,10 @@ public abstract class Spawner : MonoBehaviour
     protected GameObject prefab; 
 
     [Header("Spawn Settings")]
-    // Spawn every <spawnRate> secs
     [SerializeField]
-    protected float spawnRate = 1.0f;
+    protected float tileWidth = 0.9f;
 
-    protected float _spawnTimer = 0.0f;
+    protected float _distance = 0.0f;
 
     public abstract void Spawn();
 }

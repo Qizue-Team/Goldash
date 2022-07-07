@@ -15,6 +15,11 @@ public class TerrainTileSpawner : Spawner
     [SerializeField]
     private TileSet tileSet;
 
+    public float GetTileSpeed()
+    {
+        return tileSpeed;
+    }
+
     private void Start()
     {
         // Initial Tile Spawn
@@ -25,16 +30,16 @@ public class TerrainTileSpawner : Spawner
             Spawn(new Vector3(x, y, 0.0f));
             x += 1.0f;
         }
-        _spawnTimer = spawnRate;
+        _distance = tileWidth;
     }
 
     private void Update()
     {
-        _spawnTimer += Time.deltaTime;
-        if(_spawnTimer >= spawnRate)
+        _distance += tileSpeed * Time.deltaTime;
+        if(_distance >= tileWidth)
         {
             Spawn();
-            _spawnTimer = 0.0f;
+            _distance = 0.0f;
         }
     }
 
@@ -71,11 +76,6 @@ public class TerrainTileSpawner : Spawner
         if (multiplier <= 1)
             return;
 
-        spawnRate = spawnRate / multiplier;
-        if(spawnRate < 0.0625f)
-        {
-            spawnRate = 0.0625f;
-        }
         tileSpeed = tileSpeed * multiplier;
         if(tileSpeed > 16)
         {
@@ -95,8 +95,7 @@ public class TerrainTileSpawner : Spawner
         if (multiplier <= 1)
             return;
 
-        spawnRate = spawnRate * multiplier;
-       
+     
         tileSpeed = tileSpeed / multiplier;
         if(tileSpeed < 2)
         {
@@ -108,10 +107,6 @@ public class TerrainTileSpawner : Spawner
             tileLifeTime = 12.5f;
         }
 
-        if(tileSpeed == 2 && tileLifeTime == 12.5f)
-        {
-            spawnRate = 0.5f;
-        }
 
         OnSpeedDown(tileSpeed,tileLifeTime);
     }
