@@ -68,8 +68,9 @@ public class TerrainTileSpawner : Spawner
 
     public void SpeedUp(float multiplier)
     {
-        if (multiplier < 0)
-            multiplier = 1;
+        if (multiplier <= 1)
+            return;
+
         spawnRate = spawnRate / multiplier;
         if(spawnRate < 0.0625f)
         {
@@ -91,8 +92,9 @@ public class TerrainTileSpawner : Spawner
 
     public void SpeedDown(float multiplier)
     {
-        if (multiplier < 0)
-            multiplier = 1;
+        if (multiplier <= 1)
+            return;
+
         spawnRate = spawnRate * multiplier;
        
         tileSpeed = tileSpeed / multiplier;
