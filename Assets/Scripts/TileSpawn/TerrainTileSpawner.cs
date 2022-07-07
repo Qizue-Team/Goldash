@@ -71,7 +71,15 @@ public class TerrainTileSpawner : Spawner
         if (multiplier < 0)
             multiplier = 1;
         spawnRate = spawnRate / multiplier;
+        if(spawnRate < 0.0625f)
+        {
+            spawnRate = 0.0625f;
+        }
         tileSpeed = tileSpeed * multiplier;
+        if(tileSpeed > 16)
+        {
+            tileSpeed = 16;
+        }
         tileLifeTime = tileLifeTime - (multiplier*2);
         if(tileLifeTime < 3)
         {
