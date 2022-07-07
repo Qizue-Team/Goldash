@@ -81,7 +81,7 @@ public class TerrainTileSpawner : Spawner
         {
             tileSpeed = 16;
         }
-        tileLifeTime = (23.0f / tileSpeed)+1; //tileLifeTime - (multiplier*2);
+        tileLifeTime = (23.0f / tileSpeed) + 1;
         if(tileLifeTime < 3)
         {
             tileLifeTime = 3;
@@ -102,7 +102,7 @@ public class TerrainTileSpawner : Spawner
         {
             tileSpeed = 2;
         }
-        tileLifeTime = (23.0f / tileSpeed)+1; //tileLifeTime + (multiplier * 2);
+        tileLifeTime = (23.0f / tileSpeed) + 1;
         if (tileLifeTime > 12.5f)
         {
             tileLifeTime = 12.5f;
