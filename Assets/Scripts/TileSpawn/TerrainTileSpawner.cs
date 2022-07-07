@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TerrainTileSpawner : Spawner
 {
+    public static event Action<float> OnSpeedUp;
+    public static event Action<float,float> OnSpeedDown;
+
     [SerializeField]
     private float tileSpeed = 1.0f;
     [SerializeField]
@@ -60,5 +64,45 @@ public class TerrainTileSpawner : Spawner
         tile.SetSprite(tileSet.GetRandomSprite());
 
         tileObj.gameObject.SetActive(true);
+    }
+
+    public void SpeedUp(float multiplier)
+    {
+        if (multiplier < 0)
+            multiplier = 1;
+        spawnRate = spawnRate / multiplier;
+        tileSpeed = tileSpeed * multiplier;
+        tileLifeTime = tileLifeTime - (multiplier*2);
+        if(tileLifeTime < 3)
+        {
+            tileLifeTime = 3;
+        }
+
+        OnSpeedUp(tileSpeed);
+    }
+
+    public void SpeedDown(float multiplier)
+    {
+        if (multiplier < 0)
+            multiplier = 1;
+        spawnRate = spawnRate * multiplier;
+       
+        tileSpeed = tileSpeed / multiplier;
+        if(tileSpeed < 2)
+        {
+            tileSpeed = 2;
+        }
+        tileLifeTime = tileLifeTime + (multiplier * 2);
+        if (tileLifeTime > 13)
+        {
+            tileLifeTime = 13;
+        }
+
+        if(tileSpeed == 2 && tileLifeTime == 13)
+        {
+            spawnRate = 0.5f;
+        }
+
+        OnSpeedDown(tileSpeed,tileLifeTime);
     }
 }

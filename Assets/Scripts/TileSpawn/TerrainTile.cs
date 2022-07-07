@@ -36,6 +36,18 @@ public class TerrainTile : MonoBehaviour
         Timer();
     }
 
+    private void OnEnable()
+    {
+        TerrainTileSpawner.OnSpeedUp += SetSpeed;
+        TerrainTileSpawner.OnSpeedDown += SpeedChangedToSlower;
+    }
+
+    private void OnDisable()
+    {
+        TerrainTileSpawner.OnSpeedUp -= SetSpeed;
+        TerrainTileSpawner.OnSpeedDown -= SpeedChangedToSlower;
+    }
+
     private void Move(Vector3 direction)
     {
         if(gameObject.activeSelf)
@@ -53,6 +65,12 @@ public class TerrainTile : MonoBehaviour
             // Timer reset
             _timer =0.0f;
         }
+    }
+
+    private void SpeedChangedToSlower(float speed, float lifeTime)
+    {
+        SetSpeed(speed);
+        SetDestroyTime(lifeTime);
     }
 
 }
