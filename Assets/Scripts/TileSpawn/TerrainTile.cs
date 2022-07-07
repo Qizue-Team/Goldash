@@ -10,7 +10,6 @@ public class TerrainTile : MonoBehaviour
     private float _speed = 1.0f;
     private float _destroyTime = 10.0f;
     private float _timer = 0.0f;
-    
 
     public void SetSpeed(float speed)
     {

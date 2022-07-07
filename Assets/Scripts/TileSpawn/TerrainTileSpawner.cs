@@ -15,6 +15,11 @@ public class TerrainTileSpawner : Spawner
     [SerializeField]
     private TileSet tileSet;
 
+    private const float MIN_TILE_SPEED = 2.0f;
+    private const float MAX_TILE_SPEED = 16.0f;
+    private const float MIN_TILE_LIFE_TIME = 3.0f;
+    private const float MAX_TILE_LIFE_TIME = 12.5f;
+    
     public float GetTileSpeed()
     {
         return tileSpeed;
@@ -45,7 +50,6 @@ public class TerrainTileSpawner : Spawner
 
     public override void Spawn()
     {
-        // Use terrain tile pool here
         var tileObj = TerrainTilePool.Instance.Get();
         tileObj.transform.position = transform.position;
 
@@ -59,7 +63,6 @@ public class TerrainTileSpawner : Spawner
 
     public void Spawn(Vector3 position)
     {
-        // Use terrain tile pool here
         var tileObj = TerrainTilePool.Instance.Get();
         tileObj.transform.position = position;
 
@@ -77,14 +80,15 @@ public class TerrainTileSpawner : Spawner
             return;
 
         tileSpeed = tileSpeed * multiplier;
-        if(tileSpeed > 16)
+        if(tileSpeed > MAX_TILE_SPEED)
         {
-            tileSpeed = 16;
+            tileSpeed = MAX_TILE_SPEED;
         }
-        tileLifeTime = (23.0f / tileSpeed) + 1;
-        if(tileLifeTime < 3)
+
+        tileLifeTime = (TERRAIN_WIDTH / tileSpeed) + 1;
+        if(tileLifeTime < MIN_TILE_LIFE_TIME)
         {
-            tileLifeTime = 3;
+            tileLifeTime = MIN_TILE_LIFE_TIME;
         }
 
         OnSpeedUp(tileSpeed);
@@ -95,18 +99,17 @@ public class TerrainTileSpawner : Spawner
         if (multiplier <= 1)
             return;
 
-     
         tileSpeed = tileSpeed / multiplier;
-        if(tileSpeed < 2)
+        if(tileSpeed < MIN_TILE_SPEED)
         {
-            tileSpeed = 2;
-        }
-        tileLifeTime = (23.0f / tileSpeed) + 1;
-        if (tileLifeTime > 12.5f)
-        {
-            tileLifeTime = 12.5f;
+            tileSpeed = MIN_TILE_SPEED;
         }
 
+        tileLifeTime = (TERRAIN_WIDTH / tileSpeed) + 1;
+        if (tileLifeTime > MAX_TILE_LIFE_TIME)
+        {
+            tileLifeTime = MAX_TILE_LIFE_TIME;
+        }
 
         OnSpeedDown(tileSpeed,tileLifeTime);
     }
