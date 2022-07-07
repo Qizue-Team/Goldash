@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58214f59deb11e64b8fed9574c38bed3, type: 3}
   m_Name: TerrainTileSet
   m_EditorClassIdentifier: 
-  sprites: []
+  sprites:
+  - {fileID: 5376286308156841674, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
+  - {fileID: 232997838200445016, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
+  - {fileID: -7862455030035197560, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
+  - {fileID: -6228976919380805945, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
+  - {fileID: -3935232301288810443, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
+  - {fileID: 7844871885474831499, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
+  - {fileID: 7153849739975056728, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
