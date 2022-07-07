@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour
+public class TerrainTile : MonoBehaviour
 {
     [SerializeField]
     private SpriteRenderer spriteRenderer;
@@ -48,7 +48,7 @@ public class Tile : MonoBehaviour
         if (_timer >= _destroyTime)
         {
             // Destroy / ReturnToPool
-            Destroy(gameObject); // Just for now - TODO: ReturnToPool
+            TerrainTilePool.Instance.ReturnToPool(this);
 
             // Timer reset
             _timer =0.0f;
