@@ -15,8 +15,6 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]
     private float fallMultiplier = 2.5f;
     [SerializeField]
-    private float lowJumpMultiplier = 2.0f;
-    [SerializeField]
     private LayerMask groundLayerMask;
 
     private Rigidbody2D _rb;
@@ -39,7 +37,7 @@ public class PlayerJump : MonoBehaviour
             return;
 
         // (Maybe) TODO: Check platform -> if Android (Mouse0) / if Windows (Space) 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             _rb.velocity = Vector2.up * jumpVelocity;
         }
@@ -48,10 +46,6 @@ public class PlayerJump : MonoBehaviour
         if (_rb.velocity.y < 0)
         {
             _rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        else if (_rb.velocity.y > 0 && !Input.GetKeyDown(KeyCode.Mouse0)) // Low Jump
-        {
-            _rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
 
