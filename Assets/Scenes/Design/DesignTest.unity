@@ -263,7 +263,6 @@ MonoBehaviour:
   jumpVelocity: 5
   groundRaycastLength: 0.6
   fallMultiplier: 2.5
-  lowJumpMultiplier: 2
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64

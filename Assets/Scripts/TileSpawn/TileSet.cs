@@ -9,6 +9,11 @@ public class TileSet : ScriptableObject
     [SerializeField]
     private Sprite[] sprites;
 
+    [SerializeField]
+    private Sprite rightEdge;
+    [SerializeField]
+    private Sprite leftEdge;
+
     public Sprite GetRandomSprite()
     {
         if(sprites.Length == 0)
@@ -20,4 +25,7 @@ public class TileSet : ScriptableObject
         int randomIndex = Random.Range(0, sprites.Length);
         return sprites[randomIndex];
     }
+
+    public Sprite GetLeftEdge() => leftEdge;
+    public Sprite GetRightEdge() => rightEdge;
 }

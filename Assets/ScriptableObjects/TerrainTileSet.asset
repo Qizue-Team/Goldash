@@ -20,3 +20,5 @@ MonoBehaviour:
   - {fileID: -3935232301288810443, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
   - {fileID: 7844871885474831499, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
   - {fileID: 7153849739975056728, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
+  rightEdge: {fileID: 2787762943803723294, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
+  leftEdge: {fileID: -2566089067820967710, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
