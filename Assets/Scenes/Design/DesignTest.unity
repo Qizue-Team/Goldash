@@ -302,7 +302,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.55, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &1233356071
 Rigidbody2D:
@@ -476,6 +476,10 @@ MonoBehaviour:
   tileSpeed: 2
   tileLifeTime: 12.5
   tileSet: {fileID: 11400000, guid: 4bbe8a0ab4e05d9489dce5fbe9a2eb54, type: 2}
+  minHoleWaitTime: 5
+  maxHoleWaitTime: 10
+  minHoleLength: 1
+  maxHoleLength: 2
 --- !u!4 &1384619107
 Transform:
   m_ObjectHideFlags: 0

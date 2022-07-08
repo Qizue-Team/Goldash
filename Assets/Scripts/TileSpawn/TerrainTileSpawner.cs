@@ -15,43 +15,45 @@ public class TerrainTileSpawner : Spawner
     [SerializeField]
     private TileSet tileSet;
 
+    [Header("Holes Spawn Settings")]
+    [SerializeField]
+    private float minHoleWaitTime = 5.0f;
+    [SerializeField]
+    private float maxHoleWaitTime = 10.0f;
+    [SerializeField]
+    private int minHoleLength = 1;
+    [SerializeField]
+    private int maxHoleLength = 3;
+
+    #region CONSTS
     private const float MIN_TILE_SPEED = 2.0f;
     private const float MAX_TILE_SPEED = 16.0f;
     private const float MIN_TILE_LIFE_TIME = 3.0f;
     private const float MAX_TILE_LIFE_TIME = 12.5f;
-    
+    private const float LEFT_MOST_X_TERRAIN_VALUE = -11.5f;
+    private const float RIGHT_MOST_X_TERRAIN_VALUE = 12.5f;
+    private const float TERRAIN_TILES_Y_POS = -4.5f;
+    #endregion
+
+    private bool _isWaitingForHole = false; // Pick random range wait time if false
+    private bool _spawnHole = false; // if I have to spawn holes is true
+    private int _holeIndex = 0; // Index for building holes tile <right-edge hole(xlength) left-edge>
+    private float _holeWaitingTime = 0.0f;
+    private float _holeTimer = 0.0f;
+    private int _currentHoleLength = 0;
+
+    #region PUBLIC_METHODS_REGION
     public float GetTileSpeed()
     {
         return tileSpeed;
-    }
-
-    private void Start()
-    {
-        // Initial Tile Spawn
-        float y = -4.5f;
-        float x = -11.5f;
-        while (x < 12.5f)
-        {
-            Spawn(new Vector3(x, y, 0.0f));
-            x += 1.0f;
-        }
-        _distance = tileWidth;
-    }
-
-    private void Update()
-    {
-        _distance += tileSpeed * Time.deltaTime;
-        if(_distance >= tileWidth)
-        {
-            Spawn();
-            _distance = 0.0f;
-        }
     }
 
     public override void Spawn()
     {
         var tileObj = TerrainTilePool.Instance.Get();
         tileObj.transform.position = transform.position;
+
+        tileObj.GetComponent<BoxCollider2D>().enabled = true;
 
         TerrainTile tile = tileObj.GetComponent<TerrainTile>();
         tile.SetSpeed(tileSpeed);
@@ -66,10 +68,30 @@ public class TerrainTileSpawner : Spawner
         var tileObj = TerrainTilePool.Instance.Get();
         tileObj.transform.position = position;
 
+        tileObj.GetComponent<BoxCollider2D>().enabled = true;
+
         TerrainTile tile = tileObj.GetComponent<TerrainTile>();
         tile.SetSpeed(tileSpeed);
         tile.SetDestroyTime(tileLifeTime);
         tile.SetSprite(tileSet.GetRandomSprite());
+
+        tileObj.gameObject.SetActive(true);
+    }
+
+    public void Spawn(Sprite sprite, bool isColliderActive = true)
+    {
+        var tileObj = TerrainTilePool.Instance.Get();
+        tileObj.transform.position = transform.position;
+
+        if (!isColliderActive)
+        {
+            tileObj.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+        TerrainTile tile = tileObj.GetComponent<TerrainTile>();
+        tile.SetSpeed(tileSpeed);
+        tile.SetDestroyTime(tileLifeTime);
+        tile.SetSprite(sprite);
 
         tileObj.gameObject.SetActive(true);
     }
@@ -80,13 +102,13 @@ public class TerrainTileSpawner : Spawner
             return;
 
         tileSpeed = tileSpeed * multiplier;
-        if(tileSpeed > MAX_TILE_SPEED)
+        if (tileSpeed > MAX_TILE_SPEED)
         {
             tileSpeed = MAX_TILE_SPEED;
         }
 
         tileLifeTime = (TERRAIN_WIDTH / tileSpeed) + 1;
-        if(tileLifeTime < MIN_TILE_LIFE_TIME)
+        if (tileLifeTime < MIN_TILE_LIFE_TIME)
         {
             tileLifeTime = MIN_TILE_LIFE_TIME;
         }
@@ -100,7 +122,7 @@ public class TerrainTileSpawner : Spawner
             return;
 
         tileSpeed = tileSpeed / multiplier;
-        if(tileSpeed < MIN_TILE_SPEED)
+        if (tileSpeed < MIN_TILE_SPEED)
         {
             tileSpeed = MIN_TILE_SPEED;
         }
@@ -111,6 +133,91 @@ public class TerrainTileSpawner : Spawner
             tileLifeTime = MAX_TILE_LIFE_TIME;
         }
 
-        OnSpeedDown(tileSpeed,tileLifeTime);
+        OnSpeedDown(tileSpeed, tileLifeTime);
+    }
+
+    public void SpawnHole()
+    {
+        if (_currentHoleLength <= 0)
+            return;
+        int totalLength = _currentHoleLength + 2;
+        if(_holeIndex == 0)
+        {
+            // Spawn Right Edge
+            Spawn(tileSet.GetRightEdge());
+        }
+        else if(_holeIndex == totalLength - 1)
+        {
+            // Spawn Left Edge
+            Spawn(tileSet.GetLeftEdge());
+            // Finished
+            _currentHoleLength = 0;
+            _spawnHole = false;
+            _holeIndex = 0;
+            return;
+        }
+        else
+        {
+            // Spawn Hole / No sprite witouth collider
+            Spawn(null, false);
+        }
+        _holeIndex++;
+    }
+    #endregion
+
+    private void Start()
+    {
+        InitializeTerrainTiles();
+    }
+
+    private void Update()
+    {
+        CheckSpawnHoles();
+
+        _distance += tileSpeed * Time.deltaTime;
+        if(_distance >= tileWidth)
+        {
+            if (!_spawnHole)
+                Spawn();
+            else
+                SpawnHole();
+            _distance = 0.0f;
+        }
+    }
+
+    private void InitializeTerrainTiles()
+    {
+        float y = TERRAIN_TILES_Y_POS;
+        float x = LEFT_MOST_X_TERRAIN_VALUE;
+        while (x < RIGHT_MOST_X_TERRAIN_VALUE)
+        {
+            Spawn(new Vector3(x, y, 0.0f));
+            x += 1.0f;
+        }
+        _distance = tileWidth;
+    }
+    
+    private void CheckSpawnHoles()
+    {
+        // I check for holes spawn only if I finished to spawn another hole
+        if (_spawnHole)
+            return;
+
+        // If I don't have a waiting time, pick it
+        if (!_isWaitingForHole)
+        {
+            // Pick a waiting time
+            _holeWaitingTime = UnityEngine.Random.Range(minHoleWaitTime, maxHoleWaitTime);
+        }
+
+        // Actual waiting
+        _holeTimer += Time.deltaTime;
+        if(_holeTimer >= _holeWaitingTime)
+        {
+            _spawnHole = true;
+            _holeTimer = 0.0f;
+            _isWaitingForHole = false;
+            _currentHoleLength = UnityEngine.Random.Range(minHoleLength, maxHoleLength+1);
+        }
     }
 }
