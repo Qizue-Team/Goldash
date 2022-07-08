@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Spawner : MonoBehaviour
 {
+    public const float TERRAIN_WIDTH = 23.0f;
+
     [Header("Object to spawn")]
     [SerializeField]
     protected GameObject prefab; 
@@ -12,7 +14,6 @@ public abstract class Spawner : MonoBehaviour
     [SerializeField]
     protected float tileWidth = 0.9f;
 
-    protected const float TERRAIN_WIDTH = 23.0f;
     protected float _distance = 0.0f;
 
     public abstract void Spawn();

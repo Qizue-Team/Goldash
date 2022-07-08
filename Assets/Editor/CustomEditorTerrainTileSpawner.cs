@@ -7,6 +7,10 @@ using UnityEditor;
 [CanEditMultipleObjects]
 public class CustomEditorTerrainTileSpawner : Editor
 {
+    private SerializedProperty _tileWidthProperty;
+    private SerializedProperty _tileSpeedProperty;
+    private SerializedProperty _tileLifeTimeProperty;
+
     private TerrainTileSpawner _terrainTileSpawner;
     private float _speedUpMultiplier = 1.0f;
     private float _speedDownMultiplier = 1.0f;
@@ -14,11 +18,41 @@ public class CustomEditorTerrainTileSpawner : Editor
     private void OnEnable()
     {
         _terrainTileSpawner = (TerrainTileSpawner)target;
+        _tileWidthProperty = serializedObject.FindProperty("tileWidth");
+        _tileSpeedProperty = serializedObject.FindProperty("tileSpeed");
+        _tileLifeTimeProperty = serializedObject.FindProperty("tileLifeTime");
     }
 
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
+
+        SpeedMultipliers();
+        PropertiesValuesCheck();
+    }
+
+    private void PropertiesValuesCheck()
+    {
+        if(_tileWidthProperty.floatValue != TerrainTileSpawner.TILE_WIDTH)
+            _tileWidthProperty.floatValue = TerrainTileSpawner.TILE_WIDTH;
+
+        if (_tileSpeedProperty.floatValue < TerrainTileSpawner.MIN_TILE_SPEED)
+            _tileSpeedProperty.floatValue = TerrainTileSpawner.MIN_TILE_SPEED;
+
+        if (_tileSpeedProperty.floatValue > TerrainTileSpawner.MAX_TILE_SPEED)
+            _tileSpeedProperty.floatValue = TerrainTileSpawner.MAX_TILE_SPEED;
+
+        if (_tileLifeTimeProperty.floatValue < TerrainTileSpawner.MIN_TILE_LIFE_TIME)
+            _tileLifeTimeProperty.floatValue = TerrainTileSpawner.MIN_TILE_LIFE_TIME;
+
+        if (_tileLifeTimeProperty.floatValue > TerrainTileSpawner.MAX_TILE_LIFE_TIME)
+            _tileLifeTimeProperty.floatValue = TerrainTileSpawner.MAX_TILE_LIFE_TIME;
+
+        serializedObject.ApplyModifiedProperties();
+    }
+
+    private void SpeedMultipliers()
+    {
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Speed Modifier", EditorStyles.boldLabel);
 
@@ -38,7 +72,7 @@ public class CustomEditorTerrainTileSpawner : Editor
         {
             _terrainTileSpawner.SpeedUp(_speedUpMultiplier);
         }
-        
+
         EditorGUILayout.Space();
 
         if (GUILayout.Button("Speed Down"))

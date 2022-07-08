@@ -8,6 +8,17 @@ public class TerrainTileSpawner : Spawner
     public static event Action<float> OnSpeedUp;
     public static event Action<float,float> OnSpeedDown;
 
+    #region CONSTS
+    public const float TILE_WIDTH = 0.9f;
+    public const float MIN_TILE_SPEED = 2.0f;
+    public const float MAX_TILE_SPEED = 16.0f;
+    public const float MIN_TILE_LIFE_TIME = 3.0f;
+    public const float MAX_TILE_LIFE_TIME = 12.5f;
+    public const float LEFT_MOST_X_TERRAIN_VALUE = -11.5f;
+    public const float RIGHT_MOST_X_TERRAIN_VALUE = 12.5f;
+    public const float TERRAIN_TILES_Y_POS = -4.5f;
+    #endregion
+
     [SerializeField]
     private float tileSpeed = 1.0f;
     [SerializeField]
@@ -24,16 +35,6 @@ public class TerrainTileSpawner : Spawner
     private int minHoleLength = 1;
     [SerializeField]
     private int maxHoleLength = 3;
-
-    #region CONSTS
-    private const float MIN_TILE_SPEED = 2.0f;
-    private const float MAX_TILE_SPEED = 16.0f;
-    private const float MIN_TILE_LIFE_TIME = 3.0f;
-    private const float MAX_TILE_LIFE_TIME = 12.5f;
-    private const float LEFT_MOST_X_TERRAIN_VALUE = -11.5f;
-    private const float RIGHT_MOST_X_TERRAIN_VALUE = 12.5f;
-    private const float TERRAIN_TILES_Y_POS = -4.5f;
-    #endregion
 
     private bool _isWaitingForHole = false; // Pick random range wait time if false
     private bool _spawnHole = false; // if I have to spawn holes is true
