@@ -203,6 +203,9 @@ public class TerrainTileSpawner : Spawner
         if (_spawnHole)
             return;
 
+        if (minHoleLength <= 0 || maxHoleLength <= 0)
+            return;
+
         // If I don't have a waiting time, pick it
         if (!_isWaitingForHole)
         {
