@@ -88,6 +88,10 @@ public class TerrainTileSpawner : Spawner
         {
             tileObj.GetComponent<BoxCollider2D>().enabled = false;
         }
+        else
+        {
+            tileObj.GetComponent<BoxCollider2D>().enabled = true;
+        }
 
         TerrainTile tile = tileObj.GetComponent<TerrainTile>();
         tile.SetSpeed(tileSpeed);
