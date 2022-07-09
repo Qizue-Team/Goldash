@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlatformSpawner : Spawner
 {
@@ -43,6 +44,9 @@ public class PlatformSpawner : Spawner
     private int _currentPlatformLength;
     private int _platformIndex = 0;
 
+    private bool _isBuildingStairs = false;
+    private int _currentStairLevel = 1;
+
     public override void Spawn()
     {
         SpawnOnLevel(1);
@@ -55,8 +59,28 @@ public class PlatformSpawner : Spawner
         if(level == 1)
         {
             float levelHeight = MIN_SCENE_Y + 0 + offset;
-            CreatePlatform(levelHeight,true);
+            CreatePlatform(levelHeight, () =>{ });
         }
+        else
+        {
+            CreateStairs(level);
+        }
+    }
+
+    private void CreateStairs(int level)
+    {
+        _isBuildingStairs = true;
+        float levelHeight = MIN_SCENE_Y + (_currentStairLevel - 1) * spaceBetweenPlatforms + offset;
+        CreatePlatform(levelHeight, () =>
+        {
+            _currentStairLevel++;
+            if(_currentStairLevel > level)
+            {
+                // Finish stairs
+                _isBuildingStairs=false;
+                _currentStairLevel = 1;
+            }
+        });
     }
 
     private void Update()
@@ -65,13 +89,13 @@ public class PlatformSpawner : Spawner
         _distance += terrainSpawner.TileSpeed * Time.deltaTime;
         if (_distance >= tileWidth)
         {
-            if (_spawnPlatform)
+            if (_spawnPlatform || _isBuildingStairs)
             {
                 // Choose random level X if not already picked
                 // Spawn platform on a X level, if level X > 1 -> stairs else single platform
 
-                // For now Spawn on level 1 (Aka Spawn)
-                Spawn();
+                // For now Spawn on level 1 (AKA Spawn)
+                SpawnOnLevel(3);
                 _distance = 0.0f;
             }
             // Else nothing
@@ -95,10 +119,11 @@ public class PlatformSpawner : Spawner
         }
     }
 
-    private void CreatePlatform(float yHeight, bool shouldDeclareFinish = true)
+    private void CreatePlatform(float yHeight, Action OnPlatformComplete)
     {
         if (_currentPlatformLength <= 0)
             return;
+        
         int totalLength = _currentPlatformLength + 2;
         if(_platformIndex == 0)
         {
@@ -109,14 +134,14 @@ public class PlatformSpawner : Spawner
         {
             // Spawn Right Edge
             TileSpawn(new Vector3(RIGHT_MOST_X_TERRAIN_VALUE, yHeight, 0.0f), tileSet.GetRightEdge());
-            if (shouldDeclareFinish)
-            {
-                // Finish
-                _currentPlatformLength = 0;
-                _spawnPlatform = false;
-                _platformIndex = 0;
-                return;
-            }
+           
+            // Finish
+            _currentPlatformLength = 0;
+            _spawnPlatform = false;
+            _platformIndex = 0;
+            OnPlatformComplete?.Invoke();
+            return;
+            
         }
         else
         {
@@ -162,6 +187,12 @@ public class PlatformSpawner : Spawner
         {
             // Pick a waiting time
             _platformWaitingTime = UnityEngine.Random.Range(minPlatformWaitTime, maxPlatformWaitTime);
+        }
+
+        // Don't wait if I have to build stairs
+        if (_isBuildingStairs)
+        {
+            _platformWaitingTime = 0;
         }
 
         // Actual waiting
