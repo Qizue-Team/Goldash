@@ -551,7 +551,7 @@ MonoBehaviour:
   tileSet: {fileID: 11400000, guid: 7ca9125c5e9a53f4fb4f32de51517626, type: 2}
   terrainSpawner: {fileID: 2051091}
   levelNumbers: 3
-  spaceBetweenPlatforms: 2
+  spaceBetweenPlatforms: 1.3
   offset: 0.5
   minPlatformWaitTime: 5
   maxPlatformWaitTime: 10
