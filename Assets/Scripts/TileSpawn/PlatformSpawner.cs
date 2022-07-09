@@ -44,30 +44,25 @@ public class PlatformSpawner : Spawner
     private int _currentPlatformLength;
     private int _platformIndex = 0;
 
+    private int _currentPickedLevel = 1;
+
     private bool _isBuildingStairs = false;
     private int _currentStairLevel = 1;
 
     public override void Spawn()
     {
-        SpawnOnLevel(1);
+        SpawnOnLevel(_currentPickedLevel, ()=> { PickALevel(); });
     }
 
-    public void SpawnOnLevel(int level)
+    public void SpawnOnLevel(int level, Action OnCreationFinished)
     {
         if (level <= 0)
             return;
-        if(level == 1)
-        {
-            float levelHeight = MIN_SCENE_Y + 0 + offset;
-            CreatePlatform(levelHeight, () =>{ });
-        }
-        else
-        {
-            CreateStairs(level);
-        }
+
+        CreateStairs(level, OnCreationFinished);
     }
 
-    private void CreateStairs(int level)
+    private void CreateStairs(int level, Action OnCreationFinished)
     {
         _isBuildingStairs = true;
         float levelHeight = MIN_SCENE_Y + (_currentStairLevel - 1) * spaceBetweenPlatforms + offset;
@@ -79,8 +74,14 @@ public class PlatformSpawner : Spawner
                 // Finish stairs
                 _isBuildingStairs=false;
                 _currentStairLevel = 1;
+                OnCreationFinished?.Invoke();
             }
         });
+    }
+
+    private void Start()
+    {
+        PickALevel();
     }
 
     private void Update()
@@ -91,14 +92,11 @@ public class PlatformSpawner : Spawner
         {
             if (_spawnPlatform || _isBuildingStairs)
             {
-                // Choose random level X if not already picked
-                // Spawn platform on a X level, if level X > 1 -> stairs else single platform
-
-                // For now Spawn on level 1 (AKA Spawn)
-                SpawnOnLevel(3);
+                SpawnOnLevel(_currentPickedLevel, () => {
+                    PickALevel();
+                });
                 _distance = 0.0f;
             }
-            // Else nothing
         }
     }
 
@@ -117,6 +115,16 @@ public class PlatformSpawner : Spawner
                 new Vector3(LEFT_MOST_X_TERRAIN_VALUE, MIN_SCENE_Y + addition + offset, 0.0f));
             addition += valueToAdd;
         }
+    }
+
+    private void PickALevel()
+    {
+        if (levelNumbers <= 0)
+        {
+            _currentPickedLevel = 0;
+            return;
+        }
+        _currentPickedLevel = UnityEngine.Random.Range(1,levelNumbers+1);
     }
 
     private void CreatePlatform(float yHeight, Action OnPlatformComplete)
