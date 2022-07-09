@@ -13,7 +13,7 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]
     private float groundRaycastLength = 0.6f;
     [SerializeField]
-    private float fallMultiplier = 2.5f;
+    private float fallGravity = 1.3f;
     [SerializeField]
     private LayerMask groundLayerMask;
 
@@ -51,7 +51,7 @@ public class PlayerJump : MonoBehaviour
         // Falling
         if (_rb.velocity.y < 0)
         {
-            _rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            _rb.gravityScale = fallGravity;
         }
     }
 
