@@ -169,6 +169,9 @@ public class PlatformSpawner : Spawner
         var tileObj = TerrainTilePool.Instance.Get();
         tileObj.transform.position = position;
 
+        tileObj.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0.3f);
+        tileObj.GetComponent<BoxCollider2D>().size = new Vector2(1, 0.4f);
+
         if (!isColliderActive)
         {
             tileObj.GetComponent<BoxCollider2D>().enabled = false;

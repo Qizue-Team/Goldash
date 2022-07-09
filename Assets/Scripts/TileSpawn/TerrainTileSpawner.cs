@@ -54,6 +54,9 @@ public class TerrainTileSpawner : Spawner
 
         tileObj.GetComponent<BoxCollider2D>().enabled = true;
 
+        tileObj.GetComponent<BoxCollider2D>().offset = new Vector2(0.0f, 0.0f);
+        tileObj.GetComponent<BoxCollider2D>().size = new Vector2(1.0f, 1.0f);
+
         TerrainTile tile = tileObj.GetComponent<TerrainTile>();
         tile.SetSpeed(tileSpeed);
         tile.SetDestroyTime(tileLifeTime);
@@ -67,6 +70,8 @@ public class TerrainTileSpawner : Spawner
         var tileObj = TerrainTilePool.Instance.Get();
         tileObj.transform.position = position;
 
+        tileObj.GetComponent<BoxCollider2D>().offset = new Vector2(0.0f, 0.0f);
+        tileObj.GetComponent<BoxCollider2D>().size = new Vector2(1.0f, 1.0f);
         tileObj.GetComponent<BoxCollider2D>().enabled = true;
 
         TerrainTile tile = tileObj.GetComponent<TerrainTile>();
@@ -82,6 +87,8 @@ public class TerrainTileSpawner : Spawner
         var tileObj = TerrainTilePool.Instance.Get();
         tileObj.transform.position = transform.position;
 
+        tileObj.GetComponent<BoxCollider2D>().offset = new Vector2(0.0f, 0.0f);
+        tileObj.GetComponent<BoxCollider2D>().size = new Vector2(1.0f, 1.0f);
         if (!isColliderActive)
         {
             tileObj.GetComponent<BoxCollider2D>().enabled = false;
