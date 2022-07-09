@@ -10,7 +10,7 @@ public abstract class Spawner : MonoBehaviour
     [SerializeField]
     protected GameObject prefab; 
 
-    [Header("Spawn Settings")]
+    [Header("General Spawner Settings")]
     [SerializeField]
     protected float tileWidth = 0.9f;
 

@@ -16,17 +16,21 @@ public class PlatformSpawner : Spawner
     [SerializeField]
     private TerrainTileSpawner terrainSpawner;
 
+    [Header("Position")]
     [Header("Platform Spawn Settings")]
+    
     [SerializeField]
     private int levelNumbers = 2;
     [SerializeField]
     private float spaceBetweenPlatforms = 1.0f;
     [SerializeField]
     private float offset = 0.0f;
+    [Header("Spawn Time")]
     [SerializeField]
     private float minPlatformWaitTime = 5.0f;
     [SerializeField]
     private float maxPlatformWaitTime = 10.0f;
+    [Header("Platform Length")]
     [SerializeField]
     private int minPlatformLength = 1;
     [SerializeField]
