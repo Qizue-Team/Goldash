@@ -5,6 +5,9 @@ using System;
 
 public class TerrainTileSpawner : Spawner
 {
+    public float TileSpeed { get=>tileSpeed;}
+    public float TileLifeTime { get => tileLifeTime; }
+
     public static event Action<float> OnSpeedUp;
     public static event Action<float,float> OnSpeedDown;
 
@@ -44,11 +47,6 @@ public class TerrainTileSpawner : Spawner
     private int _currentHoleLength = 0;
 
     #region PUBLIC_METHODS_REGION
-    public float GetTileSpeed()
-    {
-        return tileSpeed;
-    }
-
     public override void Spawn()
     {
         var tileObj = TerrainTilePool.Instance.Get();
@@ -225,6 +223,7 @@ public class TerrainTileSpawner : Spawner
             _spawnHole = true;
             _holeTimer = 0.0f;
             _isWaitingForHole = false;
+            // Here pick the hole length
             _currentHoleLength = UnityEngine.Random.Range(minHoleLength, maxHoleLength+1);
         }
     }
