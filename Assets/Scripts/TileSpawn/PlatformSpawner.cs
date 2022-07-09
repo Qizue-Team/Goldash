@@ -5,10 +5,15 @@ using System;
 
 public class PlatformSpawner : Spawner
 {
+    #region CONST
     public const float MAX_SCENE_Y = 3.0f;
     public const float MIN_SCENE_Y = -4.0f;
     public const float LEFT_MOST_X_TERRAIN_VALUE = -11.5f;
     public const float RIGHT_MOST_X_TERRAIN_VALUE = 12.5f;
+    public const int MIN_LEVELS_NUMBER = 1;
+    public const float MIN_SPACE_BETWEEN_PLATFORMS = 0.6f;
+    public const float MIN_OFFSET = 0;
+    #endregion
 
     [SerializeField]
     private TileSet tileSet;
