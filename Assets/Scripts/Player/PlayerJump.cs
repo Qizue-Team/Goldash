@@ -19,6 +19,11 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D _rb;
 
+    private const float BOX_CAST_X_OFFSET = 0.0f;
+    private const float BOX_CAST_Y_OFFSET = 0.2f;
+    private const float BOX_CAST_X_SIZE = 1.0f;
+    private const float BOX_CAST_Y_SIZE = 1.0f;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -27,6 +32,7 @@ public class PlayerJump : MonoBehaviour
     private void Update()
     {
         DrawGroundCheckRaycast();
+        CheckPlatform();
         CheckGrounded();
         Jump();
     }
@@ -63,9 +69,34 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
+    private void CheckPlatform()
+    {
+        Collider2D hit = Physics2D.OverlapArea(new Vector2(transform.position.x - 0.5f + BOX_CAST_X_OFFSET, transform.position.y - 0.5f + BOX_CAST_Y_OFFSET),
+                                                new Vector2(transform.position.x - 0.5f + BOX_CAST_X_SIZE, transform.position.y - 0.5f + BOX_CAST_Y_SIZE),
+                                                groundLayerMask);
+        if (hit)
+        {
+            if(hit.gameObject.transform.position.y >= -4)
+            {
+                _rb.velocity = Vector2.zero;
+            }
+        }
+    }
+
     private void DrawGroundCheckRaycast()
     {
         Vector3 downward = transform.TransformDirection(Vector3.down) * groundRaycastLength;
         Debug.DrawRay(transform.position, downward, Color.red);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        DrawRect(new Rect(transform.position.x - 0.5f+BOX_CAST_X_OFFSET, transform.position.y - 0.5f + BOX_CAST_Y_OFFSET, BOX_CAST_X_SIZE, BOX_CAST_Y_SIZE));
+    }
+
+    void DrawRect(Rect rect)
+    {
+        Gizmos.DrawWireCube(new Vector3(rect.center.x, rect.center.y, 0.01f), new Vector3(rect.size.x, rect.size.y, 0.01f));
     }
 }
