@@ -9,6 +9,9 @@ public class PlatformSpawner : Spawner
     public const float LEFT_MOST_X_TERRAIN_VALUE = -11.5f;
     public const float RIGHT_MOST_X_TERRAIN_VALUE = 12.5f;
 
+    [SerializeField]
+    private TileSet tileSet;
+
     [Header("Platform Spawn Settings")]
     [SerializeField]
     private int levelNumbers = 2;

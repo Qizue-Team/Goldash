@@ -516,7 +516,7 @@ GameObject:
   m_Layer: 0
   m_Name: PlatformSpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -528,7 +528,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647560729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 12.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -548,9 +548,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1254181966043173246, guid: ef1ea6c4c26c24d4ab2f95974a7dafe6, type: 3}
   tileWidth: 0.9
-  levelNumbers: 2
-  spaceBetweenPlatforms: 3
-  offset: 0
+  tileSet: {fileID: 11400000, guid: 4bbe8a0ab4e05d9489dce5fbe9a2eb54, type: 2}
+  levelNumbers: 3
+  spaceBetweenPlatforms: 2
+  offset: 1
 --- !u!1 &986372893
 GameObject:
   m_ObjectHideFlags: 0
