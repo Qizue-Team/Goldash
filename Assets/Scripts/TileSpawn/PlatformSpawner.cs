@@ -167,6 +167,8 @@ public class PlatformSpawner : Spawner
     private void TileSpawn(Vector3 position, Sprite sprite, bool isColliderActive = true)
     {
         var tileObj = TerrainTilePool.Instance.Get();
+        TerrainTile tile = tileObj.GetComponent<TerrainTile>();
+
         tileObj.transform.position = position;
 
         tileObj.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0.3f);
@@ -179,9 +181,9 @@ public class PlatformSpawner : Spawner
         else
         {
             tileObj.GetComponent<BoxCollider2D>().enabled = true;
+            tile.SpawnTrash();
         }
-
-        TerrainTile tile = tileObj.GetComponent<TerrainTile>();
+       
         tile.SetSpeed(terrainSpawner.TileSpeed);
         tile.SetDestroyTime(terrainSpawner.TileLifeTime);
         tile.SetSprite(sprite);
