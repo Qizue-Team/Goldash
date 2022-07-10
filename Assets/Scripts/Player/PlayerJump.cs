@@ -37,6 +37,23 @@ public class PlayerJump : MonoBehaviour
         Jump();
     }
 
+    private void FixedUpdate()
+    {
+        if (_rb == null)
+            return;
+   
+        // Falling
+        if (_rb.velocity.y < 0)
+        {
+            _rb.gravityScale = fallGravity;
+            Debug.Log("in");
+        }
+        else
+        {
+            _rb.gravityScale = 1;
+        }
+    }
+
     private void Jump()
     {
         if (_rb == null || !IsGrounded)
@@ -46,12 +63,6 @@ public class PlayerJump : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0))
         {
             _rb.velocity = Vector2.up * jumpVelocity;
-        }
-
-        // Falling
-        if (_rb.velocity.y < 0)
-        {
-            _rb.gravityScale = fallGravity;
         }
     }
 
