@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CreateAssetMenu(fileName ="NewTileSet", menuName = "Tileset/Create New TileSet")]
+[CreateAssetMenu(fileName ="NewTileSet", menuName = "New Tile Set")]
 public class TileSet : ScriptableObject
 {
     [SerializeField]
