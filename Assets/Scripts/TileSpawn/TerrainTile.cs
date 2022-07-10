@@ -28,6 +28,15 @@ public class TerrainTile : MonoBehaviour
         }
     }
 
+    public void DestroyTrash()
+    {
+        if (_trash != null)
+        {
+            Destroy(_trash);
+            _trash = null;
+        }
+    }
+
     public void SetSpeed(float speed)
     {
         if(speed < 0)
@@ -91,14 +100,5 @@ public class TerrainTile : MonoBehaviour
     {
         SetSpeed(speed);
         SetDestroyTime(lifeTime);
-    }
-
-    private void DestroyTrash()
-    {
-        if(_trash != null)
-        {
-            Destroy(_trash);
-            _trash = null;
-        }
     }
 }
