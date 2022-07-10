@@ -62,10 +62,12 @@ public class TerrainTileSpawner : Spawner
         tile.SetDestroyTime(tileLifeTime);
         tile.SetSprite(tileSet.GetRandomSprite());
 
+        tile.SpawnTrash();
+
         tileObj.gameObject.SetActive(true);
     }
 
-    public void Spawn(Vector3 position)
+    public void Spawn(Vector3 position, bool shoudlSpawnTrash = true)
     {
         var tileObj = TerrainTilePool.Instance.Get();
         tileObj.transform.position = position;
@@ -79,12 +81,17 @@ public class TerrainTileSpawner : Spawner
         tile.SetDestroyTime(tileLifeTime);
         tile.SetSprite(tileSet.GetRandomSprite());
 
+        if(shoudlSpawnTrash)
+            tile.SpawnTrash();
+
         tileObj.gameObject.SetActive(true);
     }
 
     public void Spawn(Sprite sprite, bool isColliderActive = true)
     {
         var tileObj = TerrainTilePool.Instance.Get();
+        TerrainTile tile = tileObj.GetComponent<TerrainTile>();
+
         tileObj.transform.position = transform.position;
 
         tileObj.GetComponent<BoxCollider2D>().offset = new Vector2(0.0f, 0.0f);
@@ -96,9 +103,10 @@ public class TerrainTileSpawner : Spawner
         else
         {
             tileObj.GetComponent<BoxCollider2D>().enabled = true;
+            tile.SpawnTrash();
+            
         }
 
-        TerrainTile tile = tileObj.GetComponent<TerrainTile>();
         tile.SetSpeed(tileSpeed);
         tile.SetDestroyTime(tileLifeTime);
         tile.SetSprite(sprite);
@@ -201,7 +209,7 @@ public class TerrainTileSpawner : Spawner
         float x = LEFT_MOST_X_TERRAIN_VALUE;
         while (x < RIGHT_MOST_X_TERRAIN_VALUE)
         {
-            Spawn(new Vector3(x, y, 0.0f));
+            Spawn(new Vector3(x, y, 0.0f),false);
             x += 1.0f;
         }
         _distance = tileWidth;

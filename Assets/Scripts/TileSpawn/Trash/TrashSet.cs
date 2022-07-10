@@ -16,7 +16,7 @@ public class TrashSet : ScriptableObject
     {
         // If no trash, return blank
         if(trashObjs.Length == 0)
-            return new GameObject();
+            return null;
 
         float total = 0.0f;
         for (int i = 0; i < trashObjs.Length; i++)
@@ -42,7 +42,7 @@ public class TrashSet : ScriptableObject
         prob = blankWeight / total;
         if(prob >= rand)
         {
-            return new GameObject();
+            return null;
         }
 
         return trashObjs[count];

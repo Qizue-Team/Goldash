@@ -6,10 +6,27 @@ public class TerrainTile : MonoBehaviour
 {
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private TrashSet trashSet;
 
     private float _speed = 1.0f;
     private float _destroyTime = 10.0f;
     private float _timer = 0.0f;
+
+    private GameObject _trash;
+
+    public void SpawnTrash()
+    {
+        GameObject trashObj = trashSet.GetRandomTrash();
+        if (trashObj!=null)
+        {
+            _trash = Instantiate(trashObj, transform);
+        }
+        else
+        {
+            _trash = null;
+        }
+    }
 
     public void SetSpeed(float speed)
     {
@@ -59,6 +76,9 @@ public class TerrainTile : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer >= _destroyTime)
         {
+            // Destroy Trash if any
+            DestroyTrash();
+
             // Destroy / ReturnToPool
             TerrainTilePool.Instance.ReturnToPool(this);
 
@@ -73,4 +93,12 @@ public class TerrainTile : MonoBehaviour
         SetDestroyTime(lifeTime);
     }
 
+    private void DestroyTrash()
+    {
+        if(_trash != null)
+        {
+            Destroy(_trash);
+            _trash = null;
+        }
+    }
 }
