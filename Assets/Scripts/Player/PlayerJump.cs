@@ -46,7 +46,6 @@ public class PlayerJump : MonoBehaviour
         if (_rb.velocity.y < 0)
         {
             _rb.gravityScale = fallGravity;
-            Debug.Log("in");
         }
         else
         {
