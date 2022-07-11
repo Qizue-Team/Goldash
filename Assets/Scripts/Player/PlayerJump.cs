@@ -11,6 +11,8 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]
     private float jumpVelocity = 5.0f;
     [SerializeField]
+    private float bounceJumpVelocity = 5.0f;
+    [SerializeField]
     private float groundRaycastLength = 0.6f;
     [SerializeField]
     private float fallGravity = 1.3f;
@@ -24,6 +26,22 @@ public class PlayerJump : MonoBehaviour
     private const float BOX_CAST_X_SIZE = 1.0f;
     private const float BOX_CAST_Y_SIZE = 1.0f;
 
+    public void Jump()
+    {
+        if (_rb == null || !IsGrounded)
+            return;
+
+        _rb.velocity = Vector2.up * jumpVelocity;
+    }
+
+    public void BounceJump()
+    {
+        if (_rb == null)
+            return;
+
+        _rb.velocity = Vector2.up * bounceJumpVelocity;
+    }
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -34,7 +52,12 @@ public class PlayerJump : MonoBehaviour
         DrawGroundCheckRaycast();
         CheckPlatform();
         CheckGrounded();
-        Jump();
+
+        // (Maybe) TODO: Check platform -> if Android (Mouse0) / if Windows (Space) 
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            Jump();
+        }
     }
 
     private void FixedUpdate()
@@ -53,17 +76,6 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    private void Jump()
-    {
-        if (_rb == null || !IsGrounded)
-            return;
-
-        // (Maybe) TODO: Check platform -> if Android (Mouse0) / if Windows (Space) 
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            _rb.velocity = Vector2.up * jumpVelocity;
-        }
-    }
 
     private void CheckGrounded()
     {

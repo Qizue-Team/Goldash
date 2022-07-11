@@ -2,8 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerJump))]
 public class PlayerCollision : MonoBehaviour
 {
+
+    private PlayerJump _playerJump;
+
+    private void Awake()
+    {
+        _playerJump = GetComponent<PlayerJump>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         TerrainTile tile = collision.GetComponentInParent<TerrainTile>();
@@ -31,6 +40,8 @@ public class PlayerCollision : MonoBehaviour
             // If hit direction is pointing downwards
             if(hitDirection.y < 0)
             {
+                _playerJump.BounceJump();
+
                 // Update Score
                 GameController.Instance.IncreaseScore(enemy.ScorePoints);
                 UIController.Instance.UpdateScore(GameController.Instance.Score);
