@@ -21,6 +21,26 @@ public class PlayerCollision : MonoBehaviour
 
             tile.DestroySpawnedObject();
         }
+
+        Enemy enemy = null;
+        if(collision.TryGetComponent(out enemy))
+        {
+            Vector2 hitPoint = collision.ClosestPoint(transform.position);
+            Vector2 hitDirection = hitPoint - (Vector2)transform.position;
+
+            // If hit direction is pointing downwards
+            if(hitDirection.y < 0)
+            {
+                // Enemy Kill
+                tile.DestroySpawnedObject();
+            }
+            else
+            {
+                // Player Dead
+                // TEMP: Destroy Player
+                Destroy(gameObject);
+            }
+        }
         
     }
 }
