@@ -11,7 +11,7 @@ public class SpawnableSet : ScriptableObject
     [SerializeField]
     private int weight;
     [SerializeField]
-    private GameObject[] objects;
+    private Spawnable[] objects;
 
     public GameObject GetRandomObject()
     {
@@ -22,7 +22,7 @@ public class SpawnableSet : ScriptableObject
         float total = 0.0f;
         for (int i = 0; i < objects.Length; i++)
         {
-            total += objects[i].GetComponent<Spawnable>().Weight;
+            total += objects[i].Weight;
         }
 
         float rand = Random.value;
@@ -31,12 +31,12 @@ public class SpawnableSet : ScriptableObject
         int count = objects.Length-1;
         for (int i = 0; i < count; i++)
         {
-            prob+=objects[i].GetComponent<Spawnable>().Weight / total;
+            prob+=objects[i].Weight / total;
             if(prob >= rand)
             {
-                return objects[i];
+                return objects[i].gameObject;
             }
         }
-        return objects[count];
+        return objects[count].gameObject;
     }
 }
