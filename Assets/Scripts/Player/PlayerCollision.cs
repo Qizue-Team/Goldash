@@ -31,6 +31,10 @@ public class PlayerCollision : MonoBehaviour
             // If hit direction is pointing downwards
             if(hitDirection.y < 0)
             {
+                // Update Score
+                GameController.Instance.IncreaseScore(enemy.ScorePoints);
+                UIController.Instance.UpdateScore(GameController.Instance.Score);
+
                 // Enemy Kill
                 tile.DestroySpawnedObject();
             }
