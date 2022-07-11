@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 2
   scorePoints: 15
+  fallingSpeed: 2.7
 --- !u!61 &2667315561529170426
 BoxCollider2D:
   m_ObjectHideFlags: 0

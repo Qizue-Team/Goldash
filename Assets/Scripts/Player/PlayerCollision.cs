@@ -36,7 +36,8 @@ public class PlayerCollision : MonoBehaviour
                 UIController.Instance.UpdateScore(GameController.Instance.Score);
 
                 // Enemy Kill
-                tile.DestroySpawnedObject();
+                enemy.Die();
+                //tile.DestroySpawnedObject();
             }
             else
             {
