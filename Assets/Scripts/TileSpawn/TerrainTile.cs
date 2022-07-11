@@ -7,33 +7,33 @@ public class TerrainTile : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer;
     [SerializeField]
-    private TrashSet trashSet;
+    private SpawnableSetsManager setsManager;
 
     private float _speed = 1.0f;
     private float _destroyTime = 10.0f;
     private float _timer = 0.0f;
 
-    private GameObject _trash;
+    private GameObject _spawnedObject;
 
-    public void SpawnTrash()
+    public void SpawnSpawnableObject()
     {
-        GameObject trashObj = trashSet.GetRandomTrash();
-        if (trashObj!=null)
+        GameObject spawnableObj = setsManager.GetRandomObject();
+        if (spawnableObj!=null)
         {
-            _trash = Instantiate(trashObj, transform);
+            _spawnedObject = Instantiate(spawnableObj, transform);
         }
         else
         {
-            _trash = null;
+            _spawnedObject = null;
         }
     }
 
-    public void DestroyTrash()
+    public void DestroySpawnedObject()
     {
-        if (_trash != null)
+        if (_spawnedObject != null)
         {
-            Destroy(_trash);
-            _trash = null;
+            Destroy(_spawnedObject);
+            _spawnedObject = null;
         }
     }
 
@@ -86,7 +86,7 @@ public class TerrainTile : MonoBehaviour
         if (_timer >= _destroyTime)
         {
             // Destroy Trash if any
-            DestroyTrash();
+            DestroySpawnedObject();
 
             // Destroy / ReturnToPool
             TerrainTilePool.Instance.ReturnToPool(this);

@@ -17,6 +17,6 @@ public class TrashPickUp : MonoBehaviour
         GameController.Instance.IncreaseTrashCount(1);
         UIController.Instance.UpdateTrashCount(GameController.Instance.TrashCount);
 
-        tile.DestroyTrash();
+        tile.DestroySpawnedObject();
     }
 }

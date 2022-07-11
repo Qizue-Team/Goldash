@@ -62,7 +62,7 @@ public class TerrainTileSpawner : Spawner
         tile.SetDestroyTime(tileLifeTime);
         tile.SetSprite(tileSet.GetRandomSprite());
 
-        tile.SpawnTrash();
+        tile.SpawnSpawnableObject();
 
         tileObj.gameObject.SetActive(true);
     }
@@ -82,7 +82,7 @@ public class TerrainTileSpawner : Spawner
         tile.SetSprite(tileSet.GetRandomSprite());
 
         if(shoudlSpawnTrash)
-            tile.SpawnTrash();
+            tile.SpawnSpawnableObject();
 
         tileObj.gameObject.SetActive(true);
     }
@@ -103,7 +103,7 @@ public class TerrainTileSpawner : Spawner
         else
         {
             tileObj.GetComponent<BoxCollider2D>().enabled = true;
-            tile.SpawnTrash();
+            tile.SpawnSpawnableObject();
             
         }
 

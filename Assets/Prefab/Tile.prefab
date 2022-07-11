@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1254181964890879615}
-  trashSet: {fileID: 11400000, guid: 52bbe45e1db8cf041a1b13d7ad276463, type: 2}
+  setsManager: {fileID: 11400000, guid: 7d370bd2873e7af4886e0f5159edfc4e, type: 2}
 --- !u!61 &6990432503700248068
 BoxCollider2D:
   m_ObjectHideFlags: 0

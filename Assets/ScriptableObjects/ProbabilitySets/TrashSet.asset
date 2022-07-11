@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3d23b75c04f894b877358f324ed748, type: 3}
+  m_Script: {fileID: 11500000, guid: 6769ee30a0817c24582cccf3ad926239, type: 3}
   m_Name: TrashSet
   m_EditorClassIdentifier: 
-  blankWeight: 40
-  trashObjs:
+  weight: 3
+  objects:
   - {fileID: 2181940990027432172, guid: 19ce75f1061c85d409924c76bdb200d5, type: 3}
   - {fileID: 1474412668912026748, guid: beef8d51f1972ec4c83d6da09a6b7434, type: 3}
