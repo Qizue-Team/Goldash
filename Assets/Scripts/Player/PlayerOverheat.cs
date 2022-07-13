@@ -12,6 +12,12 @@ public class PlayerOverheat : MonoBehaviour
     private GameObject overheatMask;
     [SerializeField]
     private TerrainTileSpawner terrainTileSpawner;
+    [SerializeField]
+    private PlayerJump playerJump;
+
+    [Header("VFX")]
+    [SerializeField]
+    private GameObject[] overheatSmokes;
 
     [Header("Settings")]
     [SerializeField]
@@ -52,16 +58,19 @@ public class PlayerOverheat : MonoBehaviour
             CustomLog.Log(CustomLog.CustomLogType.PLAYER, "Slow Down Triggered ");
             terrainTileSpawner.SpeedDown(slowDownMultiplier);
             _isSlowedDown = true;
+            SetSmokeEffectsActive(true);
         }
 
         overheatMask.transform.localPosition = new Vector3(overheatMask.transform.localPosition.x, -(1.0f - Overheat), 0.0f);
 
+        /*
         if(Overheat >= 1)
         {
             // GameOver - TODO: CALL GAMEOVER EVENT
             CustomLog.Log(CustomLog.CustomLogType.PLAYER, "GAME OVER for Overheating");
             Destroy(gameObject);
         }
+        */
     }
 
     public void DecreaseHeat(float amount)
@@ -82,6 +91,7 @@ public class PlayerOverheat : MonoBehaviour
             CustomLog.Log(CustomLog.CustomLogType.PLAYER, "Speed to normal ");
             terrainTileSpawner.SpeedUp(slowDownMultiplier);
             _isSlowedDown = false;
+            SetSmokeEffectsActive(false);
         }
 
         overheatMask.transform.localPosition = new Vector3(overheatMask.transform.localPosition.x, -(1.0f-Overheat), 0.0f);
@@ -90,5 +100,27 @@ public class PlayerOverheat : MonoBehaviour
     private void Start()
     {
         Overheat = 0.0f;
+        SetSmokeEffectsActive(false);
+    }
+
+    private void Update()
+    {
+        if(playerJump.IsGrounded && Overheat >= 1) // This eventually should be stopped from being called multiple times in update
+        {
+            // GameOver - TODO: CALL GAMEOVER EVENT
+            CustomLog.Log(CustomLog.CustomLogType.PLAYER, "GAME OVER for Overheating");
+            Destroy(gameObject);
+        }
+    }
+
+    private void SetSmokeEffectsActive(bool active)
+    {
+        if (overheatSmokes.Length <= 0)
+            return;
+
+        foreach(GameObject obj in overheatSmokes)
+        {
+            obj.SetActive(active);
+        }
     }
 }
