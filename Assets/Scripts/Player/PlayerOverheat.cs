@@ -63,14 +63,14 @@ public class PlayerOverheat : MonoBehaviour
 
         overheatMask.transform.localPosition = new Vector3(overheatMask.transform.localPosition.x, -(1.0f - Overheat), 0.0f);
 
-        /*
-        if(Overheat >= 1)
+        
+        if(Overheat >= 1 && playerJump.IsGrounded)
         {
             // GameOver - TODO: CALL GAMEOVER EVENT
             CustomLog.Log(CustomLog.CustomLogType.PLAYER, "GAME OVER for Overheating");
             Destroy(gameObject);
         }
-        */
+        
     }
 
     public void DecreaseHeat(float amount)
@@ -105,12 +105,6 @@ public class PlayerOverheat : MonoBehaviour
 
     private void Update()
     {
-        if(playerJump.IsGrounded && Overheat >= 1) // This eventually should be stopped from being called multiple times in update
-        {
-            // GameOver - TODO: CALL GAMEOVER EVENT
-            CustomLog.Log(CustomLog.CustomLogType.PLAYER, "GAME OVER for Overheating");
-            Destroy(gameObject);
-        }
     }
 
     private void SetSmokeEffectsActive(bool active)

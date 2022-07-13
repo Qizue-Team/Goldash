@@ -40,14 +40,13 @@ public class PlayerJump : MonoBehaviour
             return;
         }
 
+        _rb.velocity = Vector2.up * jumpVelocity;
+        
         if (!_isHeatIncreased)
         {
             playerOverheat.IncreaseHeat();
             _isHeatIncreased = true;
         }
-       
-
-        _rb.velocity = Vector2.up * jumpVelocity;
     }
 
     public void BounceJump()
