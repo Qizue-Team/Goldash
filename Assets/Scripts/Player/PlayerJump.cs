@@ -7,6 +7,10 @@ public class PlayerJump : MonoBehaviour
 {
     public bool IsGrounded { get; private set; }
 
+    [Header("References")]
+    [SerializeField]
+    private PlayerOverheat playerOverheat;
+
     [Header("Settings")]
     [SerializeField]
     private float jumpVelocity = 5.0f;
@@ -19,17 +23,29 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayerMask;
 
-    private Rigidbody2D _rb;
-
     private const float BOX_CAST_X_OFFSET = 0.0f;
     private const float BOX_CAST_Y_OFFSET = 0.2f;
     private const float BOX_CAST_X_SIZE = 1.0f;
     private const float BOX_CAST_Y_SIZE = 1.0f;
 
+    private Rigidbody2D _rb;
+    private bool _isHeatIncreased = false;
+    private bool _isHeatDecreased = false;
+
     public void Jump()
     {
         if (_rb == null || !IsGrounded)
+        {
+            _isHeatIncreased = false;
             return;
+        }
+
+        if (!_isHeatIncreased)
+        {
+            playerOverheat.IncreaseHeat();
+            _isHeatIncreased = true;
+        }
+       
 
         _rb.velocity = Vector2.up * jumpVelocity;
     }
@@ -38,6 +54,8 @@ public class PlayerJump : MonoBehaviour
     {
         if (_rb == null)
             return;
+        
+        playerOverheat.DecreaseHeat();
 
         _rb.velocity = Vector2.up * bounceJumpVelocity;
     }

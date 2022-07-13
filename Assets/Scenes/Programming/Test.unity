@@ -465,6 +465,7 @@ GameObject:
   - component: {fileID: 356370461}
   - component: {fileID: 356370460}
   - component: {fileID: 356370466}
+  - component: {fileID: 356370467}
   m_Layer: 0
   m_Name: Trasher
   m_TagString: Untagged
@@ -484,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d761862e4120e3047bea3873c9d9e2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerOverheat: {fileID: 356370467}
   jumpVelocity: 6
   bounceJumpVelocity: 5
   groundRaycastLength: 0.6
@@ -599,6 +601,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e48dc233bae8ea43bcaafffc393d2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &356370467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356370459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08761b6912ad004f8f5a35927436427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overheatMask: {fileID: 78206651}
+  heatIncreaseAmount: 0.1
+  heatDecreaseAmount: 0.1
 --- !u!1 &384489749
 GameObject:
   m_ObjectHideFlags: 0
