@@ -616,7 +616,7 @@ MonoBehaviour:
   overheatMask: {fileID: 78206651}
   terrainTileSpawner: {fileID: 2051091}
   heatIncreaseAmount: 0.1
-  heatDecreaseAmount: 0.1
+  heatDecreaseAmount: 0.3
   slowDownLevel: 0.7
   slowDownMultiplier: 1.5
 --- !u!1 &384489749
