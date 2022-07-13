@@ -154,8 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1254181966043173246, guid: ef1ea6c4c26c24d4ab2f95974a7dafe6, type: 3}
   tileWidth: 0.9
-  tileSpeed: 2
-  tileLifeTime: 12.5
+  tileSpeed: 3
+  tileLifeTime: 8.666667
   tileSet: {fileID: 11400000, guid: 4bbe8a0ab4e05d9489dce5fbe9a2eb54, type: 2}
   minHoleWaitTime: 5
   maxHoleWaitTime: 10
@@ -614,8 +614,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overheatMask: {fileID: 78206651}
+  terrainTileSpawner: {fileID: 2051091}
   heatIncreaseAmount: 0.1
   heatDecreaseAmount: 0.1
+  slowDownLevel: 0.7
+  slowDownMultiplier: 1.5
 --- !u!1 &384489749
 GameObject:
   m_ObjectHideFlags: 0
