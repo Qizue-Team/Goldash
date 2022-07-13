@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-
 [CustomEditor(typeof(PlatformSpawner))]
 [CanEditMultipleObjects]
 public class CustomEditorPlatformSpawner : Editor
