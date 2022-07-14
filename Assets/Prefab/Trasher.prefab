@@ -255,7 +255,7 @@ MonoBehaviour:
   heatIncreaseAmount: 0.1
   heatDecreaseAmount: 0.3
   slowDownLevel: 0.7
-  slowDownMultiplier: 1.5
+  slowDownMultiplier: 2.2
 --- !u!1 &8457986020795182027
 GameObject:
   m_ObjectHideFlags: 0

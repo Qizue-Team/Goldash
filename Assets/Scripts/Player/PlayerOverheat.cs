@@ -10,8 +10,7 @@ public class PlayerOverheat : MonoBehaviour
     [Header("References")]
     [SerializeField]
     private GameObject overheatMask;
-    [SerializeField]
-    private TerrainTileSpawner terrainTileSpawner;
+   
     [SerializeField]
     private PlayerJump playerJump;
 
@@ -27,9 +26,10 @@ public class PlayerOverheat : MonoBehaviour
     [SerializeField]
     private float slowDownLevel = 0.7f;
     [SerializeField]
-    private float slowDownMultiplier = 1.5f;
+    private float slowDownMultiplier = 2.2f;
 
     private bool _isSlowedDown = false;
+    private TerrainTileSpawner _terrainTileSpawner;
 
     public void IncreaseHeat()
     {
@@ -56,7 +56,8 @@ public class PlayerOverheat : MonoBehaviour
         if(Overheat >= slowDownLevel && (!_isSlowedDown))
         {
             CustomLog.Log(CustomLog.CustomLogType.PLAYER, "Slow Down Triggered ");
-            terrainTileSpawner.SpeedDown(slowDownMultiplier);
+            _terrainTileSpawner.SpeedDown(TerrainTileSpawner.DEFAULT_SPEEDUP_MULTIPLIER);
+            _terrainTileSpawner.SpeedUp(slowDownMultiplier);
             _isSlowedDown = true;
             SetSmokeEffectsActive(true);
         }
@@ -90,12 +91,18 @@ public class PlayerOverheat : MonoBehaviour
         if (Overheat < slowDownLevel && _isSlowedDown)
         {
             CustomLog.Log(CustomLog.CustomLogType.PLAYER, "Speed to normal ");
-            terrainTileSpawner.SpeedUp(slowDownMultiplier);
+            _terrainTileSpawner.SpeedDown(slowDownMultiplier);
+            _terrainTileSpawner.SpeedUp(TerrainTileSpawner.DEFAULT_SPEEDUP_MULTIPLIER);
             _isSlowedDown = false;
             SetSmokeEffectsActive(false);
         }
 
         overheatMask.transform.localPosition = new Vector3(overheatMask.transform.localPosition.x, -(1.0f-Overheat), 0.0f);
+    }
+
+    private void Awake()
+    {
+        _terrainTileSpawner = FindObjectOfType<TerrainTileSpawner>();
     }
 
     private void Start()

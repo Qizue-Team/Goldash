@@ -23,8 +23,9 @@ public class TerrainTileSpawner : Spawner
     public const float RIGHT_MOST_X_TERRAIN_VALUE = 12.5f;
     public const float TERRAIN_TILES_Y_POS = -4.5f;
 
-    public const float DEFAULT_TILE_SPEED = 3;
-    public const float DEFAULT_LIFE_TIME = 8.666667f;
+    public const float DEFAULT_SPEEDUP_MULTIPLIER = 2.9f;
+    public const float DEFAULT_TILE_SPEED = 5.8f;
+    public const float DEFAULT_LIFE_TIME = 4.965517f;
     #endregion
 
     [SerializeField]
