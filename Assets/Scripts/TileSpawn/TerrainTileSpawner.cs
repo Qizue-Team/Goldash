@@ -10,6 +10,8 @@ public class TerrainTileSpawner : Spawner
 
     public static event Action<float> OnSpeedUp;
     public static event Action<float,float> OnSpeedDown;
+    public static event Action OnStop;
+    public static event Action OnReset;
 
     #region CONSTS
     public const float TILE_WIDTH = 0.9f;
@@ -20,6 +22,9 @@ public class TerrainTileSpawner : Spawner
     public const float LEFT_MOST_X_TERRAIN_VALUE = -11.5f;
     public const float RIGHT_MOST_X_TERRAIN_VALUE = 12.5f;
     public const float TERRAIN_TILES_Y_POS = -4.5f;
+
+    public const float DEFAULT_TILE_SPEED = 3;
+    public const float DEFAULT_LIFE_TIME = 8.666667f;
     #endregion
 
     [SerializeField]
@@ -45,6 +50,8 @@ public class TerrainTileSpawner : Spawner
     private float _holeWaitingTime = 0.0f;
     private float _holeTimer = 0.0f;
     private int _currentHoleLength = 0;
+
+    private bool _stop = false;
 
     #region PUBLIC_METHODS_REGION
     public override void Spawn()
@@ -154,6 +161,34 @@ public class TerrainTileSpawner : Spawner
         OnSpeedDown(tileSpeed, tileLifeTime);
     }
 
+    public void Stop()
+    {
+        _stop = true;
+        tileSpeed = 0;
+        tileLifeTime = 0;
+        OnStop?.Invoke();
+    }
+
+    public void ResetSpawner()
+    {
+        OnReset?.Invoke();
+
+        // Reset Params
+        _isWaitingForHole = false;
+        _spawnHole = false;
+        _holeIndex = 0; 
+        _holeWaitingTime = 0.0f;
+        _holeTimer = 0.0f;
+        _currentHoleLength = 0;
+        _distance = 0.0f;
+
+        // Reset Param tiles
+        tileSpeed = DEFAULT_TILE_SPEED;
+        tileLifeTime = DEFAULT_LIFE_TIME;
+
+        _stop = false;
+    }
+
     public void SpawnHole()
     {
         if (_currentHoleLength <= 0)
@@ -181,6 +216,18 @@ public class TerrainTileSpawner : Spawner
         }
         _holeIndex++;
     }
+
+    public void InitializeTerrainTiles()
+    {
+        float y = TERRAIN_TILES_Y_POS;
+        float x = LEFT_MOST_X_TERRAIN_VALUE;
+        while (x < RIGHT_MOST_X_TERRAIN_VALUE)
+        {
+            Spawn(new Vector3(x, y, 0.0f), false);
+            x += 1.0f;
+        }
+        _distance = tileWidth;
+    }
     #endregion
 
     private void Start()
@@ -190,6 +237,9 @@ public class TerrainTileSpawner : Spawner
 
     private void Update()
     {
+        if (_stop)
+            return;
+
         CheckSpawnHoles();
 
         _distance += tileSpeed * Time.deltaTime;
@@ -203,17 +253,6 @@ public class TerrainTileSpawner : Spawner
         }
     }
 
-    private void InitializeTerrainTiles()
-    {
-        float y = TERRAIN_TILES_Y_POS;
-        float x = LEFT_MOST_X_TERRAIN_VALUE;
-        while (x < RIGHT_MOST_X_TERRAIN_VALUE)
-        {
-            Spawn(new Vector3(x, y, 0.0f),false);
-            x += 1.0f;
-        }
-        _distance = tileWidth;
-    }
     
     private void CheckSpawnHoles()
     {

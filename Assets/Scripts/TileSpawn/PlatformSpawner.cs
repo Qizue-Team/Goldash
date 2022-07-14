@@ -54,6 +54,8 @@ public class PlatformSpawner : Spawner
     private bool _isBuildingStairs = false;
     private int _currentStairLevel = 1;
 
+    private bool _stop = false;
+
     public override void Spawn()
     {
         SpawnOnLevel(_currentPickedLevel, ()=> { PickALevel(); });
@@ -65,6 +67,30 @@ public class PlatformSpawner : Spawner
             return;
 
         CreateStairs(level, OnCreationFinished);
+    }
+
+    public void Stop()
+    {
+        _stop = true;
+    }
+
+    public void ResetSpawner()
+    {
+        _spawnPlatform = false;
+        _isWaitingForPlatform = false;
+        _platformTimer = 0.0f;
+        _platformWaitingTime =0.0f;
+        _currentPlatformLength = 0;
+        _platformIndex = 0;
+
+        _currentPickedLevel = 1;
+
+        _isBuildingStairs = false;
+        _currentStairLevel = 1;
+
+        _distance = 0.0f;
+
+        _stop = false;
     }
 
     private void CreateStairs(int level, Action OnCreationFinished)
@@ -91,6 +117,9 @@ public class PlatformSpawner : Spawner
 
     private void Update()
     {
+        if (_stop)
+            return;
+
         CheckSpawnPlatform();
         _distance += terrainSpawner.TileSpeed * Time.deltaTime;
         if (_distance >= tileWidth)

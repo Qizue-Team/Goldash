@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using xPoke.CustomLog;
 
 [RequireComponent(typeof(PlayerJump))]
 public class PlayerCollision : MonoBehaviour
@@ -52,7 +53,9 @@ public class PlayerCollision : MonoBehaviour
             }
             else
             {
-                // Player Dead
+                // Player Dead - GameOver
+                GameController.Instance.GameOver();
+                CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "GameOver for Enemy collision");
                 // TEMP: Destroy Player
                 Destroy(gameObject);
             }

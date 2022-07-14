@@ -34,18 +34,18 @@ namespace xPoke.CustomLog
         {
             { CustomLogType.GENERAL,           Color.white },
             { CustomLogType.SYSTEM,            Color.grey},            //grey
-            { CustomLogType.PLAYER,            new Color( 0 , 254 , 111, 1 ) },          //green
-            { CustomLogType.WEAPON,            new Color( 0 , 122 , 254, 1 ) },          //blue
-            { CustomLogType.ANIMATION,         new Color( 0 , 201 , 254, 1 ) },          //aqua
-            { CustomLogType.ASSET,             new Color( 60 , 0 , 254, 1 ) },           //navy
-            { CustomLogType.GAMEPLAY,          new Color( 143 , 0 , 254, 1 ) },          //purple
-            { CustomLogType.SERIALISATION,     new Color( 232 , 0 , 254, 1 ) },          //pink
+            { CustomLogType.PLAYER,            new Color32( 0 , 254 , 111, 1 ) },          //green
+            { CustomLogType.WEAPON,            new Color32( 0 , 122 , 254, 1 ) },          //blue
+            { CustomLogType.ANIMATION,         new Color32( 0 , 201 , 254, 1 ) },          //aqua
+            { CustomLogType.ASSET,             new Color32( 60 , 0 , 254, 1 ) },           //navy
+            { CustomLogType.GAMEPLAY,          new Color32( 255, 140, 0, 1 ) },            //orange         
+            { CustomLogType.SERIALISATION,     new Color32( 232 , 0 , 254, 1 ) },          //pink
             { CustomLogType.VALIDATION,        Color.grey },
-            { CustomLogType.UI,                new Color( 100, 100, 100, 1) },           //dull grey
-            { CustomLogType.SEQUENCING,        new Color( 250, 161, 100, 1 ) },          //orange
-            { CustomLogType.EDITOR,            new Color( 254 , 224 , 0, 1 ) },          //yellow (avoid yellow grr)
-            { CustomLogType.TOOL,              new Color( 166 , 254 , 0, 1 ) },          //lime
-            { CustomLogType.MENUS,             new Color( 20, 12, 94, 1) },              // Lovecraftian?  some sort of purple green ?  apparently it comes out white... ?
+            { CustomLogType.UI,                new Color32( 100, 100, 100, 1) },           //dull grey
+            { CustomLogType.SEQUENCING,        new Color32( 143 , 0 , 254, 1 ) },          //purple
+            { CustomLogType.EDITOR,            new Color32( 254 , 224 , 0, 1 ) },          //yellow (avoid yellow grr)
+            { CustomLogType.TOOL,              new Color32( 166 , 254 , 0, 1 ) },          //lime
+            { CustomLogType.MENUS,             new Color32( 20, 12, 94, 1) },              // Lovecraftian?  some sort of purple green ?  apparently it comes out white... ?
             { CustomLogType.AI,                Color.cyan },
             { CustomLogType.INPUT,             Color.green },
         };
@@ -73,8 +73,8 @@ namespace xPoke.CustomLog
         static string LogString(CustomLogType _Type, string _message)
         {
             string calledBy = GetCaller(new StackTrace().FrameCount);
-            return "<color=#" + ColorUtility.ToHtmlStringRGB((Color)ColourValues[_Type]) + "> [" + _Type.ToString() + "] </color>- " +
-                "<color=#" + ColorUtility.ToHtmlStringRGB((Color)ColourValues[_Type]) + ">" + calledBy + "</color> " + _message;
+            return "<color=#" + ColorUtility.ToHtmlStringRGB((Color32)ColourValues[_Type]) + "> [" + _Type.ToString() + "] </color>- " +
+                "<color=#" + ColorUtility.ToHtmlStringRGB((Color32)ColourValues[_Type]) + ">" + calledBy + "</color> " + _message;
         }
 
         // Default level of two, will be 2 levels up from the GetCaller function

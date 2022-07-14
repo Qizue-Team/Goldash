@@ -10,6 +10,8 @@ public class UIController : Singleton<UIController>
     private TextMeshProUGUI scoreText;
     [SerializeField]
     private TextMeshProUGUI trashCountText;
+    [SerializeField]
+    private GameMenuPanel gameMenuPanel;
 
     public void UpdateScore(int value)
     {
@@ -23,5 +25,13 @@ public class UIController : Singleton<UIController>
         if (value < 0)
             return;
         trashCountText.text = value.ToString("00000");
+    }
+
+    public void SetOpenGameMenuPanel(bool open)
+    {
+        if(open)
+            gameMenuPanel.Open();
+        else
+            gameMenuPanel.Close();
     }
 }

@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using xPoke.CustomLog;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool _isGameOverDeclared = false;
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (transform.position.y < -6.0f && !_isGameOverDeclared)
+        {
+            CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "GameOver for falling");
+            GameController.Instance.GameOver();
+            _isGameOverDeclared = true;
+        }
     }
 }

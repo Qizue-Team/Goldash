@@ -66,8 +66,9 @@ public class PlayerOverheat : MonoBehaviour
         
         if(Overheat >= 1 && playerJump.IsGrounded)
         {
-            // GameOver - TODO: CALL GAMEOVER EVENT
-            CustomLog.Log(CustomLog.CustomLogType.PLAYER, "GAME OVER for Overheating");
+            // GameOver - Animation here?
+            GameController.Instance.GameOver();
+            CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "GAME OVER for Overheating");
             Destroy(gameObject);
         }
         
@@ -101,10 +102,6 @@ public class PlayerOverheat : MonoBehaviour
     {
         Overheat = 0.0f;
         SetSmokeEffectsActive(false);
-    }
-
-    private void Update()
-    {
     }
 
     private void SetSmokeEffectsActive(bool active)

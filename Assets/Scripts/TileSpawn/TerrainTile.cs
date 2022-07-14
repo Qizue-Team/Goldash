@@ -12,6 +12,7 @@ public class TerrainTile : MonoBehaviour
     private float _speed = 1.0f;
     private float _destroyTime = 10.0f;
     private float _timer = 0.0f;
+    private bool _stop = false;
 
     private GameObject _spawnedObject;
 
@@ -66,33 +67,36 @@ public class TerrainTile : MonoBehaviour
     {
         TerrainTileSpawner.OnSpeedUp += SetSpeed;
         TerrainTileSpawner.OnSpeedDown += SpeedChangedToSlower;
+        TerrainTileSpawner.OnStop += StopTile;
+        TerrainTileSpawner.OnReset += ResetTile;
     }
 
     private void OnDisable()
     {
         TerrainTileSpawner.OnSpeedUp -= SetSpeed;
         TerrainTileSpawner.OnSpeedDown -= SpeedChangedToSlower;
+        TerrainTileSpawner.OnStop -= StopTile;
+        TerrainTileSpawner.OnReset -= ResetTile;
     }
 
     private void Move(Vector3 direction)
     {
+        if (_stop)
+            return;
+
         if(gameObject.activeSelf)
             transform.position += Time.deltaTime * direction * _speed;
     }
 
     private void Timer()
     {
+        if (_stop)
+            return;
+
         _timer += Time.deltaTime;
         if (_timer >= _destroyTime)
         {
-            // Destroy Trash if any
-            DestroySpawnedObject();
-
-            // Destroy / ReturnToPool
-            TerrainTilePool.Instance.ReturnToPool(this);
-
-            // Timer reset
-            _timer =0.0f;
+            ResetTile();
         }
     }
 
@@ -100,5 +104,26 @@ public class TerrainTile : MonoBehaviour
     {
         SetSpeed(speed);
         SetDestroyTime(lifeTime);
+    }
+
+    private void StopTile()
+    {
+        _stop = true;
+    }
+
+    private void ResetTile()
+    {
+        // Destroy Trash if any
+        DestroySpawnedObject();
+
+        // Destroy / ReturnToPool
+        TerrainTilePool.Instance.ReturnToPool(this);
+
+        // Timer reset
+        _timer = 0.0f;
+
+        // Able to move again
+        if (_stop)
+            _stop = false;
     }
 }
