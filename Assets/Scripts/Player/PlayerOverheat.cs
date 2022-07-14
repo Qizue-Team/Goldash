@@ -25,8 +25,6 @@ public class PlayerOverheat : MonoBehaviour
     private float heatDecreaseAmount = 0.1f;
     [SerializeField]
     private float slowDownLevel = 0.7f;
-    [SerializeField]
-    private float slowDownMultiplier = 2.2f;
 
     private bool _isSlowedDown = false;
     private TerrainTileSpawner _terrainTileSpawner;
@@ -56,8 +54,9 @@ public class PlayerOverheat : MonoBehaviour
         if(Overheat >= slowDownLevel && (!_isSlowedDown))
         {
             CustomLog.Log(CustomLog.CustomLogType.PLAYER, "Slow Down Triggered ");
-            _terrainTileSpawner.SpeedDown(TerrainTileSpawner.DEFAULT_SPEEDUP_MULTIPLIER);
-            _terrainTileSpawner.SpeedUp(slowDownMultiplier);
+
+            _terrainTileSpawner.ApplyOverheatSlowDown();
+
             _isSlowedDown = true;
             SetSmokeEffectsActive(true);
         }
@@ -91,8 +90,9 @@ public class PlayerOverheat : MonoBehaviour
         if (Overheat < slowDownLevel && _isSlowedDown)
         {
             CustomLog.Log(CustomLog.CustomLogType.PLAYER, "Speed to normal ");
-            _terrainTileSpawner.SpeedDown(slowDownMultiplier);
-            _terrainTileSpawner.SpeedUp(TerrainTileSpawner.DEFAULT_SPEEDUP_MULTIPLIER);
+
+            _terrainTileSpawner.ApplyNormalSpeed();
+
             _isSlowedDown = false;
             SetSmokeEffectsActive(false);
         }

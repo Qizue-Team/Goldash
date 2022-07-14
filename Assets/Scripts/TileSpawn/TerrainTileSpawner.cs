@@ -23,9 +23,9 @@ public class TerrainTileSpawner : Spawner
     public const float RIGHT_MOST_X_TERRAIN_VALUE = 12.5f;
     public const float TERRAIN_TILES_Y_POS = -4.5f;
 
-    public const float DEFAULT_SPEEDUP_MULTIPLIER = 2.9f;
-    public const float DEFAULT_TILE_SPEED = 5.8f;
-    public const float DEFAULT_LIFE_TIME = 4.965517f;
+    public const float DEFAULT_SPEEDUP_MULTIPLIER = 1.1f;
+    public const float DEFAULT_TILE_SPEED = 2.9282f;
+    public const float DEFAULT_LIFE_TIME = 8.854654f;
     #endregion
 
     [SerializeField]
@@ -218,6 +218,19 @@ public class TerrainTileSpawner : Spawner
         _holeIndex++;
     }
 
+    public void ApplyOverheatSlowDown()
+    {
+        SpeedDown(99);
+        SpeedUp(DEFAULT_SPEEDUP_MULTIPLIER);
+    }
+
+    public void ApplyNormalSpeed()
+    {
+        SpeedDown(99);
+        for(int i =0;i<4;++i)
+            SpeedUp(DEFAULT_SPEEDUP_MULTIPLIER);
+    }
+
     public void InitializeTerrainTiles()
     {
         float y = TERRAIN_TILES_Y_POS;
@@ -282,4 +295,5 @@ public class TerrainTileSpawner : Spawner
             _currentHoleLength = UnityEngine.Random.Range(minHoleLength, maxHoleLength+1);
         }
     }
+
 }
