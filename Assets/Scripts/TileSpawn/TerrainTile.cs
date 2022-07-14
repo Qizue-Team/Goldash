@@ -106,12 +106,6 @@ public class TerrainTile : MonoBehaviour
         SetDestroyTime(lifeTime);
     }
 
-    private void SpeedChanged(float speed, float lifeTime)
-    {
-        SetSpeed(speed);
-        SetDestroyTime(lifeTime);
-    }
-
     private void StopTile()
     {
         _stop = true;
