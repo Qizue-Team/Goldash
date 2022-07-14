@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,14 +30,19 @@ public class GameMenuPanel : MonoBehaviour
         if (!IsOpen)
             return;
 
-        blackFadeScreen.enabled = false;
-
         IsOpen = false;
         _animator.SetTrigger("Close");
+        StartCoroutine(COWaitForAction(1.0f, () => blackFadeScreen.enabled = false));
     }
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+    }
+
+    private IEnumerator COWaitForAction(float delay, Action ActionToPerform)
+    {
+        yield return new WaitForSeconds(delay);
+        ActionToPerform?.Invoke();
     }
 }

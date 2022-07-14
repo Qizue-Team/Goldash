@@ -30,7 +30,6 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D _rb;
     private bool _isHeatIncreased = false;
-    private bool _isHeatDecreased = false;
 
     public void Jump()
     {

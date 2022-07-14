@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using xPoke.CustomLog;
+using System;
 
 public class GameController : Singleton<GameController>
 {
@@ -55,17 +56,20 @@ public class GameController : Singleton<GameController>
     {
         CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Game Reset");
 
-        terrainTileSpawner.ResetSpawner();
-        platformSpawner.ResetSpawner();
-
-        ResetScore();
-        ResetTrashCount();
-
         UIController.Instance.SetOpenGameMenuPanel(false);
 
-        terrainTileSpawner.InitializeTerrainTiles();
+        StartCoroutine(COWaitForAction(1.0f, () =>
+        {
+            terrainTileSpawner.ResetSpawner();
+            platformSpawner.ResetSpawner();
 
-        SpawnPlayer();
+            ResetScore();
+            ResetTrashCount();
+
+            terrainTileSpawner.InitializeTerrainTiles();
+
+            SpawnPlayer();
+        }));
     }
 
     public void ExitGame()
@@ -88,5 +92,11 @@ public class GameController : Singleton<GameController>
     private void SpawnPlayer()
     {
         Instantiate(playerPrefab, playerSpawnPosition, Quaternion.identity);
+    }
+
+    private IEnumerator COWaitForAction(float delay, Action ActionToPerform)
+    {
+        yield return new WaitForSeconds(delay);
+        ActionToPerform?.Invoke();
     }
 }
