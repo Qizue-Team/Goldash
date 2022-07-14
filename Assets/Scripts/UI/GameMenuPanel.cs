@@ -23,12 +23,6 @@ public class GameMenuPanel : MonoBehaviour
 
         IsOpen = true;
 
-        _animator.SetInteger("Resolution",Screen.currentResolution.height);
-
-        #if UNITY_EDITOR
-        _animator.SetInteger("Resolution", 1440);
-        #endif
-
         _animator.SetTrigger("Open");
         
     }
@@ -39,12 +33,7 @@ public class GameMenuPanel : MonoBehaviour
             return;
 
         IsOpen = false;
-        _animator.SetInteger("Resolution", Screen.currentResolution.height);
-        
-        #if UNITY_EDITOR
-        _animator.SetInteger("Resolution", 1440);
-        #endif
-        
+
         _animator.SetTrigger("Close");
         StartCoroutine(COWaitForAction(1.0f, () => blackFadeScreen.enabled = false));
     }
