@@ -222,7 +222,7 @@ public class TerrainTileSpawner : Spawner
     {
         float y = TERRAIN_TILES_Y_POS;
         float x = LEFT_MOST_X_TERRAIN_VALUE;
-        while (x < RIGHT_MOST_X_TERRAIN_VALUE)
+        while (x < RIGHT_MOST_X_TERRAIN_VALUE+2.2f)
         {
             Spawn(new Vector3(x, y, 0.0f), false);
             x += 1.0f;
