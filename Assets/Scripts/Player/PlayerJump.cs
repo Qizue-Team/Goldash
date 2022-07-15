@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using xPoke.CustomLog;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerJump : MonoBehaviour
@@ -21,6 +22,8 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]
     private float fallGravity = 1.3f;
     [SerializeField]
+    private float midAirFallGravity = 2.6f;
+    [SerializeField]
     private LayerMask groundLayerMask;
 
     private const float BOX_CAST_X_OFFSET = 0.0f;
@@ -30,6 +33,7 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D _rb;
     private bool _isHeatIncreased = false;
+    private bool _isFastFalling = false;
 
     public void Jump()
     {
@@ -52,7 +56,10 @@ public class PlayerJump : MonoBehaviour
     {
         if (_rb == null)
             return;
-        
+
+        _isFastFalling = false;
+        _rb.gravityScale = fallGravity;
+
         playerOverheat.DecreaseHeat();
 
         _rb.velocity = Vector2.up * bounceJumpVelocity;
@@ -69,7 +76,13 @@ public class PlayerJump : MonoBehaviour
         CheckPlatform();
         CheckGrounded();
 
-        // (Maybe) TODO: Check platform -> if Android (Mouse0) / if Windows (Space) 
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !IsGrounded)
+        {
+            CustomLog.Log(CustomLog.CustomLogType.PLAYER, "Mid Air Fall");
+            _rb.gravityScale = midAirFallGravity;
+            _isFastFalling = true;
+        }
+
         if (Input.GetKey(KeyCode.Mouse0))
         {
             Jump();
@@ -80,15 +93,16 @@ public class PlayerJump : MonoBehaviour
     {
         if (_rb == null)
             return;
-   
+
         // Falling
-        if (_rb.velocity.y < 0)
+        if (_rb.velocity.y < 0 && !_isFastFalling)
         {
             _rb.gravityScale = fallGravity;
         }
-        else
+        if (IsGrounded)
         {
             _rb.gravityScale = 1;
+            _isFastFalling = false;
         }
     }
 

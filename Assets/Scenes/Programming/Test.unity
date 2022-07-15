@@ -2079,6 +2079,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8457986020644739390, guid: 85b820498abfef64a81a78487aea53dc, type: 3}
+      propertyPath: heatIncreaseAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457986020644739390, guid: 85b820498abfef64a81a78487aea53dc, type: 3}
       propertyPath: terrainTileSpawner
       value: 
       objectReference: {fileID: 2051091}
