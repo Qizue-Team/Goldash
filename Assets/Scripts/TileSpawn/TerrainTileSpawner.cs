@@ -75,7 +75,7 @@ public class TerrainTileSpawner : Spawner
         tileObj.gameObject.SetActive(true);
     }
 
-    public void Spawn(Vector3 position, bool shoudlSpawnTrash = true)
+    public void Spawn(Vector3 position, bool shoudlSpawnObject = true)
     {
         var tileObj = TerrainTilePool.Instance.Get();
         tileObj.transform.position = position;
@@ -89,7 +89,7 @@ public class TerrainTileSpawner : Spawner
         tile.SetDestroyTime(tileLifeTime);
         tile.SetSprite(tileSet.GetRandomSprite());
 
-        if(shoudlSpawnTrash)
+        if(shoudlSpawnObject)
             tile.SpawnSpawnableObject();
 
         tileObj.gameObject.SetActive(true);

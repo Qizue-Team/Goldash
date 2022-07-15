@@ -170,7 +170,7 @@ public class PlatformSpawner : Spawner
         if(_platformIndex == 0)
         {
             // Spawn Left Edge
-            TileSpawn(new Vector3(RIGHT_MOST_X_TERRAIN_VALUE, yHeight, 0.0f), tileSet.GetLeftEdge());
+            TileSpawn(new Vector3(RIGHT_MOST_X_TERRAIN_VALUE, yHeight, 0.0f), tileSet.GetLeftEdge(),true,false);
         }
         else if(_platformIndex == totalLength - 1)
         {
@@ -193,7 +193,7 @@ public class PlatformSpawner : Spawner
         _platformIndex++;
     }
 
-    private void TileSpawn(Vector3 position, Sprite sprite, bool isColliderActive = true)
+    private void TileSpawn(Vector3 position, Sprite sprite, bool isColliderActive = true, bool shouldSpawnObject = true)
     {
         var tileObj = TerrainTilePool.Instance.Get();
         TerrainTile tile = tileObj.GetComponent<TerrainTile>();
@@ -210,7 +210,8 @@ public class PlatformSpawner : Spawner
         else
         {
             tileObj.GetComponent<BoxCollider2D>().enabled = true;
-            tile.SpawnSpawnableObject();
+            if(shouldSpawnObject)
+                tile.SpawnSpawnableObject();
         }
        
         tile.SetSpeed(terrainSpawner.TileSpeed);
