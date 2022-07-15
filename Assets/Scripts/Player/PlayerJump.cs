@@ -114,7 +114,6 @@ public class PlayerJump : MonoBehaviour
                                                 groundLayerMask);
         if (hit)
         {
-            Debug.Log(hit.gameObject.transform.position.y);
             if (hit.gameObject.transform.position.y >= -4)
             {
                 Physics2D.IgnoreCollision(this.GetComponent<BoxCollider2D>(), hit.gameObject.GetComponent<BoxCollider2D>());
