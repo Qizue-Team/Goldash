@@ -247,7 +247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overheatMask: {fileID: 8457986020349790118}
-  terrainTileSpawner: {fileID: 0}
   playerJump: {fileID: 8457986020644739329}
   overheatSmokes:
   - {fileID: 6518621777978256671}
@@ -255,7 +254,6 @@ MonoBehaviour:
   heatIncreaseAmount: 0.1
   heatDecreaseAmount: 0.3
   slowDownLevel: 0.7
-  slowDownMultiplier: 2.2
 --- !u!1 &8457986020795182027
 GameObject:
   m_ObjectHideFlags: 0

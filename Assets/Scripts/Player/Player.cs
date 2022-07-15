@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
             CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "GameOver for falling");
             GameController.Instance.GameOver();
             _isGameOverDeclared = true;
+            Destroy(this.gameObject);
         }
     }
 }

@@ -26,7 +26,7 @@ public class PlayerJump : MonoBehaviour
     private const float BOX_CAST_X_OFFSET = 0.0f;
     private const float BOX_CAST_Y_OFFSET = 0.2f;
     private const float BOX_CAST_X_SIZE = 1.0f;
-    private const float BOX_CAST_Y_SIZE = 1.0f;
+    private const float BOX_CAST_Y_SIZE = 1.5f;
 
     private Rigidbody2D _rb;
     private bool _isHeatIncreased = false;
@@ -114,9 +114,10 @@ public class PlayerJump : MonoBehaviour
                                                 groundLayerMask);
         if (hit)
         {
-            if(hit.gameObject.transform.position.y >= -4)
+            Debug.Log(hit.gameObject.transform.position.y);
+            if (hit.gameObject.transform.position.y >= -4)
             {
-                _rb.velocity = Vector2.zero;
+                Physics2D.IgnoreCollision(this.GetComponent<BoxCollider2D>(), hit.gameObject.GetComponent<BoxCollider2D>());
             }
         }
     }
