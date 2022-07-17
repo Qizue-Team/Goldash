@@ -7,6 +7,7 @@ using xPoke.CustomLog;
 public class PlayerJump : MonoBehaviour
 {
     public bool IsGrounded { get; private set; }
+    public bool IsFastFalling { get => _isFastFalling; }
 
     [Header("References")]
     [SerializeField]
@@ -56,6 +57,8 @@ public class PlayerJump : MonoBehaviour
     {
         if (_rb == null)
             return;
+
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Bounce called");
 
         _isFastFalling = false;
         _rb.gravityScale = fallGravity;

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6769ee30a0817c24582cccf3ad926239, type: 3}
   m_Name: EnemySet
   m_EditorClassIdentifier: 
-  weight: 2
+  weight: 4
   objects:
   - {fileID: 5785089981578375958, guid: c252a3a8b9b61b9499cc0e65437a720f, type: 3}

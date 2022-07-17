@@ -154,8 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1254181966043173246, guid: ef1ea6c4c26c24d4ab2f95974a7dafe6, type: 3}
   tileWidth: 0.9
-  tileSpeed: 2.9282
-  tileLifeTime: 8.854654
+  tileSpeed: 3.543122
+  tileLifeTime: 7.49145
   tileSet: {fileID: 11400000, guid: 4bbe8a0ab4e05d9489dce5fbe9a2eb54, type: 2}
   minHoleWaitTime: 2
   maxHoleWaitTime: 7
@@ -702,9 +702,9 @@ MonoBehaviour:
   tileWidth: 0.9
   tileSet: {fileID: 11400000, guid: 7ca9125c5e9a53f4fb4f32de51517626, type: 2}
   terrainSpawner: {fileID: 2051091}
-  levelNumbers: 5
-  spaceBetweenPlatforms: 1.5
-  offset: 0.98
+  levelNumbers: 4
+  spaceBetweenPlatforms: 1.7
+  offset: 1
   minPlatformWaitTime: 3
   maxPlatformWaitTime: 10
   minPlatformLength: 1
@@ -2020,15 +2020,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8457986020644739329, guid: 85b820498abfef64a81a78487aea53dc, type: 3}
       propertyPath: fallGravity
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8457986020644739329, guid: 85b820498abfef64a81a78487aea53dc, type: 3}
       propertyPath: jumpVelocity
-      value: 6.3
+      value: 5.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457986020644739329, guid: 85b820498abfef64a81a78487aea53dc, type: 3}
+      propertyPath: midAirFallGravity
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8457986020644739329, guid: 85b820498abfef64a81a78487aea53dc, type: 3}
       propertyPath: bounceJumpVelocity
-      value: 5.3
+      value: 5.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457986020644739329, guid: 85b820498abfef64a81a78487aea53dc, type: 3}
+      propertyPath: groundRaycastLength
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8457986020644739334, guid: 85b820498abfef64a81a78487aea53dc, type: 3}
       propertyPath: m_Name
@@ -2080,7 +2088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8457986020644739390, guid: 85b820498abfef64a81a78487aea53dc, type: 3}
       propertyPath: heatIncreaseAmount
-      value: 0.1
+      value: 0.0769
       objectReference: {fileID: 0}
     - target: {fileID: 8457986020644739390, guid: 85b820498abfef64a81a78487aea53dc, type: 3}
       propertyPath: terrainTileSpawner

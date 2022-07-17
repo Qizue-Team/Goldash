@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 8457986020644739329}
   - component: {fileID: 8457986020644739391}
   - component: {fileID: 8457986020644739390}
+  - component: {fileID: 407661374455571603}
   m_Layer: 0
   m_Name: Trasher
   m_TagString: Untagged
@@ -215,10 +216,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerOverheat: {fileID: 8457986020644739390}
-  jumpVelocity: 6
-  bounceJumpVelocity: 5
+  jumpVelocity: 5.9
+  bounceJumpVelocity: 5.4
   groundRaycastLength: 0.6
-  fallGravity: 2
+  fallGravity: 1.5
+  midAirFallGravity: 3
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -251,9 +253,22 @@ MonoBehaviour:
   overheatSmokes:
   - {fileID: 6518621777978256671}
   - {fileID: 6518621777665124941}
-  heatIncreaseAmount: 0.1
+  heatIncreaseAmount: 0.0769
   heatDecreaseAmount: 0.3
   slowDownLevel: 0.7
+--- !u!114 &407661374455571603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8457986020644739334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418c213d5f699c74ba0b0331e0025b8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerJump: {fileID: 8457986020644739329}
 --- !u!1 &8457986020795182027
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +339,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2796066437061610087, guid: 52797d22bd8a6f94b90fd4a633f75150, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -406,7 +421,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6522165785721551079, guid: 859ad4c889cc9fa4da7b5ee068394bb0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -488,7 +503,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7569534946864484055, guid: edf108fc500ed1140a13bc62fa1a9843, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -507,6 +522,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8457986020644739388}
     m_Modifications:
+    - target: {fileID: 3392906521908132680, guid: 68661d757a247eb45bc1ac4da00f6751, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3392906521908132682, guid: 68661d757a247eb45bc1ac4da00f6751, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -574,6 +593,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8457986020644739388}
     m_Modifications:
+    - target: {fileID: 3392906521908132680, guid: 68661d757a247eb45bc1ac4da00f6751, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3392906521908132682, guid: 68661d757a247eb45bc1ac4da00f6751, type: 3}
       propertyPath: m_RootOrder
       value: 5

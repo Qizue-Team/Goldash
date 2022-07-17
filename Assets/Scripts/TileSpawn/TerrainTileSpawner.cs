@@ -24,8 +24,8 @@ public class TerrainTileSpawner : Spawner
     public const float TERRAIN_TILES_Y_POS = -4.5f;
 
     public const float DEFAULT_SPEEDUP_MULTIPLIER = 1.1f;
-    public const float DEFAULT_TILE_SPEED = 2.9282f;
-    public const float DEFAULT_LIFE_TIME = 8.854654f;
+    public const float DEFAULT_TILE_SPEED = 3.543122f;
+    public const float DEFAULT_LIFE_TIME = 7.49145f;
     #endregion
 
     [SerializeField]
@@ -221,13 +221,14 @@ public class TerrainTileSpawner : Spawner
     public void ApplyOverheatSlowDown()
     {
         SpeedDown(99);
-        SpeedUp(DEFAULT_SPEEDUP_MULTIPLIER);
+        for (int i = 0; i < 3; ++i)
+            SpeedUp(DEFAULT_SPEEDUP_MULTIPLIER);
     }
 
     public void ApplyNormalSpeed()
     {
         SpeedDown(99);
-        for(int i =0;i<4;++i)
+        for(int i =0;i<6;++i)
             SpeedUp(DEFAULT_SPEEDUP_MULTIPLIER);
     }
 

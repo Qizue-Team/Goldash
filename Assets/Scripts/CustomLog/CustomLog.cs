@@ -32,22 +32,22 @@ namespace xPoke.CustomLog
         //    --------------------     AVOID RED AND YELLOW!!!! (Error and Warning already exist!);
         private static Hashtable ColourValues = new Hashtable
         {
-            { CustomLogType.GENERAL,           Color.white },
-            { CustomLogType.SYSTEM,            Color.grey},            //grey
+            { CustomLogType.GENERAL,           new Color32(240, 240, 240,1) },
+            { CustomLogType.SYSTEM,            new Color32(133, 132, 130, 1) },            //grey
             { CustomLogType.PLAYER,            new Color32( 0 , 254 , 111, 1 ) },          //green
             { CustomLogType.WEAPON,            new Color32( 0 , 122 , 254, 1 ) },          //blue
             { CustomLogType.ANIMATION,         new Color32( 0 , 201 , 254, 1 ) },          //aqua
             { CustomLogType.ASSET,             new Color32( 60 , 0 , 254, 1 ) },           //navy
             { CustomLogType.GAMEPLAY,          new Color32( 255, 140, 0, 1 ) },            //orange         
             { CustomLogType.SERIALISATION,     new Color32( 232 , 0 , 254, 1 ) },          //pink
-            { CustomLogType.VALIDATION,        Color.grey },
+            { CustomLogType.VALIDATION,        new Color32(133, 132, 130, 1) },
             { CustomLogType.UI,                new Color32( 100, 100, 100, 1) },           //dull grey
             { CustomLogType.SEQUENCING,        new Color32( 143 , 0 , 254, 1 ) },          //purple
             { CustomLogType.EDITOR,            new Color32( 254 , 224 , 0, 1 ) },          //yellow (avoid yellow grr)
             { CustomLogType.TOOL,              new Color32( 166 , 254 , 0, 1 ) },          //lime
             { CustomLogType.MENUS,             new Color32( 20, 12, 94, 1) },              // Lovecraftian?  some sort of purple green ?  apparently it comes out white... ?
-            { CustomLogType.AI,                Color.cyan },
-            { CustomLogType.INPUT,             Color.green },
+            { CustomLogType.AI,                new Color32( 166 , 254 , 0, 1 ) },
+            { CustomLogType.INPUT,             new Color32( 0 , 254 , 111, 1 ) },
         };
 
         public static void Log(CustomLogType _Type, string _message, GameObject obj = null)
