@@ -72,6 +72,23 @@ public class GameController : Singleton<GameController>
         }));
     }
 
+    public void PauseGame()
+    {
+        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Game Paused");
+
+        Time.timeScale = 0;
+
+        UIController.Instance.SetOpenPauseMenuPanel(true);
+    }
+
+
+    public void UnpauseGame()
+    {
+        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Game Unpaused");
+
+        UIController.Instance.SetOpenPauseMenuPanel(false);
+    }
+
     public void ExitGame()
     {
         Application.Quit();

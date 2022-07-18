@@ -35,7 +35,14 @@ public class GameMenuPanel : MonoBehaviour
         IsOpen = false;
 
         _animator.SetTrigger("Close");
-        StartCoroutine(COWaitForAction(1.0f, () => blackFadeScreen.enabled = false));
+        if(Time.timeScale > 0)
+            StartCoroutine(COWaitForAction(1.0f, () => blackFadeScreen.enabled = false));
+    }
+
+    public void ResetTimeScale()
+    {
+        Time.timeScale = 1;
+        blackFadeScreen.enabled = false;
     }
 
     private void Awake()

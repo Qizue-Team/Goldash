@@ -12,6 +12,8 @@ public class UIController : Singleton<UIController>
     private TextMeshProUGUI trashCountText;
     [SerializeField]
     private GameMenuPanel gameMenuPanel;
+    [SerializeField]
+    private GameMenuPanel pauseMenuPanel;
 
     public void UpdateScore(int value)
     {
@@ -33,5 +35,13 @@ public class UIController : Singleton<UIController>
             gameMenuPanel.Open();
         else
             gameMenuPanel.Close();
+    }
+
+    public void SetOpenPauseMenuPanel(bool open)
+    {
+        if (open)
+            pauseMenuPanel.Open();
+        else
+            pauseMenuPanel.Close();
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using xPoke.CustomLog;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerJump : MonoBehaviour
@@ -79,6 +80,7 @@ public class PlayerJump : MonoBehaviour
         CheckPlatform();
         CheckGrounded();
 
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         if (Input.GetKeyDown(KeyCode.Mouse0) && !IsGrounded)
         {
             CustomLog.Log(CustomLog.CustomLogType.PLAYER, "Mid Air Fall");
