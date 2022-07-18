@@ -59,8 +59,6 @@ public class PlayerJump : MonoBehaviour
         if (_rb == null)
             return;
 
-        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Bounce called");
-
         _isFastFalling = false;
         _rb.gravityScale = fallGravity;
 
