@@ -159,7 +159,7 @@ MonoBehaviour:
   tileSet: {fileID: 11400000, guid: 4bbe8a0ab4e05d9489dce5fbe9a2eb54, type: 2}
   minHoleWaitTime: 2
   maxHoleWaitTime: 7
-  minHoleLength: 1
+  minHoleLength: 2
   maxHoleLength: 3
 --- !u!4 &2051092
 Transform:
