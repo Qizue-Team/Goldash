@@ -49,7 +49,19 @@ public class GameController : Singleton<GameController>
         terrainTileSpawner.Stop();
         platformSpawner.Stop();
 
+        // Add trash collected to the general amount of account's trash
+        int trash = DataManager.Instance.LoadTrashCount();
+        trash += TrashCount;
+        DataManager.Instance.SaveTrashCount(trash);
+
+        // Save best score if score is the best
+        DataManager.Instance.SaveBestScore(Score);
+
         UIController.Instance.SetOpenGameMenuPanel(true);
+
+        // Logs
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Trash Collected Saved - Current Trash Count: " + DataManager.Instance.LoadTrashCount());
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Score Saved - Current Best Score: " + DataManager.Instance.LoadBestScore());
     }
 
     public void ResetGame()

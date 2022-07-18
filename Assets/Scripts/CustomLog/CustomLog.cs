@@ -33,7 +33,7 @@ namespace xPoke.CustomLog
         private static Hashtable ColourValues = new Hashtable
         {
             { CustomLogType.GENERAL,           new Color32(240, 240, 240,1) },
-            { CustomLogType.SYSTEM,            new Color32(133, 132, 130, 1) },            //grey
+            { CustomLogType.SYSTEM,            new Color32( 98, 61, 219, 1) },             //purple
             { CustomLogType.PLAYER,            new Color32( 0 , 254 , 111, 1 ) },          //green
             { CustomLogType.WEAPON,            new Color32( 0 , 122 , 254, 1 ) },          //blue
             { CustomLogType.ANIMATION,         new Color32( 0 , 201 , 254, 1 ) },          //aqua
