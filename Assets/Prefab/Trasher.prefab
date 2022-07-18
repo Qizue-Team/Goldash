@@ -253,8 +253,8 @@ MonoBehaviour:
   overheatSmokes:
   - {fileID: 6518621777978256671}
   - {fileID: 6518621777665124941}
-  heatIncreaseAmount: 0.0769
-  heatDecreaseAmount: 0.3
+  heatIncreaseAmount: 0.1
+  heatDecreaseAmount: 0.2
   slowDownLevel: 0.7
 --- !u!114 &407661374455571603
 MonoBehaviour:
