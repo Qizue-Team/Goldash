@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1474412668912026751}
   - component: {fileID: 7062890308647267376}
   m_Layer: 0
-  m_Name: Box
+  m_Name: TV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ce386d41e0b314c824da99b83cd814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 4
-  scorePoints: 10
+  weight: 1
+  scorePoints: 20
 --- !u!61 &7062890308647267376
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 76e29b1a4db542b468c30e36e7e18f05, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ec52d13c751b3f247bbb2918c6f37f45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
