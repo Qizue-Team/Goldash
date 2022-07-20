@@ -12,7 +12,7 @@ public class NavigationManager : Singleton<NavigationManager>
 
     public void LoadGameScene()
     {
-        LoadSceneByName("Test");
+        LoadSceneByName("Prototype");
     }
 
     public void ExitFromGame()
