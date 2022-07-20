@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuCameraFollowPoint : MonoBehaviour
+public class CameraFollowPoint : MonoBehaviour
 {
     public delegate void OnMoveFinished();
     public static OnMoveFinished onMoveFinished;

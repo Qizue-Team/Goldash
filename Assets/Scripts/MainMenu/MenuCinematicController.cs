@@ -11,7 +11,7 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
     [SerializeField]
     private MenuButtons menuButtons;
     [SerializeField]
-    private MenuCameraFollowPoint menuCameraFollowPoint;
+    private CameraFollowPoint menuCameraFollowPoint;
 
     public void StartPlayTransition()
     {
@@ -25,12 +25,12 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
 
     private void OnEnable()
     {
-        MenuCameraFollowPoint.onMoveFinished += OnCameraMoveFinished;
+        CameraFollowPoint.onMoveFinished += OnCameraMoveFinished;
     }
 
     private void OnDisable()
     {
-        MenuCameraFollowPoint.onMoveFinished -= OnCameraMoveFinished;
+        CameraFollowPoint.onMoveFinished -= OnCameraMoveFinished;
     }
 
     private IEnumerator COWaitForAction(float delay, Action Callback)
