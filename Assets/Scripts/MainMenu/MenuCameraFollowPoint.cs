@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MenuCameraFollowPoint : MonoBehaviour
 {
+    public delegate void OnMoveFinished();
+    public static OnMoveFinished onMoveFinished;
+
     public bool IsMoving { get; private set; }
 
     [SerializeField]
@@ -60,6 +63,10 @@ public class MenuCameraFollowPoint : MonoBehaviour
             else if((transform.position.y <= _destination.y) && _direction == Vector3.down)
             {
                 IsMoving = false;
+            }
+            if (!IsMoving)
+            {
+                onMoveFinished?.Invoke();
             }
         }
     }

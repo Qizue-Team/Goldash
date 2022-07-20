@@ -11,7 +11,7 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
     [SerializeField]
     private MenuButtons menuButtons;
     [SerializeField]
-    private MenuCameraFollowPoint menuCamera;
+    private MenuCameraFollowPoint menuCameraFollowPoint;
 
     public void StartPlayTransition()
     {
@@ -19,12 +19,28 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
         menuButtons.Exit();
         StartCoroutine(COWaitForAction(1.0f, () =>
         {
-            menuCamera.MoveToYValue(-11.0f);
+            menuCameraFollowPoint.MoveToYValue(-11.0f);
         }));
     }
+
+    private void OnEnable()
+    {
+        MenuCameraFollowPoint.onMoveFinished += OnCameraMoveFinished;
+    }
+
+    private void OnDisable()
+    {
+        MenuCameraFollowPoint.onMoveFinished -= OnCameraMoveFinished;
+    }
+
     private IEnumerator COWaitForAction(float delay, Action Callback)
     {
         yield return new WaitForSeconds(delay);
         Callback?.Invoke();
+    }
+
+    private void OnCameraMoveFinished()
+    {
+        NavigationManager.Instance.LoadGameScene();
     }
 }
