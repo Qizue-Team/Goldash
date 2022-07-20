@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuCamera : MonoBehaviour
+public class MenuCameraFollowPoint : MonoBehaviour
 {
     public bool IsMoving { get; private set; }
 

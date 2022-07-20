@@ -11,7 +11,7 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
     [SerializeField]
     private MenuButtons menuButtons;
     [SerializeField]
-    private MenuCamera menuCamera;
+    private MenuCameraFollowPoint menuCamera;
 
     public void StartPlayTransition()
     {
@@ -19,7 +19,7 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
         menuButtons.Exit();
         StartCoroutine(COWaitForAction(1.0f, () =>
         {
-            menuCamera.MoveToYValue(-10.0f);
+            menuCamera.MoveToYValue(-11.0f);
         }));
     }
     private IEnumerator COWaitForAction(float delay, Action Callback)
