@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 2
-  scorePoints: 15
+  scorePoints: 40
 --- !u!61 &7062890308647267376
 BoxCollider2D:
   m_ObjectHideFlags: 0
