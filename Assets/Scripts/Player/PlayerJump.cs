@@ -89,7 +89,7 @@ public class PlayerJump : MonoBehaviour
             _isFastFalling = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0)) // GetKey or KeyDown? mmh
         {
             Jump();
         }
@@ -127,7 +127,7 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    // Old method for resolving platform
+    // Old method for resolving platform - if back - change rb collision to continuous instead of descrete
     /*
     private void CheckPlatform()
     {
