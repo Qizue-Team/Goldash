@@ -89,7 +89,7 @@ public class PlayerJump : MonoBehaviour
             _isFastFalling = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0)) // GetKey or KeyDown? mmh
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             Jump();
         }
