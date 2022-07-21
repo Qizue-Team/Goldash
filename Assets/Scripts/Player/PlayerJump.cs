@@ -28,10 +28,13 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayerMask;
 
+    /*
+    // Box Cast for platform detection - not used anymore
     private const float BOX_CAST_X_OFFSET = 0.0f;
     private const float BOX_CAST_Y_OFFSET = 0.2f;
     private const float BOX_CAST_X_SIZE = 1.0f;
     private const float BOX_CAST_Y_SIZE = 1.5f;
+    */
 
     private Rigidbody2D _rb;
     private bool _isHeatIncreased = false;
@@ -146,6 +149,8 @@ public class PlayerJump : MonoBehaviour
         Debug.DrawRay(transform.position, downward, Color.red);
     }
 
+    /*
+    // Draw Gizmos for the cube platform detection - not used anymore
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -155,5 +160,5 @@ public class PlayerJump : MonoBehaviour
     void DrawRect(Rect rect)
     {
         Gizmos.DrawWireCube(new Vector3(rect.center.x, rect.center.y, 0.01f), new Vector3(rect.size.x, rect.size.y, 0.01f));
-    }
+    }*/
 }
