@@ -15,9 +15,9 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
 
     public void StartPlayTransition()
     {
-        menuTrasher.MoveToPoint(-11.0f);
+        menuTrasher.MoveToPoint(-12.5f);
         menuButtons.Exit();
-        StartCoroutine(COWaitForAction(1.0f, () =>
+        StartCoroutine(COWaitForAction(1.2f, () =>
         {
             menuCameraFollowPoint.MoveToYValue(-11.0f);
         }));
