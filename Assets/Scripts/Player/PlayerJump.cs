@@ -80,8 +80,17 @@ public class PlayerJump : MonoBehaviour
         DrawGroundCheckRaycast();
         //CheckPlatform(); // OLD - Not used anymore
         CheckGrounded();
-
+        
+        foreach (Touch touch in Input.touches)
+        {
+            int id = touch.fingerId;
+            if (EventSystem.current.IsPointerOverGameObject(id))
+            {
+                return;
+            }
+        }
         if (EventSystem.current.IsPointerOverGameObject()) return;
+        
         if (Input.GetKeyDown(KeyCode.Mouse0) && !IsGrounded)
         {
             CustomLog.Log(CustomLog.CustomLogType.PLAYER, "Mid Air Fall");
