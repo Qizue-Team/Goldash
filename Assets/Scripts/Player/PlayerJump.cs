@@ -75,7 +75,7 @@ public class PlayerJump : MonoBehaviour
     private void Update()
     {
         DrawGroundCheckRaycast();
-        CheckPlatform();
+        //CheckPlatform(); // OLD - Not used anymore
         CheckGrounded();
 
         if (EventSystem.current.IsPointerOverGameObject()) return;
@@ -86,7 +86,7 @@ public class PlayerJump : MonoBehaviour
             _isFastFalling = true;
         }
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Jump();
         }
@@ -124,6 +124,8 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
+    // Old method for resolving platform
+    /*
     private void CheckPlatform()
     {
         Collider2D hit = Physics2D.OverlapArea(new Vector2(transform.position.x - 0.5f + BOX_CAST_X_OFFSET, transform.position.y - 0.5f + BOX_CAST_Y_OFFSET),
@@ -137,7 +139,7 @@ public class PlayerJump : MonoBehaviour
             }
         }
     }
-
+    */
     private void DrawGroundCheckRaycast()
     {
         Vector3 downward = transform.TransformDirection(Vector3.down) * groundRaycastLength;
