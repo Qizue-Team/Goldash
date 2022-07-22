@@ -46,6 +46,10 @@ public class MenuTrasher : MonoBehaviour
         _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
     }
 
+    private void Start()
+    {
+        Physics2D.baumgarteScale = 0.2f;
+    }
     private void Update()
     {
         if (IsMoving)

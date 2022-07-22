@@ -92,8 +92,6 @@ public class GameController : Singleton<GameController>
 
         UIController.Instance.SetOpenPauseMenuPanel(true);
     }
-
-
     public void UnpauseGame()
     {
         CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Game Unpaused");
@@ -116,6 +114,11 @@ public class GameController : Singleton<GameController>
     {
         TrashCount = MIN_TRASH_COUNT;
         UIController.Instance.UpdateTrashCount(TrashCount);
+    }
+
+    private void Start()
+    {
+        Physics2D.baumgarteScale = 0.02f;
     }
 
     private void SpawnPlayer()
