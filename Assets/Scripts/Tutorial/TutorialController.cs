@@ -73,7 +73,7 @@ public class TutorialController : Singleton<TutorialController>
             playerJump.SetJumpActive(true);
             UITutorialController.Instance.ShowJumpTutorialPanel();
         }
-        if(CurrentPhase == TutorialPhase.FallTutorial && _enemyTarget != null && Mathf.Abs(playerJump.gameObject.transform.position.y - _enemyTarget.transform.position.y) >= 1.7f)
+        if(CurrentPhase == TutorialPhase.FallTutorial && _enemyTarget != null && Mathf.Abs(playerJump.gameObject.transform.position.y - _enemyTarget.transform.position.y) >= 1.5f)
         {
             StopTutorial();
             playerJump.SetFallJumpActive(true);
@@ -113,7 +113,7 @@ public class TutorialController : Singleton<TutorialController>
     {
         yield return new WaitForSeconds(0.5f);
         playerJump.SetJumpActive(false);
-        playerJump.SetFallJumpActive(false);
+        //playerJump.SetFallJumpActive(false);
     }
 
     private IEnumerator CODestroyEnemyTarget()
