@@ -13,6 +13,7 @@ public class TerrainTileSpawner : Spawner
     public static event Action<float,float> OnSpeedDown;
     public static event Action OnStop;
     public static event Action OnReset;
+    public static event Action OnResume;
 
     #region CONSTS
     public const float TILE_WIDTH = 0.9f;
@@ -180,6 +181,8 @@ public class TerrainTileSpawner : Spawner
 
     public void Resume()
     {
+        OnResume?.Invoke();
+
         // Reset Param tiles
         tileSpeed = DEFAULT_TILE_SPEED;
         tileLifeTime = DEFAULT_LIFE_TIME;

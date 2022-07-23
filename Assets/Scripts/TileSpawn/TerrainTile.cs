@@ -69,6 +69,7 @@ public class TerrainTile : MonoBehaviour
         TerrainTileSpawner.OnSpeedDown += SpeedChangedToSlower;
         TerrainTileSpawner.OnStop += StopTile;
         TerrainTileSpawner.OnReset += ResetTile;
+        TerrainTileSpawner.OnResume += ResumeTile;
     }
 
     private void OnDisable()
@@ -77,6 +78,7 @@ public class TerrainTile : MonoBehaviour
         TerrainTileSpawner.OnSpeedDown -= SpeedChangedToSlower;
         TerrainTileSpawner.OnStop -= StopTile;
         TerrainTileSpawner.OnReset -= ResetTile;
+        TerrainTileSpawner.OnResume -= ResumeTile;
     }
 
     private void Move(Vector3 direction)
@@ -109,6 +111,11 @@ public class TerrainTile : MonoBehaviour
     private void StopTile()
     {
         _stop = true;
+    }
+
+    private void ResumeTile()
+    {
+        _stop = false;
     }
 
     private void ResetTile()
