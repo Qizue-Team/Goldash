@@ -40,10 +40,16 @@ public class PlayerJump : MonoBehaviour
     private bool _isHeatIncreased = false;
     private bool _isFastFalling = false;
     private bool _isJumpActive = true;
+    private bool _isFallJumpActive = true;
 
     public void SetJumpActive(bool active)
     {
         _isJumpActive = active;
+    }
+
+    public void SetFallJumpActive(bool active)
+    {
+        _isFallJumpActive = active;
     }
 
     public void Jump()
@@ -87,8 +93,6 @@ public class PlayerJump : MonoBehaviour
         //CheckPlatform(); // OLD - Not used anymore
         CheckGrounded();
 
-        if (!_isJumpActive)
-            return;
         foreach (Touch touch in Input.touches)
         {
             int id = touch.fingerId;
@@ -100,14 +104,14 @@ public class PlayerJump : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject()) 
             return;
         
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !IsGrounded)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !IsGrounded && _isFallJumpActive)
         {
             CustomLog.Log(CustomLog.CustomLogType.PLAYER, "Mid Air Fall");
             _rb.gravityScale = midAirFallGravity;
             _isFastFalling = true;
         }
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && _isJumpActive)
         {
             Jump();
         }

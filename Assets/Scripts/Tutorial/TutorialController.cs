@@ -35,6 +35,11 @@ public class TutorialController : Singleton<TutorialController>
         tileSpawner.Resume();
         StartCoroutine(COStopJump());
         NextPhase();
+
+        if(_enemyTarget != null)
+        {
+            StartCoroutine(CODestroyEnemyTarget());
+        }
     }
 
     private void Start()
@@ -67,6 +72,7 @@ public class TutorialController : Singleton<TutorialController>
     private IEnumerator COExecuteTutorialJump()
     {
         playerJump.SetJumpActive(false);
+        playerJump.SetFallJumpActive(false);
         _isJumpTutorialStarted = true;
         yield return new WaitForSeconds(2.0f);
         _enemyTarget = tutorialSpawner.SpawnEnemy();
@@ -76,5 +82,11 @@ public class TutorialController : Singleton<TutorialController>
     {
         yield return new WaitForSeconds(0.5f);
         playerJump.SetJumpActive(false);
+    }
+
+    private IEnumerator CODestroyEnemyTarget()
+    {
+        yield return new WaitForSeconds(2.0f);
+        Destroy(_enemyTarget);
     }
 }
