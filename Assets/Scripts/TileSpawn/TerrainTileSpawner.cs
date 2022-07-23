@@ -7,6 +7,7 @@ public class TerrainTileSpawner : Spawner
 {
     public float TileSpeed { get=>tileSpeed;}
     public float TileLifeTime { get => tileLifeTime; }
+    public TerrainTile LastTileSpawned { get; private set; }
 
     public static event Action<float> OnSpeedUp;
     public static event Action<float,float> OnSpeedDown;
@@ -45,6 +46,10 @@ public class TerrainTileSpawner : Spawner
     [SerializeField]
     private int maxHoleLength = 3;
 
+    [Header("Tutorial Settings")]
+    [SerializeField]
+    private bool isTutorial;
+
     private bool _isWaitingForHole = false; // Pick random range wait time if false
     private bool _spawnHole = false; // if I have to spawn holes is true
     private int _holeIndex = 0; // Index for building holes tile <right-edge hole(xlength) left-edge>
@@ -73,6 +78,7 @@ public class TerrainTileSpawner : Spawner
         tile.SpawnSpawnableObject();
 
         tileObj.gameObject.SetActive(true);
+        LastTileSpawned = tileObj;
     }
 
     public void Spawn(Vector3 position, bool shoudlSpawnObject = true)
@@ -93,6 +99,7 @@ public class TerrainTileSpawner : Spawner
             tile.SpawnSpawnableObject();
 
         tileObj.gameObject.SetActive(true);
+        LastTileSpawned = tileObj;
     }
 
     public void Spawn(Sprite sprite, bool isColliderActive = true)
@@ -120,6 +127,7 @@ public class TerrainTileSpawner : Spawner
         tile.SetSprite(sprite);
 
         tileObj.gameObject.SetActive(true);
+        LastTileSpawned = tileObj;
     }
 
     public void SpeedUp(float multiplier)
@@ -168,6 +176,15 @@ public class TerrainTileSpawner : Spawner
         tileSpeed = 0;
         tileLifeTime = 0;
         OnStop?.Invoke();
+    }
+
+    public void Resume()
+    {
+        // Reset Param tiles
+        tileSpeed = DEFAULT_TILE_SPEED;
+        tileLifeTime = DEFAULT_LIFE_TIME;
+
+        _stop = false;
     }
 
     public void ResetSpawner()
@@ -255,13 +272,19 @@ public class TerrainTileSpawner : Spawner
         if (_stop)
             return;
 
-        CheckSpawnHoles();
+        if(!isTutorial)
+            CheckSpawnHoles();
 
         _distance += tileSpeed * Time.deltaTime;
         if(_distance >= tileWidth)
         {
             if (!_spawnHole)
-                Spawn();
+            {
+                if(!isTutorial)
+                    Spawn();
+                else
+                    Spawn(transform.position,false);
+            }
             else
                 SpawnHole();
             _distance = 0.0f;

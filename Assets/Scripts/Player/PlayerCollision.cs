@@ -6,6 +6,9 @@ using xPoke.CustomLog;
 [RequireComponent(typeof(PlayerJump))]
 public class PlayerCollision : MonoBehaviour
 {
+    [Header("Tutorial")]
+    [SerializeField]
+    private bool isTutorial;
 
     private PlayerJump _playerJump;
 
@@ -21,14 +24,16 @@ public class PlayerCollision : MonoBehaviour
         Trash trash = null;
         if (collision.TryGetComponent(out trash))
         {
-            // Update Score
-            GameController.Instance.IncreaseScore(trash.ScorePoints);
-            UIController.Instance.UpdateScore(GameController.Instance.Score);
+            if (!isTutorial)
+            {
+                // Update Score
+                GameController.Instance.IncreaseScore(trash.ScorePoints);
+                UIController.Instance.UpdateScore(GameController.Instance.Score);
 
-            // Update Trash Count
-            GameController.Instance.IncreaseTrashCount(1);
-            UIController.Instance.UpdateTrashCount(GameController.Instance.TrashCount);
-
+                // Update Trash Count
+                GameController.Instance.IncreaseTrashCount(1);
+                UIController.Instance.UpdateTrashCount(GameController.Instance.TrashCount);
+            }
             tile.DestroySpawnedObject();
         }
 
@@ -42,11 +47,12 @@ public class PlayerCollision : MonoBehaviour
             if(hitDirection.y < 0)
             {
                 _playerJump.BounceJump();
-
-                // Update Score
-                GameController.Instance.IncreaseScore(enemy.ScorePoints);
-                UIController.Instance.UpdateScore(GameController.Instance.Score);
-
+                if (!isTutorial)
+                {
+                    // Update Score
+                    GameController.Instance.IncreaseScore(enemy.ScorePoints);
+                    UIController.Instance.UpdateScore(GameController.Instance.Score);
+                }
                 // Enemy Kill
                 enemy.Die();
                 //tile.DestroySpawnedObject();

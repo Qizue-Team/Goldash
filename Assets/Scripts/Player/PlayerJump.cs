@@ -39,6 +39,12 @@ public class PlayerJump : MonoBehaviour
     private Rigidbody2D _rb;
     private bool _isHeatIncreased = false;
     private bool _isFastFalling = false;
+    private bool _isJumpActive = true;
+
+    public void SetJumpActive(bool active)
+    {
+        _isJumpActive = active;
+    }
 
     public void Jump()
     {
@@ -80,7 +86,9 @@ public class PlayerJump : MonoBehaviour
         DrawGroundCheckRaycast();
         //CheckPlatform(); // OLD - Not used anymore
         CheckGrounded();
-        
+
+        if (!_isJumpActive)
+            return;
         foreach (Touch touch in Input.touches)
         {
             int id = touch.fingerId;
@@ -89,7 +97,8 @@ public class PlayerJump : MonoBehaviour
                 return;
             }
         }
-        if (EventSystem.current.IsPointerOverGameObject()) return;
+        if (EventSystem.current.IsPointerOverGameObject()) 
+            return;
         
         if (Input.GetKeyDown(KeyCode.Mouse0) && !IsGrounded)
         {
