@@ -11,6 +11,7 @@ public class TutorialController : Singleton<TutorialController>
     {
         JumpTutorial,
         OverheatTutorial,
+        JumpFallTutorial,
         FallTutorial,
         HeatDecreaseTutorial,
         TrashTutorial,
@@ -26,7 +27,7 @@ public class TutorialController : Singleton<TutorialController>
     private TerrainTileSpawner tileSpawner;
 
     private GameObject _enemyTarget;
-
+    private RigidbodyConstraints2D _constraints;
     public void ResumeTutorial()
     {
         IsStopped = false;
@@ -35,15 +36,26 @@ public class TutorialController : Singleton<TutorialController>
         StartCoroutine(COStopJump());
         NextPhase();
 
-        if(_enemyTarget != null)
+        if(_enemyTarget != null && CurrentPhase != TutorialPhase.FallTutorial)
             StartCoroutine(CODestroyEnemyTarget());
 
         if (CurrentPhase == TutorialPhase.OverheatTutorial)
             StartCoroutine(COExecuteOverheatTutorial());
+
+        if(CurrentPhase == TutorialPhase.JumpFallTutorial)
+            StartCoroutine(COExecuteTutorialJump());
+        
+        if(CurrentPhase== TutorialPhase.HeatDecreaseTutorial)
+        {
+            playerJump.gameObject.GetComponent<Rigidbody2D>().constraints = _constraints;
+            
+            //StartCoroutine
+        }
     }
 
     private void Start()
     {
+        _constraints = playerJump.gameObject.GetComponent<Rigidbody2D>().constraints;
         StartCoroutine(COExecuteTutorialJump());
     }
 
@@ -55,12 +67,25 @@ public class TutorialController : Singleton<TutorialController>
             playerJump.SetJumpActive(true);
             UITutorialController.Instance.ShowJumpTutorialPanel();
         }
-
+        if (CurrentPhase == TutorialPhase.JumpFallTutorial && _enemyTarget != null && Mathf.Abs(playerJump.gameObject.transform.position.x - _enemyTarget.transform.position.x) <= 2.0f)
+        {
+            StopTutorial();
+            playerJump.SetJumpActive(true);
+            UITutorialController.Instance.ShowJumpTutorialPanel();
+        }
+        if(CurrentPhase == TutorialPhase.FallTutorial && _enemyTarget != null && Mathf.Abs(playerJump.gameObject.transform.position.y - _enemyTarget.transform.position.y) >= 1.7f)
+        {
+            StopTutorial();
+            playerJump.SetFallJumpActive(true);
+            UITutorialController.Instance.ShowFallTutorialPanel();
+        }
     }
 
     private void StopTutorial()
     { 
         tileSpawner.Stop();
+        if(CurrentPhase == TutorialPhase.FallTutorial)
+            playerJump.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         IsStopped = true;
     }
 
@@ -88,6 +113,7 @@ public class TutorialController : Singleton<TutorialController>
     {
         yield return new WaitForSeconds(0.5f);
         playerJump.SetJumpActive(false);
+        playerJump.SetFallJumpActive(false);
     }
 
     private IEnumerator CODestroyEnemyTarget()
