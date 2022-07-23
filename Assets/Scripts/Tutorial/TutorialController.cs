@@ -37,9 +37,10 @@ public class TutorialController : Singleton<TutorialController>
         NextPhase();
 
         if(_enemyTarget != null)
-        {
             StartCoroutine(CODestroyEnemyTarget());
-        }
+
+        if (CurrentPhase == TutorialPhase.OverheatTutorial)
+            StartCoroutine(COExecuteOverheatTutorial());
     }
 
     private void Start()
@@ -76,6 +77,13 @@ public class TutorialController : Singleton<TutorialController>
         _isJumpTutorialStarted = true;
         yield return new WaitForSeconds(2.0f);
         _enemyTarget = tutorialSpawner.SpawnEnemy();
+    }
+
+    private IEnumerator COExecuteOverheatTutorial()
+    {
+        yield return new WaitForSeconds(2.0f);
+        StopTutorial();
+        UITutorialController.Instance.ShowOverheatTutorialPanel();
     }
 
     private IEnumerator COStopJump()
