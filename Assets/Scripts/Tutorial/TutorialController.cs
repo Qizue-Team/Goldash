@@ -26,7 +26,6 @@ public class TutorialController : Singleton<TutorialController>
     private TerrainTileSpawner tileSpawner;
 
     private GameObject _enemyTarget;
-    private bool _isJumpTutorialStarted = false;
 
     public void ResumeTutorial()
     {
@@ -74,7 +73,6 @@ public class TutorialController : Singleton<TutorialController>
     {
         playerJump.SetJumpActive(false);
         playerJump.SetFallJumpActive(false);
-        _isJumpTutorialStarted = true;
         yield return new WaitForSeconds(2.0f);
         _enemyTarget = tutorialSpawner.SpawnEnemy();
     }
