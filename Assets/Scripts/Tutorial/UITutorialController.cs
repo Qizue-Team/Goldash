@@ -11,7 +11,8 @@ public class UITutorialController : Singleton<UITutorialController>
     private GameObject overheatTutorialPanel;
     [SerializeField]
     private GameObject fallTutorialPanel;
-
+    [SerializeField]
+    private GameObject heatDecreaseTutorialPanel;
     public void ShowJumpTutorialPanel() 
     {
         jumpTutorialPanel.SetActive(true);
@@ -25,6 +26,11 @@ public class UITutorialController : Singleton<UITutorialController>
     public void ShowFallTutorialPanel()
     {
         fallTutorialPanel.SetActive(true);
+    }
+
+    public void ShowHeatDecreaseTutorialPanel()
+    {
+        heatDecreaseTutorialPanel.SetActive(true);
     }
 
     private void Update()
@@ -53,6 +59,13 @@ public class UITutorialController : Singleton<UITutorialController>
          TutorialController.Instance.IsStopped && Input.GetKeyDown(KeyCode.Mouse0))
         {
             fallTutorialPanel.SetActive(false);
+            TutorialController.Instance.ResumeTutorial();
+        }
+
+        if (TutorialController.Instance.CurrentPhase == TutorialController.TutorialPhase.HeatDecreaseTutorial &&
+          TutorialController.Instance.IsStopped && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            heatDecreaseTutorialPanel.SetActive(false);
             TutorialController.Instance.ResumeTutorial();
         }
     }

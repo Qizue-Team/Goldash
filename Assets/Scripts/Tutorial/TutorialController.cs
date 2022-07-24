@@ -48,8 +48,7 @@ public class TutorialController : Singleton<TutorialController>
         if(CurrentPhase== TutorialPhase.HeatDecreaseTutorial)
         {
             playerJump.gameObject.GetComponent<Rigidbody2D>().constraints = _constraints;
-            
-            //StartCoroutine
+            StartCoroutine(COExecuteHeatDecreaseTutorial());
         }
     }
 
@@ -107,6 +106,13 @@ public class TutorialController : Singleton<TutorialController>
         yield return new WaitForSeconds(2.0f);
         StopTutorial();
         UITutorialController.Instance.ShowOverheatTutorialPanel();
+    }
+
+    private IEnumerator COExecuteHeatDecreaseTutorial()
+    {
+        yield return new WaitForSeconds(2.0f);
+        StopTutorial();
+        UITutorialController.Instance.ShowHeatDecreaseTutorialPanel();
     }
 
     private IEnumerator COStopJump()
