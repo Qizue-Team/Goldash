@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialController : Singleton<TutorialController>
 {
@@ -27,6 +29,8 @@ public class TutorialController : Singleton<TutorialController>
     private TerrainTileSpawner tileSpawner;
     [SerializeField]
     private PlayerTutorialMovements playerMovements;
+    [SerializeField]
+    private LoadingScreen loadingScreen;
 
     private GameObject _enemyTarget;
     private RigidbodyConstraints2D _constraints;
@@ -63,7 +67,21 @@ public class TutorialController : Singleton<TutorialController>
     private void Start()
     {
         _constraints = playerJump.gameObject.GetComponent<Rigidbody2D>().constraints;
-        StartCoroutine(COExecuteTutorialJump());
+
+        playerJump.SetJumpActive(false);
+        playerJump.SetFallJumpActive(false);
+        StartCoroutine(COWaitForAction(2.0f, () => {
+
+            if (DataManager.Instance.ReadTutorialFlag() == 0)
+            {
+                loadingScreen.Close();
+                StartCoroutine(COExecuteTutorialJump());
+            }
+            else
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }));
     }
 
     private void Update()
@@ -136,6 +154,7 @@ public class TutorialController : Singleton<TutorialController>
     {
         yield return new WaitForSeconds(4.5f);
         StopTutorial();
+        DataManager.Instance.WriteTutorialFlag();
         playerMovements.MoveToPoint(12.0f);
     }
 
@@ -150,5 +169,11 @@ public class TutorialController : Singleton<TutorialController>
     {
         yield return new WaitForSeconds(2.0f);
         Destroy(_enemyTarget);
+    }
+
+    private IEnumerator COWaitForAction(float delay, Action Callback)
+    {
+        yield return new WaitForSeconds(delay);
+        Callback?.Invoke();
     }
 }

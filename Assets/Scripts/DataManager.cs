@@ -32,4 +32,13 @@ public class DataManager : Singleton<DataManager>
         return PlayerPrefs.GetInt("BestScore", 0);
     }
 
+    public void WriteTutorialFlag()
+    {
+        PlayerPrefs.SetInt("TutorialPlayed", 1);
+    }
+
+    public int ReadTutorialFlag()
+    {
+        return PlayerPrefs.GetInt("TutorialPlayed");
+    }
 }
