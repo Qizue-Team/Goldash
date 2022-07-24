@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerTutorialMovements : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class PlayerTutorialMovements : MonoBehaviour
             if(transform.position.x >= _destination.x)
             {
                 _isMoving = false;
+                SceneManager.LoadScene("MainMenu");
             }
         }
     }

@@ -49,6 +49,8 @@ public class MenuTrasher : MonoBehaviour
     private void Start()
     {
         Physics2D.baumgarteScale = 0.2f;
+        // TO-DO: Check if first time from Player Settings
+        MoveToPoint(-7.0f);
     }
     private void Update()
     {
