@@ -45,11 +45,14 @@ public class TutorialController : Singleton<TutorialController>
         if(CurrentPhase == TutorialPhase.JumpFallTutorial)
             StartCoroutine(COExecuteTutorialJump());
         
-        if(CurrentPhase== TutorialPhase.HeatDecreaseTutorial)
+        if(CurrentPhase == TutorialPhase.HeatDecreaseTutorial)
         {
             playerJump.gameObject.GetComponent<Rigidbody2D>().constraints = _constraints;
             StartCoroutine(COExecuteHeatDecreaseTutorial());
         }
+
+        if (CurrentPhase == TutorialPhase.TrashTutorial)
+            StartCoroutine(COExecuteTrashTutorial());
     }
 
     private void Start()
@@ -113,6 +116,15 @@ public class TutorialController : Singleton<TutorialController>
         yield return new WaitForSeconds(2.0f);
         StopTutorial();
         UITutorialController.Instance.ShowHeatDecreaseTutorialPanel();
+    }
+
+    private IEnumerator COExecuteTrashTutorial()
+    {
+        yield return new WaitForSeconds(2.0f);
+        tutorialSpawner.SpawnTrash();
+        yield return new WaitForSeconds(3.0f);
+        StopTutorial();
+        UITutorialController.Instance.ShowTrashTutorialPanel();
     }
 
     private IEnumerator COStopJump()

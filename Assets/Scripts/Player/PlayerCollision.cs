@@ -33,8 +33,13 @@ public class PlayerCollision : MonoBehaviour
                 // Update Trash Count
                 GameController.Instance.IncreaseTrashCount(1);
                 UIController.Instance.UpdateTrashCount(GameController.Instance.TrashCount);
+
+                tile.DestroySpawnedObject();
             }
-            tile.DestroySpawnedObject();
+            else
+            {
+                Destroy(collision.gameObject);
+            }
         }
 
         Enemy enemy = null;
