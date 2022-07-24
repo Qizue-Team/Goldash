@@ -25,6 +25,8 @@ public class TutorialController : Singleton<TutorialController>
     private TutorialSpawner tutorialSpawner;
     [SerializeField]
     private TerrainTileSpawner tileSpawner;
+    [SerializeField]
+    private PlayerTutorialMovements playerMovements;
 
     private GameObject _enemyTarget;
     private RigidbodyConstraints2D _constraints;
@@ -53,6 +55,9 @@ public class TutorialController : Singleton<TutorialController>
 
         if (CurrentPhase == TutorialPhase.TrashTutorial)
             StartCoroutine(COExecuteTrashTutorial());
+
+        if (CurrentPhase == TutorialPhase.EndTutorial)
+            StartCoroutine(COExecuteFinalTransition());
     }
 
     private void Start()
@@ -125,6 +130,13 @@ public class TutorialController : Singleton<TutorialController>
         yield return new WaitForSeconds(3.0f);
         StopTutorial();
         UITutorialController.Instance.ShowTrashTutorialPanel();
+    }
+
+    private IEnumerator COExecuteFinalTransition()
+    {
+        yield return new WaitForSeconds(4.5f);
+        StopTutorial();
+        playerMovements.MoveToPoint(12.0f);
     }
 
     private IEnumerator COStopJump()

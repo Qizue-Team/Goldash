@@ -301,7 +301,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8457986020644739329, guid: 85b820498abfef64a81a78487aea53dc, type: 3}
   m_PrefabInstance: {fileID: 1973767385}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2114159012}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d761862e4120e3047bea3873c9d9e2ab, type: 3}
@@ -1282,6 +1282,7 @@ MonoBehaviour:
   playerJump: {fileID: 430915908}
   tutorialSpawner: {fileID: 670899365}
   tileSpawner: {fileID: 1411783699}
+  playerMovements: {fileID: 2114159021}
 --- !u!1 &960680840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,3 +2817,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2114159012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8457986020644739334, guid: 85b820498abfef64a81a78487aea53dc, type: 3}
+  m_PrefabInstance: {fileID: 1973767385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2114159021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114159012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05494fda7a63cde4ca706870144dd6e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3.5
