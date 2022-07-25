@@ -134,9 +134,10 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-
     private void CheckGrounded()
     {
+        if (transform.position.y < -3.8f)
+            return;
         RaycastHit2D hit =  Physics2D.Raycast(transform.position, Vector2.down, groundRaycastLength, groundLayerMask);
 
         if (hit && hit.collider.gameObject.GetComponent<TerrainTile>())
