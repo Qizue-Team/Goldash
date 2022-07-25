@@ -82,6 +82,28 @@ public class TerrainTileSpawner : Spawner
         LastTileSpawned = tileObj;
     }
 
+    public void Spawn(bool shouldSpawnObject = true)
+    {
+        var tileObj = TerrainTilePool.Instance.Get();
+        tileObj.transform.position = transform.position;
+
+        tileObj.GetComponent<BoxCollider2D>().enabled = true;
+
+        tileObj.GetComponent<BoxCollider2D>().offset = new Vector2(0.0f, 0.0f);
+        tileObj.GetComponent<BoxCollider2D>().size = new Vector2(1.0f, 1.0f);
+
+        TerrainTile tile = tileObj.GetComponent<TerrainTile>();
+        tile.SetSpeed(tileSpeed);
+        tile.SetDestroyTime(tileLifeTime);
+        tile.SetSprite(tileSet.GetRandomSprite());
+
+        if(shouldSpawnObject)
+            tile.SpawnSpawnableObject();
+
+        tileObj.gameObject.SetActive(true);
+        LastTileSpawned = tileObj;
+    }
+
     public void Spawn(Vector3 position, bool shoudlSpawnObject = true)
     {
         var tileObj = TerrainTilePool.Instance.Get();
@@ -103,7 +125,7 @@ public class TerrainTileSpawner : Spawner
         LastTileSpawned = tileObj;
     }
 
-    public void Spawn(Sprite sprite, bool isColliderActive = true)
+    public void Spawn(Sprite sprite, bool isColliderActive = true, bool shouldSpawnObject = true)
     {
         var tileObj = TerrainTilePool.Instance.Get();
         TerrainTile tile = tileObj.GetComponent<TerrainTile>();
@@ -119,7 +141,8 @@ public class TerrainTileSpawner : Spawner
         else
         {
             tileObj.GetComponent<BoxCollider2D>().enabled = true;
-            tile.SpawnSpawnableObject();
+            if(shouldSpawnObject)
+                tile.SpawnSpawnableObject();
             
         }
 
@@ -214,16 +237,20 @@ public class TerrainTileSpawner : Spawner
     {
         if (_currentHoleLength <= 0)
             return;
-        int totalLength = _currentHoleLength + 2;
+        int totalLength = _currentHoleLength + 3;
         if(_holeIndex == 0)
         {
+            Spawn(false);
+        }
+        else if(_holeIndex == 1)
+        {
             // Spawn Right Edge
-            Spawn(tileSet.GetRightEdge());
+            Spawn(tileSet.GetRightEdge(),true,false);
         }
         else if(_holeIndex == totalLength - 1)
         {
             // Spawn Left Edge
-            Spawn(tileSet.GetLeftEdge());
+            Spawn(tileSet.GetLeftEdge(),true,false);
             // Finished
             _currentHoleLength = 0;
             _spawnHole = false;
