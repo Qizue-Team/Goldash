@@ -9,8 +9,13 @@ public class PlayerCollision : MonoBehaviour
     [Header("Tutorial")]
     [SerializeField]
     private bool isTutorial;
+    [Header("Debug")]
+    [SerializeField]
+    private bool isDebugActive;
 
     private PlayerJump _playerJump;
+    private Vector2 _hitPoint;
+    private Vector2 _hitDirection;
 
     private void Awake()
     {
@@ -45,11 +50,11 @@ public class PlayerCollision : MonoBehaviour
         Enemy enemy = null;
         if(collision.TryGetComponent(out enemy))
         {
-            Vector2 hitPoint = collision.ClosestPoint(transform.position);
-            Vector2 hitDirection = hitPoint - (Vector2)transform.position;
+            _hitPoint = collision.ClosestPoint(transform.position);
+            _hitDirection = _hitPoint - (Vector2)transform.position;
 
             // If hit direction is pointing downwards
-            if(hitDirection.y < 0)
+            if(_hitDirection.y < 0)
             {
                 _playerJump.BounceJump();
                 if (!isTutorial)
@@ -60,17 +65,34 @@ public class PlayerCollision : MonoBehaviour
                 }
                 // Enemy Kill
                 enemy.Die();
-                //tile.DestroySpawnedObject();
+                if(isDebugActive)
+                    Debug.Break(); 
             }
             else
             {
                 // Player Dead - GameOver
                 GameController.Instance.GameOver();
                 CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "GameOver for Enemy collision");
-                // TEMP: Destroy Player
+                // TEMP: Destroy Player - Animation eventually
                 Destroy(gameObject);
             }
         }
-        
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!isDebugActive)
+            return;
+
+        Gizmos.color = Color.green;
+        if (!_hitPoint.Equals(Vector2.zero))
+        {
+            Gizmos.DrawWireSphere(_hitPoint, 0.2f);
+
+            if (!_hitDirection.Equals(Vector2.zero))
+            {
+                Gizmos.DrawLine(transform.position, _hitPoint);
+            }
+        }
     }
 }
