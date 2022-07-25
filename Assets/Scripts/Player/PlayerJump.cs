@@ -55,18 +55,12 @@ public class PlayerJump : MonoBehaviour
     public void Jump()
     {
         if (_rb == null || !IsGrounded)
-        {
-            _isHeatIncreased = false;
             return;
-        }
 
         _rb.velocity = Vector2.up * jumpVelocity;
-        
-        if (!_isHeatIncreased)
-        {
-            playerOverheat.IncreaseHeat();
-            _isHeatIncreased = true;
-        }
+      
+        playerOverheat.IncreaseHeat();
+        _isHeatIncreased = true;
     }
 
     public void BounceJump()
@@ -111,7 +105,7 @@ public class PlayerJump : MonoBehaviour
             _isFastFalling = true;
         }
 
-        if (Input.GetKey(KeyCode.Mouse0) && _isJumpActive)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && _isJumpActive)
         {
             Jump();
         }
