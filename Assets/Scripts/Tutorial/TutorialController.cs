@@ -72,8 +72,9 @@ public class TutorialController : Singleton<TutorialController>
         playerJump.SetFallJumpActive(false);
         StartCoroutine(COWaitForAction(2.0f, () => {
 
-            if (DataManager.Instance.ReadTutorialFlag() == 0)
+            if (DataManager.Instance.ReadTutorialFlag() == 0 || DataManager.Instance.ReadShowTutorialFlag() == 1)
             {
+                DataManager.Instance.WriteShowTutorialFlag(0);
                 loadingScreen.Close();
                 StartCoroutine(COExecuteTutorialJump());
             }
@@ -155,6 +156,7 @@ public class TutorialController : Singleton<TutorialController>
         yield return new WaitForSeconds(4.5f);
         StopTutorial();
         DataManager.Instance.WriteTutorialFlag();
+
         playerMovements.MoveToPoint(12.0f);
     }
 

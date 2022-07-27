@@ -24,4 +24,10 @@ public class NavigationManager : Singleton<NavigationManager>
     {
         LoadSceneByName("MainMenu");
     }
+
+    public void LoadTutorial()
+    {
+        DataManager.Instance.WriteShowTutorialFlag(1);
+        LoadSceneByName("Tutorial");
+    }
 }

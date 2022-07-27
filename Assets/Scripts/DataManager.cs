@@ -41,4 +41,16 @@ public class DataManager : Singleton<DataManager>
     {
         return PlayerPrefs.GetInt("TutorialPlayed");
     }
+    
+    public void WriteShowTutorialFlag(int value)
+    {
+        if (value != 0 && value != 1)
+            return;
+        PlayerPrefs.SetInt("ShowTutorial", value);
+    }
+
+    public int ReadShowTutorialFlag()
+    {
+        return PlayerPrefs.GetInt("ShowTutorial");
+    }
 }
