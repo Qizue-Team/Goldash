@@ -26,6 +26,8 @@ public class GameController : Singleton<GameController>
     [SerializeField]
     private PlatformSpawner platformSpawner;
 
+    private GameObject _player;
+
     public void IncreaseScore(int amount)
     {
         if(amount<MIN_SCORE || amount > MAX_SCORE)
@@ -64,13 +66,17 @@ public class GameController : Singleton<GameController>
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Score Saved - Current Best Score: " + DataManager.Instance.LoadBestScore());
     }
 
-    public void ResetGame()
+    public void ResetGame(float waitTimeToReset = 1.0f)
     {
         CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Game Reset");
 
         UIController.Instance.SetOpenGameMenuPanel(false);
+        UIController.Instance.SetOpenPauseMenuPanel(false);
 
-        StartCoroutine(COWaitForAction(1.0f, () =>
+        if (_player != null)
+            Destroy(_player);
+
+        StartCoroutine(COWaitForAction(waitTimeToReset, () =>
         {
             terrainTileSpawner.ResetSpawner();
             platformSpawner.ResetSpawner();
@@ -80,7 +86,7 @@ public class GameController : Singleton<GameController>
 
             terrainTileSpawner.InitializeTerrainTiles();
 
-            SpawnPlayer();
+            _player = SpawnPlayer();
         }));
     }
 
@@ -119,16 +125,13 @@ public class GameController : Singleton<GameController>
     private void Start()
     {
         Physics2D.baumgarteScale = 0.02f;
+        _player = FindObjectOfType<Player>().gameObject;
     }
 
-    private void Update()
+    private GameObject SpawnPlayer()
     {
-        
-    }
-
-    private void SpawnPlayer()
-    {
-        Instantiate(playerPrefab, playerSpawnPosition, Quaternion.identity);
+        GameObject player = Instantiate(playerPrefab, playerSpawnPosition, Quaternion.identity);
+        return player;
     }
 
     private IEnumerator COWaitForAction(float delay, Action ActionToPerform)
