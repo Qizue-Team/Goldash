@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   scorePoints: 50
+  trashName: TV
+  gearDrop: 5
 --- !u!61 &7062890308647267376
 BoxCollider2D:
   m_ObjectHideFlags: 0

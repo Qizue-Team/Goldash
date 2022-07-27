@@ -31,6 +31,9 @@ public class PlayerCollision : MonoBehaviour
         {
             if (!isTutorial)
             {
+                // Add Collected Trash
+                TrashCollectedManager.Instance.AddTrash(trash);
+
                 // Update Score
                 GameController.Instance.IncreaseScore(trash.ScorePoints);
                 UIController.Instance.UpdateScore(GameController.Instance.Score);

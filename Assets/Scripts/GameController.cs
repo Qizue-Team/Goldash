@@ -57,13 +57,24 @@ public class GameController : Singleton<GameController>
         DataManager.Instance.SaveTrashCount(trash);
 
         // Save best score if score is the best
-        DataManager.Instance.SaveBestScore(Score);
+        DataManager.Instance.SaveBestScore(Score);      
+        // TODO: Save Total Gear HERE
 
         UIController.Instance.SetOpenGameMenuPanel(true);
 
         // Logs
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Trash Collected Saved - Current Trash Count: " + DataManager.Instance.LoadTrashCount());
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Score Saved - Current Best Score: " + DataManager.Instance.LoadBestScore());
+        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Trash Collected List: ");
+        foreach (string name in TrashCollectedManager.Instance.TrashCountDictionary.Keys)
+        {
+            CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, name +
+                " (x" + TrashCollectedManager.Instance.TrashCountDictionary[name] + ") " +
+                "Score: " + (TrashCollectedManager.Instance.TrashCountDictionary[name] * TrashCollectedManager.Instance.TrashDictionary[name].ScorePoints) +
+                " Gear: " + (TrashCollectedManager.Instance.TrashCountDictionary[name] * TrashCollectedManager.Instance.TrashDictionary[name].Gear));
+        }
+        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Total Gear Count: "+TrashCollectedManager.Instance.GetTotalGearCount());
+        
     }
 
     public void ResetGame(float waitTimeToReset = 1.0f)
@@ -83,6 +94,7 @@ public class GameController : Singleton<GameController>
 
             ResetScore();
             ResetTrashCount();
+            TrashCollectedManager.Instance.ResetCollectedTrash();
 
             terrainTileSpawner.InitializeTerrainTiles();
 

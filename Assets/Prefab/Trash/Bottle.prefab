@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 4
   scorePoints: 20
+  trashName: Bottle
+  gearDrop: 2
 --- !u!61 &976530185750115643
 BoxCollider2D:
   m_ObjectHideFlags: 0
