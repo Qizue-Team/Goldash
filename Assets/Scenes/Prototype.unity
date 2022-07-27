@@ -3014,6 +3014,7 @@ MonoBehaviour:
   maxHoleWaitTime: 7
   minHoleLength: 2
   maxHoleLength: 3
+  scoreAmount: 1
   isTutorial: 0
 --- !u!4 &1817573725
 Transform:

@@ -6,6 +6,7 @@ using xPoke.CustomLog;
 public class Player : MonoBehaviour
 {
     private bool _isGameOverDeclared = false;
+
     private void Update()
     {
         if (transform.position.y < -6.0f && !_isGameOverDeclared)
@@ -15,5 +16,6 @@ public class Player : MonoBehaviour
             _isGameOverDeclared = true;
             Destroy(this.gameObject);
         }
+        
     }
 }

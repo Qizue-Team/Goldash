@@ -47,6 +47,10 @@ public class TerrainTileSpawner : Spawner
     [SerializeField]
     private int maxHoleLength = 3;
 
+    [Header("Score Settings")]
+    [SerializeField]
+    private int scoreAmount = 5;
+
     [Header("Tutorial Settings")]
     [SerializeField]
     private bool isTutorial;
@@ -308,6 +312,11 @@ public class TerrainTileSpawner : Spawner
         _distance += tileSpeed * Time.deltaTime;
         if(_distance >= tileWidth)
         {
+            if (!isTutorial)
+            {
+                GameController.Instance.IncreaseScore(scoreAmount);
+                UIController.Instance.UpdateScore(GameController.Instance.Score);
+            }
             if (!_spawnHole)
             {
                 if(!isTutorial)

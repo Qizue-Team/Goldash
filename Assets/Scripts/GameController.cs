@@ -121,6 +121,11 @@ public class GameController : Singleton<GameController>
         Physics2D.baumgarteScale = 0.02f;
     }
 
+    private void Update()
+    {
+        
+    }
+
     private void SpawnPlayer()
     {
         Instantiate(playerPrefab, playerSpawnPosition, Quaternion.identity);
