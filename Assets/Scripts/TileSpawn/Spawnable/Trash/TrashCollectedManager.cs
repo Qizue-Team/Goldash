@@ -23,13 +23,15 @@ public class TrashCollectedManager : Singleton<TrashCollectedManager>
         else
         {
             _trashCountDictionary.Add(name, 1);
-            _trashDictionary.Add(name, trash);
+            if(!_trashDictionary.ContainsKey(name))
+                _trashDictionary.Add(name, trash);
         }
     }
 
     public void ResetCollectedTrash()
     {
         _trashCountDictionary.Clear();
+        _trashDictionary.Clear();
     }
 
     public int GetTotalGearCount()
@@ -50,6 +52,16 @@ public class TrashCollectedManager : Singleton<TrashCollectedManager>
             count += _trashCountDictionary[name];
         }
         return count;
+    }
+
+    public int GetTotalScoreFromTrash()
+    {
+        int score = 0;
+        foreach (string name in _trashCountDictionary.Keys)
+        {
+            score = score + (_trashCountDictionary[name] * _trashDictionary[name].ScorePoints);
+        }
+        return score;
     }
 
     protected override void Awake()

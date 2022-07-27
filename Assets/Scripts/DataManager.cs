@@ -25,6 +25,20 @@ public class DataManager : Singleton<DataManager>
         int bestScore = PlayerPrefs.GetInt("BestScore", 0);
         if(score > bestScore)
             PlayerPrefs.SetInt("BestScore",score);
+        PlayerPrefs.Save();
+    }
+
+    public void SaveTotalGearCount(int count)
+    {
+        if(count < 0)
+            return;
+        PlayerPrefs.SetInt("GearCount", count);
+        PlayerPrefs.Save();
+    }
+
+    public int LoadTotalGearCount()
+    {
+        return PlayerPrefs.GetInt("GearCount");
     }
 
     public int LoadBestScore()
@@ -35,6 +49,7 @@ public class DataManager : Singleton<DataManager>
     public void WriteTutorialFlag()
     {
         PlayerPrefs.SetInt("TutorialPlayed", 1);
+        PlayerPrefs.Save();
     }
 
     public int ReadTutorialFlag()
@@ -47,6 +62,7 @@ public class DataManager : Singleton<DataManager>
         if (value != 0 && value != 1)
             return;
         PlayerPrefs.SetInt("ShowTutorial", value);
+        PlayerPrefs.Save();
     }
 
     public int ReadShowTutorialFlag()

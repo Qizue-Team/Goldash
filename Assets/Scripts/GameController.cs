@@ -57,15 +57,21 @@ public class GameController : Singleton<GameController>
         DataManager.Instance.SaveTrashCount(trash);
 
         // Save best score if score is the best
-        DataManager.Instance.SaveBestScore(Score);      
-        // TODO: Save Total Gear HERE
+        DataManager.Instance.SaveBestScore(Score);
+
+        // Save Total Gear Count
+        int gear = DataManager.Instance.LoadTotalGearCount();
+        gear += TrashCollectedManager.Instance.GetTotalGearCount();
+        DataManager.Instance.SaveTotalGearCount(gear);
 
         UIController.Instance.SetOpenGameMenuPanel(true);
 
         // Logs
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Trash Collected Saved - Current Trash Count: " + DataManager.Instance.LoadTrashCount());
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Score Saved - Current Best Score: " + DataManager.Instance.LoadBestScore());
-        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Trash Collected List: ");
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Total Gear Count Saved - Current Gear Count: " + DataManager.Instance.LoadTotalGearCount());
+        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "TRASH COLLECTED LIST: ");
+        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "START");
         foreach (string name in TrashCollectedManager.Instance.TrashCountDictionary.Keys)
         {
             CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, name +
@@ -73,8 +79,11 @@ public class GameController : Singleton<GameController>
                 "Score: " + (TrashCollectedManager.Instance.TrashCountDictionary[name] * TrashCollectedManager.Instance.TrashDictionary[name].ScorePoints) +
                 " Gear: " + (TrashCollectedManager.Instance.TrashCountDictionary[name] * TrashCollectedManager.Instance.TrashDictionary[name].Gear));
         }
+        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "END");
         CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Total Gear Count: "+TrashCollectedManager.Instance.GetTotalGearCount());
-        
+        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Total Points Made From Trash: " + TrashCollectedManager.Instance.GetTotalScoreFromTrash());
+        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Points Made From Distance Travelled: "+ (Score - TrashCollectedManager.Instance.GetTotalScoreFromTrash()));
+
     }
 
     public void ResetGame(float waitTimeToReset = 1.0f)
