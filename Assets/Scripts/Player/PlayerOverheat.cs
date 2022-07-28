@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using xPoke.CustomLog;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerOverheat : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerOverheat : MonoBehaviour
     [Header("References")]
     [SerializeField]
     private GameObject overheatMask;
+    [SerializeField]
+    private Light2D light2D;
    
     [SerializeField]
     private PlayerJump playerJump;
@@ -50,6 +53,7 @@ public class PlayerOverheat : MonoBehaviour
             Overheat = 1;
 
         CustomLog.Log(CustomLog.CustomLogType.PLAYER, "Overheat: " + Overheat);
+        light2D.intensity = Overheat;
 
         if(Overheat >= slowDownLevel && (!_isSlowedDown))
         {
@@ -85,7 +89,7 @@ public class PlayerOverheat : MonoBehaviour
             Overheat = 0;
 
         CustomLog.Log(CustomLog.CustomLogType.PLAYER, "Overheat: " + Overheat);
-
+        light2D.intensity = Overheat;
 
         if (Overheat < slowDownLevel && _isSlowedDown)
         {
@@ -109,6 +113,7 @@ public class PlayerOverheat : MonoBehaviour
     {
         Overheat = 0.0f;
         SetSmokeEffectsActive(false);
+        light2D.intensity = 0;
     }
 
     private void SetSmokeEffectsActive(bool active)
