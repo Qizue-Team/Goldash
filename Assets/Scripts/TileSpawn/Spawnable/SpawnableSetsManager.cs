@@ -12,7 +12,7 @@ public class SpawnableSetsManager : ScriptableObject
     [SerializeField]
     private SpawnableSet[] sets;
 
-    public GameObject GetRandomObject()
+    public GameObject GetRandomObject(bool isPlatform = false)
     {
         // If no set, return blank
         if (sets.Length == 0)
@@ -34,6 +34,10 @@ public class SpawnableSetsManager : ScriptableObject
             prob += sets[i].Weight / total;
             if (prob >= rand)
             {
+                if(isPlatform && sets[i].SetType == SetType.Trash)
+                {
+                    return sets[i].GetRareObjcet();
+                }
                 return sets[i].GetRandomObject();
             }
         }
@@ -45,6 +49,17 @@ public class SpawnableSetsManager : ScriptableObject
             return null;
         }
 
+        if (isPlatform && sets[count].SetType == SetType.Trash)
+        {
+            return sets[count].GetRareObjcet();
+        }
+
         return sets[count].GetRandomObject();
     }
+}
+
+public enum SetType
+{
+    Trash,
+    Enemy
 }

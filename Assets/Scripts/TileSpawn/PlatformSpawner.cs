@@ -211,7 +211,7 @@ public class PlatformSpawner : Spawner
         {
             tileObj.GetComponent<BoxCollider2D>().enabled = true;
             if(shouldSpawnObject)
-                tile.SpawnSpawnableObject();
+                tile.SpawnSpawnableObject(true);
         }
        
         tile.SetSpeed(terrainSpawner.TileSpeed);

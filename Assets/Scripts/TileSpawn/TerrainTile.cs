@@ -16,9 +16,9 @@ public class TerrainTile : MonoBehaviour
 
     private GameObject _spawnedObject;
 
-    public void SpawnSpawnableObject()
+    public void SpawnSpawnableObject(bool isPlatform = false)
     {
-        GameObject spawnableObj = setsManager.GetRandomObject();
+        GameObject spawnableObj = setsManager.GetRandomObject(isPlatform);
         if (spawnableObj!=null)
         {
             _spawnedObject = Instantiate(spawnableObj, transform);
