@@ -62,9 +62,13 @@ public class PlayerCollision : MonoBehaviour
                 _playerJump.BounceJump();
                 if (!isTutorial)
                 {
+                    // Add Collected Trash
+                    EnemyKilledManager.Instance.AddEnemyKilled(enemy);
+
                     // Update Score
                     GameController.Instance.IncreaseScore(enemy.ScorePoints);
                     UIController.Instance.UpdateScore(GameController.Instance.Score);
+
                 }
                 // Enemy Kill
                 enemy.Die();

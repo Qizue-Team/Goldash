@@ -82,7 +82,8 @@ public class GameController : Singleton<GameController>
         CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "END");
         CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Total Gear Count: "+TrashCollectedManager.Instance.GetTotalGearCount());
         CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Total Points Made From Trash: " + TrashCollectedManager.Instance.GetTotalScoreFromTrash());
-        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Points Made From Distance Travelled: "+ (Score - TrashCollectedManager.Instance.GetTotalScoreFromTrash()));
+        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Total Points Made From Enemy kill: " + EnemyKilledManager.Instance.TotalPoints);
+        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Points Made From Distance Travelled: "+ (Score - TrashCollectedManager.Instance.GetTotalScoreFromTrash() - EnemyKilledManager.Instance.TotalPoints));
 
     }
 
@@ -103,7 +104,8 @@ public class GameController : Singleton<GameController>
 
             ResetScore();
             ResetTrashCount();
-            TrashCollectedManager.Instance.ResetCollectedTrash();
+            TrashCollectedManager.Instance.ResetManager();
+            EnemyKilledManager.Instance.ResetManager();
 
             terrainTileSpawner.InitializeTerrainTiles();
 

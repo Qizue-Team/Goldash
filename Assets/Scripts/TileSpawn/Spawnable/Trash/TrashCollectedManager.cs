@@ -28,7 +28,7 @@ public class TrashCollectedManager : Singleton<TrashCollectedManager>
         }
     }
 
-    public void ResetCollectedTrash()
+    public void ResetManager()
     {
         _trashCountDictionary.Clear();
         _trashDictionary.Clear();
