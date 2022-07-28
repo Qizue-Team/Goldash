@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using xPoke.CustomLog;
+using System;
 using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerOverheat : MonoBehaviour
@@ -73,7 +74,9 @@ public class PlayerOverheat : MonoBehaviour
             // GameOver - Animation here?
             GameController.Instance.GameOver();
             CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "GAME OVER for Overheating");
-            Destroy(gameObject);
+            GetComponent<Animator>().SetTrigger("Explode");
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            StartCoroutine(COWaitForAction(0.5f, () => { Destroy(gameObject); }));
         }
         
     }
@@ -125,5 +128,11 @@ public class PlayerOverheat : MonoBehaviour
         {
             obj.SetActive(active);
         }
+    }
+
+    private IEnumerator COWaitForAction(float delay, Action Callback)
+    {
+        yield return new WaitForSeconds(delay);
+        Callback?.Invoke();
     }
 }
