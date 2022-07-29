@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using xPoke.CustomLog;
 
 [RequireComponent(typeof(PlayerJump))]
@@ -80,8 +81,14 @@ public class PlayerCollision : MonoBehaviour
                 // Player Dead - GameOver
                 GameController.Instance.GameOver();
                 CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "GameOver for Enemy collision");
-                // TEMP: Destroy Player - Animation eventually
-                Destroy(gameObject);
+                
+                // Animation and Destroy Player
+                GetComponent<Animator>().SetTrigger("Explode");
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                StartCoroutine(COWaitForAction(0.5f, ()=> {
+                    Destroy(gameObject);
+                }));
+                
             }
         }
     }
@@ -101,5 +108,11 @@ public class PlayerCollision : MonoBehaviour
                 Gizmos.DrawLine(transform.position, _hitPoint);
             }
         }
+    }
+
+    private IEnumerator COWaitForAction(float delay, Action Callback)
+    {
+        yield return new WaitForSeconds(delay);
+        Callback?.Invoke();
     }
 }
