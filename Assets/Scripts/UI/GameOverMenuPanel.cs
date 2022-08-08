@@ -10,6 +10,12 @@ public class GameOverMenuPanel : GameMenuPanel
     [SerializeField]
     private RecapPanel recapPanel;
 
+    public void ResetPanel()
+    {
+        StopAllCoroutines();
+        recapPanel.ResetEntries();
+    }
+
     public override void Open()
     {
         base.Open();

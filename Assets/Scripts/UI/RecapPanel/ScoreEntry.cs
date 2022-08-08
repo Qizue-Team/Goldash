@@ -16,6 +16,19 @@ public class ScoreEntry : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI distanceScoreText;
 
+    public void ResetEntry()
+    {
+        StopAllCoroutines();
+        int total = 0;
+        int trash = 0;
+        int enemy = 0;
+        int distance = 0;
+        totalScoreText.text = total.ToString("000000");
+        trashScoreText.text = trash.ToString("000000");
+        enemyScoreText.text = enemy.ToString("000000");
+        distanceScoreText.text = distance.ToString("000000");
+    }
+
     public IEnumerator COSetEntry(int total, int trash, int enemy, int distance)
     {
         /*

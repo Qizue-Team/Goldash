@@ -93,6 +93,7 @@ public class GameController : Singleton<GameController>
 
         UIController.Instance.SetOpenGameMenuPanel(false);
         UIController.Instance.SetOpenPauseMenuPanel(false);
+        UIController.Instance.ResetRecapPanel();
 
         if (_player != null)
             Destroy(_player);

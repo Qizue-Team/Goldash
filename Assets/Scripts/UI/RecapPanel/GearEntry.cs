@@ -10,6 +10,13 @@ public class GearEntry : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI totalGearText;
 
+    public void ResetEntry()
+    {
+        StopAllCoroutines();
+        int currentValue = 0;
+        totalGearText.text = currentValue.ToString("000000");
+    }
+
     public void SetEntry(int totalGear)
     {
         //totalGearText.text = totalGear.ToString("000000");

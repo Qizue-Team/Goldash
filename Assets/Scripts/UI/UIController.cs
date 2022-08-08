@@ -44,4 +44,10 @@ public class UIController : Singleton<UIController>
         else
             pauseMenuPanel.Close();
     }
+
+    public void ResetRecapPanel()
+    {
+        GameOverMenuPanel gameOverPanel = gameMenuPanel as GameOverMenuPanel;
+        gameOverPanel.ResetPanel();
+    }
 }
