@@ -7,14 +7,14 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Animator))]
 public class GameMenuPanel : MonoBehaviour
 {
-    public bool IsOpen { get; private set; }
+    public bool IsOpen { get; protected set; }
 
     [SerializeField]
-    private Image blackFadeScreen;
+    protected Image blackFadeScreen;
 
-    private Animator _animator;
+    protected Animator _animator;
 
-    public void Open()
+    public virtual void Open()
     {
         if (IsOpen)
             return;
@@ -27,7 +27,7 @@ public class GameMenuPanel : MonoBehaviour
         
     }
 
-    public void Close()
+    public virtual void Close()
     {
         if (!IsOpen)
             return;
@@ -50,7 +50,7 @@ public class GameMenuPanel : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private IEnumerator COWaitForAction(float delay, Action ActionToPerform)
+    protected IEnumerator COWaitForAction(float delay, Action ActionToPerform)
     {
         yield return new WaitForSeconds(delay);
         ActionToPerform?.Invoke();

@@ -143,6 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1865689407469967489}
+  - component: {fileID: 1121709622636571136}
   m_Layer: 5
   m_Name: ScoreEntry
   m_TagString: Untagged
@@ -170,6 +171,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1523.7607, y: 165.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1121709622636571136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865689407469967490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a21c4b323b5f2c4b8ce4862de184102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScoreText: {fileID: 2379490224628402434}
+  trashScoreText: {fileID: 2379490226320609657}
+  enemyScoreText: {fileID: 2379490225684632388}
+  distanceScoreText: {fileID: 2379490225298527288}
 --- !u!1 &1865689407634547702
 GameObject:
   m_ObjectHideFlags: 0
