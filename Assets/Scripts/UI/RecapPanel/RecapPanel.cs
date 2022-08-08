@@ -15,11 +15,11 @@ public class RecapPanel : MonoBehaviour
     [SerializeField]
     private GameObject trashEntryPrefab;
 
-    public void AddTrashEntry(string name, int quantity, int score, int gear)
+    public IEnumerator COAddTrashEntry(string name, int quantity, int score, int gear)
     {
         GameObject entryObj = Instantiate(trashEntryPrefab, trashContentList);
         TrashEntry entry = entryObj.GetComponent<TrashEntry>();
-        entry.SetEntry(name, quantity, score, gear);
+        yield return entry.COSetEntry(name, quantity, score, gear);
     }
 
     public void SetGearEntry(int gear)
@@ -27,8 +27,8 @@ public class RecapPanel : MonoBehaviour
         gearEntry.SetEntry(gear);
     }
 
-    public void SetScoreEntry(int total, int trash, int enemy, int distance)
+    public IEnumerator COSetScoreEntry(int total, int trash, int enemy, int distance)
     {
-        scoreEntry.SetEntry(total, trash, enemy, distance);
+        yield return scoreEntry.COSetEntry(total, trash, enemy, distance);
     }
 }

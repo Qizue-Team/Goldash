@@ -17,11 +17,38 @@ public class TrashEntry : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI trashGearText;
 
-    public void SetEntry(string name, int quantity, int score, int gear)
+    public IEnumerator COSetEntry(string name, int quantity, int score, int gear)
     {
         trashNameText.text = name;
-        trashQuantityText.text = "(x" + quantity.ToString("000") + ")";
-        trashScoreText.text = score.ToString("00000");
-        trashGearText.text = gear.ToString("00000") + "G";
+        yield return COUpdateTextAnimation(quantity, score, gear, 0.02f);   
+    }
+
+    private IEnumerator COUpdateTextAnimation(int quantity, int trashScore, int gearValue, float updateDelay)
+    { 
+        int currentValueTrash = 0;
+        int currentValueGear = 0;
+        int currentQuantity = 0;
+
+        while(currentQuantity <= quantity)
+        {
+            trashQuantityText.text = "(x" + currentQuantity.ToString("000") + ")";
+            yield return new WaitForSeconds(updateDelay);
+            currentQuantity++;
+        }
+
+        while (currentValueTrash <= trashScore)
+        {
+            trashScoreText.text = currentValueTrash.ToString("00000");
+            yield return new WaitForSeconds(updateDelay);
+            currentValueTrash++;
+        }
+
+        while (currentValueGear <= gearValue)
+        {
+            trashGearText.text = currentValueGear.ToString("00000");
+            yield return new WaitForSeconds(updateDelay);
+            currentValueGear++;
+        }
+
     }
 }

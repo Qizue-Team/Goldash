@@ -15,23 +15,24 @@ public class GameOverMenuPanel : GameMenuPanel
         base.Open();
 
         // Load data on recap panel
-        SetRecapPanel();
+        StartCoroutine(COSetRecapPanel());
     }
-
-    private void SetRecapPanel()
+   
+    private IEnumerator COSetRecapPanel()
     {
+        yield return new WaitForSeconds(1.0f);
         foreach (string name in TrashCollectedManager.Instance.TrashCountDictionary.Keys)
         {
-            recapPanel.AddTrashEntry(name, TrashCollectedManager.Instance.TrashCountDictionary[name],
+            yield return recapPanel.COAddTrashEntry(name, TrashCollectedManager.Instance.TrashCountDictionary[name],
                 (TrashCollectedManager.Instance.TrashCountDictionary[name] * TrashCollectedManager.Instance.TrashDictionary[name].ScorePoints),
                 (TrashCollectedManager.Instance.TrashCountDictionary[name] * TrashCollectedManager.Instance.TrashDictionary[name].Gear));
         }
 
-        recapPanel.SetScoreEntry(GameController.Instance.Score, 
+        yield return recapPanel.COSetScoreEntry(GameController.Instance.Score,
             TrashCollectedManager.Instance.GetTotalScoreFromTrash(),
-            EnemyKilledManager.Instance.TotalPoints, 
+            EnemyKilledManager.Instance.TotalPoints,
             (GameController.Instance.Score - TrashCollectedManager.Instance.GetTotalScoreFromTrash() - EnemyKilledManager.Instance.TotalPoints));
-        
+
         recapPanel.SetGearEntry(TrashCollectedManager.Instance.GetTotalGearCount());
     }
 }

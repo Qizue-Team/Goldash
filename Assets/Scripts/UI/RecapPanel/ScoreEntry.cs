@@ -16,11 +16,49 @@ public class ScoreEntry : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI distanceScoreText;
 
-    public void SetEntry(int total, int trash, int enemy, int distance)
+    public IEnumerator COSetEntry(int total, int trash, int enemy, int distance)
     {
+        /*
         totalScoreText.text = total.ToString("000000");
         trashScoreText.text = trash.ToString("000000");
         enemyScoreText.text = enemy.ToString("000000");
-        distanceScoreText.text = distance.ToString("000000");
+        distanceScoreText.text = distance.ToString("000000");*/
+        yield return COUpdateTextAnimation(total, trash, enemy, distance, 0.02f);
+    }
+
+    private IEnumerator COUpdateTextAnimation(int totalValue, int trashValue, int enemyValue, int distanceValue, float updateDelay)
+    {
+        int currentValueTotal = 0;
+        int currentValueTrash = 0;
+        int currentValueEnemy = 0;
+        int currentValueDistance = 0;
+
+        while (currentValueTotal <= totalValue)
+        {
+            totalScoreText.text = currentValueTotal.ToString("000000");
+            yield return new WaitForSeconds(updateDelay);
+            currentValueTotal++;
+        }
+
+        while (currentValueTrash <= trashValue)
+        {
+            trashScoreText.text = currentValueTrash.ToString("000000");
+            yield return new WaitForSeconds(updateDelay);
+            currentValueTrash++;
+        }
+
+        while (currentValueEnemy <= enemyValue)
+        {
+            enemyScoreText.text = currentValueEnemy.ToString("000000");
+            yield return new WaitForSeconds(updateDelay);
+            currentValueEnemy++;
+        }
+
+        while (currentValueDistance <= distanceValue)
+        {
+            distanceScoreText.text = currentValueDistance.ToString("000000");
+            yield return new WaitForSeconds(updateDelay);
+            currentValueDistance++;
+        }
     }
 }
