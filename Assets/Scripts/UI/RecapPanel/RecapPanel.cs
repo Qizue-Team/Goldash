@@ -34,6 +34,9 @@ public class RecapPanel : MonoBehaviour
         GameObject entryObj = Instantiate(trashEntryPrefab, trashContentList);
         trashEntries.Add(entryObj);
         TrashEntry entry = entryObj.GetComponent<TrashEntry>();
+        yield return null;
+        scrollRect.verticalNormalizedPosition = 0.0f;
+        yield return null;
         yield return entry.COSetEntry(name, quantity, score, gear);
     }
 
@@ -45,6 +48,5 @@ public class RecapPanel : MonoBehaviour
     public IEnumerator COSetScoreEntry(int total, int trash, int enemy, int distance)
     {
         yield return scoreEntry.COSetEntry(total, trash, enemy, distance);
-        scrollRect.verticalNormalizedPosition += 0.1f;
     }
 }

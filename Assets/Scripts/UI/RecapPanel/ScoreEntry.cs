@@ -31,11 +31,6 @@ public class ScoreEntry : MonoBehaviour
 
     public IEnumerator COSetEntry(int total, int trash, int enemy, int distance)
     {
-        /*
-        totalScoreText.text = total.ToString("000000");
-        trashScoreText.text = trash.ToString("000000");
-        enemyScoreText.text = enemy.ToString("000000");
-        distanceScoreText.text = distance.ToString("000000");*/
         yield return COUpdateTextAnimation(total, trash, enemy, distance, 0.02f);
     }
 
