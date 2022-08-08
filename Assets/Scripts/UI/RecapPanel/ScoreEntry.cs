@@ -31,7 +31,7 @@ public class ScoreEntry : MonoBehaviour
 
     public IEnumerator COSetEntry(int total, int trash, int enemy, int distance)
     {
-        yield return COUpdateTextAnimation(total, trash, enemy, distance, 0.02f);
+        yield return COUpdateTextAnimation(total, trash, enemy, distance, 0.01f);
     }
 
     private IEnumerator COUpdateTextAnimation(int totalValue, int trashValue, int enemyValue, int distanceValue, float updateDelay)

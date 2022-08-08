@@ -19,7 +19,6 @@ public class GearEntry : MonoBehaviour
 
     public void SetEntry(int totalGear)
     {
-        //totalGearText.text = totalGear.ToString("000000");
         StartCoroutine(COUpdateTextAnimation(totalGear, 0.05f));
     }
 
