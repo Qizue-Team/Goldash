@@ -1325,6 +1325,7 @@ MonoBehaviour:
   scoreEntry: {fileID: 374319568}
   trashContentList: {fileID: 462182275}
   trashEntryPrefab: {fileID: 3844917507813119080, guid: f4613d5fd4b9ce848ae3e01aec781c02, type: 3}
+  scrollRect: {fileID: 1721443165}
 --- !u!114 &426732522
 MonoBehaviour:
   m_ObjectHideFlags: 0
