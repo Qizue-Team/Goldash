@@ -22,6 +22,7 @@ public class NavigationManager : Singleton<NavigationManager>
 
     public void LoadMainMenu()
     {
+        Time.timeScale = 1.0f; // if loaded from pause menu
         LoadSceneByName("MainMenu");
     }
 
