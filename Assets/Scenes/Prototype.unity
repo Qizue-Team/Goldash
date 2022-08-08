@@ -1214,6 +1214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackFadeScreen: {fileID: 1982309374}
+  recapPanel: {fileID: 426732521}
 --- !u!95 &375819298
 Animator:
   serializedVersion: 3
