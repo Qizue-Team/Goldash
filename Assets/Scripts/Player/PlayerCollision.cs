@@ -20,10 +20,18 @@ public class PlayerCollision : MonoBehaviour
     private Vector2 _hitPoint;
     private Vector2 _hitDirection;
     private bool _canBeHitByEnemies = true;
+    private int _trashCountMultiplier = 1;
 
     public void CanBeHitByEnemies(bool active) 
     {
         _canBeHitByEnemies = active;
+    }
+
+    public void SetTrashCountMultiplier(int multiplier)
+    {
+        if(multiplier <=0)
+            multiplier = 1;
+        _trashCountMultiplier = multiplier;
     }
 
     private void Awake()
@@ -42,14 +50,15 @@ public class PlayerCollision : MonoBehaviour
             if (!isTutorial)
             {
                 // Add Collected Trash
-                TrashCollectedManager.Instance.AddTrash(trash);
+                for(int i = 0; i < _trashCountMultiplier; i++)
+                    TrashCollectedManager.Instance.AddTrash(trash);
 
                 // Update Score
-                GameController.Instance.IncreaseScore(trash.ScorePoints);
+                GameController.Instance.IncreaseScore(trash.ScorePoints*_trashCountMultiplier);
                 UIController.Instance.UpdateScore(GameController.Instance.Score);
 
                 // Update Trash Count
-                GameController.Instance.IncreaseTrashCount(1);
+                GameController.Instance.IncreaseTrashCount(1*_trashCountMultiplier);
                 UIController.Instance.UpdateTrashCount(GameController.Instance.TrashCount);
 
                 tile.DestroySpawnedObject();
