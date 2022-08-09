@@ -11,6 +11,8 @@ public class NoOverheating : OneTimePowerUp
     private PlayerJump _playerJump;
     private PlayerOverheat _playerOverheat;
 
+    private int _startJumpNumber = 0;
+
     // OnActivate once
     protected override void ExecuteOnce()
     {
@@ -19,6 +21,7 @@ public class NoOverheating : OneTimePowerUp
         _playerOverheat = FindObjectOfType<PlayerOverheat>();
 
         _playerOverheat.SetActiveOverheating(false);
+        _startJumpNumber = _playerJump.JumpCount;
     }
 
     // Update
@@ -26,7 +29,7 @@ public class NoOverheating : OneTimePowerUp
     {
         base.Activate();
         
-        if(_playerJump.JumpCount >= numberOfJumps)
+        if((_playerJump.JumpCount - _startJumpNumber) >= numberOfJumps)
             Deactivate();
     }
 
