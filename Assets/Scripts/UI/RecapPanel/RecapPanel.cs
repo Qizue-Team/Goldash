@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class RecapPanel : MonoBehaviour
 {
+    public static event Action OnSkipClicked;
+    
     [Header("References")]
     [SerializeField]
     private GearEntry gearEntry;
@@ -18,6 +21,11 @@ public class RecapPanel : MonoBehaviour
     private ScrollRect scrollRect;
 
     private List<GameObject> trashEntries = new List<GameObject>();
+
+    public void SkipClicked()
+    {
+        OnSkipClicked?.Invoke();
+    }
 
     public void ResetEntries()
     {
