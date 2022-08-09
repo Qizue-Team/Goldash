@@ -61,5 +61,6 @@ public class SpawnableSetsManager : ScriptableObject
 public enum SetType
 {
     Trash,
-    Enemy
+    Enemy,
+    PowerUp
 }
