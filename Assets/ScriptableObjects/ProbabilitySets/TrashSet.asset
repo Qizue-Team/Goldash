@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6769ee30a0817c24582cccf3ad926239, type: 3}
   m_Name: TrashSet
   m_EditorClassIdentifier: 
-  weight: 5
+  weight: 10
   objects:
   - {fileID: 5230463498491170039, guid: 19ce75f1061c85d409924c76bdb200d5, type: 3}
   - {fileID: 1474412668912026751, guid: beef8d51f1972ec4c83d6da09a6b7434, type: 3}
   - {fileID: 1474412668912026751, guid: 9a46319024008eb4c950fece73837701, type: 3}
   - {fileID: 1474412668912026751, guid: 8176a78ae53a5a4469d81810b47b1767, type: 3}
   - {fileID: 1474412668912026751, guid: a02f374fc959139429acfac73c81678e, type: 3}
+  setType: 0

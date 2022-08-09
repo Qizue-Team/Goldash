@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 940258df9108dfc47bf6b43df1e772ab, type: 3}
   m_Name: SpawnableSetsManager
   m_EditorClassIdentifier: 
-  blankWeight: 40
+  blankWeight: 80
   sets:
   - {fileID: 11400000, guid: 8e78f876c5182dd4ab8bc95d0720e1e8, type: 2}
+  - {fileID: 11400000, guid: f724070255f24b64e9aea6e657e29438, type: 2}
   - {fileID: 11400000, guid: 52bbe45e1db8cf041a1b13d7ad276463, type: 2}
