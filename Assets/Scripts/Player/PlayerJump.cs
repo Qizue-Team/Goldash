@@ -9,6 +9,7 @@ public class PlayerJump : MonoBehaviour
 {
     public bool IsGrounded { get; private set; }
     public bool IsFastFalling { get => _isFastFalling; }
+    public int JumpCount { get; private set; }
 
     [Header("References")]
     [SerializeField]
@@ -58,9 +59,10 @@ public class PlayerJump : MonoBehaviour
             return;
 
         _rb.velocity = Vector2.up * jumpVelocity;
-      
+        
         playerOverheat.IncreaseHeat();
         _isHeatIncreased = true;
+        JumpCount++;
     }
 
     public void BounceJump()
@@ -79,6 +81,7 @@ public class PlayerJump : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        JumpCount = 0;
     }
 
     private void Update()

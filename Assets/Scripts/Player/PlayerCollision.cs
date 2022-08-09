@@ -91,6 +91,13 @@ public class PlayerCollision : MonoBehaviour
                 
             }
         }
+
+        OneTimePowerUp powerUp = null;
+        if(collision.TryGetComponent(out powerUp))
+        {
+            RunPowerUpManager.Instance.AddPowerUp(powerUp.GetType());
+            Destroy(powerUp.gameObject);
+        }
     }
 
     private void OnDrawGizmos()
