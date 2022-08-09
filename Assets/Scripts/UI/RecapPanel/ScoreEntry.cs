@@ -27,15 +27,15 @@ public class ScoreEntry : MonoBehaviour
     public void ResetEntry()
     {
         StopAllCoroutines();
-        int total = 0;
-        int trash = 0;
-        int enemy = 0;
-        int distance = 0;
+        _totalSet = 0;
+        _trashSet = 0;
+        _enemySet = 0;
+        _distanceSet = 0;
         _stop = false;
-        totalScoreText.text = total.ToString("000000");
-        trashScoreText.text = trash.ToString("000000");
-        enemyScoreText.text = enemy.ToString("000000");
-        distanceScoreText.text = distance.ToString("000000");
+        totalScoreText.text = _totalSet.ToString("000000");
+        trashScoreText.text = _trashSet.ToString("000000");
+        enemyScoreText.text = _enemySet.ToString("000000");
+        distanceScoreText.text = _distanceSet.ToString("000000");
     }
 
     public IEnumerator COSetEntry(int total, int trash, int enemy, int distance)
