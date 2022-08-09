@@ -95,6 +95,8 @@ public class GameController : Singleton<GameController>
         UIController.Instance.SetOpenPauseMenuPanel(false);
         UIController.Instance.ResetRecapPanel();
 
+        RunPowerUpManager.Instance.ResetManager();
+
         if (_player != null)
             Destroy(_player);
 

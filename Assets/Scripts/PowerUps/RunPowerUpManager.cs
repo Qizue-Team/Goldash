@@ -11,6 +11,11 @@ public class RunPowerUpManager : Singleton<RunPowerUpManager>
 
     private OneTimePowerUp _currentPowerUp = null;
 
+    public void ResetManager()
+    {
+        _currentPowerUp = null;
+    }
+
     public void AddPowerUp(Type powerUpType)
     {
         Debug.Log(powerUpType.ToString());

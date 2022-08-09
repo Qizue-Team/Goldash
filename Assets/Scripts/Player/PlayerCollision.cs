@@ -7,6 +7,8 @@ using xPoke.CustomLog;
 [RequireComponent(typeof(PlayerJump))]
 public class PlayerCollision : MonoBehaviour
 {
+    public int EnemyCollisionCount { get; private set; }
+
     [Header("Tutorial")]
     [SerializeField]
     private bool isTutorial;
@@ -17,10 +19,17 @@ public class PlayerCollision : MonoBehaviour
     private PlayerJump _playerJump;
     private Vector2 _hitPoint;
     private Vector2 _hitDirection;
+    private bool _canBeHitByEnemies = true;
+
+    public void CanBeHitByEnemies(bool active) 
+    {
+        _canBeHitByEnemies = active;
+    }
 
     private void Awake()
     {
         _playerJump = GetComponent<PlayerJump>();
+        EnemyCollisionCount = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -76,7 +85,7 @@ public class PlayerCollision : MonoBehaviour
                 if(isDebugActive)
                     Debug.Break(); 
             }
-            else
+            else if(_canBeHitByEnemies)
             {
                 // Player Dead - GameOver
                 GameController.Instance.GameOver();
@@ -88,7 +97,10 @@ public class PlayerCollision : MonoBehaviour
                 StartCoroutine(COWaitForAction(0.5f, ()=> {
                     Destroy(gameObject);
                 }));
-                
+            }
+            else
+            {
+                EnemyCollisionCount++;
             }
         }
 
