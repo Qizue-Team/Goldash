@@ -155,5 +155,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   scorePoints: 0
+  color:
+    serializedVersion: 2
+    rgba: 65299
+  intensity: 8.5
   multiplier: 3
   duration: 10

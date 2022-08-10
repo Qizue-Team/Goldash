@@ -47,6 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   scorePoints: 0
+  color:
+    serializedVersion: 2
+    rgba: 16776960
+  intensity: 8.5
   numberOfJumps: 3
 --- !u!61 &2752858947318087354
 BoxCollider2D:
