@@ -5,6 +5,8 @@ using xPoke.CustomLog;
 
 public abstract class OneTimePowerUp : Spawnable
 {
+    public PowerUpData PowerUpData { get=>powerUpData; }
+
     [Header("Color settings")]
     [SerializeField]
     protected Color32 color;

@@ -5,12 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PowerUp Data", menuName = "Data/PowerUp Data")]
 public class PowerUpData : ScriptableObject
 {
+    // Avrai bisogno dei set qui
     public int ID { get => id; }
     public Sprite Icon { get => icon; }
     public int CurrentLevel { get => currentLevel; }
     public string Description { get => description; }
     public int StatAmount { get => statAmount; }
-    public bool IsAdditional { get => IsAdditional; }
+    public bool IsAdditional { get => isAdditional; }
     public float CurrentStat { get => currentStat; }
     public float NextStat { get => nextStat; }
     public string StatLabel { get => statLabel; }

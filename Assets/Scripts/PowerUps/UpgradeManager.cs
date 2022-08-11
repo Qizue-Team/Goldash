@@ -12,12 +12,19 @@ public class UpgradeManager : Singleton<UpgradeManager>
     [SerializeField]
     private Transform shopContent;
 
-    private void Start()
+    public void Upgrade(int ID)
     {
-        foreach(var powerUp in oneTimePowerUpList.powerUpList)
-        {
-            Instantiate(shopEntryPrefab, shopContent);
-        }
+        Debug.Log("Upgrade for " + ID);
+        // Upgrade/Update powerup data here
     }
 
+    private void Start()
+    {
+        foreach(OneTimePowerUp powerUp in oneTimePowerUpList.powerUpList)
+        {
+            GameObject shopEntryObj = Instantiate(shopEntryPrefab, shopContent);
+            PowerUpShopEntry shopEntry = shopEntryObj.GetComponent<PowerUpShopEntry>();
+            shopEntry.SetEntry(powerUp.PowerUpData.ID, powerUp.PowerUpData.Icon, powerUp.PowerUpData.CurrentLevel, powerUp.PowerUpData.Description, powerUp.PowerUpData.IsAdditional, powerUp.PowerUpData.NextStat, powerUp.PowerUpData.StatLabel, powerUp.PowerUpData.GearCost);
+        }
+    }
 }
