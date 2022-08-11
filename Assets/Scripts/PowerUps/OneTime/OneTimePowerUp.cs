@@ -11,6 +11,10 @@ public abstract class OneTimePowerUp : Spawnable
     [SerializeField]
     protected float intensity;
 
+    [Header("Data")]
+    [SerializeField]
+    protected PowerUpData powerUpData;
+
     protected bool _isExecuted = false; 
     protected PowerUpParticles _particle;
     protected virtual void ExecuteOnce()

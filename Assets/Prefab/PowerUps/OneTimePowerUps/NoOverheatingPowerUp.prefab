@@ -51,7 +51,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 16776960
   intensity: 8.5
-  numberOfJumps: 3
+  powerUpData: {fileID: 11400000, guid: 1b1616b3a18032548991bd8a37f190e7, type: 2}
 --- !u!61 &2752858947318087354
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class NoOverheating : OneTimePowerUp
 {
-    [Header("Power Up Settings")]
-    [SerializeField]
-    private int numberOfJumps = 3;
-
     private PlayerJump _playerJump;
     private PlayerOverheat _playerOverheat;
 
     private int _startJumpNumber = 0;
 
+    // Stat
+    private int _numberOfJumps = 3;
+
     // OnActivate once
     protected override void ExecuteOnce()
     {
         base.ExecuteOnce();
+
+        // Read CurrentStat
+        _numberOfJumps = (int)powerUpData.CurrentStat; 
+
         _playerJump = FindObjectOfType<PlayerJump>();
         _playerOverheat = FindObjectOfType<PlayerOverheat>();
 
@@ -29,7 +32,7 @@ public class NoOverheating : OneTimePowerUp
     {
         base.Activate();
         
-        if((_playerJump.JumpCount - _startJumpNumber) >= numberOfJumps)
+        if((_playerJump.JumpCount - _startJumpNumber) >= _numberOfJumps)
             Deactivate();
     }
 

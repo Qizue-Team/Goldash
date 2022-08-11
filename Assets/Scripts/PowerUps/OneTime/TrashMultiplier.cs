@@ -7,15 +7,20 @@ public class TrashMultiplier : OneTimePowerUp
     [Header("Power Up Settings")]
     [SerializeField]
     private int multiplier = 2;
-    [SerializeField]
-    private float duration = 10.0f;
 
     private PlayerCollision _playerCollision;
     private float _timer = 0.0f;
-    private bool _stop = false;
+    private bool _stop = false;    
+    
+    // Stat
+    private float _duration = 10.0f;
     protected override void ExecuteOnce()
     {
         base.ExecuteOnce();
+
+        // Read CurrentStat
+        _duration = powerUpData.CurrentStat; 
+
         _playerCollision = FindObjectOfType<PlayerCollision>();
 
         _playerCollision.SetTrashCountMultiplier(multiplier);
@@ -25,7 +30,7 @@ public class TrashMultiplier : OneTimePowerUp
     {
         base.Activate();
         _timer += Time.deltaTime;
-        if(_timer >= duration && !_stop)
+        if(_timer >= _duration && !_stop)
         {
             Deactivate();
             _stop = true;

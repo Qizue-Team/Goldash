@@ -159,5 +159,5 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 65299
   intensity: 8.5
+  powerUpData: {fileID: 11400000, guid: 993fbee244a643f4387487e36b4faa85, type: 2}
   multiplier: 3
-  duration: 10
