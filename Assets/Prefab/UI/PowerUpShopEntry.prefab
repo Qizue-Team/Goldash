@@ -1118,7 +1118,7 @@ GameObject:
   - component: {fileID: 4920185189644958431}
   - component: {fileID: 808241088755333019}
   m_Layer: 5
-  m_Name: CostText (1)
+  m_Name: StatText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'STAT: +-??'
+  m_text: 'NEXT STAT: ?? <label>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed93c0008c1eaf84aa18eb32a1d71419, type: 2}
   m_sharedMaterial: {fileID: 4162122238653314180, guid: ed93c0008c1eaf84aa18eb32a1d71419, type: 2}
