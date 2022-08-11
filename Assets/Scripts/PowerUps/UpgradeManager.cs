@@ -15,7 +15,9 @@ public class UpgradeManager : Singleton<UpgradeManager>
     public void Upgrade(int ID)
     {
         Debug.Log("Upgrade for " + ID);
-        // Upgrade/Update powerup data here
+        // TO-DO: Upgrade/Update powerup data here -> in the persistent file first
+
+        // TO-DO: Force update data with update method in the powerupdata
     }
 
     private void Start()
@@ -24,7 +26,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
         {
             GameObject shopEntryObj = Instantiate(shopEntryPrefab, shopContent);
             PowerUpShopEntry shopEntry = shopEntryObj.GetComponent<PowerUpShopEntry>();
-            shopEntry.SetEntry(powerUp.PowerUpData.ID, powerUp.PowerUpData.Icon, powerUp.PowerUpData.CurrentLevel, powerUp.PowerUpData.Description, powerUp.PowerUpData.IsAdditional, powerUp.PowerUpData.NextStat, powerUp.PowerUpData.StatLabel, powerUp.PowerUpData.GearCost);
+            shopEntry.SetEntry(powerUp.PowerUpData.ID, powerUp.PowerUpData.Icon, powerUp.PowerUpData.CurrentLevel, powerUp.PowerUpData.Description, powerUp.PowerUpData.NextStat, powerUp.PowerUpData.StatLabel, powerUp.PowerUpData.GearCost);
         }
     }
 }

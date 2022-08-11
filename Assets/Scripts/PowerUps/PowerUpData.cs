@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PowerUp Data", menuName = "Data/PowerUp Data")]
 public class PowerUpData : ScriptableObject
 {
-    // Avrai bisogno dei set qui
     public int ID { get => id; }
     public Sprite Icon { get => icon; }
     public int CurrentLevel { get => currentLevel; }
@@ -38,9 +37,9 @@ public class PowerUpData : ScriptableObject
     [SerializeField]
     private int gearCost;
 
-    // Run this in the Manager
+    // TO-DO: Run this in the Manager -> OnStart for all datas should be fine, trust me
     public void UpdateData()
     {
-        // Read from file new data based on ID, and update them
+        // TO-DO: Read from file new data based on ID, and update them
     }
 }

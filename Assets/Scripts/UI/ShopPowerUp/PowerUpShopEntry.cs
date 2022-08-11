@@ -20,7 +20,7 @@ public class PowerUpShopEntry : MonoBehaviour
     [SerializeField]
     private Button upgradeButton;
 
-    public void SetEntry(int ID, Sprite icon, int level, string description, bool isAdd, float nextStat, string label, int cost)
+    public void SetEntry(int ID, Sprite icon, int level, string description, float nextStat, string label, int cost)
     {
         imageIcon.sprite = icon;
         
@@ -28,14 +28,8 @@ public class PowerUpShopEntry : MonoBehaviour
             upgradeLevelSlider.value = 1 / level;
         
         descriptionText.text = description;
-        
-        string sign = "";
-        if (isAdd)
-            sign = "+";
-        else
-            sign = "-";
 
-        statText.text = "Next Stat: " + sign + " " + nextStat + " " + label;
+        statText.text = "Next Stat: " + nextStat + " " + label;
 
         costText.text = "Gear Cost: "+cost;
 
@@ -44,6 +38,8 @@ public class PowerUpShopEntry : MonoBehaviour
 
     private void CallUpgrade(int ID)
     {
+        // TO-DO: Remove cost if enough gears ...
+
         UpgradeManager.Instance.Upgrade(ID);
     }
 }
