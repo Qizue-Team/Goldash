@@ -15,6 +15,7 @@ public class PowerUpData : ScriptableObject
     public float NextStat { get => nextStat; }
     public string StatLabel { get => statLabel; }
     public int GearCost { get => gearCost; }
+    public int GearAddAmountCost { get => gearAddAmountCost; }
 
     [SerializeField]
     private int id;
@@ -36,6 +37,8 @@ public class PowerUpData : ScriptableObject
     private string statLabel;
     [SerializeField]
     private int gearCost;
+    [SerializeField]
+    private int gearAddAmountCost;
 
     // TO-DO: Run this in the Manager -> OnStart for all datas should be fine, trust me
     public void UpdateData()

@@ -22,3 +22,4 @@ MonoBehaviour:
   nextStat: 13
   statLabel: Seconds
   gearCost: 50
+  gearAddAmountCost: 30

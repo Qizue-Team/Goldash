@@ -20,26 +20,41 @@ public class PowerUpShopEntry : MonoBehaviour
     [SerializeField]
     private Button upgradeButton;
 
-    public void SetEntry(int ID, Sprite icon, int level, string description, float nextStat, string label, int cost)
+    private int _cost;
+
+    public void SetEntry(PowerUpData data)
     {
-        imageIcon.sprite = icon;
+        imageIcon.sprite = data.Icon;
         
-        if(level != 0)
-            upgradeLevelSlider.value = 1 / level;
+        if((int)data.CurrentLevel != 0)
+            upgradeLevelSlider.value = 1 / (int)data.CurrentLevel;
         
-        descriptionText.text = description;
+        descriptionText.text = data.Description;
 
-        statText.text = "Next Stat: " + nextStat + " " + label;
+        statText.text = "Next Stat: " + data.NextStat + " " + data.StatLabel;
 
-        costText.text = "Gear Cost: "+cost;
+        costText.text = "Gear Cost: "+data.GearCost;
+        _cost = data.GearCost;
 
-        upgradeButton.onClick.AddListener(()=>CallUpgrade(ID));
+        upgradeButton.onClick.AddListener(()=>CallUpgrade(data.ID));
     }
 
     private void CallUpgrade(int ID)
     {
-        // TO-DO: Remove cost if enough gears ...
+        int currentGears = DataManager.Instance.LoadTotalGearCount();
 
-        UpgradeManager.Instance.Upgrade(ID);
+        if (currentGears < _cost)
+            return;
+
+        currentGears -= _cost;
+        DataManager.Instance.SaveTotalGearCount(currentGears);
+        FindObjectOfType<GearText>().UpdateGearText(currentGears);
+
+        PowerUpData newData = UpgradeManager.Instance.Upgrade(ID);
+
+        if (newData == null)
+            return;
+
+        SetEntry(newData);
     }
 }
