@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   icon: {fileID: 21300000, guid: a765df27b7a958e48bd264d8504f0b6e, type: 3}
-  currentLevel: 1
+  currentLevel: 0
   description: No overheat for jumps
   statAmount: 1
   isAdditional: 1
