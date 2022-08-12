@@ -31,6 +31,13 @@ public class RunPowerUpManager : Singleton<RunPowerUpManager>
         _currentPowerUp = newPowerUp;
         CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "PowerUp " + _currentPowerUp.GetType().ToString() + " Activated");
     }
+    private void Start()
+    {
+        foreach(OneTimePowerUp powerUp in powerUpList.powerUpList)
+        {
+            powerUp.PowerUpData.UpdateData();
+        }
+    }
 
     private void Update()
     {

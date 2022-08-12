@@ -42,9 +42,20 @@ public class PowerUpData : ScriptableObject
     [SerializeField]
     private int gearAddAmountCost;
 
-    // TO-DO: Run this in the Manager -> OnStart for all datas should be fine, trust me
+    // Run this in the Managers -> OnStart for all data -> load updated data
     public void UpdateData()
     {
         // TO-DO: Read from file new data based on ID, and update them
+        List<PowerUpData> datas = DataManager.Instance.LoadPowerUpData();
+        foreach(PowerUpData data in datas)
+        {
+            if(data.id == ID)
+            {
+                CurrentLevel = data.currentLevel;
+                CurrentStat = data.CurrentStat;
+                NextStat = data.NextStat;
+                GearCost = data.GearCost;
+            }
+        }
     }
 }
