@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.IO;
+using xPoke.CustomLog;
 
 public class DataManager : Singleton<DataManager>
 {
+    private string _powerUpDataListFileName = "power-up-data.dat";
+
     public void SaveTrashCount(int count)
     {
         if(count<0)
@@ -68,5 +73,32 @@ public class DataManager : Singleton<DataManager>
     public int ReadShowTutorialFlag()
     {
         return PlayerPrefs.GetInt("ShowTutorial");
+    }
+
+    public void SavePowerUpData(List<PowerUpData> dataList)
+    {
+        // JSON Creation
+        SerializableList<PowerUpData> listObj = new SerializableList<PowerUpData>(dataList);
+        string json = JsonUtility.ToJson(listObj);
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Created: "+json);
+
+        // Save json string to file
+        if(File.Exists(@"" + _powerUpDataListFileName))
+        {
+            File.Delete(@"" + _powerUpDataListFileName);
+        }
+        StreamWriter writer = new StreamWriter(_powerUpDataListFileName);
+        writer.WriteLine(json);
+        writer.Close();
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Saved");
+    }
+
+    public List<PowerUpData> LoadPowerUpData()
+    {
+        // Read from file the json string
+        StreamReader reader = new StreamReader(_powerUpDataListFileName);
+        string json = reader.ReadToEnd();
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Read: "+json);
+        return JsonUtility.FromJson<SerializableList<PowerUpData>>(json).serializableList;
     }
 }

@@ -15,8 +15,16 @@ public class UpgradeManager : Singleton<UpgradeManager>
     public PowerUpData Upgrade(int ID)
     {
         Debug.Log("Upgrade for " + ID);
-        // TO-DO: Upgrade/Update powerup data here -> in the persistent file first
+        // TO-DO: Upgrade/Update powerup data here 
 
+        // Save persistent -> in the persistent file first
+        List<PowerUpData> datas = new List<PowerUpData>();
+        foreach (OneTimePowerUp powerUp in oneTimePowerUpList.powerUpList)
+        {
+            datas.Add(powerUp.PowerUpData);
+        }
+        DataManager.Instance.SavePowerUpData(datas);
+        
         // TO-DO: Force update data with update method in the powerupdata
         return null; // TO-DO: Return new data
     }

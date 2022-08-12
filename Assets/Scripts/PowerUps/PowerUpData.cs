@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [CreateAssetMenu(fileName = "PowerUp Data", menuName = "Data/PowerUp Data")]
+[System.Serializable]
 public class PowerUpData : ScriptableObject
 {
     public int ID { get => id; }
