@@ -52,7 +52,6 @@ public class PowerUpData : ScriptableObject
         {
             if(data.ID == ID)
             {
-                Debug.Log("Updating ID " + ID + " READ CURRENT LEVEL: " + data.CurrentLevel);
                 CurrentLevel = data.CurrentLevel;
                 CurrentStat = data.CurrentStat;
                 NextStat = data.NextStat;
