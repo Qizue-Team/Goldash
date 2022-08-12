@@ -21,5 +21,5 @@ MonoBehaviour:
   currentStat: 3
   nextStat: 4
   statLabel: Jumps
-  gearCost: 0
-  gearAddAmountCost: 0
+  gearCost: 10
+  gearAddAmountCost: 10
