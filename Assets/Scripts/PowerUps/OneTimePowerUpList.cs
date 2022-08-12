@@ -19,4 +19,14 @@ public class OneTimePowerUpList : ScriptableObject
         }
         return null;
     }
+
+    public OneTimePowerUp GetPowerUpByID(int ID)
+    {
+        foreach(OneTimePowerUp powerUp in powerUpList)
+        {
+            if (ID == powerUp.PowerUpData.ID)
+                return powerUp;
+        }
+        return null;
+    }
 }
