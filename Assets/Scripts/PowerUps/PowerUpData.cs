@@ -45,12 +45,16 @@ public class PowerUpData : ScriptableObject
     // Run this in the Managers -> OnStart for all data -> load updated data
     public void UpdateData()
     {
-        // TO-DO: Read from file new data based on ID, and update them
+        // Read from file new data based on ID, and update them
         List<PowerUpData> datas = DataManager.Instance.LoadPowerUpData();
+        if (datas == null)
+            return;
         foreach(PowerUpData data in datas)
         {
             if(data.id == ID)
             {
+                Debug.Log("Updating ID " + ID + " READ CURRENT LEVEL: " + data.currentLevel);
+                FindObjectOfType<DebugText>().tmpro.text += "Updating ID " + ID + " READ CURRENT LEVEL: " + data.currentLevel+" "+data.currentStat+" //// ";
                 CurrentLevel = data.currentLevel;
                 CurrentStat = data.CurrentStat;
                 NextStat = data.NextStat;

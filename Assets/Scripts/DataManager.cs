@@ -7,7 +7,7 @@ using xPoke.CustomLog;
 
 public class DataManager : Singleton<DataManager>
 {
-    private string _powerUpDataListFileName = "power-up-data.dat";
+    private string _powerUpDataListFileName = "/power-up-data.dat";
 
     public void SaveTrashCount(int count)
     {
@@ -79,15 +79,15 @@ public class DataManager : Singleton<DataManager>
     {
         // JSON Creation
         SerializableList<PowerUpData> listObj = new SerializableList<PowerUpData>(dataList);
-        string json = JsonUtility.ToJson(listObj);
+        string json = JsonUtility.ToJson(listObj.serializableList);
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Created: "+json);
 
         // Save json string to file
-        if(File.Exists(@"" + _powerUpDataListFileName))
+        if(File.Exists(@"" + Application.persistentDataPath + _powerUpDataListFileName))
         {
-            File.Delete(@"" + _powerUpDataListFileName);
+            File.Delete(@""+ Application.persistentDataPath + _powerUpDataListFileName);
         }
-        StreamWriter writer = new StreamWriter(_powerUpDataListFileName);
+        StreamWriter writer = new StreamWriter(Application.persistentDataPath + _powerUpDataListFileName);
         writer.WriteLine(json);
         writer.Close();
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Saved");
@@ -96,9 +96,12 @@ public class DataManager : Singleton<DataManager>
     public List<PowerUpData> LoadPowerUpData()
     {
         // Read from file the json string
-        StreamReader reader = new StreamReader(_powerUpDataListFileName);
+        if (!File.Exists(@""+ Application.persistentDataPath + _powerUpDataListFileName))
+            return null;
+        StreamReader reader = new StreamReader(Application.persistentDataPath + _powerUpDataListFileName);
         string json = reader.ReadToEnd();
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Read: "+json);
-        return JsonUtility.FromJson<SerializableList<PowerUpData>>(json).serializableList;
+        reader.Close();
+        return JsonUtility.FromJson<List<PowerUpData>>(json);
     }
 }
