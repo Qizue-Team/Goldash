@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Prototype.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/ShopPowerUps.unity
+    guid: 9eb7d0c16d227ea41b6b1ddfee78da91
   m_configObjects: {}
