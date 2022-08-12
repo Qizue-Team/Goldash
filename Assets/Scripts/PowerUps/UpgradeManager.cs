@@ -34,13 +34,30 @@ public class UpgradeManager : Singleton<UpgradeManager>
         currentData.GearCost += currentData.GearAddAmountCost;
 
         // Save persistently data first
-        List<PowerUpData> datas = new List<PowerUpData>();
+        List<SerializablePowerUpData> datas = new List<SerializablePowerUpData>();
+        int index = 0;
         foreach (OneTimePowerUp powerUp in oneTimePowerUpList.powerUpList)
         {
             if(powerUp.PowerUpData.ID == ID)
-                datas.Add(currentData);
+            {
+                datas.Add(new SerializablePowerUpData());
+                datas[index].ID = ID;
+                datas[index].CurrentLevel = currentData.CurrentLevel;
+                datas[index].CurrentStat = currentData.CurrentStat;
+                datas[index].NextStat = currentData.NextStat;
+                datas[index].GearCost = currentData.GearCost;
+            }
             else
-                datas.Add(powerUp.PowerUpData);
+            {
+                datas.Add(new SerializablePowerUpData());
+                datas[index].ID = powerUp.PowerUpData.ID;
+                datas[index].CurrentLevel = powerUp.PowerUpData.CurrentLevel;
+                datas[index].CurrentStat = powerUp.PowerUpData.CurrentStat;
+                datas[index].NextStat = powerUp.PowerUpData.NextStat;
+                datas[index].GearCost = powerUp.PowerUpData.GearCost;
+            }
+                
+            index++;
         }
         DataManager.Instance.SavePowerUpData(datas);
 

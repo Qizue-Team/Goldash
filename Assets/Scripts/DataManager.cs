@@ -75,11 +75,11 @@ public class DataManager : Singleton<DataManager>
         return PlayerPrefs.GetInt("ShowTutorial");
     }
 
-    public void SavePowerUpData(List<PowerUpData> dataList)
+    public void SavePowerUpData(List<SerializablePowerUpData> dataList)
     {
         // JSON Creation
-        SerializableList<PowerUpData> listObj = new SerializableList<PowerUpData>(dataList);
-        string json = JsonUtility.ToJson(listObj.serializableList);
+        SerializableList<SerializablePowerUpData> listObj = new SerializableList<SerializablePowerUpData>(dataList);
+        string json = JsonUtility.ToJson(listObj);
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Created: "+json);
 
         // Save json string to file
@@ -93,7 +93,7 @@ public class DataManager : Singleton<DataManager>
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Saved");
     }
 
-    public List<PowerUpData> LoadPowerUpData()
+    public List<SerializablePowerUpData> LoadPowerUpData()
     {
         // Read from file the json string
         if (!File.Exists(@""+ Application.persistentDataPath + _powerUpDataListFileName))
@@ -102,6 +102,16 @@ public class DataManager : Singleton<DataManager>
         string json = reader.ReadToEnd();
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Read: "+json);
         reader.Close();
-        return JsonUtility.FromJson<List<PowerUpData>>(json);
+        return JsonUtility.FromJson<SerializableList<SerializablePowerUpData>>(json).serializableList;
     }
+}
+
+[System.Serializable]
+public class SerializablePowerUpData
+{
+    public int ID;
+    public int CurrentLevel;
+    public float CurrentStat;
+    public float NextStat;
+    public int GearCost;
 }

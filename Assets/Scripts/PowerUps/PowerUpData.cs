@@ -4,7 +4,6 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "PowerUp Data", menuName = "Data/PowerUp Data")]
-[System.Serializable]
 public class PowerUpData : ScriptableObject
 {
     public int ID { get => id; set => id = value; }
@@ -46,16 +45,15 @@ public class PowerUpData : ScriptableObject
     public void UpdateData()
     {
         // Read from file new data based on ID, and update them
-        List<PowerUpData> datas = DataManager.Instance.LoadPowerUpData();
+        List<SerializablePowerUpData> datas = DataManager.Instance.LoadPowerUpData();
         if (datas == null)
             return;
-        foreach(PowerUpData data in datas)
+        foreach(SerializablePowerUpData data in datas)
         {
-            if(data.id == ID)
+            if(data.ID == ID)
             {
-                Debug.Log("Updating ID " + ID + " READ CURRENT LEVEL: " + data.currentLevel);
-                FindObjectOfType<DebugText>().tmpro.text += "Updating ID " + ID + " READ CURRENT LEVEL: " + data.currentLevel+" "+data.currentStat+" //// ";
-                CurrentLevel = data.currentLevel;
+                Debug.Log("Updating ID " + ID + " READ CURRENT LEVEL: " + data.CurrentLevel);
+                CurrentLevel = data.CurrentLevel;
                 CurrentStat = data.CurrentStat;
                 NextStat = data.NextStat;
                 GearCost = data.GearCost;
