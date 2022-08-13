@@ -33,30 +33,42 @@ public class PlayerOverheat : MonoBehaviour
     private bool _isSlowedDown = false;
     private TerrainTileSpawner _terrainTileSpawner;
 
-    private bool _isActive = true;
+    private bool _isIncreaseActive = true;
+    private bool _isDecreaseActive = true;
 
     public void SetActiveOverheating(bool active)
     {
-        _isActive = active;
+        _isIncreaseActive = active;
+        _isDecreaseActive = active;
+    }
+
+    public void SetActiveIncreaseOverheating(bool active)
+    {
+        _isIncreaseActive = active;
+    }
+
+    public void SetActiveDecreaseOverheating(bool active)
+    {
+        _isDecreaseActive = active;
     }
 
     public void IncreaseHeat()
     {
-        if (!_isActive)
+        if (!_isIncreaseActive)
             return;
         IncreaseHeat(heatIncreaseAmount);
     }
 
     public void DecreaseHeat()
     {
-        if (!_isActive)
+        if (!_isDecreaseActive)
             return;
         DecreaseHeat(heatDecreaseAmount);
     }
 
     public void IncreaseHeat(float amount)
     {
-        if (!_isActive)
+        if (!_isIncreaseActive)
             return;
 
         if (amount < 0 || amount > 1)

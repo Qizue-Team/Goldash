@@ -23,7 +23,7 @@ public class NoOverheating : OneTimePowerUp
         _playerJump = FindObjectOfType<PlayerJump>();
         _playerOverheat = FindObjectOfType<PlayerOverheat>();
 
-        _playerOverheat.SetActiveOverheating(false);
+        _playerOverheat.SetActiveIncreaseOverheating(false);
         _startJumpNumber = _playerJump.JumpCount;
     }
 
@@ -39,7 +39,7 @@ public class NoOverheating : OneTimePowerUp
     // On Destroy / Deactivation
     public override void Deactivate()
     {
-        _playerOverheat.SetActiveOverheating(true);
+        _playerOverheat.SetActiveIncreaseOverheating(true);
         base.Deactivate();
     }
 }

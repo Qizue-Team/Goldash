@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6769ee30a0817c24582cccf3ad926239, type: 3}
   m_Name: PowerUpSet
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 2
   objects:
   - {fileID: 1775702237588210376, guid: 2f6ae23376ff4654690eba72dc13a876, type: 3}
   - {fileID: 2752858947318087353, guid: a2d5a16aaeb4b2a4e96b70104d11705c, type: 3}
