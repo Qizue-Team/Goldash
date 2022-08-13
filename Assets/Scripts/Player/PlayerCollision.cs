@@ -107,8 +107,9 @@ public class PlayerCollision : MonoBehaviour
                     Destroy(gameObject);
                 }));
             }
-            else
+            else // If invuln power up is active
             {
+                enemy.Die();
                 EnemyCollisionCount++;
             }
         }
