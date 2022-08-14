@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5785089981578375958}
   - component: {fileID: 2667315561529170426}
   m_Layer: 0
-  m_Name: FloatingRobot
+  m_Name: FloatingStaticRobot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

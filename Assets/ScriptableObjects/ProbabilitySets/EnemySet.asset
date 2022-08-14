@@ -15,4 +15,5 @@ MonoBehaviour:
   weight: 8
   objects:
   - {fileID: 5785089981578375958, guid: c252a3a8b9b61b9499cc0e65437a720f, type: 3}
+  - {fileID: 2773642590110787767, guid: 2b456dec52b1c3746bf05c096a1f9ff8, type: 3}
   setType: 1
