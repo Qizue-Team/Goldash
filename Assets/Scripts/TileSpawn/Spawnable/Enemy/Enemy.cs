@@ -18,12 +18,17 @@ public class Enemy : Spawnable
         _isDying = true;
     }
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         _animator = GetComponent<Animator>();
     }
 
-    protected void Update()
+    protected virtual void Start()
+    {
+
+    }
+
+    protected virtual void Update()
     {
         if (_isDying)
         {
