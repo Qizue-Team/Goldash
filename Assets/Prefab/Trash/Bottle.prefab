@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ce386d41e0b314c824da99b83cd814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 4
+  weight: 9
   scorePoints: 20
   trashName: Bottle
   gearDrop: 2
