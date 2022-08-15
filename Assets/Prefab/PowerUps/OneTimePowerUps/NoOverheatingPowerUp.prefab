@@ -49,7 +49,7 @@ MonoBehaviour:
   scorePoints: 0
   color:
     serializedVersion: 2
-    rgba: 16776960
+    rgba: 15728384
   intensity: 8.5
   powerUpData: {fileID: 11400000, guid: 1b1616b3a18032548991bd8a37f190e7, type: 2}
 --- !u!61 &2752858947318087354
@@ -149,7 +149,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a765df27b7a958e48bd264d8504f0b6e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80f6313084fee5f4aba037d5a8f0d3e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
