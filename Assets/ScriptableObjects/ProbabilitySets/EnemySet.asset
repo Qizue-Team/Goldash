@@ -16,4 +16,5 @@ MonoBehaviour:
   objects:
   - {fileID: 5785089981578375958, guid: c252a3a8b9b61b9499cc0e65437a720f, type: 3}
   - {fileID: 7435784495353252385, guid: 2b456dec52b1c3746bf05c096a1f9ff8, type: 3}
+  - {fileID: 9008048069848467615, guid: 0dce7cd2be16555428a48a3b963d6b0d, type: 3}
   setType: 1

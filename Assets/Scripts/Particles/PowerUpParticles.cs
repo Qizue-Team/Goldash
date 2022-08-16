@@ -23,6 +23,8 @@ public class PowerUpParticles : MonoBehaviour
 
     public void DisableParticle()
     {
+        if (particleLeft == null || particleRight == null)
+            return;
         particleLeft.SetActive(false);
         particleRight.SetActive(false);
     }
