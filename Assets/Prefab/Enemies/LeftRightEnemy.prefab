@@ -94,6 +94,13 @@ MonoBehaviour:
   weight: 2
   scorePoints: 25
   fallingSpeed: 2.7
+  movementUnits: 3
+  movementSpeed: 2
+  raycastLength: 1
+  spriteRenderer: {fileID: 9008048070052470640}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &9008048070052470646
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +171,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -7975113843939106252, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
