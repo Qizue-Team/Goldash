@@ -55,6 +55,12 @@ public class LeftRightEnemy : Enemy
                     if (enemy != this)
                         InvertMovingDirection();
                 }
+                Trash trash = null;
+                if (hit.collider.gameObject.TryGetComponent(out trash))
+                {
+                    scorePoints += trash.ScorePoints;
+                    trash.gameObject.GetComponentInParent<TerrainTile>().DestroySpawnedObject();
+                }
             }
         }
 
