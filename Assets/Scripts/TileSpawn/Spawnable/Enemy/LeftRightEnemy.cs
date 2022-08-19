@@ -41,10 +41,8 @@ public class LeftRightEnemy : Enemy
             return;
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, movingDirection, raycastLength);
-
         Vector3 raycastDirection = transform.TransformDirection(movingDirection) * raycastLength;
         Debug.DrawRay(transform.position, raycastDirection, Color.red);
-
         foreach(RaycastHit2D hit in hits)
         {
             if (hit.collider != null)
@@ -65,13 +63,20 @@ public class LeftRightEnemy : Enemy
         }
 
         RaycastHit2D groundHit = Physics2D.Raycast(transform.position, Vector3.down, 0.7f, groundLayer);
-
         raycastDirection = transform.TransformDirection(Vector3.down) * 0.7f;
         Debug.DrawRay(transform.position, raycastDirection, Color.green);
-
         if (groundHit.collider == null)
             InvertMovingDirection();
 
+        RaycastHit2D leftEdge = Physics2D.Raycast((transform.position + new Vector3(-0.6f,0.0f,0.0f)), Vector3.down, 0.7f, groundLayer);
+        RaycastHit2D rightEdge = Physics2D.Raycast((transform.position + new Vector3(0.6f, 0.0f, 0.0f)), Vector3.down, 0.7f, groundLayer);
+        raycastDirection = transform.TransformDirection(Vector3.down) * 0.7f;
+        Debug.DrawRay(transform.position + new Vector3(-0.6f, 0.0f, 0.0f), raycastDirection, Color.blue);
+        Debug.DrawRay(transform.position + new Vector3(0.6f, 0.0f, 0.0f), raycastDirection, Color.blue);
+        if (leftEdge.collider != null && leftEdge.collider.gameObject.tag.Equals("LeftEdge"))
+            InvertMovingDirection();
+        if (rightEdge.collider != null && rightEdge.collider.gameObject.tag.Equals("RightEdge"))
+            InvertMovingDirection();
         Move();
     }
 

@@ -123,6 +123,8 @@ public class TerrainTile : MonoBehaviour
         // Destroy Trash if any
         DestroySpawnedObject();
 
+        this.gameObject.tag = "Untagged";
+
         // Destroy / ReturnToPool
         TerrainTilePool.Instance.ReturnToPool(this);
 
