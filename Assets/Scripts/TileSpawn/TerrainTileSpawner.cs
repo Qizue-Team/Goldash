@@ -129,7 +129,7 @@ public class TerrainTileSpawner : Spawner
         LastTileSpawned = tileObj;
     }
 
-    public void Spawn(Sprite sprite, bool isColliderActive = true, bool shouldSpawnObject = true)
+    public GameObject Spawn(Sprite sprite, bool isColliderActive = true, bool shouldSpawnObject = true)
     {
         var tileObj = TerrainTilePool.Instance.Get();
         TerrainTile tile = tileObj.GetComponent<TerrainTile>();
@@ -156,6 +156,8 @@ public class TerrainTileSpawner : Spawner
 
         tileObj.gameObject.SetActive(true);
         LastTileSpawned = tileObj;
+
+        return tileObj.gameObject;
     }
 
     public void SpeedUp(float multiplier)
@@ -249,12 +251,14 @@ public class TerrainTileSpawner : Spawner
         else if(_holeIndex == 1)
         {
             // Spawn Right Edge
-            Spawn(tileSet.GetRightEdge(),true,false);
+            GameObject tileObj = Spawn(tileSet.GetRightEdge(),true,false);
+            tileObj.tag = "RightEdge";
         }
         else if(_holeIndex == totalLength - 1)
         {
             // Spawn Left Edge
-            Spawn(tileSet.GetLeftEdge(),true,false);
+            GameObject tileObj = Spawn(tileSet.GetLeftEdge(),true,false);
+            tileObj.tag = "LeftEdge";
             // Finished
             _currentHoleLength = 0;
             _spawnHole = false;

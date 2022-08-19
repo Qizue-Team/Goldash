@@ -170,13 +170,15 @@ public class PlatformSpawner : Spawner
         if(_platformIndex == 0)
         {
             // Spawn Left Edge
-            TileSpawn(new Vector3(RIGHT_MOST_X_TERRAIN_VALUE, yHeight, 0.0f), tileSet.GetLeftEdge(),true,false);
+            GameObject tileObj = TileSpawn(new Vector3(RIGHT_MOST_X_TERRAIN_VALUE, yHeight, 0.0f), tileSet.GetLeftEdge(),true,false);
+            tileObj.tag = "LeftEdge";
         }
         else if(_platformIndex == totalLength - 1)
         {
             // Spawn Right Edge
-            TileSpawn(new Vector3(RIGHT_MOST_X_TERRAIN_VALUE, yHeight, 0.0f), tileSet.GetRightEdge());
-           
+            GameObject tileObj = TileSpawn(new Vector3(RIGHT_MOST_X_TERRAIN_VALUE, yHeight, 0.0f), tileSet.GetRightEdge());
+            tileObj.tag = "RightEdge";
+
             // Finish
             _currentPlatformLength = 0;
             _spawnPlatform = false;
@@ -193,7 +195,7 @@ public class PlatformSpawner : Spawner
         _platformIndex++;
     }
 
-    private void TileSpawn(Vector3 position, Sprite sprite, bool isColliderActive = true, bool shouldSpawnObject = true)
+    private GameObject TileSpawn(Vector3 position, Sprite sprite, bool isColliderActive = true, bool shouldSpawnObject = true)
     {
         var tileObj = TerrainTilePool.Instance.Get();
         TerrainTile tile = tileObj.GetComponent<TerrainTile>();
@@ -219,6 +221,8 @@ public class PlatformSpawner : Spawner
         tile.SetSprite(sprite);
 
         tileObj.gameObject.SetActive(true);
+
+        return tileObj.gameObject;
     }
 
     private void CheckSpawnPlatform()

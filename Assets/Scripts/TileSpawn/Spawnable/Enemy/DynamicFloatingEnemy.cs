@@ -36,15 +36,27 @@ public class DynamicFloatingEnemy : Enemy
         if (!_canFloat)
             return;
 
-        transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(transform.localPosition.y, _destinationY, Time.deltaTime * floatingSpeed) ,transform.localPosition.z);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector3.up, 1.0f);
+        foreach(RaycastHit2D hit in hits)
+        {
+            if (hit.collider != null && hit.collider.gameObject.tag.Equals("LeftEdge"))
+            {
+                StopAllCoroutines();
+                _canFloat = false;
+                return;
+            }
+        }
+
+        transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(transform.localPosition.y, _destinationY, Time.deltaTime * floatingSpeed), transform.localPosition.z);
         if (transform.localPosition.y >= MAX_Y - 0.1f)
         {
             _destinationY = MIN_Y;
         }
-        else if(transform.localPosition.y <= MIN_Y + 0.1f)
+        else if (transform.localPosition.y <= MIN_Y + 0.1f)
         {
             _destinationY = MAX_Y;
         }
+
     }
 
     private IEnumerator COWaitBeforeFloating(float waitTime)
