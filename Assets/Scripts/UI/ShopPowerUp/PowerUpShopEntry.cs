@@ -47,8 +47,8 @@ public class PowerUpShopEntry : MonoBehaviour
 
         statText.text = "Next Stat: " + data.NextStat + " " + data.StatLabel;
 
-        costText.text = "Gear Cost: "+data.GearCost;
-        _cost = data.GearCost;
+        costText.text = "Gear Cost: "+data.CurrentGearCost;
+        _cost = data.CurrentGearCost;
 
         if (!_addOnce)
         {

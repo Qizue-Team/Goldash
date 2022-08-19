@@ -31,7 +31,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
             currentData.CurrentStat -= currentData.StatAmount;
             currentData.NextStat = currentData.CurrentStat - currentData.StatAmount;
         }
-        currentData.GearCost += currentData.GearAddAmountCost;
+        currentData.CurrentGearCost = (int)CalculateNextCost(currentData.GearBaseCost, currentData.CostGrowthFactor, currentData.TimeStep, currentData.CurrentLevel);
 
         // Save persistently data first
         List<SerializablePowerUpData> datas = new List<SerializablePowerUpData>();
@@ -45,7 +45,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
                 datas[index].CurrentLevel = currentData.CurrentLevel;
                 datas[index].CurrentStat = currentData.CurrentStat;
                 datas[index].NextStat = currentData.NextStat;
-                datas[index].GearCost = currentData.GearCost;
+                datas[index].GearCost = currentData.CurrentGearCost;
             }
             else
             {
@@ -54,7 +54,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
                 datas[index].CurrentLevel = powerUp.PowerUpData.CurrentLevel;
                 datas[index].CurrentStat = powerUp.PowerUpData.CurrentStat;
                 datas[index].NextStat = powerUp.PowerUpData.NextStat;
-                datas[index].GearCost = powerUp.PowerUpData.GearCost;
+                datas[index].GearCost = powerUp.PowerUpData.CurrentGearCost;
             }
                 
             index++;
@@ -76,5 +76,14 @@ public class UpgradeManager : Singleton<UpgradeManager>
             PowerUpShopEntry shopEntry = shopEntryObj.GetComponent<PowerUpShopEntry>();
             shopEntry.SetEntry(powerUp.PowerUpData);
         }
+    }
+
+    private static float CalculateNextCost(float baseCost, float growthFactor, float timeRequired, int currentLevel)
+    {
+        if (growthFactor < 0)
+            Debug.LogError("[UpgradeManager CalculateNextCost]: Growth Factor cannot be < 0");
+
+        float cost = baseCost * Mathf.Pow(growthFactor, (currentLevel / timeRequired));
+        return cost;
     }
 }

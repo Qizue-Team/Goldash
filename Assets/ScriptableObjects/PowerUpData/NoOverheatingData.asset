@@ -16,10 +16,12 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 80f6313084fee5f4aba037d5a8f0d3e9, type: 3}
   currentLevel: 0
   description: No overheat for jumps
-  statAmount: 1
   isAdditional: 1
   currentStat: 3
+  statAmount: 1
   nextStat: 4
   statLabel: Jumps
-  gearCost: 10
-  gearAddAmountCost: 10
+  gearBaseCost: 10
+  costGrowthFactor: 2
+  timeStep: 3
+  currentGearCost: 10

@@ -15,9 +15,12 @@ public class PowerUpData : ScriptableObject
     public float CurrentStat { get => currentStat; set => currentStat = value;  }
     public float NextStat { get => nextStat; set => nextStat = value;  }
     public string StatLabel { get => statLabel; set => statLabel = value; }
-    public int GearCost { get => gearCost; set => gearCost = value; }
-    public int GearAddAmountCost { get => gearAddAmountCost; set => gearAddAmountCost = value; }
+    public int CurrentGearCost { get => currentGearCost; set => currentGearCost = value; }
+    public int CostGrowthFactor { get => costGrowthFactor; set => costGrowthFactor = value; }
+    public int TimeStep { get => timeStep; set => timeStep = value; }
+    public int GearBaseCost { get => gearBaseCost; set => gearBaseCost = value; }
 
+    [Header("Data: General")]
     [SerializeField]
     private int id;
     [SerializeField]
@@ -26,20 +29,26 @@ public class PowerUpData : ScriptableObject
     private int currentLevel;
     [SerializeField]
     private string description;
-    [SerializeField]
-    private int statAmount;
+    [Header("Data: Stats")]
     [SerializeField]
     private bool isAdditional;
     [SerializeField]
     private float currentStat;
     [SerializeField]
+    private int statAmount;
+    [SerializeField]
     private float nextStat;
     [SerializeField]
     private string statLabel;
+    [Header("Data: Cost")]
     [SerializeField]
-    private int gearCost;
+    private int gearBaseCost;
     [SerializeField]
-    private int gearAddAmountCost;
+    private int costGrowthFactor;
+    [SerializeField]
+    private int timeStep;
+    [SerializeField]
+    private int currentGearCost;
 
     // Run this in the Managers -> OnStart for all data -> load updated data
     public void UpdateData()
@@ -55,7 +64,7 @@ public class PowerUpData : ScriptableObject
                 CurrentLevel = data.CurrentLevel;
                 CurrentStat = data.CurrentStat;
                 NextStat = data.NextStat;
-                GearCost = data.GearCost;
+                CurrentGearCost = data.GearCost;
             }
         }
     }
