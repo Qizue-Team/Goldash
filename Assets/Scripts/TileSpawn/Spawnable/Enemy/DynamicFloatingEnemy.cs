@@ -36,14 +36,29 @@ public class DynamicFloatingEnemy : Enemy
         if (!_canFloat)
             return;
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector3.up, 1.0f);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector3.up, 1.3f);
+
+        Vector3 raycastDirection = transform.TransformDirection(Vector3.up) * 1.3f;
+        Debug.DrawRay(transform.position, raycastDirection, Color.red);
+
         foreach(RaycastHit2D hit in hits)
         {
+            Enemy enemy = null;
             if (hit.collider != null && hit.collider.gameObject.tag.Equals("LeftEdge"))
             {
                 StopAllCoroutines();
                 _canFloat = false;
                 return;
+            }
+            if (hit.collider.TryGetComponent(out enemy))
+            {
+                if(enemy!=null && enemy != this)
+                {
+
+                    StopAllCoroutines();
+                    _canFloat = false;
+                    return;
+                }
             }
         }
 
