@@ -145,9 +145,8 @@ public class TerrainTileSpawner : Spawner
         else
         {
             tileObj.GetComponent<BoxCollider2D>().enabled = true;
-            if(shouldSpawnObject)
+            if (shouldSpawnObject)
                 tile.SpawnSpawnableObject();
-            
         }
 
         tile.SetSpeed(tileSpeed);
@@ -363,4 +362,17 @@ public class TerrainTileSpawner : Spawner
         }
     }
 
+    private bool IsDynamicEnemy(GameObject spawnedObj)
+    {
+        if (spawnedObj == null)
+            return;
+
+        DynamicFloatingEnemy floatingEnemy = null;
+        LeftRightEnemy leftRightEnemy = null;
+
+        if (spawnedObj.TryGetComponent(out floatingEnemy) || spawnedObj.TryGetComponent(out leftRightEnemy))
+            return true;
+
+        return false;
+    }
 }

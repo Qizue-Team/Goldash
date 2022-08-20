@@ -16,7 +16,7 @@ public class TerrainTile : MonoBehaviour
 
     private GameObject _spawnedObject;
 
-    public void SpawnSpawnableObject(bool isPlatform = false)
+    public GameObject SpawnSpawnableObject(bool isPlatform = false)
     {
         GameObject spawnableObj = setsManager.GetRandomObject(isPlatform);
         if (spawnableObj!=null)
@@ -27,6 +27,21 @@ public class TerrainTile : MonoBehaviour
         {
             _spawnedObject = null;
         }
+        return _spawnedObject;
+    }
+
+    public GameObject SpawnSpawnableObjectNoEnemy(bool isPlatform = false)
+    {
+        GameObject spawnableObj = setsManager.GetRandomObjectNoEnemy(isPlatform);
+        if (spawnableObj != null)
+        {
+            _spawnedObject = Instantiate(spawnableObj, transform);
+        }
+        else
+        {
+            _spawnedObject = null;
+        }
+        return _spawnedObject;
     }
 
     public void DestroySpawnedObject()
