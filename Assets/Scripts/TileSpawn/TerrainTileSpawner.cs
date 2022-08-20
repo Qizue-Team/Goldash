@@ -47,6 +47,10 @@ public class TerrainTileSpawner : Spawner
     [SerializeField]
     private int maxHoleLength = 3;
 
+    [Header("Enemies Settings")]
+    [SerializeField]
+    private int enemiesDistance = 4;
+
     [Header("Score Settings")]
     [SerializeField]
     private int scoreAmount = 5;
@@ -62,11 +66,14 @@ public class TerrainTileSpawner : Spawner
     private float _holeTimer = 0.0f;
     private int _currentHoleLength = 0;
 
+    private int _currentDistanceTileCount = 0;
+
     private bool _stop = false;
 
     #region PUBLIC_METHODS_REGION
     public override void Spawn()
     {
+        _currentDistanceTileCount++;
         var tileObj = TerrainTilePool.Instance.Get();
         tileObj.transform.position = transform.position;
 
@@ -88,6 +95,7 @@ public class TerrainTileSpawner : Spawner
 
     public void Spawn(bool shouldSpawnObject = true)
     {
+        _currentDistanceTileCount++;
         var tileObj = TerrainTilePool.Instance.Get();
         tileObj.transform.position = transform.position;
 
@@ -101,15 +109,29 @@ public class TerrainTileSpawner : Spawner
         tile.SetDestroyTime(tileLifeTime);
         tile.SetSprite(tileSet.GetRandomSprite());
 
-        if(shouldSpawnObject)
-            tile.SpawnSpawnableObject();
+        if (shouldSpawnObject)
+        {
+            if (_currentDistanceTileCount >= enemiesDistance)
+            {
+                GameObject spawnedObj = tile.SpawnSpawnableObject();
+                if (IsDynamicEnemy(spawnedObj))
+                {
+                    _currentDistanceTileCount = 0;
+                }
+            }
+            else
+            {
+                tile.SpawnSpawnableObjectNoEnemy();
+            }
+        }
 
         tileObj.gameObject.SetActive(true);
         LastTileSpawned = tileObj;
     }
 
-    public void Spawn(Vector3 position, bool shoudlSpawnObject = true)
+    public void Spawn(Vector3 position, bool shouldSpawnObject = true)
     {
+        _currentDistanceTileCount++;
         var tileObj = TerrainTilePool.Instance.Get();
         tileObj.transform.position = position;
 
@@ -122,8 +144,21 @@ public class TerrainTileSpawner : Spawner
         tile.SetDestroyTime(tileLifeTime);
         tile.SetSprite(tileSet.GetRandomSprite());
 
-        if(shoudlSpawnObject)
-            tile.SpawnSpawnableObject();
+        if (shouldSpawnObject)
+        {
+            if (_currentDistanceTileCount >= enemiesDistance)
+            {
+                GameObject spawnedObj = tile.SpawnSpawnableObject();
+                if (IsDynamicEnemy(spawnedObj))
+                {
+                    _currentDistanceTileCount = 0;
+                }
+            }
+            else
+            {
+                tile.SpawnSpawnableObjectNoEnemy();
+            }
+        }
 
         tileObj.gameObject.SetActive(true);
         LastTileSpawned = tileObj;
@@ -131,6 +166,7 @@ public class TerrainTileSpawner : Spawner
 
     public GameObject Spawn(Sprite sprite, bool isColliderActive = true, bool shouldSpawnObject = true)
     {
+        _currentDistanceTileCount++;
         var tileObj = TerrainTilePool.Instance.Get();
         TerrainTile tile = tileObj.GetComponent<TerrainTile>();
 
@@ -147,10 +183,19 @@ public class TerrainTileSpawner : Spawner
             tileObj.GetComponent<BoxCollider2D>().enabled = true;
             if (shouldSpawnObject)
             {
-                GameObject spawnedObj = tile.SpawnSpawnableObject();
-               
+                if (_currentDistanceTileCount >= enemiesDistance)
+                {
+                    GameObject spawnedObj = tile.SpawnSpawnableObject();
+                    if (IsDynamicEnemy(spawnedObj))
+                    {
+                        _currentDistanceTileCount = 0;
+                    }
+                }
+                else
+                {
+                    tile.SpawnSpawnableObjectNoEnemy();
+                }
             }
-                
         }
 
         tile.SetSpeed(tileSpeed);
@@ -249,6 +294,7 @@ public class TerrainTileSpawner : Spawner
         int totalLength = _currentHoleLength + 3;
         if(_holeIndex == 0)
         {
+            _currentDistanceTileCount++;
             Spawn(false);
         }
         else if(_holeIndex == 1)
@@ -256,12 +302,15 @@ public class TerrainTileSpawner : Spawner
             // Spawn Right Edge
             GameObject tileObj = Spawn(tileSet.GetRightEdge(),true,false);
             tileObj.tag = "RightEdge";
+            _currentDistanceTileCount++;
+
         }
         else if(_holeIndex == totalLength - 1)
         {
             // Spawn Left Edge
             GameObject tileObj = Spawn(tileSet.GetLeftEdge(),true,false);
             tileObj.tag = "LeftEdge";
+            _currentDistanceTileCount++;
             // Finished
             _currentHoleLength = 0;
             _spawnHole = false;
@@ -317,6 +366,7 @@ public class TerrainTileSpawner : Spawner
             CheckSpawnHoles();
 
         _distance += tileSpeed * Time.deltaTime;
+
         if(_distance >= tileWidth)
         {
             if (!isTutorial)
@@ -329,7 +379,10 @@ public class TerrainTileSpawner : Spawner
                 if(!isTutorial)
                     Spawn();
                 else
-                    Spawn(transform.position,false);
+                {
+                    Spawn(transform.position, false);
+                }
+                    
             }
             else
                 SpawnHole();

@@ -41,6 +41,9 @@ public class PlatformSpawner : Spawner
     private int minPlatformLength = 1;
     [SerializeField]
     private int maxPlatformLength = 3;
+    [Header("Enemies Settings")]
+    [SerializeField]
+    private int enemiesDistance = 4;
 
     private bool _spawnPlatform = false;
     private bool _isWaitingForPlatform = false;
@@ -53,6 +56,8 @@ public class PlatformSpawner : Spawner
 
     private bool _isBuildingStairs = false;
     private int _currentStairLevel = 1;
+
+    private int _currentDistanceTileCount = 0;
 
     private bool _stop = false;
 
@@ -119,6 +124,8 @@ public class PlatformSpawner : Spawner
     {
         if (_stop)
             return;
+
+        Debug.Log(_currentDistanceTileCount);
 
         CheckSpawnPlatform();
         _distance += terrainSpawner.TileSpeed * Time.deltaTime;
@@ -197,6 +204,7 @@ public class PlatformSpawner : Spawner
 
     private GameObject TileSpawn(Vector3 position, Sprite sprite, bool isColliderActive = true, bool shouldSpawnObject = true)
     {
+        _currentDistanceTileCount++;
         var tileObj = TerrainTilePool.Instance.Get();
         TerrainTile tile = tileObj.GetComponent<TerrainTile>();
 
@@ -212,8 +220,21 @@ public class PlatformSpawner : Spawner
         else
         {
             tileObj.GetComponent<BoxCollider2D>().enabled = true;
-            if(shouldSpawnObject)
-                tile.SpawnSpawnableObject(true);
+            if (shouldSpawnObject)
+            {
+                if (_currentDistanceTileCount >= enemiesDistance)
+                {
+                    GameObject spawnedObj = tile.SpawnSpawnableObject();
+                    if (IsDynamicEnemy(spawnedObj))
+                    {
+                        _currentDistanceTileCount = 0;
+                    }
+                }
+                else
+                {
+                    tile.SpawnSpawnableObjectNoEnemy();
+                }
+            }
         }
        
         tile.SetSpeed(terrainSpawner.TileSpeed);
@@ -257,5 +278,18 @@ public class PlatformSpawner : Spawner
             // Here pick the platform length
             _currentPlatformLength = UnityEngine.Random.Range(minPlatformLength, maxPlatformLength + 1);
         }
+    }
+    private bool IsDynamicEnemy(GameObject spawnedObj)
+    {
+        if (spawnedObj == null)
+            return false;
+
+        DynamicFloatingEnemy floatingEnemy = null;
+        LeftRightEnemy leftRightEnemy = null;
+
+        if (spawnedObj.TryGetComponent(out floatingEnemy) || spawnedObj.TryGetComponent(out leftRightEnemy))
+            return true;
+
+        return false;
     }
 }
