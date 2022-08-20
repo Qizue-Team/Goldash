@@ -49,7 +49,7 @@ public class TerrainTileSpawner : Spawner
 
     [Header("Enemies Settings")]
     [SerializeField]
-    private int enemiesDistance = 4;
+    private int dynamicEnemiesDistance = 4;
 
     [Header("Score Settings")]
     [SerializeField]
@@ -111,7 +111,7 @@ public class TerrainTileSpawner : Spawner
 
         if (shouldSpawnObject)
         {
-            if (_currentDistanceTileCount >= enemiesDistance)
+            if (_currentDistanceTileCount >= dynamicEnemiesDistance)
             {
                 GameObject spawnedObj = tile.SpawnSpawnableObject();
                 if (IsDynamicEnemy(spawnedObj))
@@ -146,7 +146,7 @@ public class TerrainTileSpawner : Spawner
 
         if (shouldSpawnObject)
         {
-            if (_currentDistanceTileCount >= enemiesDistance)
+            if (_currentDistanceTileCount >= dynamicEnemiesDistance)
             {
                 GameObject spawnedObj = tile.SpawnSpawnableObject();
                 if (IsDynamicEnemy(spawnedObj))
@@ -183,7 +183,7 @@ public class TerrainTileSpawner : Spawner
             tileObj.GetComponent<BoxCollider2D>().enabled = true;
             if (shouldSpawnObject)
             {
-                if (_currentDistanceTileCount >= enemiesDistance)
+                if (_currentDistanceTileCount >= dynamicEnemiesDistance)
                 {
                     GameObject spawnedObj = tile.SpawnSpawnableObject();
                     if (IsDynamicEnemy(spawnedObj))

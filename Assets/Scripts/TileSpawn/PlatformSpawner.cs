@@ -43,7 +43,7 @@ public class PlatformSpawner : Spawner
     private int maxPlatformLength = 3;
     [Header("Enemies Settings")]
     [SerializeField]
-    private int enemiesDistance = 4;
+    private int dynamicEnemiesDistance = 4;
 
     private bool _spawnPlatform = false;
     private bool _isWaitingForPlatform = false;
@@ -222,7 +222,7 @@ public class PlatformSpawner : Spawner
             tileObj.GetComponent<BoxCollider2D>().enabled = true;
             if (shouldSpawnObject)
             {
-                if (_currentDistanceTileCount >= enemiesDistance)
+                if (_currentDistanceTileCount >= dynamicEnemiesDistance)
                 {
                     GameObject spawnedObj = tile.SpawnSpawnableObject();
                     if (IsDynamicEnemy(spawnedObj))
