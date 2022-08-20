@@ -125,8 +125,6 @@ public class PlatformSpawner : Spawner
         if (_stop)
             return;
 
-        Debug.Log(_currentDistanceTileCount);
-
         CheckSpawnPlatform();
         _distance += terrainSpawner.TileSpeed * Time.deltaTime;
         if (_distance >= tileWidth)
