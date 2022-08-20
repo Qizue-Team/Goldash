@@ -24,6 +24,8 @@ public class LeftRightEnemy : Enemy
     private float _rightMostX;
     private bool _didInvert = false;
 
+    private bool _ignoreRight = false;
+
     protected override void Start()
     {
         base.Start();
@@ -31,6 +33,9 @@ public class LeftRightEnemy : Enemy
 
         _leftMostX = transform.localPosition.x - movementUnits;
         _rightMostX = transform.localPosition.x + movementUnits;
+
+        if (transform.parent.gameObject.tag.Equals("RightEdge"))
+            StartCoroutine(COWaitIgnoreRight(1.0f));
     }
 
     protected override void Update()
@@ -75,7 +80,7 @@ public class LeftRightEnemy : Enemy
         Debug.DrawRay(transform.position + new Vector3(0.6f, 0.0f, 0.0f), raycastDirection, Color.blue);
         if (leftEdge.collider != null && leftEdge.collider.gameObject.tag.Equals("LeftEdge"))
             InvertMovingDirection();
-        if (rightEdge.collider != null && rightEdge.collider.gameObject.tag.Equals("RightEdge"))
+        if (rightEdge.collider != null && rightEdge.collider.gameObject.tag.Equals("RightEdge") && !_ignoreRight)
             InvertMovingDirection();
         Move();
     }
@@ -111,5 +116,12 @@ public class LeftRightEnemy : Enemy
     {
         yield return new WaitForSeconds(waitTime);
         _didInvert = false;
+    }
+
+    private IEnumerator COWaitIgnoreRight(float waitTime)
+    {
+        _ignoreRight = true;
+        yield return new WaitForSeconds(waitTime);
+        _ignoreRight = false;
     }
 }
