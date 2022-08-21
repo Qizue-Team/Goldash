@@ -3454,6 +3454,7 @@ MonoBehaviour:
   maxPlatformWaitTime: 10
   minPlatformLength: 1
   maxPlatformLength: 6
+  dynamicEnemiesDistance: 4
 --- !u!4 &1249751837
 Transform:
   m_ObjectHideFlags: 0
@@ -4724,9 +4725,10 @@ MonoBehaviour:
   maxHoleWaitTime: 7
   minHoleLength: 2
   maxHoleLength: 3
-  enemiesDistance: 4
+  dynamicEnemiesDistance: 4
   scoreAmount: 1
   isTutorial: 0
+  debug: 1
 --- !u!4 &1817573725
 Transform:
   m_ObjectHideFlags: 0

@@ -16,6 +16,40 @@ public class SpawnableSet : ScriptableObject
     [SerializeField]
     private SetType setType;
 
+    public GameObject GetRandomObjectByDistance(float totalDistance)
+    {
+        // If no object, return blank
+        if (objects.Length == 0)
+            return null;
+
+        List<Spawnable> newObjects = new List<Spawnable>();
+        foreach(var obj in objects)
+        {
+            if(totalDistance >= obj.AppearDistance)
+                newObjects.Add(obj);
+        }
+
+        float total = 0.0f;
+        for (int i = 0; i < newObjects.Count; i++)
+        {
+            total += newObjects[i].Weight;
+        }
+
+        float rand = Random.value;
+        float prob = 0.0f;
+
+        int count = newObjects.Count - 1;
+        for (int i = 0; i < count; i++)
+        {
+            prob += newObjects[i].Weight / total;
+            if (prob >= rand)
+            {
+                return newObjects[i].gameObject;
+            }
+        }
+        return newObjects[count].gameObject;
+    }
+
     public GameObject GetRandomObject()
     {
         // If no object, return blank

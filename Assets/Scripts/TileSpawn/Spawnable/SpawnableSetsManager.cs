@@ -12,7 +12,7 @@ public class SpawnableSetsManager : ScriptableObject
     [SerializeField]
     private SpawnableSet[] sets;
 
-    public GameObject GetRandomObject(bool isPlatform = false)
+    public GameObject GetRandomObject(bool isPlatform = false, float totalDistance = 0.0f)
     {
         // If no set, return blank
         if (sets.Length == 0)
@@ -37,6 +37,10 @@ public class SpawnableSetsManager : ScriptableObject
                 if(isPlatform && sets[i].SetType == SetType.Trash)
                 {
                     return sets[i].GetRareObjcet();
+                }
+                if(sets[i].SetType == SetType.Enemy)
+                {
+                    return sets[i].GetRandomObjectByDistance(totalDistance);
                 }
                 return sets[i].GetRandomObject();
             }

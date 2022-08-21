@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using xPoke.CustomLog;
 
 public class TerrainTileSpawner : Spawner
 {
@@ -59,12 +60,18 @@ public class TerrainTileSpawner : Spawner
     [SerializeField]
     private bool isTutorial;
 
+    [Header("Debug")]
+    [SerializeField]
+    private bool showDistance;
+
     private bool _isWaitingForHole = false; // Pick random range wait time if false
     private bool _spawnHole = false; // if I have to spawn holes is true
     private int _holeIndex = 0; // Index for building holes tile <right-edge hole(xlength) left-edge>
     private float _holeWaitingTime = 0.0f;
     private float _holeTimer = 0.0f;
     private int _currentHoleLength = 0;
+
+    private float _totalDistance = 0.0f;
 
     private int _currentDistanceTileCount = 0;
 
@@ -87,7 +94,7 @@ public class TerrainTileSpawner : Spawner
         tile.SetDestroyTime(tileLifeTime);
         tile.SetSprite(tileSet.GetRandomSprite());
 
-        tile.SpawnSpawnableObject();
+        tile.SpawnSpawnableObject(false, _totalDistance);
 
         tileObj.gameObject.SetActive(true);
         LastTileSpawned = tileObj;
@@ -113,7 +120,7 @@ public class TerrainTileSpawner : Spawner
         {
             if (_currentDistanceTileCount >= dynamicEnemiesDistance)
             {
-                GameObject spawnedObj = tile.SpawnSpawnableObject();
+                GameObject spawnedObj = tile.SpawnSpawnableObject(false,_totalDistance);
                 if (IsDynamicEnemy(spawnedObj))
                 {
                     _currentDistanceTileCount = 0;
@@ -148,7 +155,7 @@ public class TerrainTileSpawner : Spawner
         {
             if (_currentDistanceTileCount >= dynamicEnemiesDistance)
             {
-                GameObject spawnedObj = tile.SpawnSpawnableObject();
+                GameObject spawnedObj = tile.SpawnSpawnableObject(false,_totalDistance);
                 if (IsDynamicEnemy(spawnedObj))
                 {
                     _currentDistanceTileCount = 0;
@@ -185,7 +192,7 @@ public class TerrainTileSpawner : Spawner
             {
                 if (_currentDistanceTileCount >= dynamicEnemiesDistance)
                 {
-                    GameObject spawnedObj = tile.SpawnSpawnableObject();
+                    GameObject spawnedObj = tile.SpawnSpawnableObject(false, _totalDistance);
                     if (IsDynamicEnemy(spawnedObj))
                     {
                         _currentDistanceTileCount = 0;
@@ -279,6 +286,7 @@ public class TerrainTileSpawner : Spawner
         _holeTimer = 0.0f;
         _currentHoleLength = 0;
         _distance = 0.0f;
+        _totalDistance = 0.0f;
 
         // Reset Param tiles
         tileSpeed = DEFAULT_TILE_SPEED;
@@ -366,6 +374,9 @@ public class TerrainTileSpawner : Spawner
             CheckSpawnHoles();
 
         _distance += tileSpeed * Time.deltaTime;
+        _totalDistance += tileSpeed * Time.deltaTime;
+        if(showDistance)
+            CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Total Distance: "+_totalDistance);
 
         if(_distance >= tileWidth)
         {

@@ -56,6 +56,7 @@ public class PlatformSpawner : Spawner
 
     private bool _isBuildingStairs = false;
     private int _currentStairLevel = 1;
+    private float _totalDistance = 0.0f;
 
     private int _currentDistanceTileCount = 0;
 
@@ -87,6 +88,7 @@ public class PlatformSpawner : Spawner
         _platformWaitingTime =0.0f;
         _currentPlatformLength = 0;
         _platformIndex = 0;
+        _totalDistance = 0.0f;
 
         _currentPickedLevel = 1;
 
@@ -127,6 +129,7 @@ public class PlatformSpawner : Spawner
 
         CheckSpawnPlatform();
         _distance += terrainSpawner.TileSpeed * Time.deltaTime;
+        _totalDistance += terrainSpawner.TileSpeed * Time.deltaTime;
         if (_distance >= tileWidth)
         {
             if (_spawnPlatform || _isBuildingStairs)
@@ -222,7 +225,7 @@ public class PlatformSpawner : Spawner
             {
                 if (_currentDistanceTileCount >= dynamicEnemiesDistance)
                 {
-                    GameObject spawnedObj = tile.SpawnSpawnableObject();
+                    GameObject spawnedObj = tile.SpawnSpawnableObject(true,_totalDistance);
                     if (IsDynamicEnemy(spawnedObj))
                     {
                         _currentDistanceTileCount = 0;
