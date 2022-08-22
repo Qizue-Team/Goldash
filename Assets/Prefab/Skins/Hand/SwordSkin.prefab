@@ -99,4 +99,4 @@ MonoBehaviour:
   skinName: Sword
   cost: 150
   isUnlocked: 0
-  spawnPosition: {x: 0.717, y: 0.196, z: 0}
+  spawnPosition: {x: 0.717, y: -0.59, z: 0}

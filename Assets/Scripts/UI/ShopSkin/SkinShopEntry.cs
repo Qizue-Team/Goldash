@@ -61,7 +61,7 @@ public class SkinShopEntry : MonoBehaviour
         _skin.Unlock();
         FindObjectOfType<GearText>().UpdateGearText(DataManager.Instance.LoadTotalGearCount());
 
-        // TO-DO: Call event for the Manager -> it will save data persistnetly
+        // TO-DO: Call event for the Manager -> it will save data persistently
 
         // Now it's unlocked so add set
         if (_skin.IsUnlocked && !_addOnceSet)
@@ -76,6 +76,7 @@ public class SkinShopEntry : MonoBehaviour
     private void TryOn()
     {
         // TO-DO: TryOn code
+        FindObjectOfType<SkinAttachPoint>().TrySkin(_skin);
     }
 
     private void SetSkin()
