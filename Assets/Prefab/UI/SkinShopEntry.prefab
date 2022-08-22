@@ -130,7 +130,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 821607015198502902}
-  - component: {fileID: 8290269332861237013}
   m_Layer: 5
   m_Name: SkinShopEntry
   m_TagString: Untagged
@@ -162,24 +161,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1120.5713, y: 125}
   m_SizeDelta: {x: 718.945, y: 712.55}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8290269332861237013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821607015198502903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3daff2f7ac296e14b87291219ecb1721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imageIcon: {fileID: 821607015332477998}
-  upgradeLevelSlider: {fileID: 0}
-  descriptionText: {fileID: 821607015988671876}
-  statText: {fileID: 0}
-  costText: {fileID: 3240398228990895866}
-  upgradeButton: {fileID: 821607014934795233}
 --- !u!1 &821607015332477996
 GameObject:
   m_ObjectHideFlags: 0
