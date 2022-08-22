@@ -8,6 +8,8 @@ public class MenuTrasher : MonoBehaviour
 
     [SerializeField]
     private float moveSpeed;
+    [SerializeField]
+    private float startDestination = -7.0f;
 
     private Animator _animator;
     private SpriteRenderer[] _spriteRenderers;
@@ -50,7 +52,7 @@ public class MenuTrasher : MonoBehaviour
     {
         Physics2D.baumgarteScale = 0.2f;
         // TO-DO: Check if first time from Player Settings
-        MoveToPoint(-7.0f);
+        MoveToPoint(startDestination);
     }
     private void Update()
     {
