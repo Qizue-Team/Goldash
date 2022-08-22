@@ -15,4 +15,6 @@ public class SkinAttachPoint : MonoBehaviour
         skinObj.transform.localPosition = skin.SpawnPosition;
         _currentSkin = skinObj.GetComponent<Skin>();
     }
+
+    // TO-DO: Method for the actual SetSkin -> with persistence writing
 }
