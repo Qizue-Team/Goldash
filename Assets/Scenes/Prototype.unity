@@ -4728,7 +4728,7 @@ MonoBehaviour:
   dynamicEnemiesDistance: 4
   scoreAmount: 1
   isTutorial: 0
-  debug: 1
+  showDistance: 0
 --- !u!4 &1817573725
 Transform:
   m_ObjectHideFlags: 0
