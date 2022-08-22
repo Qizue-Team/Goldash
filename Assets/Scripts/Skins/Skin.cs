@@ -7,11 +7,14 @@ public class Skin : MonoBehaviour
     public int ID { get => id; }
     public bool IsUnlocked { get; private set; }
     public int Cost { get => cost; }
+    public string SkinName { get=> skinName; }
     public Vector3 SpawnPosition { get=>spawnPosition; }
 
     [Header("Skin Settings")]
     [SerializeField]
     private int id;
+    [SerializeField]
+    private string skinName;
     [SerializeField]
     private int cost;
     [SerializeField]
@@ -20,8 +23,8 @@ public class Skin : MonoBehaviour
     public void UpdateSkin()
     {
         // TO-DO:
-        // Check if is already unlocked
-        // if it is unlock = true
+        // Check if is already unlocked from file
+        // if it is, unlock = true
     }
 
     public void Unlock()
