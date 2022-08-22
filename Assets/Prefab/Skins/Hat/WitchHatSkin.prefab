@@ -98,4 +98,5 @@ MonoBehaviour:
   id: 1
   skinName: Witch Hat
   cost: 100
+  isUnlocked: 0
   spawnPosition: {x: 0.019, y: 0.606, z: 0}

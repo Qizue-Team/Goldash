@@ -177,6 +177,8 @@ MonoBehaviour:
   iconImage: {fileID: 821607015332477998}
   nameText: {fileID: 821607015988671876}
   costText: {fileID: 3240398228990895866}
+  unlockSetButton: {fileID: 821607014934795233}
+  tryOnButton: {fileID: 5729661546906042982}
 --- !u!1 &821607015332477996
 GameObject:
   m_ObjectHideFlags: 0

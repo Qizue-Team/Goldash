@@ -5,7 +5,7 @@ using UnityEngine;
 public class Skin : MonoBehaviour
 { 
     public int ID { get => id; }
-    public bool IsUnlocked { get; private set; }
+    public bool IsUnlocked { get => isUnlocked; }
     public int Cost { get => cost; }
     public string SkinName { get=> skinName; }
     public Vector3 SpawnPosition { get=>spawnPosition; }
@@ -17,6 +17,8 @@ public class Skin : MonoBehaviour
     private string skinName;
     [SerializeField]
     private int cost;
+    [SerializeField]
+    private bool isUnlocked;
     [SerializeField]
     private Vector3 spawnPosition;
 
@@ -38,6 +40,11 @@ public class Skin : MonoBehaviour
         total -= cost;
         DataManager.Instance.SaveTotalGearCount(total);
 
-        IsUnlocked = true;
+        isUnlocked = true;
+    }
+
+    private void Start()
+    {
+        isUnlocked = false;
     }
 }
