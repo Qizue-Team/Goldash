@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using xPoke.CustomLog;
 
 public class SkinAttachPoint : MonoBehaviour
 {
+    [SerializeField]
+    private SkinSet skinSet;
+
     private Skin _currentSkin = null;
 
     public void TrySkin(Skin skin)
     {
-        if(_currentSkin != null)
+        if (_currentSkin != null)
             Destroy(_currentSkin.gameObject);
 
         GameObject skinObj = Instantiate(skin.gameObject, this.transform);
@@ -16,5 +20,29 @@ public class SkinAttachPoint : MonoBehaviour
         _currentSkin = skinObj.GetComponent<Skin>();
     }
 
-    // TO-DO: Method for the actual SetSkin -> with persistence writing
+    // Method for the actual SetSkin -> with persistence writing
+    public void SetSkin(Skin skin)
+    {
+        CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Skin set ID: " + skin.ID);
+        TrySkin(skin);
+        SerializableSkinSetData data = new SerializableSkinSetData();
+        data.ID = skin.ID;
+        DataManager.Instance.SaveSetSkinData(data);
+    }
+
+    private void Start()
+    {
+        SerializableSkinSetData data = DataManager.Instance.LoadSkinSetData();
+        if (data == null)
+            return;
+        foreach(Skin skin in skinSet.Skins)
+        {
+            if(skin.ID == data.ID)
+            {
+                SetSkin(skin);
+                return;
+            }
+        }
+    }
+
 }

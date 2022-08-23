@@ -1635,6 +1635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc2aecc1a06c554d96b012a56e05eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinSet: {fileID: 11400000, guid: 2f44998ac9f32e041890e23d202cc2d8, type: 2}
 --- !u!1 &855591375
 GameObject:
   m_ObjectHideFlags: 0

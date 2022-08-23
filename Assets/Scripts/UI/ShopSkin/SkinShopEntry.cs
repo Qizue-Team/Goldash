@@ -76,12 +76,13 @@ public class SkinShopEntry : MonoBehaviour
 
     private void TryOn()
     {
-        // TO-DO: TryOn code
+        // TryOn code
         FindObjectOfType<SkinAttachPoint>().TrySkin(_skin);
     }
 
     private void SetSkin()
     {
-        // TO-DO: Set code
+        // Set code
+        FindObjectOfType<SkinAttachPoint>().SetSkin(_skin);
     }
 }

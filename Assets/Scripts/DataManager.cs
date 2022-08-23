@@ -9,6 +9,7 @@ public class DataManager : Singleton<DataManager>
 {
     private string _powerUpDataListFileName = "/power-up-data.dat";
     private string _skinsDataListFileName = "/skins-data.dat";
+    private string _skinSetDataListFileName = "/skin-set.dat";
 
     public void SaveTrashCount(int count)
     {
@@ -135,6 +136,35 @@ public class DataManager : Singleton<DataManager>
         reader.Close();
         return JsonUtility.FromJson<SerializableList<SerializableSkinsData>>(json).serializableList;
     }
+
+    public void SaveSetSkinData(SerializableSkinSetData data)
+    {
+        // JSON Creation
+        string json = JsonUtility.ToJson(data);
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Created: " + json);
+
+        // Save json string to file
+        if (File.Exists(@"" + Application.persistentDataPath + _skinSetDataListFileName))
+        {
+            File.Delete(@"" + Application.persistentDataPath + _skinSetDataListFileName);
+        }
+        StreamWriter writer = new StreamWriter(Application.persistentDataPath + _skinSetDataListFileName);
+        writer.WriteLine(json);
+        writer.Close();
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Saved");
+    }
+
+    public SerializableSkinSetData LoadSkinSetData()
+    {
+        // Read from file the json string
+        if (!File.Exists(@"" + Application.persistentDataPath + _skinSetDataListFileName))
+            return null;
+        StreamReader reader = new StreamReader(Application.persistentDataPath + _skinSetDataListFileName);
+        string json = reader.ReadToEnd();
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Read: " + json);
+        reader.Close();
+        return JsonUtility.FromJson<SerializableSkinSetData>(json);
+    }
 }
 
 [System.Serializable]
@@ -152,4 +182,10 @@ public class SerializableSkinsData
 {
     public int ID;
     public bool IsUnlocked;
+}
+
+[System.Serializable] 
+public class SerializableSkinSetData
+{
+    public int ID;
 }
