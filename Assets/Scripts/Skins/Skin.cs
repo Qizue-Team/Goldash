@@ -23,10 +23,18 @@ public class Skin : MonoBehaviour
     private Vector3 spawnPosition;
 
     public void UpdateSkin()
-    {
-        // TO-DO:
+    { 
         // Check if is already unlocked from file
-        // if it is, unlock = true
+        List<SerializableSkinsData> datas = DataManager.Instance.LoadSkinsData();
+        if (datas == null)
+            return;
+        foreach(SerializableSkinsData data in datas)
+        {
+            if(data.ID == id)
+            {
+                isUnlocked = data.IsUnlocked;
+            }
+        }
     }
 
     public void Unlock()

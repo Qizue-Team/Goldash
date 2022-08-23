@@ -12,6 +12,19 @@ public class SkinShopManager : Singleton<SkinShopManager>
     [SerializeField]
     private Transform shopContent;
 
+    public void Unlock()
+    {
+        List<SerializableSkinsData> list = new List<SerializableSkinsData>();
+        foreach(Skin skin in skinSet.Skins)
+        {
+            SerializableSkinsData data = new SerializableSkinsData();
+            data.ID = skin.ID;
+            data.IsUnlocked = skin.IsUnlocked;
+            list.Add(data);
+        }
+        DataManager.Instance.SaveSkinsData(list);
+    }
+
     private void Start()
     {
         foreach(Skin skin in skinSet.Skins)

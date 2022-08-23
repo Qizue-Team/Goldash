@@ -8,6 +8,7 @@ using xPoke.CustomLog;
 public class DataManager : Singleton<DataManager>
 {
     private string _powerUpDataListFileName = "/power-up-data.dat";
+    private string _skinsDataListFileName = "/skins-data.dat";
 
     public void SaveTrashCount(int count)
     {
@@ -104,6 +105,36 @@ public class DataManager : Singleton<DataManager>
         reader.Close();
         return JsonUtility.FromJson<SerializableList<SerializablePowerUpData>>(json).serializableList;
     }
+
+    public void SaveSkinsData(List<SerializableSkinsData> dataList)
+    {
+        // JSON Creation
+        SerializableList<SerializableSkinsData> listObj = new SerializableList<SerializableSkinsData>(dataList);
+        string json = JsonUtility.ToJson(listObj);
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Created: " + json);
+
+        // Save json string to file
+        if (File.Exists(@"" + Application.persistentDataPath + _skinsDataListFileName))
+        {
+            File.Delete(@"" + Application.persistentDataPath + _skinsDataListFileName);
+        }
+        StreamWriter writer = new StreamWriter(Application.persistentDataPath + _skinsDataListFileName);
+        writer.WriteLine(json);
+        writer.Close();
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Saved");
+    }
+
+    public List<SerializableSkinsData> LoadSkinsData()
+    {
+        // Read from file the json string
+        if (!File.Exists(@"" + Application.persistentDataPath + _skinsDataListFileName))
+            return null;
+        StreamReader reader = new StreamReader(Application.persistentDataPath + _skinsDataListFileName);
+        string json = reader.ReadToEnd();
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Read: " + json);
+        reader.Close();
+        return JsonUtility.FromJson<SerializableList<SerializableSkinsData>>(json).serializableList;
+    }
 }
 
 [System.Serializable]
@@ -114,4 +145,11 @@ public class SerializablePowerUpData
     public float CurrentStat;
     public float NextStat;
     public int GearCost;
+}
+
+[System.Serializable]
+public class SerializableSkinsData
+{
+    public int ID;
+    public bool IsUnlocked;
 }
