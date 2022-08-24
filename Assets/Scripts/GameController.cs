@@ -85,6 +85,7 @@ public class GameController : Singleton<GameController>
         CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Total Points Made From Enemy kill: " + EnemyKilledManager.Instance.TotalPoints);
         CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Points Made From Distance Travelled: "+ (Score - TrashCollectedManager.Instance.GetTotalScoreFromTrash() - EnemyKilledManager.Instance.TotalPoints));
 
+        DataManager.Instance.SaveGearForAverage(TrashCollectedManager.Instance.GetTotalGearCount());
     }
 
     public void ResetGame(float waitTimeToReset = 1.0f)

@@ -10,6 +10,7 @@ public class DataManager : Singleton<DataManager>
     private string _powerUpDataListFileName = "/power-up-data.dat";
     private string _skinsDataListFileName = "/skins-data.dat";
     private string _skinSetDataListFileName = "/skin-set.dat";
+    private string _avgGearRunFileName = "/average-gear.csv";
 
     public void SaveTrashCount(int count)
     {
@@ -164,6 +165,21 @@ public class DataManager : Singleton<DataManager>
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Read: " + json);
         reader.Close();
         return JsonUtility.FromJson<SerializableSkinSetData>(json);
+    }
+
+    public void SaveGearForAverage(int gear)
+    {
+        StreamWriter writer = null;
+        if (!File.Exists(@"" + Application.persistentDataPath + _avgGearRunFileName))
+        {
+            writer = new StreamWriter(Application.persistentDataPath + _avgGearRunFileName);
+            writer.WriteLine("GEARS;;MEDIA;=MEDIA(A2:A999)");
+            writer.Close();
+        }
+        writer = new StreamWriter(Application.persistentDataPath + _avgGearRunFileName, true);
+        writer.WriteLine(gear);
+        writer.Close();
+        CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Run's Gears (" + gear + ") saved in " + _avgGearRunFileName + " for AVG count");
     }
 }
 
