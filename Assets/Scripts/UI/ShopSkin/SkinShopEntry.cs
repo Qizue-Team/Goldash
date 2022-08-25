@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class SkinShopEntry : MonoBehaviour
 {
+    public static event Action<Skin> OnSkinSet;
+
     [Header("References")]
     [SerializeField]
     private Image iconImage;
@@ -22,6 +25,17 @@ public class SkinShopEntry : MonoBehaviour
     private bool _addOnceUnlock = false;
     private bool _addOnceSet = false;
     private bool _addOnceTryOn = false;
+    private bool _addOnceUnset = false;
+
+    private void OnEnable()
+    {
+        OnSkinSet += UnsetSkinFromOtherSet;
+    }
+
+    private void OnDisable()
+    {
+        OnSkinSet -= UnsetSkinFromOtherSet;
+    }
 
     public void SetEntry(Skin skin)
     {
@@ -37,12 +51,19 @@ public class SkinShopEntry : MonoBehaviour
             unlockSetButton.onClick.RemoveAllListeners();
             unlockSetButton.onClick.AddListener(() => Unlock());
         }
-        else if (_skin.IsUnlocked &&!_addOnceSet)
+        else if (_skin.IsUnlocked && !_skin.IsSet && !_addOnceSet)
         {
             _addOnceSet = true;
             unlockSetButton.onClick.RemoveAllListeners();
             unlockSetButton.onClick.AddListener(() => SetSkin());
             unlockSetButton.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "S E T";
+        }
+        else if (_skin.IsUnlocked && _skin.IsSet && !_addOnceUnset)
+        {
+            _addOnceUnset = true;
+            unlockSetButton.onClick.RemoveAllListeners();
+            unlockSetButton.onClick.AddListener(() => UnsetSkin());
+            unlockSetButton.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "U N S E T";
         }
 
         if (!_addOnceTryOn)
@@ -82,7 +103,48 @@ public class SkinShopEntry : MonoBehaviour
 
     private void SetSkin()
     {
+        if (_skin.IsSet)
+            return;
+
+
+        OnSkinSet?.Invoke(_skin);
+
         // Set code
         FindObjectOfType<SkinAttachPoint>().SetSkin(_skin);
+
+
+        // Now it's unset
+        if(_skin.IsUnlocked && _skin.IsSet)
+        {
+            unlockSetButton.onClick.RemoveAllListeners();
+            unlockSetButton.onClick.AddListener(() => UnsetSkin());
+            unlockSetButton.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "U N S E T";
+        }
+
+        // Set code
+        FindObjectOfType<SkinAttachPoint>().SetSkin(_skin);
+    }
+
+    private void UnsetSkin()
+    {
+        // Unset code
+        FindObjectOfType<SkinAttachPoint>().UnsetSkin(_skin);
+
+        // Now it's unlocked so add set
+        if (!_skin.IsSet)
+        {
+            unlockSetButton.onClick.RemoveAllListeners();
+            unlockSetButton.onClick.AddListener(() => SetSkin());
+            unlockSetButton.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "S E T";
+        }
+    }
+
+    private void UnsetSkinFromOtherSet(Skin skin)
+    {
+        if (skin.ID == _skin.ID)
+            return;
+        if (!_skin.IsSet)
+            return;
+        UnsetSkin();
     }
 }

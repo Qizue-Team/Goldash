@@ -28,6 +28,18 @@ public class SkinAttachPoint : MonoBehaviour
         SerializableSkinSetData data = new SerializableSkinSetData();
         data.ID = skin.ID;
         DataManager.Instance.SaveSetSkinData(data);
+        skin.UpdateSkin();
+    }
+
+    public void UnsetSkin(Skin skin)
+    {
+        if(_currentSkin != null)
+            Destroy(_currentSkin.gameObject);
+        SerializableSkinSetData data = new SerializableSkinSetData();
+        data.ID = -1;
+        DataManager.Instance.SaveSetSkinData(data);
+        _currentSkin = null;
+        skin.UpdateSkin();
     }
 
     private void Start()

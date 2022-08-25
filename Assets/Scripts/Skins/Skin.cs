@@ -6,6 +6,7 @@ public class Skin : MonoBehaviour
 { 
     public int ID { get => id; }
     public bool IsUnlocked { get => isUnlocked; }
+    public bool IsSet { get; private set; }
     public int Cost { get => cost; }
     public string SkinName { get=> skinName; }
     public Vector3 SpawnPosition { get=>spawnPosition; }
@@ -35,6 +36,16 @@ public class Skin : MonoBehaviour
                 isUnlocked = data.IsUnlocked;
             }
         }
+
+        SerializableSkinSetData setData = DataManager.Instance.LoadSkinSetData();
+        if(setData != null && setData.ID == ID)
+        {
+            IsSet = true;
+        }
+        else
+        {
+            IsSet = false;
+        }
     }
 
     public void Unlock()
@@ -54,5 +65,6 @@ public class Skin : MonoBehaviour
     private void Start()
     {
         isUnlocked = false;
+        IsSet = false;
     }
 }
