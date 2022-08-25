@@ -35,7 +35,7 @@ public class LeftRightEnemy : Enemy
         _rightMostX = transform.localPosition.x + movementUnits;
 
         if (transform.parent.gameObject.tag.Equals("RightEdge"))
-            StartCoroutine(COWaitIgnoreRight(1.0f));
+            StartCoroutine(COWaitIgnoreRight(0.5f)); // it was 1.0 -> it's 0.5f 'cause Laura bug fix
     }
 
     protected override void Update()
