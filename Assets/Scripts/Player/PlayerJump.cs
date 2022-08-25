@@ -38,7 +38,7 @@ public class PlayerJump : MonoBehaviour
     */
 
     private Rigidbody2D _rb;
-    private bool _isHeatIncreased = false;
+    //private bool _isHeatIncreased = false;
     private bool _isFastFalling = false;
     private bool _isJumpActive = true;
     private bool _isFallJumpActive = true;
@@ -61,7 +61,7 @@ public class PlayerJump : MonoBehaviour
         _rb.velocity = Vector2.up * jumpVelocity;
         
         playerOverheat.IncreaseHeat();
-        _isHeatIncreased = true;
+        //_isHeatIncreased = true;
         JumpCount++;
     }
 

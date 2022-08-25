@@ -70,7 +70,9 @@ public class TerrainTileSpawner : Spawner
 
     [Header("Debug")]
     [SerializeField]
-    private bool showDistance;
+    private bool showTotalDistance;
+    [SerializeField]
+    private bool showDistanceBetweenEnemies;
 
     private bool _isWaitingForHole = false; // Pick random range wait time if false
     private bool _spawnHole = false; // if I have to spawn holes is true
@@ -428,15 +430,16 @@ public class TerrainTileSpawner : Spawner
         if(!isTutorial)
             CheckSpawnHoles();
 
-        Debug.Log(CurrentDistanceBetweenEnemies);
         _distance += tileSpeed * Time.deltaTime;
         _totalDistance += tileSpeed * Time.deltaTime;
         CurrentDistanceBetweenEnemies += tileSpeed * Time.deltaTime;
 
-        if(showDistance)
+        if(showTotalDistance)
             CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Total Distance: "+_totalDistance);
+        if (showDistanceBetweenEnemies)
+            CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Distance Between Enemies: " + CurrentDistanceBetweenEnemies);
 
-        if(_distance >= tileWidth)
+        if (_distance >= tileWidth)
         {
             if (!isTutorial)
             {
