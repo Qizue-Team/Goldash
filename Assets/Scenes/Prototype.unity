@@ -4721,11 +4721,13 @@ MonoBehaviour:
   tileSpeed: 3.543122
   tileLifeTime: 7.49145
   tileSet: {fileID: 11400000, guid: 4bbe8a0ab4e05d9489dce5fbe9a2eb54, type: 2}
+  platformSpawner: {fileID: 1249751836}
   minHoleWaitTime: 2
   maxHoleWaitTime: 7
   minHoleLength: 2
   maxHoleLength: 3
   dynamicEnemiesDistance: 4
+  maxDistanceNoEnemies: 100
   scoreAmount: 1
   isTutorial: 0
   showDistance: 0

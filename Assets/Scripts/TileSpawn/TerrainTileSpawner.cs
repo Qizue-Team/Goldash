@@ -9,6 +9,8 @@ public class TerrainTileSpawner : Spawner
     public float TileSpeed { get=>tileSpeed;}
     public float TileLifeTime { get => tileLifeTime; }
     public TerrainTile LastTileSpawned { get; private set; }
+    public float CurrentDistanceBetweenEnemies { get; set; }
+    public float MaxDistanceNoEnemies { get => maxDistanceNoEnemies; }
 
     public static event Action<float> OnSpeedUp;
     public static event Action<float,float> OnSpeedDown;
@@ -38,6 +40,10 @@ public class TerrainTileSpawner : Spawner
     [SerializeField]
     private TileSet tileSet;
 
+    [Header("References")]
+    [SerializeField]
+    private PlatformSpawner platformSpawner;
+
     [Header("Holes Spawn Settings")]
     [SerializeField]
     private float minHoleWaitTime = 5.0f;
@@ -51,6 +57,8 @@ public class TerrainTileSpawner : Spawner
     [Header("Enemies Settings")]
     [SerializeField]
     private int dynamicEnemiesDistance = 4;
+    [SerializeField]
+    private float maxDistanceNoEnemies = 300.0f;
 
     [Header("Score Settings")]
     [SerializeField]
@@ -120,10 +128,25 @@ public class TerrainTileSpawner : Spawner
         {
             if (_currentDistanceTileCount >= dynamicEnemiesDistance)
             {
-                GameObject spawnedObj = tile.SpawnSpawnableObject(false,_totalDistance);
+                GameObject spawnedObj = null;
+                if (CurrentDistanceBetweenEnemies >= maxDistanceNoEnemies && !platformSpawner.IsSpawningPlatform)
+                {
+                    spawnedObj = tile.SpawnEnemy(_totalDistance);
+                    CurrentDistanceBetweenEnemies = 0;
+                }
+                else
+                {
+                    spawnedObj = tile.SpawnSpawnableObject(false, _totalDistance);
+
+                    Enemy enemy = null;
+                    if (spawnedObj!=null && spawnedObj.TryGetComponent(out enemy))
+                        CurrentDistanceBetweenEnemies = 0;
+                }
+                
                 if (IsDynamicEnemy(spawnedObj))
                 {
                     _currentDistanceTileCount = 0;
+                    CurrentDistanceBetweenEnemies = 0;
                 }
             }
             else
@@ -155,10 +178,25 @@ public class TerrainTileSpawner : Spawner
         {
             if (_currentDistanceTileCount >= dynamicEnemiesDistance)
             {
-                GameObject spawnedObj = tile.SpawnSpawnableObject(false,_totalDistance);
+                GameObject spawnedObj = null;
+                if (CurrentDistanceBetweenEnemies >= maxDistanceNoEnemies && !platformSpawner.IsSpawningPlatform)
+                {
+                    spawnedObj = tile.SpawnEnemy(_totalDistance);
+                    CurrentDistanceBetweenEnemies = 0;
+                }
+                else
+                {
+                    spawnedObj = tile.SpawnSpawnableObject(false, _totalDistance);
+
+                    Enemy enemy = null;
+                    if (spawnedObj != null && spawnedObj.TryGetComponent(out enemy))
+                        CurrentDistanceBetweenEnemies = 0;
+                }
+
                 if (IsDynamicEnemy(spawnedObj))
                 {
                     _currentDistanceTileCount = 0;
+                    CurrentDistanceBetweenEnemies = 0;
                 }
             }
             else
@@ -192,10 +230,25 @@ public class TerrainTileSpawner : Spawner
             {
                 if (_currentDistanceTileCount >= dynamicEnemiesDistance)
                 {
-                    GameObject spawnedObj = tile.SpawnSpawnableObject(false, _totalDistance);
+                    GameObject spawnedObj = null;
+                    if (CurrentDistanceBetweenEnemies >= maxDistanceNoEnemies && !platformSpawner.IsSpawningPlatform)
+                    {
+                        spawnedObj = tile.SpawnEnemy(_totalDistance);
+                        CurrentDistanceBetweenEnemies = 0;
+                    }
+                    else
+                    {
+                        spawnedObj = tile.SpawnSpawnableObject(false, _totalDistance);
+
+                        Enemy enemy = null;
+                        if (spawnedObj != null && spawnedObj.TryGetComponent(out enemy))
+                            CurrentDistanceBetweenEnemies = 0;
+                    }
+
                     if (IsDynamicEnemy(spawnedObj))
                     {
                         _currentDistanceTileCount = 0;
+                        CurrentDistanceBetweenEnemies = 0;
                     }
                 }
                 else
@@ -287,6 +340,7 @@ public class TerrainTileSpawner : Spawner
         _currentHoleLength = 0;
         _distance = 0.0f;
         _totalDistance = 0.0f;
+        CurrentDistanceBetweenEnemies = 0.0f;
 
         // Reset Param tiles
         tileSpeed = DEFAULT_TILE_SPEED;
@@ -363,6 +417,7 @@ public class TerrainTileSpawner : Spawner
     private void Start()
     {
         InitializeTerrainTiles();
+        CurrentDistanceBetweenEnemies = 0;
     }
 
     private void Update()
@@ -373,8 +428,11 @@ public class TerrainTileSpawner : Spawner
         if(!isTutorial)
             CheckSpawnHoles();
 
+        Debug.Log(CurrentDistanceBetweenEnemies);
         _distance += tileSpeed * Time.deltaTime;
         _totalDistance += tileSpeed * Time.deltaTime;
+        CurrentDistanceBetweenEnemies += tileSpeed * Time.deltaTime;
+
         if(showDistance)
             CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Total Distance: "+_totalDistance);
 

@@ -44,9 +44,18 @@ public class TerrainTile : MonoBehaviour
         return _spawnedObject;
     }
 
-    public GameObject SpawnEnemy()
+    public GameObject SpawnEnemy(float distance)
     {
-        return setsManager.GetRandomEnemy();
+        GameObject spawnableObj = setsManager.GetRandomEnemy(distance);
+        if (spawnableObj != null)
+        {
+            _spawnedObject = Instantiate(spawnableObj, transform);
+        }
+        else
+        {
+            _spawnedObject = null;
+        }
+        return _spawnedObject;
     }
 
     public void DestroySpawnedObject()

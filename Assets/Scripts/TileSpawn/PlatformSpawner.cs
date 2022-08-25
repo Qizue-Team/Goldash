@@ -15,6 +15,8 @@ public class PlatformSpawner : Spawner
     public const float MIN_OFFSET = 0;
     #endregion
 
+    public bool IsSpawningPlatform { get => _spawnPlatform; }
+
     [SerializeField]
     private TileSet tileSet;
 
@@ -225,10 +227,25 @@ public class PlatformSpawner : Spawner
             {
                 if (_currentDistanceTileCount >= dynamicEnemiesDistance)
                 {
-                    GameObject spawnedObj = tile.SpawnSpawnableObject(true,_totalDistance);
+                    GameObject spawnedObj = null;
+                    if (terrainSpawner.CurrentDistanceBetweenEnemies >= terrainSpawner.MaxDistanceNoEnemies)
+                    {
+                        spawnedObj = tile.SpawnEnemy(_totalDistance);
+                        terrainSpawner.CurrentDistanceBetweenEnemies = 0;
+                    }
+                    else
+                    {
+                        spawnedObj = tile.SpawnSpawnableObject(true, _totalDistance);
+
+                        Enemy enemy = null;
+                        if (spawnedObj != null && spawnedObj.TryGetComponent(out enemy))
+                            terrainSpawner.CurrentDistanceBetweenEnemies = 0;
+                    }
+
                     if (IsDynamicEnemy(spawnedObj))
                     {
                         _currentDistanceTileCount = 0;
+                        terrainSpawner.CurrentDistanceBetweenEnemies = 0;
                     }
                 }
                 else
