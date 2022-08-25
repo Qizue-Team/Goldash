@@ -114,6 +114,16 @@ public class SpawnableSetsManager : ScriptableObject
 
         return newSets[count].GetRandomObject();
     }
+
+    public GameObject GetRandomEnemy()
+    {
+        foreach(SpawnableSet set in sets)
+        {
+            if(set.SetType == SetType.Enemy)
+                return set.GetRandomObject();
+        }
+        return null;
+    }
 }
 
 public enum SetType
