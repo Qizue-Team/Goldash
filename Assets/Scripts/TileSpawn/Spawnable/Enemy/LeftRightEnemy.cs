@@ -33,9 +33,12 @@ public class LeftRightEnemy : Enemy
 
         _leftMostX = transform.localPosition.x - movementUnits;
         _rightMostX = transform.localPosition.x + movementUnits;
-
+        
         if (transform.parent.gameObject.tag.Equals("RightEdge"))
-            StartCoroutine(COWaitIgnoreRight(0.5f)); // it was 1.0 -> it's 0.5f 'cause Laura bug fix
+        {
+            StartCoroutine(COWaitIgnoreRight(1.0f)); // it was 1.0 -> it's 0.5f 'cause Laura bug fix*/
+        }
+           
     }
 
     protected override void Update()
@@ -71,17 +74,25 @@ public class LeftRightEnemy : Enemy
         raycastDirection = transform.TransformDirection(Vector3.down) * 0.7f;
         Debug.DrawRay(transform.position, raycastDirection, Color.green);
         if (groundHit.collider == null)
+        {
             InvertMovingDirection();
+        }
+           
 
-        RaycastHit2D leftEdge = Physics2D.Raycast((transform.position + new Vector3(-0.6f,0.0f,0.0f)), Vector3.down, 0.7f, groundLayer);
-        RaycastHit2D rightEdge = Physics2D.Raycast((transform.position + new Vector3(0.6f, 0.0f, 0.0f)), Vector3.down, 0.7f, groundLayer);
+        RaycastHit2D leftEdge = Physics2D.Raycast((transform.position + new Vector3(-0.0f,0.0f,0.0f)), Vector3.down, 0.7f, groundLayer);
+        RaycastHit2D rightEdge = Physics2D.Raycast((transform.position + new Vector3(0.0f, 0.0f, 0.0f)), Vector3.down, 0.7f, groundLayer);
         raycastDirection = transform.TransformDirection(Vector3.down) * 0.7f;
-        Debug.DrawRay(transform.position + new Vector3(-0.6f, 0.0f, 0.0f), raycastDirection, Color.blue);
-        Debug.DrawRay(transform.position + new Vector3(0.6f, 0.0f, 0.0f), raycastDirection, Color.blue);
+        Debug.DrawRay(transform.position + new Vector3(-0.0f, 0.0f, 0.0f), raycastDirection, Color.blue);
+        Debug.DrawRay(transform.position + new Vector3(0.0f, 0.0f, 0.0f), raycastDirection, Color.blue);
         if (leftEdge.collider != null && leftEdge.collider.gameObject.tag.Equals("LeftEdge"))
+        {
             InvertMovingDirection();
+        }
+            
         if (rightEdge.collider != null && rightEdge.collider.gameObject.tag.Equals("RightEdge") && !_ignoreRight)
+        {
             InvertMovingDirection();
+        }
         Move();
     }
 
@@ -89,9 +100,14 @@ public class LeftRightEnemy : Enemy
     {
         transform.localPosition += Time.deltaTime * movementSpeed * movingDirection;
         if (transform.localPosition.x <= _leftMostX)
+        {
             InvertMovingDirection();
+        }
+
         if (transform.localPosition.x >= _rightMostX)
+        {
             InvertMovingDirection();
+        }
     }
 
     private void InvertMovingDirection()
