@@ -21,7 +21,7 @@ MonoBehaviour:
   statAmount: 1
   nextStat: 4
   statLabel: Jumps
-  gearBaseCost: 10
-  costGrowthFactor: 2
-  timeStep: 3
-  currentGearCost: 10
+  gearBaseCost: 60
+  costGrowthFactor: 8
+  timeStep: 2
+  currentGearCost: 60

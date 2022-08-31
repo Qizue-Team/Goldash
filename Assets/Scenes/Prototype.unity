@@ -4727,10 +4727,11 @@ MonoBehaviour:
   minHoleLength: 2
   maxHoleLength: 3
   dynamicEnemiesDistance: 4
-  maxDistanceNoEnemies: 100
+  maxDistanceNoEnemies: 25
   scoreAmount: 1
   isTutorial: 0
-  showDistance: 0
+  showTotalDistance: 0
+  showDistanceBetweenEnemies: 0
 --- !u!4 &1817573725
 Transform:
   m_ObjectHideFlags: 0
