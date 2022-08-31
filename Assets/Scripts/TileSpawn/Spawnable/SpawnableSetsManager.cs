@@ -42,6 +42,10 @@ public class SpawnableSetsManager : ScriptableObject
                 {
                     return sets[i].GetRandomObjectByDistance(totalDistance);
                 }
+                if(!isPlatform && sets[i].SetType == SetType.Trash)
+                {
+                    return sets[i].GetLessRareObjcet();
+                }
                 return sets[i].GetRandomObject();
             }
         }
@@ -56,6 +60,10 @@ public class SpawnableSetsManager : ScriptableObject
         if (isPlatform && sets[count].SetType == SetType.Trash)
         {
             return sets[count].GetRareObjcet();
+        }
+        if (!isPlatform && sets[count].SetType == SetType.Trash)
+        {
+            return sets[count].GetLessRareObjcet();
         }
 
         return sets[count].GetRandomObject();
@@ -96,6 +104,10 @@ public class SpawnableSetsManager : ScriptableObject
                 {
                     return newSets[i].GetRareObjcet();
                 }
+                if (!isPlatform && newSets[i].SetType == SetType.Trash)
+                {
+                    return newSets[i].GetLessRareObjcet();
+                }
                 return newSets[i].GetRandomObject();
             }
         }
@@ -110,6 +122,10 @@ public class SpawnableSetsManager : ScriptableObject
         if (isPlatform && newSets[count].SetType == SetType.Trash)
         {
             return newSets[count].GetRareObjcet();
+        }
+        if (!isPlatform && newSets[count].SetType == SetType.Trash)
+        {
+            return newSets[count].GetLessRareObjcet();
         }
 
         return newSets[count].GetRandomObject();

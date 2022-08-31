@@ -93,7 +93,54 @@ public class SpawnableSet : ScriptableObject
         // Find the elements > avg
         foreach(Spawnable obj in objects)
         {
-            if(obj.ScorePoints > avg)
+            if(obj.ScorePoints >= avg)
+            {
+                rareObjs.Add(obj);
+            }
+        }
+
+        // Get the obj based on weight
+        if (rareObjs.Count == 0)
+            return null;
+
+        float total = 0.0f;
+        for (int i = 0; i < rareObjs.Count; i++)
+        {
+            total += rareObjs[i].Weight;
+        }
+
+        float rand = Random.value;
+        float prob = 0.0f;
+
+        int count = rareObjs.Count - 1;
+        for (int i = 0; i < count; i++)
+        {
+            prob += rareObjs[i].Weight / total;
+            if (prob >= rand)
+            {
+                return rareObjs[i].gameObject;
+            }
+        }
+        return rareObjs[count].gameObject;
+    }
+
+    public GameObject GetLessRareObjcet()
+    {
+        List<Spawnable> rareObjs = new List<Spawnable>();
+
+        // Find the average score point
+        float avg = 0;
+        float sum = 0;
+        foreach (Spawnable obj in objects)
+        {
+            sum += obj.ScorePoints;
+        }
+        avg = sum / objects.Length;
+      
+        // Find the elements > avg
+        foreach (Spawnable obj in objects)
+        {
+            if (obj.ScorePoints < avg)
             {
                 rareObjs.Add(obj);
             }
