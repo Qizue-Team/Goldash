@@ -171,39 +171,39 @@ public class SpawnableSet : ScriptableObject
         return rareObjs[count].gameObject;
     }
 
-    public GameObject GetRandomObjectWithoutIndex(int index)
+    public GameObject GetRandomObjectWithoutIndex(int index, float totalDistance)
     {
-        List<Spawnable> newObjList = new List<Spawnable>();
-
-        for(int i=0; i<objects.Length; ++i)
-        {
-            if (i == index)
-                continue;
-            newObjList.Add(objects[i]);
-        }
-
-        // Get the obj based on weight
-        if (newObjList.Count == 0)
+        // If no object, return blank
+        if (objects.Length == 0)
             return null;
 
-        float total = 0.0f;
-        for (int i = 0; i < newObjList.Count; i++)
+        List<Spawnable> newObjects = new List<Spawnable>();
+        for(int i=0; i< objects.Length; i++)
         {
-            total += newObjList[i].Weight;
+            if (index == i)
+                continue;
+            if (totalDistance >= objects[i].AppearDistance)
+                newObjects.Add(objects[i]);
+        }
+
+        float total = 0.0f;
+        for (int i = 0; i < newObjects.Count; i++)
+        {
+            total += newObjects[i].Weight;
         }
 
         float rand = Random.value;
         float prob = 0.0f;
 
-        int count = newObjList.Count - 1;
+        int count = newObjects.Count - 1;
         for (int i = 0; i < count; i++)
         {
-            prob += newObjList[i].Weight / total;
+            prob += newObjects[i].Weight / total;
             if (prob >= rand)
             {
-                return newObjList[i].gameObject;
+                return newObjects[i].gameObject;
             }
         }
-        return newObjList[count].gameObject;
+        return newObjects[count].gameObject;
     }
 }

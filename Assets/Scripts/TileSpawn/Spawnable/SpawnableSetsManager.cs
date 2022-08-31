@@ -44,7 +44,7 @@ public class SpawnableSetsManager : ScriptableObject
                 }
                 if (sets[i].SetType == SetType.Enemy && isRightEdge)
                 {
-                    return sets[i].GetRandomObjectWithoutIndex(2);
+                    return sets[i].GetRandomObjectWithoutIndex(2,totalDistance);
                 }
                 if (!isPlatform && sets[i].SetType == SetType.Trash)
                 {
@@ -75,7 +75,7 @@ public class SpawnableSetsManager : ScriptableObject
         }
         if (sets[count].SetType == SetType.Enemy && isRightEdge)
         {
-            return sets[count].GetRandomObjectWithoutIndex(2);
+            return sets[count].GetRandomObjectWithoutIndex(2,totalDistance);
         }
 
         return sets[count].GetRandomObject();
