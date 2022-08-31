@@ -104,7 +104,7 @@ public class TerrainTileSpawner : Spawner
         tile.SetDestroyTime(tileLifeTime);
         tile.SetSprite(tileSet.GetRandomSprite());
 
-        tile.SpawnSpawnableObject(false, _totalDistance);
+        tile.SpawnSpawnableObject(false,false, _totalDistance);
 
         tileObj.gameObject.SetActive(true);
         LastTileSpawned = tileObj;
@@ -138,7 +138,7 @@ public class TerrainTileSpawner : Spawner
                 }
                 else
                 {
-                    spawnedObj = tile.SpawnSpawnableObject(false, _totalDistance);
+                    spawnedObj = tile.SpawnSpawnableObject(false,false, _totalDistance);
 
                     Enemy enemy = null;
                     if (spawnedObj!=null && spawnedObj.TryGetComponent(out enemy))
@@ -188,7 +188,7 @@ public class TerrainTileSpawner : Spawner
                 }
                 else
                 {
-                    spawnedObj = tile.SpawnSpawnableObject(false, _totalDistance);
+                    spawnedObj = tile.SpawnSpawnableObject(false,false, _totalDistance);
 
                     Enemy enemy = null;
                     if (spawnedObj != null && spawnedObj.TryGetComponent(out enemy))
@@ -240,7 +240,7 @@ public class TerrainTileSpawner : Spawner
                     }
                     else
                     {
-                        spawnedObj = tile.SpawnSpawnableObject(false, _totalDistance);
+                        spawnedObj = tile.SpawnSpawnableObject(false,false, _totalDistance);
 
                         Enemy enemy = null;
                         if (spawnedObj != null && spawnedObj.TryGetComponent(out enemy))

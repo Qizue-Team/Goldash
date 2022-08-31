@@ -170,4 +170,40 @@ public class SpawnableSet : ScriptableObject
         }
         return rareObjs[count].gameObject;
     }
+
+    public GameObject GetRandomObjectWithoutIndex(int index)
+    {
+        List<Spawnable> newObjList = new List<Spawnable>();
+
+        for(int i=0; i<objects.Length; ++i)
+        {
+            if (i == index)
+                continue;
+            newObjList.Add(objects[i]);
+        }
+
+        // Get the obj based on weight
+        if (newObjList.Count == 0)
+            return null;
+
+        float total = 0.0f;
+        for (int i = 0; i < newObjList.Count; i++)
+        {
+            total += newObjList[i].Weight;
+        }
+
+        float rand = Random.value;
+        float prob = 0.0f;
+
+        int count = newObjList.Count - 1;
+        for (int i = 0; i < count; i++)
+        {
+            prob += newObjList[i].Weight / total;
+            if (prob >= rand)
+            {
+                return newObjList[i].gameObject;
+            }
+        }
+        return newObjList[count].gameObject;
+    }
 }

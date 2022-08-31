@@ -12,7 +12,7 @@ public class SpawnableSetsManager : ScriptableObject
     [SerializeField]
     private SpawnableSet[] sets;
 
-    public GameObject GetRandomObject(bool isPlatform = false, float totalDistance = 0.0f)
+    public GameObject GetRandomObject(bool isPlatform = false, bool isRightEdge = false, float totalDistance = 0.0f)
     {
         // If no set, return blank
         if (sets.Length == 0)
@@ -34,15 +34,19 @@ public class SpawnableSetsManager : ScriptableObject
             prob += sets[i].Weight / total;
             if (prob >= rand)
             {
-                if(isPlatform && sets[i].SetType == SetType.Trash)
+                if (isPlatform && sets[i].SetType == SetType.Trash)
                 {
                     return sets[i].GetRareObjcet();
                 }
-                if(sets[i].SetType == SetType.Enemy)
+                if (sets[i].SetType == SetType.Enemy && !isRightEdge)
                 {
                     return sets[i].GetRandomObjectByDistance(totalDistance);
                 }
-                if(!isPlatform && sets[i].SetType == SetType.Trash)
+                if (sets[i].SetType == SetType.Enemy && isRightEdge)
+                {
+                    return sets[i].GetRandomObjectWithoutIndex(2);
+                }
+                if (!isPlatform && sets[i].SetType == SetType.Trash)
                 {
                     return sets[i].GetLessRareObjcet();
                 }
@@ -64,6 +68,14 @@ public class SpawnableSetsManager : ScriptableObject
         if (!isPlatform && sets[count].SetType == SetType.Trash)
         {
             return sets[count].GetLessRareObjcet();
+        }
+        if (sets[count].SetType == SetType.Enemy && !isRightEdge)
+        {
+            return sets[count].GetRandomObjectByDistance(totalDistance);
+        }
+        if (sets[count].SetType == SetType.Enemy && isRightEdge)
+        {
+            return sets[count].GetRandomObjectWithoutIndex(2);
         }
 
         return sets[count].GetRandomObject();
@@ -140,6 +152,9 @@ public class SpawnableSetsManager : ScriptableObject
         }
         return null;
     }
+
+    
+
 }
 
 public enum SetType

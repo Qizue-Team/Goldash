@@ -186,7 +186,7 @@ public class PlatformSpawner : Spawner
         else if(_platformIndex == totalLength - 1)
         {
             // Spawn Right Edge
-            GameObject tileObj = TileSpawn(new Vector3(RIGHT_MOST_X_TERRAIN_VALUE, yHeight, 0.0f), tileSet.GetRightEdge());
+            GameObject tileObj = TileSpawn(new Vector3(RIGHT_MOST_X_TERRAIN_VALUE, yHeight, 0.0f), tileSet.GetRightEdge(),true,true,true);
             tileObj.tag = "RightEdge";
 
             // Finish
@@ -205,7 +205,7 @@ public class PlatformSpawner : Spawner
         _platformIndex++;
     }
 
-    private GameObject TileSpawn(Vector3 position, Sprite sprite, bool isColliderActive = true, bool shouldSpawnObject = true)
+    private GameObject TileSpawn(Vector3 position, Sprite sprite, bool isColliderActive = true, bool shouldSpawnObject = true, bool isRightEdge = false)
     {
         _currentDistanceTileCount++;
         var tileObj = TerrainTilePool.Instance.Get();
@@ -235,7 +235,7 @@ public class PlatformSpawner : Spawner
                     }
                     else
                     {
-                        spawnedObj = tile.SpawnSpawnableObject(true, _totalDistance);
+                        spawnedObj = tile.SpawnSpawnableObject(true, isRightEdge, _totalDistance);
 
                         Enemy enemy = null;
                         if (spawnedObj != null && spawnedObj.TryGetComponent(out enemy))
