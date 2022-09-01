@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 381058120568116132}
   - component: {fileID: 381058120568116155}
   m_Layer: 0
-  m_Name: WitchHatSkin
+  m_Name: GentleManHat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 92e7a6c3209082841be84b2723c799b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d238bef5bd68544e9929bc0fc6ace1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a7cd5ba8148a340ad2550631786928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
-  skinName: Witch Hat
-  cost: 1
-  isUnlocked: 1
-  spawnPosition: {x: -0.02, y: -0.21, z: 0}
+  id: 5
+  skinName: Gentle Hat
+  cost: 0
+  isUnlocked: 0
+  spawnPosition: {x: -0.02, y: -0.25, z: 0}

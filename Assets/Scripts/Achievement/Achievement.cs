@@ -18,14 +18,28 @@ public abstract class Achievement : MonoBehaviour
 
     public virtual void CompleteAchievement()
     {
-        if (data.IsMaxTier())
-        {
-            Debug.Log("Destroy/Remove this achievement");
-            return;
-        }
-        Debug.Log("Data.GiveReward");
+        if (data.IsMaxTier()) 
+            return; // In HERE if you want to remove/destroy the achievement when completed
+
+        Debug.Log("Obtain Reward HERE");
         OnAchievementComplete?.Invoke(Data.Description);
         data.NextTier();
         ResetAchievementValue();
+    }
+
+    public virtual void ObtainReward()
+    {
+        Reward reward = data.GetReward();
+        if(reward.GearReward > 0)
+        {
+            int gearCount = DataManager.Instance.LoadTotalGearCount();
+            gearCount += reward.GearReward;
+            DataManager.Instance.SaveTotalGearCount(gearCount);
+        }
+        if(reward.SkinReward != null)
+        {
+            reward.SkinReward.Unlock(); // Cost must be 0
+            SkinManager.Instance.AddSkin(reward.SkinReward);
+        }
     }
 }
