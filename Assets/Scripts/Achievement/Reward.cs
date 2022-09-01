@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Reward : MonoBehaviour
+[CreateAssetMenu(fileName = "RewardTier", menuName = "Reward")]
+public class Reward : ScriptableObject
 {
     public int GearReward { get => gearReward; }
     public Skin SkinReward { get => skinReward; }

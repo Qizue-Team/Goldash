@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "AchievementData", menuName = "Data/Achievement Data")]
 public class AchievementData : ScriptableObject
 {
     public string Description { get => description; }
