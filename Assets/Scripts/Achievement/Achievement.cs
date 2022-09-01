@@ -21,7 +21,7 @@ public abstract class Achievement : MonoBehaviour
         if (data.IsMaxTier()) 
             return; // In HERE if you want to remove/destroy the achievement when completed
 
-        Debug.Log("Obtain Reward HERE");
+        ObtainReward();
         OnAchievementComplete?.Invoke(Data.Description);
         data.NextTier();
         ResetAchievementValue();
