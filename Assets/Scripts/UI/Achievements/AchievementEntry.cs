@@ -18,9 +18,19 @@ public class AchievementEntry : MonoBehaviour
 
     public void SetEntry(Achievement achievement)
     {
+        if (achievement == null)
+            return;
+
         descriptionText.text = achievement.Data.Description;
         tierText.text = "Tier " + achievement.Data.CurrentTier;
-        completitionText.text = achievement.Data.CurrentValue.ToString()+"/"+ achievement.Data.GetMaxValue().ToString();
+        completitionText.text = achievement.Data.CurrentValue.ToString() + "/" + achievement.Data.GetMaxValue().ToString();
+
+        if (achievement.Data.IsMaxTier() && achievement.Data.CurrentValue == achievement.Data.GetMaxValue())
+        {
+            rewardText.text = "COMPLETED";
+            return;
+        }
+        
         if (achievement.Data.GetReward().SkinReward != null && achievement.Data.GetReward().GearReward <= 0)
             rewardText.text = "Reward: " + achievement.Data.GetReward().SkinReward.SkinName+" Skin";
         if (achievement.Data.GetReward().SkinReward == null)

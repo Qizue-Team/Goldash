@@ -18,12 +18,12 @@ public abstract class Achievement : MonoBehaviour
 
     public virtual void CompleteAchievement()
     {
-        Debug.Log("Data.GiveReward");
         if (data.IsMaxTier())
         {
             Debug.Log("Destroy/Remove this achievement");
             return;
         }
+        Debug.Log("Data.GiveReward");
         OnAchievementComplete?.Invoke(Data.Description);
         data.NextTier();
         ResetAchievementValue();
