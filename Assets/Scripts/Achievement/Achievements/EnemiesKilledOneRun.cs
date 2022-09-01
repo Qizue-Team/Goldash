@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class EnemiesKilledOneRun : Achievement
 {
+    public override void ResetAchievementValue()
+    {
+        data.SetCurrentValue(0);
+    }
+
     public override void UpdateCurrentValue()
     {
         data.SetCurrentValue(AchievementManager.Instance.EnemiesKilledOneRun);
+        if(data.IsComplete())
+            CompleteAchievement();
     }
 
-    public override void CompleteAchievement()
-    {
-        base.CompleteAchievement();
-        // Dunno if I have to do anything else atm, I think not
-    }
 }

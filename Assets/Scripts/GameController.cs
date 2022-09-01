@@ -98,6 +98,9 @@ public class GameController : Singleton<GameController>
 
         RunPowerUpManager.Instance.ResetManager();
 
+        // Achievement Values One Run
+        AchievementManager.Instance.EnemiesKilledOneRun = 0;
+
         if (_player != null)
             Destroy(_player);
 
@@ -153,6 +156,9 @@ public class GameController : Singleton<GameController>
     {
         Physics2D.baumgarteScale = 0.02f;
         _player = FindObjectOfType<Player>().gameObject;
+        // Achievement values
+        AchievementManager.Instance.EnemiesKilledOneRun = 0;
+        AchievementManager.Instance.UpdateAchievements();
     }
 
     private GameObject SpawnPlayer()

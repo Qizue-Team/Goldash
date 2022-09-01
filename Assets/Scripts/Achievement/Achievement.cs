@@ -14,9 +14,18 @@ public abstract class Achievement : MonoBehaviour
     protected AchievementData data;
 
     public abstract void UpdateCurrentValue();
+    public abstract void ResetAchievementValue();
 
     public virtual void CompleteAchievement()
     {
+        Debug.Log("Data.GiveReward");
+        if (data.IsMaxTier())
+        {
+            Debug.Log("Destroy/Remove this achievement");
+            return;
+        }
         OnAchievementComplete?.Invoke(Data.Description);
+        data.NextTier();
+        ResetAchievementValue();
     }
 }

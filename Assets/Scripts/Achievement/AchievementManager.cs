@@ -13,4 +13,9 @@ public class AchievementManager : Singleton<AchievementManager>
     [SerializeField]
     private List<Achievement> achievements = new List<Achievement>();
 
+    public void UpdateAchievements()
+    {
+        foreach(var achievement in achievements)
+            achievement.UpdateCurrentValue();
+    }
 }

@@ -84,6 +84,10 @@ public class PlayerCollision : MonoBehaviour
                     // Add Collected Trash
                     EnemyKilledManager.Instance.AddEnemyKilled(enemy);
 
+                    // Achievement value
+                    AchievementManager.Instance.EnemiesKilledOneRun++;
+                    AchievementManager.Instance.UpdateAchievements();
+
                     // Update Score
                     GameController.Instance.IncreaseScore(enemy.ScorePoints);
                     UIController.Instance.UpdateScore(GameController.Instance.Score);

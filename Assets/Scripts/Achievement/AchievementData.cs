@@ -39,4 +39,7 @@ public class AchievementData : ScriptableObject
             return;
         currentTier++;
     }
+
+    public bool IsMaxTier() => maxTier == currentTier;
+    public bool IsComplete() => currentValue >= GetMaxValue();
 }
