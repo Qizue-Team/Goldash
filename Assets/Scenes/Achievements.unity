@@ -2020,6 +2020,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d55c8d7972729468924848f1222a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listContent: {fileID: 449093856}
+  achievementEntry: {fileID: 810443662458770696, guid: 17ac57a51d73cff4e9ef1ece6d01114b, type: 3}
 --- !u!4 &1285570768
 Transform:
   m_ObjectHideFlags: 0

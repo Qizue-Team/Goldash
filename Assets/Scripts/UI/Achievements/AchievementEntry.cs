@@ -16,16 +16,16 @@ public class AchievementEntry : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI rewardText;
 
-    public void SetEntry(string description, int tier, float currentValue, float maxValue, Reward reward)
+    public void SetEntry(Achievement achievement)
     {
-        descriptionText.text = description;
-        tierText.text = "Tier " + tier;
-        completitionText.text = currentValue.ToString()+"/"+maxValue.ToString();
-        if (reward.SkinReward != null && reward.GearReward <= 0)
-            rewardText.text = "Reward: " + reward.SkinReward.SkinName+" Skin";
-        if (reward.SkinReward == null)
-            rewardText.text = "Reward: " + reward.GearReward.ToString() + " Gears";
-        if(reward.SkinReward != null && reward.GearReward > 0)
-            rewardText.text = "Reward: "+reward.SkinReward.ToString() + " Skin and " + reward.GearReward.ToString() + " Gears";
+        descriptionText.text = achievement.Data.Description;
+        tierText.text = "Tier " + achievement.Data.CurrentTier;
+        completitionText.text = achievement.Data.CurrentValue.ToString()+"/"+ achievement.Data.GetMaxValue().ToString();
+        if (achievement.Data.GetReward().SkinReward != null && achievement.Data.GetReward().GearReward <= 0)
+            rewardText.text = "Reward: " + achievement.Data.GetReward().SkinReward.SkinName+" Skin";
+        if (achievement.Data.GetReward().SkinReward == null)
+            rewardText.text = "Reward: " + achievement.Data.GetReward().GearReward.ToString() + " Gears";
+        if(achievement.Data.GetReward().SkinReward != null && achievement.Data.GetReward().GearReward > 0)
+            rewardText.text = "Reward: "+ achievement.Data.GetReward().SkinReward.ToString() + " Skin and " + achievement.Data.GetReward().GearReward.ToString() + " Gears";
     }
 }
