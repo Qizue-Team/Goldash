@@ -26,6 +26,6 @@ public class AchievementEntry : MonoBehaviour
         if (achievement.Data.GetReward().SkinReward == null)
             rewardText.text = "Reward: " + achievement.Data.GetReward().GearReward.ToString() + " Gears";
         if(achievement.Data.GetReward().SkinReward != null && achievement.Data.GetReward().GearReward > 0)
-            rewardText.text = "Reward: "+ achievement.Data.GetReward().SkinReward.ToString() + " Skin and " + achievement.Data.GetReward().GearReward.ToString() + " Gears";
+            rewardText.text = "Reward: "+ achievement.Data.GetReward().SkinReward.SkinName + " Skin and " + achievement.Data.GetReward().GearReward.ToString() + " Gears";
     }
 }
