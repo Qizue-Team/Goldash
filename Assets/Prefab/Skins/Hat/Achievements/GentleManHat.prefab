@@ -98,5 +98,6 @@ MonoBehaviour:
   id: 5
   skinName: Gentle Hat
   cost: 0
-  isUnlocked: 0
+  isHidden: 1
+  isUnlocked: 1
   spawnPosition: {x: -0.02, y: -0.25, z: 0}

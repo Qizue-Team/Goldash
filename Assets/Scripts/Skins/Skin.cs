@@ -5,6 +5,7 @@ using UnityEngine;
 public class Skin : MonoBehaviour
 { 
     public int ID { get => id; }
+    public bool IsHidden { get => isHidden; }
     public bool IsUnlocked { get => isUnlocked; }
     public bool IsSet { get; private set; }
     public int Cost { get => cost; }
@@ -18,6 +19,8 @@ public class Skin : MonoBehaviour
     private string skinName;
     [SerializeField]
     private int cost;
+    [SerializeField]
+    private bool isHidden;
     [SerializeField]
     private bool isUnlocked;
     [SerializeField]
@@ -61,6 +64,9 @@ public class Skin : MonoBehaviour
 
         isUnlocked = true;
     }
+
+    public void ShowSkin() => isHidden = false;
+    public void HideSkin() => isHidden = true;
 
     private void Start()
     {

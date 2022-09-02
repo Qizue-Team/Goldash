@@ -198,6 +198,7 @@ public class SerializableSkinsData
 {
     public int ID;
     public bool IsUnlocked;
+    public bool IsHidden;
 }
 
 [System.Serializable] 

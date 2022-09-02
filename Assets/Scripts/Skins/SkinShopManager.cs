@@ -20,6 +20,7 @@ public class SkinShopManager : Singleton<SkinShopManager>
             SerializableSkinsData data = new SerializableSkinsData();
             data.ID = skin.ID;
             data.IsUnlocked = skin.IsUnlocked;
+            data.IsHidden = skin.IsHidden;
             list.Add(data);
         }
         DataManager.Instance.SaveSkinsData(list);
@@ -30,6 +31,8 @@ public class SkinShopManager : Singleton<SkinShopManager>
         foreach(Skin skin in skinSet.Skins)
         {
             skin.UpdateSkin(); // Updata data
+            if (skin.IsHidden)
+                continue;
             GameObject skinEntryObj = Instantiate(skinEntryPrefab, shopContent);
             SkinShopEntry shopEntry = skinEntryObj.GetComponent<SkinShopEntry>();
             shopEntry.SetEntry(skin);

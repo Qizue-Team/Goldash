@@ -10,7 +10,14 @@ public class SkinManager : Singleton<SkinManager>
 
     public void AddSkin(Skin skin)
     {
-        skinSet.Skins.Add(skin);
+        foreach(Skin currentSkin in skinSet.Skins)
+        {
+            if(skin.ID == currentSkin.ID)
+            {
+                skin.ShowSkin();
+                break;
+            }
+        }
         UpdateSkins();
     }
 
@@ -22,6 +29,7 @@ public class SkinManager : Singleton<SkinManager>
             SerializableSkinsData data = new SerializableSkinsData();
             data.ID = skin.ID;
             data.IsUnlocked = skin.IsUnlocked;
+            data.IsHidden = skin.IsHidden;
             list.Add(data);
         }
         DataManager.Instance.SaveSkinsData(list);
