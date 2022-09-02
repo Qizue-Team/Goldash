@@ -17,5 +17,12 @@ public class AchievementManager : Singleton<AchievementManager>
     {
         foreach(var achievement in achievements)
             achievement.UpdateCurrentValue();
+
+        // Save data in persistence / DataManager
+    }
+
+    private void OnStart()
+    {
+        // Load data from persistence / DataManager
     }
 }
