@@ -5,7 +5,7 @@ using System;
 
 public abstract class Achievement : MonoBehaviour
 {
-    public static event Action<string> OnAchievementComplete;
+    public static event Action<Achievement> OnAchievementComplete;
 
     public AchievementData Data { get => data; }
 
@@ -22,7 +22,7 @@ public abstract class Achievement : MonoBehaviour
             return; // In HERE if you want to remove/destroy the achievement when completed
 
         ObtainReward();
-        OnAchievementComplete?.Invoke(Data.Description);
+        OnAchievementComplete?.Invoke(this);
         data.NextTier();
         ResetAchievementValue();
     }
