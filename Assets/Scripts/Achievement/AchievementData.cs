@@ -40,6 +40,13 @@ public class AchievementData : ScriptableObject
         currentTier++;
     }
 
+    public void SetCurrentTier(int tier)
+    {
+        if (tier > maxTier)
+            return;
+        currentTier = tier;
+    }
+
     public bool IsMaxTier() => maxTier-1 == currentTier;
     public bool IsComplete() => currentValue >= GetMaxValue();
 }

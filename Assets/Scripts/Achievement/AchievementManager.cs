@@ -15,14 +15,53 @@ public class AchievementManager : Singleton<AchievementManager>
 
     public void UpdateAchievements()
     {
+        List<SerializableAchievementData> dataList = new List<SerializableAchievementData>();
         foreach(var achievement in achievements)
+        {
+            SerializableAchievementData data = new SerializableAchievementData();
             achievement.UpdateCurrentValue();
+            data.CurrentTier = achievement.Data.CurrentTier;
+            data.CurrentValue = achievement.Data.CurrentValue;
+            dataList.Add(data);
+        }
+        // Save persistence achievements data
+        DataManager.Instance.SaveAchievementsData(dataList);
 
-        // Save data in persistence / DataManager
+        SaveManagerValues();
     }
 
-    private void OnStart()
+    private void Start()
     {
-        // Load data from persistence / DataManager
+        LoadDataAchievements();
+        LoadDataAchievementsManager();
+    }
+
+    private void SaveManagerValues()
+    {
+        SerializableAchievementManagerData data = new SerializableAchievementManagerData();
+        data.EnemiesKilledOneRun = EnemiesKilledOneRun;
+        DataManager.Instance.SaveAchievementManagerData(data);
+    }
+
+    private void LoadDataAchievements()
+    {
+        List<SerializableAchievementData> dataList = DataManager.Instance.LoadAchievementsData();
+        if (dataList == null)
+            return;
+        int index = 0;
+        foreach (var achievement in achievements)
+        {
+            achievement.Data.SetCurrentValue(dataList[index].CurrentValue);
+            achievement.Data.SetCurrentTier(dataList[index].CurrentTier);
+            index++;
+        }
+    }
+
+    private void LoadDataAchievementsManager()
+    {
+        SerializableAchievementManagerData managerData = DataManager.Instance.LoadAchievementManagerData();
+        if (managerData == null)
+            return;
+        EnemiesKilledOneRun = managerData.EnemiesKilledOneRun;
     }
 }

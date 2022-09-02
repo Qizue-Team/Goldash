@@ -37,6 +37,7 @@ public class Skin : MonoBehaviour
             if(data.ID == id)
             {
                 isUnlocked = data.IsUnlocked;
+                isHidden = data.IsHidden;
             }
         }
 
