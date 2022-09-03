@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483d1534957339f4ab81cf46d44fc6b6, type: 3}
+  m_Name: ChipsBagOneRunData
+  m_EditorClassIdentifier: 
+  description: Chips Bags collected in one run
+  maxTier: 5
+  currentTier: 0
+  currentValue: 0
+  maxValues: 05000000070000000a0000000c0000000f000000
+  rewards:
+  - {fileID: 11400000, guid: a2d7a559d29689849890b8d47666a8ab, type: 2}
+  - {fileID: 11400000, guid: e90405ee900aa9846a4f8c163af81a40, type: 2}
+  - {fileID: 11400000, guid: c4e2cd0e14179c04d941c0e828939e78, type: 2}
+  - {fileID: 11400000, guid: 4c212f047d2626147a28874ca0480e33, type: 2}
+  - {fileID: 11400000, guid: ac41491a75135954ca876b9ade18081d, type: 2}
+  isComplete: 0

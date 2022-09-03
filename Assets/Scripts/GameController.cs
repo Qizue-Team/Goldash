@@ -158,6 +158,7 @@ public class GameController : Singleton<GameController>
         _player = FindObjectOfType<Player>().gameObject;
         // Achievement values
         AchievementManager.Instance.EnemiesKilledOneRun = 0;
+        AchievementManager.Instance.TrashCountDictionary.Clear();
         AchievementManager.Instance.UpdateAchievements();
     }
 

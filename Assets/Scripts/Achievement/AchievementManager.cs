@@ -8,6 +8,7 @@ public class AchievementManager : Singleton<AchievementManager>
     
     // Values needed for achievements
     public int EnemiesKilledOneRun { get; set; }
+    public Dictionary<string, int> TrashCountDictionary { get; set; }
 
     [Header("Achievement List")]
     [SerializeField]
@@ -33,6 +34,7 @@ public class AchievementManager : Singleton<AchievementManager>
 
     private void Start()
     {
+        TrashCountDictionary = new Dictionary<string, int>();
         LoadDataAchievements();
         LoadDataAchievementsManager();
     }
@@ -41,6 +43,13 @@ public class AchievementManager : Singleton<AchievementManager>
     {
         SerializableAchievementManagerData data = new SerializableAchievementManagerData();
         data.EnemiesKilledOneRun = EnemiesKilledOneRun;
+        data.TrashNames = new List<string>();
+        data.TrashCounts = new List<int>();
+        foreach(string name in TrashCountDictionary.Keys)
+        {
+            data.TrashNames.Add(name);
+            data.TrashCounts.Add(TrashCountDictionary[name]);
+        }
         DataManager.Instance.SaveAchievementManagerData(data);
     }
 
@@ -63,6 +72,15 @@ public class AchievementManager : Singleton<AchievementManager>
         SerializableAchievementManagerData managerData = DataManager.Instance.LoadAchievementManagerData();
         if (managerData == null)
             return;
+
+        TrashCountDictionary.Clear();
+        int index = 0;
+        foreach(string name in managerData.TrashNames)
+        {
+            TrashCountDictionary.Add(name, managerData.TrashCounts[index]);
+            index++;
+        }
+
         EnemiesKilledOneRun = managerData.EnemiesKilledOneRun;
     }
 }

@@ -18,20 +18,24 @@ public class TrashCollectedManager : Singleton<TrashCollectedManager>
             if (_trashCountDictionary.ContainsKey(name))
             {
                 _trashCountDictionary[name] = ++count;
+                AchievementManager.Instance.TrashCountDictionary[name] = ++count;
             }
         }
         else
         {
             _trashCountDictionary.Add(name, 1);
+            AchievementManager.Instance.TrashCountDictionary.Add(name, 1);
             if(!_trashDictionary.ContainsKey(name))
                 _trashDictionary.Add(name, trash);
         }
+        AchievementManager.Instance.UpdateAchievements();
     }
 
     public void ResetManager()
     {
         _trashCountDictionary.Clear();
         _trashDictionary.Clear();
+        AchievementManager.Instance.TrashCountDictionary.Clear();
     }
 
     public int GetTotalGearCount()

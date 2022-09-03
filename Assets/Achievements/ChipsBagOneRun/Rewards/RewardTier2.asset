@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10185cdc1c3112a4082bf9cf75ebeb63, type: 3}
-  m_Name: RewardTier0
+  m_Name: RewardTier2
   m_EditorClassIdentifier: 
-  gearReward: 100
+  gearReward: 60
   skinReward: {fileID: 0}
