@@ -59,4 +59,10 @@ public class AchievementData : ScriptableObject
         return maxValues[index];
     }
 
+    public void ResetAchievement()
+    {
+        currentTier = 0;
+        currentValue = 0;
+        isComplete = false;
+    }
 }

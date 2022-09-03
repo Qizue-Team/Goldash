@@ -245,6 +245,14 @@ public class DataManager : Singleton<DataManager>
         reader.Close();
         return JsonUtility.FromJson<SerializableAchievementManagerData>(json);
     }
+
+    public void DeleteAchievementsDataFiles()
+    {
+        if (File.Exists(@"" + Application.persistentDataPath + _achievementsManagerDataFileName))
+            File.Delete(@"" + Application.persistentDataPath + _achievementsManagerDataFileName);
+        if (File.Exists(@"" + Application.persistentDataPath + _achievementsDataListFileName))
+            File.Delete(@"" + Application.persistentDataPath + _achievementsDataListFileName);
+    }
     #endregion
 }
 
