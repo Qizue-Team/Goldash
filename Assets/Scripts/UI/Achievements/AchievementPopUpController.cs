@@ -8,12 +8,12 @@ public class AchievementPopUpController : Singleton<AchievementPopUpController>
     [SerializeField]
     private AchievementPopUp popUp;
 
-    private Queue<Achievement> _achievementsQueue;
+    private Queue<AchievementUIInfo> _achievementsQueue;
 
     protected override void Awake()
     {
         base.Awake();
-        _achievementsQueue = new Queue<Achievement>();
+        _achievementsQueue = new Queue<AchievementUIInfo>();
     }
 
     private void OnEnable() => Achievement.OnAchievementComplete += AddAchievement;
@@ -22,8 +22,10 @@ public class AchievementPopUpController : Singleton<AchievementPopUpController>
 
     private void AddAchievement(Achievement achievement)
     {
-        _achievementsQueue.Enqueue(achievement);
-        popUp.Play(achievement, PlayNextAchievement);
+        AchievementUIInfo info = new AchievementUIInfo();
+        info.SetInfos(achievement);
+        _achievementsQueue.Enqueue(info);
+        popUp.Play(info, PlayNextAchievement);
     }
 
     private void PlayNextAchievement()

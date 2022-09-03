@@ -18,11 +18,11 @@ public class AchievementPopUp : MonoBehaviour
     [SerializeField]
     private float duration = 1.0f;
 
-    public void Play(Achievement achievement, Action callback)
+    public void Play(AchievementUIInfo info, Action callback)
     {
         if (IsPlaying)
             return;
-        descriptionText.text = achievement.Data.Description + " Unlocked <Tier " + achievement.Data.CurrentTier + ">";
+        descriptionText.text = info.Description + " Unlocked <Tier " + info.CurrentTier + ">";
         StartCoroutine(Play(callback));
     }
 

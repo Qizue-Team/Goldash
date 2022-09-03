@@ -63,6 +63,8 @@ public class AchievementManager : Singleton<AchievementManager>
         {
             achievement.Data.SetCurrentValue(dataList[index].CurrentValue);
             achievement.Data.SetCurrentTier(dataList[index].CurrentTier);
+            if (dataList[index].IsComplete)
+                achievement.Data.CompleteAchievement();
             index++;
         }
     }
