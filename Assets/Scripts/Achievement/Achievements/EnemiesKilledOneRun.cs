@@ -6,7 +6,7 @@ public class EnemiesKilledOneRun : Achievement
 {
     public override void ResetAchievementValue()
     {
-        data.SetCurrentValue(0);
+        data.SetCurrentValue(data.CurrentValue);
     }
 
     public override void UpdateCurrentValue()
