@@ -28,6 +28,8 @@ public class TrashCollectedManager : Singleton<TrashCollectedManager>
             if(!_trashDictionary.ContainsKey(name))
                 _trashDictionary.Add(name, trash);
         }
+        if (AchievementManager.Instance.TrashCountDictionary[name] > 1)
+            AchievementManager.Instance.TrashCountDictionary[name]--;
         AchievementManager.Instance.UpdateAchievements();
     }
 
