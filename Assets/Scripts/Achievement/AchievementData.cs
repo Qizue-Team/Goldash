@@ -64,5 +64,12 @@ public class AchievementData : ScriptableObject
         currentTier = 0;
         currentValue = 0;
         isComplete = false;
+        foreach(Reward reward in rewards)
+        {
+            if(reward.SkinReward != null)
+            {
+                reward.SkinReward.HideSkin();
+            }
+        }
     }
 }

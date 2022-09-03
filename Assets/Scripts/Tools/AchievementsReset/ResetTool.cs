@@ -5,18 +5,21 @@ using UnityEditor;
 using xPoke.CustomLog;
 
 #if UNITY_EDITOR
-public partial class AchievementsResetTool : EditorWindow
+public partial class ResetTool : EditorWindow
 {
     [SerializeField]
     private AchievementManager achievementManager;
+    [SerializeField]
+    private SkinSet skinSet;
 
     SerializedObject serializedObject;
     SerializedProperty achievementManagerSerialized;
+    SerializedProperty skinSetSerialized;
 
-    [MenuItem("Tools/Achievements Reset Tool")]
+    [MenuItem("Tools/Reset Tool")]
     public static void StartEditor()
     {
-        AchievementsResetTool animationCreatorEditorWindow = EditorWindow.GetWindow<AchievementsResetTool>("Achievements Reset Editor", true);
+        ResetTool animationCreatorEditorWindow = EditorWindow.GetWindow<ResetTool>("Reset Tool Editor", true);
         animationCreatorEditorWindow.Show();
     }
 
@@ -24,6 +27,7 @@ public partial class AchievementsResetTool : EditorWindow
     {
         serializedObject = new SerializedObject(this);
         achievementManagerSerialized = serializedObject.FindProperty("achievementManager");
+        skinSetSerialized = serializedObject.FindProperty("skinSet");
     }
 
     private void OnGUI()
@@ -36,16 +40,29 @@ public partial class AchievementsResetTool : EditorWindow
         serializedObject.ApplyModifiedProperties();
         EditorGUILayout.Space();
 
-        if (GUILayout.Button("Reset"))
+        serializedObject.Update();
+        EditorGUILayout.PropertyField(skinSetSerialized, true);
+        serializedObject.ApplyModifiedProperties();
+        EditorGUILayout.Space();
+
+        if (GUILayout.Button("Reset Achievements"))
         { 
             foreach (var achievement in achievementManager.Achievements)
                 achievement.Data.ResetAchievement();
 
             DataManager.Instance.DeleteAchievementsDataFiles();
 
-            CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Achievements Reset Complete - Data files deleted and SOs resetted");
+            CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Achievements Data Reset Complete - Data files deleted and SOs resetted");
         }
+        if (GUILayout.Button("Reset Skins"))
+        {
+            foreach (Skin skin in skinSet.Skins)
+                skin.LockSkin();
 
+            DataManager.Instance.DeleteSkinsDataFiles();
+
+            CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "Skins Data Reset Complete - Data files deleted and SOs resetted");
+        }
         EditorGUILayout.EndVertical();
     }
 }

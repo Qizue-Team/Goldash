@@ -68,10 +68,12 @@ public class Skin : MonoBehaviour
 
     public void ShowSkin() => isHidden = false;
     public void HideSkin() => isHidden = true;
+    public void LockSkin() { isUnlocked = false; IsSet = false; }
 
     private void Start()
     {
         isUnlocked = false;
         IsSet = false;
     }
+
 }

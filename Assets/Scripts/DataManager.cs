@@ -9,7 +9,7 @@ public class DataManager : Singleton<DataManager>
 {
     private string _powerUpDataListFileName = "/power-up-data.dat";
     private string _skinsDataListFileName = "/skins-data.dat";
-    private string _skinSetDataListFileName = "/skin-set.dat";
+    private string _skinSetDataFileName = "/skin-set.dat";
     private string _avgGearRunFileName = "/average-gear.csv";
     private string _achievementsDataListFileName = "/achievements-data.dat";
     private string _achievementsManagerDataFileName = "/achievements-manager-data.dat";
@@ -164,11 +164,11 @@ public class DataManager : Singleton<DataManager>
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Created: " + json);
 
         // Save json string to file
-        if (File.Exists(@"" + Application.persistentDataPath + _skinSetDataListFileName))
+        if (File.Exists(@"" + Application.persistentDataPath + _skinSetDataFileName))
         {
-            File.Delete(@"" + Application.persistentDataPath + _skinSetDataListFileName);
+            File.Delete(@"" + Application.persistentDataPath + _skinSetDataFileName);
         }
-        StreamWriter writer = new StreamWriter(Application.persistentDataPath + _skinSetDataListFileName);
+        StreamWriter writer = new StreamWriter(Application.persistentDataPath + _skinSetDataFileName);
         writer.WriteLine(json);
         writer.Close();
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Saved");
@@ -177,9 +177,9 @@ public class DataManager : Singleton<DataManager>
     public SerializableSkinSetData LoadSkinSetData()
     {
         // Read from file the json string
-        if (!File.Exists(@"" + Application.persistentDataPath + _skinSetDataListFileName))
+        if (!File.Exists(@"" + Application.persistentDataPath + _skinSetDataFileName))
             return null;
-        StreamReader reader = new StreamReader(Application.persistentDataPath + _skinSetDataListFileName);
+        StreamReader reader = new StreamReader(Application.persistentDataPath + _skinSetDataFileName);
         string json = reader.ReadToEnd();
         CustomLog.Log(CustomLog.CustomLogType.SYSTEM, "JSON Read: " + json);
         reader.Close();
@@ -252,6 +252,14 @@ public class DataManager : Singleton<DataManager>
             File.Delete(@"" + Application.persistentDataPath + _achievementsManagerDataFileName);
         if (File.Exists(@"" + Application.persistentDataPath + _achievementsDataListFileName))
             File.Delete(@"" + Application.persistentDataPath + _achievementsDataListFileName);
+    }
+
+    public void DeleteSkinsDataFiles()
+    {
+        if (File.Exists(@"" + Application.persistentDataPath + _skinsDataListFileName))
+            File.Delete(@"" + Application.persistentDataPath + _skinsDataListFileName);
+        if (File.Exists(@"" + Application.persistentDataPath + _skinSetDataFileName))
+            File.Delete(@"" + Application.persistentDataPath + _skinSetDataFileName);
     }
     #endregion
 }
