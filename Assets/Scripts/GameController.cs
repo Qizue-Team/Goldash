@@ -51,6 +51,10 @@ public class GameController : Singleton<GameController>
         terrainTileSpawner.Stop();
         platformSpawner.Stop();
 
+        // Achievements values
+        AchievementManager.Instance.TotalDistanceOneRun = Mathf.FloorToInt(terrainTileSpawner.TotalDistance);
+        AchievementManager.Instance.UpdateAchievements();
+        
         // Add trash collected to the general amount of account's trash
         int trash = DataManager.Instance.LoadTrashCount();
         trash += TrashCount;
@@ -98,8 +102,9 @@ public class GameController : Singleton<GameController>
 
         RunPowerUpManager.Instance.ResetManager();
 
-        // Achievement Values One Run
+        // Achievements Values One Run
         AchievementManager.Instance.EnemiesKilledOneRun = 0;
+        AchievementManager.Instance.TotalDistanceOneRun = 0;
 
         if (_player != null)
             Destroy(_player);

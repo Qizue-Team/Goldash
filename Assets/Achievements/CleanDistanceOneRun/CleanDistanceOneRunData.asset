@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483d1534957339f4ab81cf46d44fc6b6, type: 3}
+  m_Name: CleanDistanceOneRunData
+  m_EditorClassIdentifier: 
+  description: Clean for distance
+  maxTier: 5
+  currentTier: 0
+  currentValue: 0
+  maxValues: 96000000fa0000005e010000c2010000f4010000
+  rewards:
+  - {fileID: 11400000, guid: 5e690744d376fd14ebd3ee2355940ac6, type: 2}
+  - {fileID: 11400000, guid: cd2cee40b15b3c04c8c91d70879accc7, type: 2}
+  - {fileID: 11400000, guid: 50284c10f9e0ecd42a01952abd6d77fc, type: 2}
+  - {fileID: 11400000, guid: 8b5d1df4a367558488f7d9a8f8b4a72b, type: 2}
+  - {fileID: 11400000, guid: 325588acce2838849bcbea4b435c404d, type: 2}
+  isComplete: 0

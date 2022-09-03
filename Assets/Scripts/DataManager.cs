@@ -286,4 +286,5 @@ public class SerializableAchievementManagerData
     public int EnemiesKilledOneRun;
     public List<string> TrashNames;
     public List<int> TrashCounts;
+    public float TotalDistanceOneRun;
 }

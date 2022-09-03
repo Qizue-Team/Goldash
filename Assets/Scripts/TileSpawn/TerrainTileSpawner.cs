@@ -11,6 +11,7 @@ public class TerrainTileSpawner : Spawner
     public TerrainTile LastTileSpawned { get; private set; }
     public float CurrentDistanceBetweenEnemies { get; set; }
     public float MaxDistanceNoEnemies { get => maxDistanceNoEnemies; }
+    public float TotalDistance { get => _totalDistance; }
 
     public static event Action<float> OnSpeedUp;
     public static event Action<float,float> OnSpeedDown;
