@@ -277,6 +277,7 @@ public class SerializableAchievementData
 {
     public float CurrentValue;
     public int CurrentTier;
+    public bool IsComplete;
 }
 
 [System.Serializable]

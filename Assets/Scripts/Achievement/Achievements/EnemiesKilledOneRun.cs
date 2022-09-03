@@ -14,7 +14,7 @@ public class EnemiesKilledOneRun : Achievement
         if (AchievementManager.Instance.EnemiesKilledOneRun < data.CurrentValue)
             return;
         data.SetCurrentValue(AchievementManager.Instance.EnemiesKilledOneRun);
-        if (data.IsComplete())
+        if (data.IsTierComplete())
             CompleteAchievement();
     }
 

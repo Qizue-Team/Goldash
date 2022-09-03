@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105350ff4292e2b40873d5deb2ef314e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appearDistance: 0
   weight: 2
   scorePoints: 15
   fallingSpeed: 2.7

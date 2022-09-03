@@ -18,13 +18,20 @@ public abstract class Achievement : MonoBehaviour
 
     public virtual void CompleteAchievement()
     {
-        if (data.IsMaxTier()) 
-            return; // In HERE if you want to remove/destroy the achievement when completed
+        if (data.IsComplete)
+            return;
+
+        if (data.IsMaxTier())
+            data.CompleteAchievement();
 
         ObtainReward();
         OnAchievementComplete?.Invoke(this);
-        data.NextTier();
-        ResetAchievementValue();
+
+        if (!data.IsMaxTier())
+        {
+            data.NextTier();
+            ResetAchievementValue();
+        }
     }
 
     public virtual void ObtainReward()

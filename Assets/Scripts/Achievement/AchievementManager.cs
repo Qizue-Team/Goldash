@@ -22,6 +22,7 @@ public class AchievementManager : Singleton<AchievementManager>
             achievement.UpdateCurrentValue();
             data.CurrentTier = achievement.Data.CurrentTier;
             data.CurrentValue = achievement.Data.CurrentValue;
+            data.IsComplete = achievement.Data.IsComplete;
             dataList.Add(data);
         }
         // Save persistence achievements data
