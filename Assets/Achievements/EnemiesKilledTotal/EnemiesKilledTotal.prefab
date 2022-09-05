@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6384317002876379372
+--- !u!1 &5572708311023949934
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6384317002876379374}
-  - component: {fileID: 6384317002876379375}
+  - component: {fileID: 5572708311023949932}
+  - component: {fileID: 5572708311023949933}
   m_Layer: 0
-  m_Name: AchievementManager
+  m_Name: EnemiesKilledTotal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6384317002876379374
+--- !u!4 &5572708311023949932
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6384317002876379372}
+  m_GameObject: {fileID: 5572708311023949934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,21 +31,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6384317002876379375
+--- !u!114 &5572708311023949933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6384317002876379372}
+  m_GameObject: {fileID: 5572708311023949934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d61602ad268d54c88f2371cf0253d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 038400ee727d8d54a9adbc716b77a39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  achievements:
-  - {fileID: 5945891582332890107, guid: a070740e99fea754f96eded806327786, type: 3}
-  - {fileID: 5693807786684706490, guid: 8a7f6e0cb0621334fa9bc71353741445, type: 3}
-  - {fileID: 5693807786684706490, guid: 39003aacc78e9b140ac274b1149bed51, type: 3}
-  - {fileID: -6675742298003798930, guid: 8dedfc9ad30509942be5350823687d11, type: 3}
-  - {fileID: 5572708311023949933, guid: 15d16cedc557d984fbb8b2a3f0587af1, type: 3}
+  data: {fileID: 11400000, guid: 3a0ad6861226afb4aab2cc24162798aa, type: 2}

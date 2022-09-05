@@ -9,6 +9,8 @@ public class AchievementManager : Singleton<AchievementManager>
     // Values needed for achievements
     public int EnemiesKilledOneRun { get; set; }
     public Dictionary<string, int> TrashCountDictionary { get; set; }
+    public int EnemiesKilledTotal { get; set; }
+
     public float TotalDistanceOneRun { get; set; }
 
     [Header("Achievement List")]
@@ -45,6 +47,7 @@ public class AchievementManager : Singleton<AchievementManager>
         SerializableAchievementManagerData data = new SerializableAchievementManagerData();
         data.EnemiesKilledOneRun = EnemiesKilledOneRun;
         data.TotalDistanceOneRun = TotalDistanceOneRun;
+        data.EnemiesKilledTotal = EnemiesKilledTotal;
         data.TrashNames = new List<string>();
         data.TrashCounts = new List<int>();
         foreach(string name in TrashCountDictionary.Keys)
@@ -87,5 +90,6 @@ public class AchievementManager : Singleton<AchievementManager>
 
         EnemiesKilledOneRun = managerData.EnemiesKilledOneRun;
         TotalDistanceOneRun = managerData.TotalDistanceOneRun;
+        EnemiesKilledTotal = managerData.EnemiesKilledTotal;
     }
 }

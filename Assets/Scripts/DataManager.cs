@@ -303,4 +303,5 @@ public class SerializableAchievementManagerData
     public List<string> TrashNames;
     public List<int> TrashCounts;
     public float TotalDistanceOneRun;
+    public int EnemiesKilledTotal;
 }

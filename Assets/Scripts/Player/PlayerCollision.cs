@@ -86,6 +86,7 @@ public class PlayerCollision : MonoBehaviour
 
                     // Achievement value
                     AchievementManager.Instance.EnemiesKilledOneRun++;
+                    AchievementManager.Instance.EnemiesKilledTotal++;
                     AchievementManager.Instance.UpdateAchievements();
 
                     // Update Score
