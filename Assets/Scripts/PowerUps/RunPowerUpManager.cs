@@ -21,7 +21,7 @@ public class RunPowerUpManager : Singleton<RunPowerUpManager>
         Debug.Log(powerUpType.ToString());
        
         OneTimePowerUp newPowerUp = Instantiate(powerUpList.GetPowerUpByType(powerUpType));
-        newPowerUp.gameObject.GetComponentInChildren<SpriteRenderer>().gameObject.SetActive(false);
+        newPowerUp.DeactivateSprite();
         if (_currentPowerUp != null)
         {
             _currentPowerUp.Deactivate();

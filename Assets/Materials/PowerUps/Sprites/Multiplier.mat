@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PowerUpMat
+  m_Name: Multiplier
   m_Shader: {fileID: -6465566751694194690, guid: 00c0c6e3c1f074d44b468a0dd422facd, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -41,5 +41,5 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_a3e5d141c8e64507b2cd059d0bbaeb02: {r: 255, g: 225, b: 0, a: 8.5}
+    - Color_a3e5d141c8e64507b2cd059d0bbaeb02: {r: 255, g: 225, b: 0, a: 10}
   m_BuildTextureStacks: []

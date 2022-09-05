@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RunPowerUpList
   m_EditorClassIdentifier: 
   powerUpList:
-  - {fileID: 2752858947318087353, guid: a2d5a16aaeb4b2a4e96b70104d11705c, type: 3}
   - {fileID: 1775702237588210376, guid: 2f6ae23376ff4654690eba72dc13a876, type: 3}
+  - {fileID: 2752858947318087353, guid: a2d5a16aaeb4b2a4e96b70104d11705c, type: 3}
   - {fileID: 1241221979675415638, guid: 60915f3dca5265149be47cf8b3d73f13, type: 3}
