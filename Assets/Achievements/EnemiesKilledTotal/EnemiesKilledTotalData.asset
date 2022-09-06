@@ -16,7 +16,11 @@ MonoBehaviour:
   maxTier: 4
   currentTier: 0
   currentValue: 0
-  maxValues: 14000000640000002c010000f4010000
+  maxValues:
+  - 100
+  - 200
+  - 300
+  - 400
   rewards:
   - {fileID: 11400000, guid: a1e6b6e9bc7d0b74da6240f5e8aa62a5, type: 2}
   - {fileID: 11400000, guid: b710ff2cf09443e45afe18b3f927c48b, type: 2}
