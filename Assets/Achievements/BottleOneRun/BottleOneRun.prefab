@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5693807786684706489}
   - component: {fileID: 5693807786684706490}
   m_Layer: 0
-  m_Name: BottleBagOneRun
+  m_Name: BottleOneRun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
