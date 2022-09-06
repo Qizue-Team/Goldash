@@ -24,9 +24,18 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
         }));
     }
 
-    public void StartGenericTransistion(string sceneName)
+    public void StartGenericTransistionLeft(string sceneName)
     {
         menuTrasher.MoveToPoint(-12.5f);
+        menuButtons.Exit();
+        StartCoroutine(COWaitForAction(1.2f, () =>
+        {
+            NavigationManager.Instance.LoadSceneByName(sceneName);
+        }));
+    }
+    public void StartGenericTransistionRight(string sceneName)
+    {
+        menuTrasher.MoveToPoint(12.5f);
         menuButtons.Exit();
         StartCoroutine(COWaitForAction(1.2f, () =>
         {

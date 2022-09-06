@@ -454,7 +454,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 647402347}
         m_TargetAssemblyTypeName: MenuCinematicController, Assembly-CSharp
-        m_MethodName: StartGenericTransistion
+        m_MethodName: StartGenericTransistionLeft
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5031,7 +5031,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 647402347}
         m_TargetAssemblyTypeName: MenuCinematicController, Assembly-CSharp
-        m_MethodName: StartGenericTransistion
+        m_MethodName: StartGenericTransistionLeft
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
