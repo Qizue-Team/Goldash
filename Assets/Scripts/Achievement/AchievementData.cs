@@ -20,19 +20,21 @@ public class AchievementData : ScriptableObject
     [SerializeField]
     private float currentValue;
     [SerializeField]
-    private int[] maxValues;
+    private float[] maxValues;
     [SerializeField]
     private Reward[] rewards;
     [SerializeField]
     private bool isComplete;
 
-    public int GetCurrentMaxValue() => maxValues[currentTier];
+    public float GetCurrentMaxValue() => maxValues[currentTier];
    
     public Reward GetReward() => rewards[currentTier];
 
     public void SetCurrentValue(float newValue)
     {
         currentValue = newValue;
+        if (isComplete)
+            currentValue = GetCurrentMaxValue();
     }
 
     public void NextTier()
@@ -52,7 +54,7 @@ public class AchievementData : ScriptableObject
     public bool IsMaxTier() => maxTier-1 == currentTier;
     public bool IsTierComplete() => currentValue >= GetCurrentMaxValue();
     public bool CompleteAchievement() => isComplete = true;
-    public int GetMaxValue(int index)
+    public float GetMaxValue(int index)
     {
         if (index >= maxTier)
             return -1;
