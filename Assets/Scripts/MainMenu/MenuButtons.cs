@@ -27,6 +27,6 @@ public class MenuButtons : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        IsOpen = true;
+        IsOpen = false;
     }
 }

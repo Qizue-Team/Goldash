@@ -53,6 +53,11 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
         CameraFollowPoint.onMoveFinished -= OnCameraMoveFinished;
     }
 
+    private void Start()
+    {
+        menuButtons.Enter();
+    }
+
     private IEnumerator COWaitForAction(float delay, Action Callback)
     {
         yield return new WaitForSeconds(delay);
