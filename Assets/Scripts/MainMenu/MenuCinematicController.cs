@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 
 public class MenuCinematicController : Singleton<MenuCinematicController>
@@ -20,6 +21,16 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
         StartCoroutine(COWaitForAction(1.2f, () =>
         {
             menuCameraFollowPoint.MoveToYValue(-11.0f);
+        }));
+    }
+
+    public void StartGenericTransistion(string sceneName)
+    {
+        menuTrasher.MoveToPoint(-12.5f);
+        menuButtons.Exit();
+        StartCoroutine(COWaitForAction(1.2f, () =>
+        {
+            NavigationManager.Instance.LoadSceneByName(sceneName);
         }));
     }
 
