@@ -50,6 +50,7 @@ public class PlayerCollision : MonoBehaviour
         Trash trash = null;
         if (collision.TryGetComponent(out trash))
         {
+            _audioManager.PlayClibByName("Trasher_TrashCollected");
             if (!isTutorial)
             {
                 // Add Collected Trash
