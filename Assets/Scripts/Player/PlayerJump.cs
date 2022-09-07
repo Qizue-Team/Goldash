@@ -29,16 +29,10 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayerMask;
 
-    /*
-    // Box Cast for platform detection - not used anymore
-    private const float BOX_CAST_X_OFFSET = 0.0f;
-    private const float BOX_CAST_Y_OFFSET = 0.2f;
-    private const float BOX_CAST_X_SIZE = 1.0f;
-    private const float BOX_CAST_Y_SIZE = 1.5f;
-    */
-
     private Rigidbody2D _rb;
-    //private bool _isHeatIncreased = false;
+
+    private AudioManager _audioManager;
+
     private bool _isFastFalling = false;
     private bool _isJumpActive = true;
     private bool _isFallJumpActive = true;
@@ -58,10 +52,11 @@ public class PlayerJump : MonoBehaviour
         if (_rb == null || !IsGrounded)
             return;
 
+        _audioManager.PlayClibByName("Trasher_Jump");
+
         _rb.velocity = Vector2.up * jumpVelocity;
         
         playerOverheat.IncreaseHeat();
-        //_isHeatIncreased = true;
         JumpCount++;
     }
 
@@ -81,13 +76,13 @@ public class PlayerJump : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _audioManager = GetComponentInChildren<AudioManager>();
         JumpCount = 0;
     }
 
     private void Update()
     {
         DrawGroundCheckRaycast();
-        //CheckPlatform(); // OLD - Not used anymore
         CheckGrounded();
 
         foreach (Touch touch in Input.touches)
@@ -147,38 +142,10 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    // Old method for resolving platform - if back - change rb collision to continuous instead of descrete
-    /*
-    private void CheckPlatform()
-    {
-        Collider2D hit = Physics2D.OverlapArea(new Vector2(transform.position.x - 0.5f + BOX_CAST_X_OFFSET, transform.position.y - 0.5f + BOX_CAST_Y_OFFSET),
-                                                new Vector2(transform.position.x - 0.5f + BOX_CAST_X_SIZE, transform.position.y - 0.5f + BOX_CAST_Y_SIZE),
-                                                groundLayerMask);
-        if (hit)
-        {
-            if (hit.gameObject.transform.position.y >= -4)
-            {
-                Physics2D.IgnoreCollision(this.GetComponent<BoxCollider2D>(), hit.gameObject.GetComponent<BoxCollider2D>());
-            }
-        }
-    }
-    */
+   
     private void DrawGroundCheckRaycast()
     {
         Vector3 downward = transform.TransformDirection(Vector3.down) * groundRaycastLength;
         Debug.DrawRay(transform.position, downward, Color.red);
     }
-
-    /*
-    // Draw Gizmos for the cube platform detection - not used anymore
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        DrawRect(new Rect(transform.position.x - 0.5f+BOX_CAST_X_OFFSET, transform.position.y - 0.5f + BOX_CAST_Y_OFFSET, BOX_CAST_X_SIZE, BOX_CAST_Y_SIZE));
-    }
-
-    void DrawRect(Rect rect)
-    {
-        Gizmos.DrawWireCube(new Vector3(rect.center.x, rect.center.y, 0.01f), new Vector3(rect.size.x, rect.size.y, 0.01f));
-    }*/
 }
