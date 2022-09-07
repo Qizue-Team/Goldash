@@ -22,6 +22,8 @@ public class PlayerCollision : MonoBehaviour
     private bool _canBeHitByEnemies = true;
     private int _trashCountMultiplier = 1;
 
+    private AudioManager _audioManager;
+
     public void CanBeHitByEnemies(bool active) 
     {
         _canBeHitByEnemies = active;
@@ -37,6 +39,7 @@ public class PlayerCollision : MonoBehaviour
     private void Awake()
     {
         _playerJump = GetComponent<PlayerJump>();
+        _audioManager = GetComponentInChildren<AudioManager>();
         EnemyCollisionCount = 0;
     }
 
@@ -102,15 +105,16 @@ public class PlayerCollision : MonoBehaviour
             else if(_canBeHitByEnemies)
             {
                 // Player Dead - GameOver
+                _audioManager.PlayClibByName("Trasher_GameOverExplosion");
                 GameController.Instance.GameOver();
                 CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "GameOver for Enemy collision");
                 
                 // Animation and Destroy Player
                 GetComponent<Animator>().SetTrigger("Explode");
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                StartCoroutine(COWaitForAction(0.5f, ()=> {
-                    Destroy(gameObject);
-                }));
+                
+                Destroy(gameObject,1.0f);
+               
             }
             else // If invuln power up is active
             {
@@ -142,11 +146,5 @@ public class PlayerCollision : MonoBehaviour
                 Gizmos.DrawLine(transform.position, _hitPoint);
             }
         }
-    }
-
-    private IEnumerator COWaitForAction(float delay, Action Callback)
-    {
-        yield return new WaitForSeconds(delay);
-        Callback?.Invoke();
     }
 }

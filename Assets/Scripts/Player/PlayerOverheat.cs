@@ -105,7 +105,7 @@ public class PlayerOverheat : MonoBehaviour
             _audioManager.PlayClibByName("Trasher_GameOverExplosion");
             GetComponent<Animator>().SetTrigger("Explode");
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            StartCoroutine(COWaitForAction(1.0f, () => { Destroy(gameObject); }));
+            Destroy(gameObject,1.0f);
         }
         
     }
@@ -158,11 +158,5 @@ public class PlayerOverheat : MonoBehaviour
         {
             obj.SetActive(active);
         }
-    }
-
-    private IEnumerator COWaitForAction(float delay, Action Callback)
-    {
-        yield return new WaitForSeconds(delay);
-        Callback?.Invoke();
     }
 }
