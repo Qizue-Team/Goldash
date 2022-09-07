@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AchievementManager : Singleton<AchievementManager>
 {
@@ -40,6 +41,10 @@ public class AchievementManager : Singleton<AchievementManager>
         TrashCountDictionary = new Dictionary<string, int>();
         LoadDataAchievements();
         LoadDataAchievementsManager();
+        if (SceneManager.GetActiveScene().name.Equals("Achievements"))
+        {
+            UIControllerAchievements.Instance.ShowAchievements();
+        }
     }
 
     private void SaveManagerValues()

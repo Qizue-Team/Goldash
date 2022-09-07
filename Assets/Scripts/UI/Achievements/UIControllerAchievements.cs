@@ -11,14 +11,13 @@ public class UIControllerAchievements : Singleton<UIControllerAchievements>
     [SerializeField]
     private GameObject achievementEntry;
 
-    private void Start()
+    public void ShowAchievements()
     {
-        foreach(Achievement achievement in AchievementManager.Instance.Achievements)
+        foreach (Achievement achievement in AchievementManager.Instance.Achievements)
         {
             GameObject obj = Instantiate(achievementEntry, listContent);
             AchievementEntry entry = obj.GetComponent<AchievementEntry>();
             entry.SetEntry(achievement);
         }
     }
-
 }

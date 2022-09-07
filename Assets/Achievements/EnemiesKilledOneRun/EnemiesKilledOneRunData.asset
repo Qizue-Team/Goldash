@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Enemies killed in one run
   maxTier: 4
-  currentTier: 0
-  currentValue: 0
+  currentTier: 2
+  currentValue: 6
   maxValues:
   - 2
   - 4
