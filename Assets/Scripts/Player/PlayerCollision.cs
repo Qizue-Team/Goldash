@@ -127,6 +127,7 @@ public class PlayerCollision : MonoBehaviour
         OneTimePowerUp powerUp = null;
         if(collision.TryGetComponent(out powerUp))
         {
+            _audioManager.PlayClibByName("Trasher_PowerUpActivated");
             RunPowerUpManager.Instance.AddPowerUp(powerUp.GetType());
             Destroy(powerUp.gameObject);
         }
