@@ -36,6 +36,8 @@ public class PlayerOverheat : MonoBehaviour
     private bool _isIncreaseActive = true;
     private bool _isDecreaseActive = true;
 
+    private AudioManager _audioManager;
+
     public void SetActiveOverheating(bool active)
     {
         _isIncreaseActive = active;
@@ -97,12 +99,13 @@ public class PlayerOverheat : MonoBehaviour
         
         if(Overheat >= 1 && playerJump.IsGrounded)
         {
-            // GameOver - Animation here?
+            // GameOver
             GameController.Instance.GameOver();
             CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "GAME OVER for Overheating");
+            _audioManager.PlayClibByName("Trasher_GameOverExplosion");
             GetComponent<Animator>().SetTrigger("Explode");
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            StartCoroutine(COWaitForAction(0.5f, () => { Destroy(gameObject); }));
+            StartCoroutine(COWaitForAction(1.0f, () => { Destroy(gameObject); }));
         }
         
     }
@@ -136,6 +139,7 @@ public class PlayerOverheat : MonoBehaviour
     private void Awake()
     {
         _terrainTileSpawner = FindObjectOfType<TerrainTileSpawner>();
+        _audioManager = GetComponentInChildren<AudioManager>();
     }
 
     private void Start()
