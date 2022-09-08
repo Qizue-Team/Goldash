@@ -31,8 +31,6 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D _rb;
 
-    private AudioManager _audioManager;
-
     private bool _isFastFalling = false;
     private bool _isJumpActive = true;
     private bool _isFallJumpActive = true;
@@ -51,8 +49,6 @@ public class PlayerJump : MonoBehaviour
     {
         if (_rb == null || !IsGrounded)
             return;
-
-        _audioManager.PlayClibByName("Trasher_Jump");
 
         _rb.velocity = Vector2.up * jumpVelocity;
         
@@ -76,7 +72,6 @@ public class PlayerJump : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _audioManager = GetComponentInChildren<AudioManager>();
         JumpCount = 0;
     }
 
