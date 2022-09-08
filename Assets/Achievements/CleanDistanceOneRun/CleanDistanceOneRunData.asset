@@ -20,8 +20,8 @@ MonoBehaviour:
   - 150
   - 250
   - 500
-  - 600
-  - 800
+  - 750
+  - 1000
   rewards:
   - {fileID: 11400000, guid: 5e690744d376fd14ebd3ee2355940ac6, type: 2}
   - {fileID: 11400000, guid: cd2cee40b15b3c04c8c91d70879accc7, type: 2}

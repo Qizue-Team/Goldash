@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483d1534957339f4ab81cf46d44fc6b6, type: 3}
+  m_Name: CanOneRun
+  m_EditorClassIdentifier: 
+  description: Cans collected in one run
+  maxTier: 5
+  currentTier: 0
+  currentValue: 2
+  maxValues:
+  - 10
+  - 15
+  - 20
+  - 25
+  - 30
+  rewards:
+  - {fileID: 11400000, guid: a867a267575916b41b63db07d3b89ee3, type: 2}
+  - {fileID: 11400000, guid: 874e5d1e68e81fb4dbf6ca082fc327b5, type: 2}
+  - {fileID: 11400000, guid: 0d849b514156c44409cf699819f941de, type: 2}
+  - {fileID: 11400000, guid: 00e950359ce7cab4295b982abad7a38d, type: 2}
+  - {fileID: 11400000, guid: 78a8edc33e7cc9e49a22e94f75cdf5e1, type: 2}
+  isComplete: 0
