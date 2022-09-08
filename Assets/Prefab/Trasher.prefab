@@ -10100,6 +10100,7 @@ MonoBehaviour:
   gameOverExplosionClip: {fileID: 8300000, guid: 6821be0b643e2b34ab740e910994d693, type: 3}
   powerUpClip: {fileID: 8300000, guid: 6e58d19ef79a102499124ad0fd1ca5d6, type: 3}
   trashCollectedClip: {fileID: 8300000, guid: a9eecb51b6399fb498a8cbe3f339eef5, type: 3}
+  enemyKillClip: {fileID: 8300000, guid: b192035cdbb616c41a754153f3272f40, type: 3}
   isTutorial: 0
   isDebugActive: 0
 --- !u!114 &8457986020644739390

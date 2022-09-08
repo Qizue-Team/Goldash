@@ -16,6 +16,8 @@ public class PlayerCollision : MonoBehaviour
     private AudioClip powerUpClip;
     [SerializeField]
     private AudioClip trashCollectedClip;
+    [SerializeField]
+    private AudioClip enemyKillClip;
     [Header("Tutorial")]
     [SerializeField]
     private bool isTutorial;
@@ -87,6 +89,7 @@ public class PlayerCollision : MonoBehaviour
             if(_hitDirection.y < 0)
             {
                 _playerJump.BounceJump();
+                AudioController.Instance.PlaySFX(enemyKillClip);
                 if (!isTutorial)
                 {
                     // Add Collected Trash
