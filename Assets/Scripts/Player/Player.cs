@@ -5,18 +5,18 @@ using xPoke.CustomLog;
 
 public class Player : MonoBehaviour
 {
-    private bool _isGameOverDeclared = false;
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip gameOverClip;
 
-    private void Start()
-    {
-        
-    }
+    private bool _isGameOverDeclared = false;
 
     private void Update()
     {
         if (transform.position.y < -6.0f && !_isGameOverDeclared)
         {
             CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "GameOver for falling");
+            AudioController.Instance.PlaySFX(gameOverClip);
             GameController.Instance.GameOver();
             _isGameOverDeclared = true;
             Destroy(this.gameObject,1.0f);

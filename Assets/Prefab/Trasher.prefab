@@ -10062,6 +10062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c37795d30f752499a094c603dd6a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverClip: {fileID: 8300000, guid: 232fdb926e486f041970d7ed08d6316e, type: 3}
 --- !u!114 &8457986020644739329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10075,6 +10076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerOverheat: {fileID: 8457986020644739390}
+  jumpClip: {fileID: 8300000, guid: 8b8e16516631e504cbe4908e8e0367f2, type: 3}
   jumpVelocity: 5.9
   bounceJumpVelocity: 5.4
   groundRaycastLength: 0.6
@@ -10095,6 +10097,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e48dc233bae8ea43bcaafffc393d2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverExplosionClip: {fileID: 8300000, guid: 6821be0b643e2b34ab740e910994d693, type: 3}
+  powerUpClip: {fileID: 8300000, guid: 6e58d19ef79a102499124ad0fd1ca5d6, type: 3}
+  trashCollectedClip: {fileID: 8300000, guid: a9eecb51b6399fb498a8cbe3f339eef5, type: 3}
   isTutorial: 0
   isDebugActive: 0
 --- !u!114 &8457986020644739390
@@ -10115,6 +10120,7 @@ MonoBehaviour:
   overheatSmokes:
   - {fileID: 6518621777978256671}
   - {fileID: 6518621777665124941}
+  gameOverExplosionClip: {fileID: 8300000, guid: 6821be0b643e2b34ab740e910994d693, type: 3}
   heatIncreaseAmount: 0.1
   heatDecreaseAmount: 0.2
   slowDownLevel: 0.7

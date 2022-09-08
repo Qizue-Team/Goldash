@@ -22,6 +22,10 @@ public class PlayerOverheat : MonoBehaviour
     [SerializeField]
     private GameObject[] overheatSmokes;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip gameOverExplosionClip;
+
     [Header("Settings")]
     [SerializeField]
     private float heatIncreaseAmount = 0.1f;
@@ -98,6 +102,7 @@ public class PlayerOverheat : MonoBehaviour
         if(Overheat >= 1 && playerJump.IsGrounded)
         {
             // GameOver
+            AudioController.Instance.PlaySFX(gameOverExplosionClip);
             GameController.Instance.GameOver();
             CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "GAME OVER for Overheating");
             GetComponent<Animator>().SetTrigger("Explode");

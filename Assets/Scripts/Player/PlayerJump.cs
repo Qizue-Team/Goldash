@@ -15,6 +15,10 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]
     private PlayerOverheat playerOverheat;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip jumpClip;
+
     [Header("Settings")]
     [SerializeField]
     private float jumpVelocity = 5.0f;
@@ -50,6 +54,7 @@ public class PlayerJump : MonoBehaviour
         if (_rb == null || !IsGrounded)
             return;
 
+        AudioController.Instance.PlaySFX(jumpClip);
         _rb.velocity = Vector2.up * jumpVelocity;
         
         playerOverheat.IncreaseHeat();
@@ -61,6 +66,7 @@ public class PlayerJump : MonoBehaviour
         if (_rb == null)
             return;
 
+        AudioController.Instance.PlaySFX(jumpClip);
         _isFastFalling = false;
         _rb.gravityScale = fallGravity;
 

@@ -9,6 +9,13 @@ public class PlayerCollision : MonoBehaviour
 {
     public int EnemyCollisionCount { get; private set; }
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip gameOverExplosionClip;
+    [SerializeField]
+    private AudioClip powerUpClip;
+    [SerializeField]
+    private AudioClip trashCollectedClip;
     [Header("Tutorial")]
     [SerializeField]
     private bool isTutorial;
@@ -47,6 +54,7 @@ public class PlayerCollision : MonoBehaviour
         Trash trash = null;
         if (collision.TryGetComponent(out trash))
         {
+            AudioController.Instance.PlaySFX(trashCollectedClip);
             if (!isTutorial)
             {
                 // Add Collected Trash
@@ -102,6 +110,7 @@ public class PlayerCollision : MonoBehaviour
             else if(_canBeHitByEnemies)
             {
                 // Player Dead - GameOver
+                AudioController.Instance.PlaySFX(gameOverExplosionClip);
                 GameController.Instance.GameOver();
                 CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "GameOver for Enemy collision");
                 
@@ -122,6 +131,7 @@ public class PlayerCollision : MonoBehaviour
         OneTimePowerUp powerUp = null;
         if(collision.TryGetComponent(out powerUp))
         {
+            AudioController.Instance.PlaySFX(powerUpClip);
             RunPowerUpManager.Instance.AddPowerUp(powerUp.GetType());
             Destroy(powerUp.gameObject);
         }
