@@ -42,6 +42,12 @@ public class SkinAttachPoint : MonoBehaviour
         skin.UpdateSkin();
     }
 
+    public void FlipSkin()
+    {
+        if(_currentSkin.ShouldFlip)
+            transform.GetChild(0).transform.localPosition = new Vector3(-0.2f, transform.GetChild(0).transform.localPosition.y, transform.GetChild(0).transform.localPosition.z);
+    }
+
     private void Start()
     {
         SerializableSkinSetData data = DataManager.Instance.LoadSkinSetData();

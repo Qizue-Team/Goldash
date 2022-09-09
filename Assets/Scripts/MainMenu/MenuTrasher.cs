@@ -17,6 +17,8 @@ public class MenuTrasher : MonoBehaviour
     private Vector3 _destination;
     private Vector3 _direction;
 
+    private SkinAttachPoint _skinAttachPoint;
+
     public void MoveToPoint(float xValue)
     {
         IsMoving = true;
@@ -36,6 +38,7 @@ public class MenuTrasher : MonoBehaviour
             foreach (SpriteRenderer spriteRenderer in _spriteRenderers)
             {
                 spriteRenderer.flipX = true;
+                _skinAttachPoint.FlipSkin();
             }
 
         }
@@ -46,6 +49,7 @@ public class MenuTrasher : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        _skinAttachPoint = GetComponentInChildren<SkinAttachPoint>();
     }
 
     private void Start()

@@ -11,6 +11,7 @@ public class Skin : MonoBehaviour
     public int Cost { get => cost; }
     public string SkinName { get=> skinName; }
     public Vector3 SpawnPosition { get=>spawnPosition; }
+    public bool ShouldFlip { get=>shouldFlip; }
 
     [Header("Skin Settings")]
     [SerializeField]
@@ -25,6 +26,8 @@ public class Skin : MonoBehaviour
     private bool isUnlocked;
     [SerializeField]
     private Vector3 spawnPosition;
+    [SerializeField]
+    private bool shouldFlip;
 
     public void UpdateSkin()
     { 

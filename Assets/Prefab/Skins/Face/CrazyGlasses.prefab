@@ -101,3 +101,4 @@ MonoBehaviour:
   isHidden: 0
   isUnlocked: 0
   spawnPosition: {x: 0.093, y: -0.627, z: 0}
+  shouldFlip: 1
