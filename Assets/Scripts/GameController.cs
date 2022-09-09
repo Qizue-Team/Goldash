@@ -26,6 +26,10 @@ public class GameController : Singleton<GameController>
     [SerializeField]
     private PlatformSpawner platformSpawner;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip BGMRunClip;
+
     private GameObject _player;
 
     public void IncreaseScore(int amount)
@@ -50,6 +54,9 @@ public class GameController : Singleton<GameController>
     {
         terrainTileSpawner.Stop();
         platformSpawner.Stop();
+
+        // Audio
+        AudioController.Instance.StopBGM();
 
         // Achievements values
         AchievementManager.Instance.TotalDistanceOneRun = Mathf.FloorToInt(terrainTileSpawner.TotalDistance);
@@ -122,6 +129,9 @@ public class GameController : Singleton<GameController>
             terrainTileSpawner.InitializeTerrainTiles();
 
             _player = SpawnPlayer();
+
+            // Audio
+            AudioController.Instance.PlayBGM(BGMRunClip);
         }));
     }
 
@@ -165,6 +175,8 @@ public class GameController : Singleton<GameController>
         AchievementManager.Instance.EnemiesKilledOneRun = 0;
         AchievementManager.Instance.TrashCountDictionary.Clear();
         AchievementManager.Instance.UpdateAchievements();
+        // Audio
+        AudioController.Instance.PlayBGM(BGMRunClip);
     }
 
     private GameObject SpawnPlayer()

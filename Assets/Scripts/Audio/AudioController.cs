@@ -16,6 +16,10 @@ public class AudioController : Singleton<AudioController>
         bgmSource.Play();
     }
 
+    public void PauseBGM() => bgmSource.Pause();
+    public void StopBGM() => bgmSource.Stop();
+    
+
     public void PlaySFX(AudioClip clip)
     {
         if (clip == null)
