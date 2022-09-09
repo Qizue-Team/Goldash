@@ -15,7 +15,7 @@ MonoBehaviour:
   description: Shoes collected in one run
   maxTier: 5
   currentTier: 0
-  currentValue: 2
+  currentValue: 3
   maxValues:
   - 5
   - 10
@@ -23,9 +23,9 @@ MonoBehaviour:
   - 20
   - 25
   rewards:
-  - {fileID: 11400000, guid: a867a267575916b41b63db07d3b89ee3, type: 2}
-  - {fileID: 11400000, guid: 874e5d1e68e81fb4dbf6ca082fc327b5, type: 2}
-  - {fileID: 11400000, guid: 0d849b514156c44409cf699819f941de, type: 2}
-  - {fileID: 11400000, guid: 00e950359ce7cab4295b982abad7a38d, type: 2}
-  - {fileID: 11400000, guid: 78a8edc33e7cc9e49a22e94f75cdf5e1, type: 2}
+  - {fileID: 11400000, guid: b5547d4a7877c584db26c1ae90aa0f29, type: 2}
+  - {fileID: 11400000, guid: 24bf05cd596907745a1be522144fa161, type: 2}
+  - {fileID: 11400000, guid: 6297e09b57a35ee4793bcda5f2c64909, type: 2}
+  - {fileID: 11400000, guid: a62e4151fb958d84bb61d120482e474c, type: 2}
+  - {fileID: 11400000, guid: 0fbbf7ac174b3e84e86ac57d57baa47c, type: 2}
   isComplete: 0

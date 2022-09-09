@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 11
-  skinName: Duck
+  skinName: Ducky
   cost: 0
   isHidden: 1
   isUnlocked: 0
   spawnPosition: {x: -0.069, y: -0.24, z: 0}
+  shouldFlip: 0

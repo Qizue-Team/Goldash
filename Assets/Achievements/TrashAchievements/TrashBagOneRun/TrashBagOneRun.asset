@@ -15,7 +15,7 @@ MonoBehaviour:
   description: Bags of trash collected in one run
   maxTier: 5
   currentTier: 0
-  currentValue: 2
+  currentValue: 3
   maxValues:
   - 5
   - 10
@@ -23,9 +23,9 @@ MonoBehaviour:
   - 20
   - 25
   rewards:
-  - {fileID: 11400000, guid: a867a267575916b41b63db07d3b89ee3, type: 2}
-  - {fileID: 11400000, guid: 874e5d1e68e81fb4dbf6ca082fc327b5, type: 2}
-  - {fileID: 11400000, guid: 0d849b514156c44409cf699819f941de, type: 2}
-  - {fileID: 11400000, guid: 00e950359ce7cab4295b982abad7a38d, type: 2}
-  - {fileID: 11400000, guid: 78a8edc33e7cc9e49a22e94f75cdf5e1, type: 2}
+  - {fileID: 11400000, guid: 86822cbbd08cc3c4cae38ecb03d14357, type: 2}
+  - {fileID: 11400000, guid: 33ad9dcfcd3073a4697b19a39ccbfce7, type: 2}
+  - {fileID: 11400000, guid: c5f4863f101dc824caa8892f070be4d7, type: 2}
+  - {fileID: 11400000, guid: 65815e01ad21da74b83be47de898b7d2, type: 2}
+  - {fileID: 11400000, guid: 32611e7595529f543b3863da30d57652, type: 2}
   isComplete: 0

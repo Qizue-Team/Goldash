@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7228336850553625129
+--- !u!1 &7953747091538019505
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7228336850553625130}
-  - component: {fileID: 7228336850553625131}
-  - component: {fileID: 7228336850553625140}
+  - component: {fileID: 7953747091538019506}
+  - component: {fileID: 7953747091538019507}
+  - component: {fileID: 7953747091538019500}
   m_Layer: 0
-  m_Name: Mustache
+  m_Name: FezHat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7228336850553625130
+--- !u!4 &7953747091538019506
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7228336850553625129}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.093, y: -0.82, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_GameObject: {fileID: 7953747091538019505}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.033, y: -0.041, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7228336850553625131
+--- !u!212 &7953747091538019507
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7228336850553625129}
+  m_GameObject: {fileID: 7953747091538019505}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,9 +72,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 5a60196d486e56e488bbd413fe362122, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4923927eb4935d4c9f941ab791383bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -83,22 +83,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7228336850553625140
+--- !u!114 &7953747091538019500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7228336850553625129}
+  m_GameObject: {fileID: 7953747091538019505}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5a7cd5ba8148a340ad2550631786928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 16
-  skinName: Mustache
+  id: 18
+  skinName: Fez Hat
   cost: 1
   isHidden: 0
   isUnlocked: 0
-  spawnPosition: {x: 0.093, y: -0.82, z: 0}
-  shouldFlip: 1
+  spawnPosition: {x: -0.033, y: -0.041, z: 0}
+  shouldFlip: 0

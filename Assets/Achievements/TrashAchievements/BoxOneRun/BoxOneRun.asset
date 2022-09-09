@@ -15,7 +15,7 @@ MonoBehaviour:
   description: Boxes collected in one run
   maxTier: 5
   currentTier: 0
-  currentValue: 2
+  currentValue: 4
   maxValues:
   - 5
   - 10
@@ -23,9 +23,9 @@ MonoBehaviour:
   - 20
   - 25
   rewards:
-  - {fileID: 11400000, guid: a867a267575916b41b63db07d3b89ee3, type: 2}
-  - {fileID: 11400000, guid: 874e5d1e68e81fb4dbf6ca082fc327b5, type: 2}
-  - {fileID: 11400000, guid: 0d849b514156c44409cf699819f941de, type: 2}
-  - {fileID: 11400000, guid: 00e950359ce7cab4295b982abad7a38d, type: 2}
-  - {fileID: 11400000, guid: 78a8edc33e7cc9e49a22e94f75cdf5e1, type: 2}
+  - {fileID: 11400000, guid: 33e393c2fec7d1441a34af22294545ba, type: 2}
+  - {fileID: 11400000, guid: df6705f3f102d27469f0dcf08b26f0f0, type: 2}
+  - {fileID: 11400000, guid: c16f1e00509948548909d4ddcd658468, type: 2}
+  - {fileID: 11400000, guid: 8d5b1ed46dc10a64aafb551376201f25, type: 2}
+  - {fileID: 11400000, guid: fc3a6cb1590f1e942b537fa0f4befce2, type: 2}
   isComplete: 0

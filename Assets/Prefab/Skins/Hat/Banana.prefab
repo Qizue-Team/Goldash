@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 98d02d278f588ce42878767210190053, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d2b2abe35763894f8210ebf6802444b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,3 +101,4 @@ MonoBehaviour:
   isHidden: 0
   isUnlocked: 0
   spawnPosition: {x: 0, y: -0.24, z: 0}
+  shouldFlip: 0

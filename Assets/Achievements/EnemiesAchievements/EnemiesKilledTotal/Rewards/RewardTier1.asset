@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RewardTier1
   m_EditorClassIdentifier: 
   gearReward: 100
-  skinReward: {fileID: 0}
+  skinReward: {fileID: 7228336850553625140, guid: 38e9b6ba9b9c29e45b2e9e5733f5990a, type: 3}
