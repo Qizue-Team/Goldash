@@ -44,6 +44,8 @@ public class SkinAttachPoint : MonoBehaviour
 
     public void FlipSkin()
     {
+        if (_currentSkin == null)
+            return; 
         if(_currentSkin.ShouldFlip)
             transform.GetChild(0).transform.localPosition = new Vector3(-0.2f, transform.GetChild(0).transform.localPosition.y, transform.GetChild(0).transform.localPosition.z);
     }
