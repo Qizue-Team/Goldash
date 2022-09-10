@@ -13,6 +13,9 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
     private MenuButtons menuButtons;
     [SerializeField]
     private CameraFollowPoint menuCameraFollowPoint;
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip BGMMenuClip;
 
     public void StartPlayTransition()
     {
@@ -56,6 +59,7 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
     private void Start()
     {
         menuButtons.Enter();
+        AudioController.Instance.PlayBGM(BGMMenuClip);
     }
 
     private IEnumerator COWaitForAction(float delay, Action Callback)

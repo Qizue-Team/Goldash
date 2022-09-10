@@ -12,6 +12,9 @@ public class AudioController : Singleton<AudioController>
 
     public void PlayBGM(AudioClip clip)
     {
+        if (bgmSource.isPlaying && bgmSource.clip.name.Equals(clip.name))
+            return;
+        Debug.Log("PLAYING");
         bgmSource.clip = clip;
         bgmSource.Play();
     }
@@ -33,5 +36,18 @@ public class AudioController : Singleton<AudioController>
                 return;
             }
         }
+    }
+
+    protected override void Awake()
+    {
+        AudioController[] controllers = FindObjectsOfType<AudioController>();
+        if(controllers.Length > 1)
+        {
+            for(int i=1; i<controllers.Length; i++)
+            {
+                Destroy(controllers[i].gameObject);
+            }
+        }
+        DontDestroyOnLoad(this.gameObject);
     }
 }

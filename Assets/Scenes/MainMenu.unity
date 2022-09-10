@@ -464,9 +464,9 @@ MonoBehaviour:
           m_StringArgument: Achievements
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 481833711}
-        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: PlaySFX
+      - m_Target: {fileID: 1986064500}
+        m_TargetAssemblyTypeName: UIAudioSearcher, Assembly-CSharp
+        m_MethodName: PlayClip
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 0f8013201de59bd40bba5f1a3bcd4754, type: 3}
@@ -1403,17 +1403,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c1d47ec2d5d3134c9a81052edcb7df9, type: 3}
---- !u!114 &481833711 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5724439425378054282, guid: 1c1d47ec2d5d3134c9a81052edcb7df9, type: 3}
-  m_PrefabInstance: {fileID: 481833710}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6941b72e6b137ef4ea215b2afc70ef12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &486464859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2047,6 +2036,7 @@ MonoBehaviour:
   menuTrasher: {fileID: 2020521827}
   menuButtons: {fileID: 1986064498}
   menuCameraFollowPoint: {fileID: 104862098}
+  BGMMenuClip: {fileID: 8300000, guid: ed564f44d08a37b44a3e90668ac2ba62, type: 3}
 --- !u!4 &647402348
 Transform:
   m_ObjectHideFlags: 0
@@ -2566,9 +2556,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 481833711}
-        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: PlaySFX
+      - m_Target: {fileID: 1986064500}
+        m_TargetAssemblyTypeName: UIAudioSearcher, Assembly-CSharp
+        m_MethodName: PlayClip
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 0f8013201de59bd40bba5f1a3bcd4754, type: 3}
@@ -3770,9 +3760,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 481833711}
-        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: PlaySFX
+      - m_Target: {fileID: 1986064500}
+        m_TargetAssemblyTypeName: UIAudioSearcher, Assembly-CSharp
+        m_MethodName: PlayClip
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 0f8013201de59bd40bba5f1a3bcd4754, type: 3}
@@ -4812,6 +4802,7 @@ GameObject:
   - component: {fileID: 1986064497}
   - component: {fileID: 1986064498}
   - component: {fileID: 1986064499}
+  - component: {fileID: 1986064500}
   m_Layer: 5
   m_Name: MenuButtons
   m_TagString: Untagged
@@ -4900,6 +4891,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1986064500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986064495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52bc83f7124d5441a148dd857c1ddce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2000181577
 GameObject:
   m_ObjectHideFlags: 0
@@ -5145,9 +5148,9 @@ MonoBehaviour:
           m_StringArgument: Shops
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 481833711}
-        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: PlaySFX
+      - m_Target: {fileID: 1986064500}
+        m_TargetAssemblyTypeName: UIAudioSearcher, Assembly-CSharp
+        m_MethodName: PlayClip
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 0f8013201de59bd40bba5f1a3bcd4754, type: 3}
