@@ -177,6 +177,7 @@ public class GameController : Singleton<GameController>
         AchievementManager.Instance.UpdateAchievements();
         // Audio
         AudioController.Instance.PlayBGM(BGMRunClip);
+        AudioController.Instance.FadeInBGM(2.0f);
     }
 
     private GameObject SpawnPlayer()
