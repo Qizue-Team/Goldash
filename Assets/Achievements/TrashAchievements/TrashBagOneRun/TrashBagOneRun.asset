@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483d1534957339f4ab81cf46d44fc6b6, type: 3}
   m_Name: TrashBagOneRun
   m_EditorClassIdentifier: 
-  description: Bags of trash collected in one run
+  description: Trash Bags collected in one run
   maxTier: 5
   currentTier: 0
-  currentValue: 3
+  currentValue: 0
   maxValues:
   - 5
   - 10
