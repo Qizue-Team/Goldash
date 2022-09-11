@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483d1534957339f4ab81cf46d44fc6b6, type: 3}
   m_Name: JuiceOneRun
   m_EditorClassIdentifier: 
-  description: Juice boxes collected in one run
+  description: Juice collected in one run
   maxTier: 5
   currentTier: 1
-  currentValue: 9
+  currentValue: 5
   maxValues:
   - 5
   - 10
