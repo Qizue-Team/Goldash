@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class AudioController : Singleton<AudioController>
 {
+    public bool IsBGMMuted 
+    {
+        get => bgmSource.volume == 0.0f;
+    }
+    public bool IsAudioMuted
+    {
+        get => sfxSources[0].volume == 0.0f;
+    }
+
     [Header("Sources")]
     [SerializeField]
     private AudioSource bgmSource;
@@ -11,6 +20,7 @@ public class AudioController : Singleton<AudioController>
     private List<AudioSource> sfxSources = new List<AudioSource>();
 
     private float _bgmSourceInitVolume = 0.0f;
+    private float _sfxSourceInitVolume = 0.0f;
 
     public void PlayBGM(AudioClip clip)
     {
@@ -26,12 +36,28 @@ public class AudioController : Singleton<AudioController>
     }
     public void FadeInBGM(float duration)
     {
+        if (IsBGMMuted)
+            return;
         StartCoroutine(COStartFade(bgmSource, duration, _bgmSourceInitVolume));
     }
 
     public void PauseBGM() => bgmSource.Pause();
     public void StopBGM() => bgmSource.Stop();
-    
+
+    public void MuteBGM() => bgmSource.volume = 0.0f;
+    public void UnmuteBGM() => bgmSource.volume = _bgmSourceInitVolume;
+
+    public void MuteAudio()
+    {
+        foreach(AudioSource sfx in sfxSources)
+            sfx.volume = 0.0f;
+    }
+    public void UnmuteAudio()
+    {
+        foreach (AudioSource sfx in sfxSources)
+            sfx.volume = _sfxSourceInitVolume;
+    }
+
     public void PlaySFX(AudioClip clip)
     {
         if (clip == null)
@@ -63,6 +89,7 @@ public class AudioController : Singleton<AudioController>
     private void Start()
     {
         _bgmSourceInitVolume = bgmSource.volume;
+        _sfxSourceInitVolume = sfxSources[0].volume;
     }
 
     private IEnumerator COStartFade(AudioSource audioSource, float duration, float targetVolume)
