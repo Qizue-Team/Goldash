@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc03e8d33252f1489e826c0e23f3c32, type: 3}
+  m_Name: HierarchyData
+  m_EditorClassIdentifier: 
+  enabled: 1
+  updateInPlayMode: 1
+  drawActivationToggle: 0
+  icons:
+    enabled: 1
+    aligned: 0
+    pairs:
+    - iconToDraw: {fileID: 2800000, guid: f8cd3ab1849c6314abb6cd5f7733bcce, type: 3}
+      targetClasses:
+      - {fileID: 11500000, guid: c5711d5836be56a43b322140e5968430, type: 3}
+      - {fileID: 11500000, guid: 94c37795d30f752499a094c603dd6a6f, type: 3}
+  prefabsData:
+    enabled: 0
+    prefabs: []
+  alternatingBackground:
+    enabled: 0
+    color: {r: 0, g: 0, b: 0, a: 0.08}
+  separator:
+    enabled: 1
+    startString: ====
+    color: {r: 0, g: 0.8865156, b: 1, a: 0.15}
+  tree:
+    enabled: 0
+    drawOverlayOnColoredPrefabs: 0
+    dividerHeigth: 1
+    baseLevelColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    branches: []

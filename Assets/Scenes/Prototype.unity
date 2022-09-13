@@ -2046,7 +2046,7 @@ GameObject:
   - component: {fileID: 735932358}
   m_Layer: 0
   m_Name: ==== ENVIRONMENT ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2496,7 +2496,7 @@ GameObject:
   - component: {fileID: 796830175}
   m_Layer: 0
   m_Name: ==== SPAWNED OBJECTS ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3267,7 +3267,7 @@ GameObject:
   - component: {fileID: 1140151478}
   m_Layer: 0
   m_Name: ==== CHARACTER ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3854,7 +3854,7 @@ GameObject:
   - component: {fileID: 1444782748}
   m_Layer: 0
   m_Name: ==== CONTROLLERS ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4281,7 +4281,7 @@ GameObject:
   - component: {fileID: 1512969730}
   m_Layer: 0
   m_Name: ==== UI ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4383,7 +4383,7 @@ GameObject:
   - component: {fileID: 1701485011}
   m_Layer: 0
   m_Name: ==== SPAWNERS ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

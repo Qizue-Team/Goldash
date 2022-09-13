@@ -2360,7 +2360,7 @@ GameObject:
   - component: {fileID: 712782025}
   m_Layer: 0
   m_Name: ==== CAMERA ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3568,7 +3568,7 @@ GameObject:
   - component: {fileID: 1256701444}
   m_Layer: 0
   m_Name: ==== UI ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3598,7 +3598,7 @@ GameObject:
   - component: {fileID: 1299702518}
   m_Layer: 0
   m_Name: ==== ENVIRONMENT ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3628,7 +3628,7 @@ GameObject:
   - component: {fileID: 1357058529}
   m_Layer: 0
   m_Name: ==== TRASH SPAWN ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3658,7 +3658,7 @@ GameObject:
   - component: {fileID: 1362652567}
   m_Layer: 0
   m_Name: ==== SPAWNED TRASH ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4293,7 +4293,7 @@ GameObject:
   - component: {fileID: 1660675279}
   m_Layer: 0
   m_Name: ==== CONTROLLERS ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

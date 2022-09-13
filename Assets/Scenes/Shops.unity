@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 160228741}
   m_Layer: 0
   m_Name: ==== CAMERA ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 391641774}
   m_Layer: 0
   m_Name: ==== CONTROLLERS ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1503,7 +1503,7 @@ GameObject:
   - component: {fileID: 738653318}
   m_Layer: 0
   m_Name: ==== ENVIRONMENT ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1794,7 +1794,7 @@ GameObject:
   - component: {fileID: 865691900}
   m_Layer: 0
   m_Name: ==== UI ====
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
