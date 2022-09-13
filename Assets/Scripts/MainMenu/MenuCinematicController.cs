@@ -60,6 +60,7 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
     {
         menuButtons.Enter();
         AudioController.Instance.PlayBGM(BGMMenuClip);
+
     }
 
     private IEnumerator COWaitForAction(float delay, Action Callback)

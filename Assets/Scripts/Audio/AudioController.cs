@@ -88,6 +88,8 @@ public class AudioController : Singleton<AudioController>
 
     private void Start()
     {
+        if (bgmSource == null || sfxSources[0] == null)
+            return;
         _bgmSourceInitVolume = bgmSource.volume;
         _sfxSourceInitVolume = sfxSources[0].volume;
     }
