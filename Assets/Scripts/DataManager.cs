@@ -62,6 +62,12 @@ public class DataManager : Singleton<DataManager>
         PlayerPrefs.Save();
     }
 
+    public void ResetTutorialFlag()
+    {
+        PlayerPrefs.SetInt("TutorialPlayed", 0);
+        PlayerPrefs.Save();
+    }
+
     public int ReadTutorialFlag()
     {
         return PlayerPrefs.GetInt("TutorialPlayed");
