@@ -170,6 +170,7 @@ MonoBehaviour:
   tierText: {fileID: 810443664129446765}
   completitionText: {fileID: 810443663876251410}
   rewardText: {fileID: 810443662885371829}
+  slider: {fileID: 8444200082728514555}
 --- !u!114 &6446033653829388992
 MonoBehaviour:
   m_ObjectHideFlags: 0

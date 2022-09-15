@@ -15,6 +15,8 @@ public class AchievementEntry : MonoBehaviour
     private TextMeshProUGUI completitionText;
     [SerializeField]
     private TextMeshProUGUI rewardText;
+    [SerializeField]
+    private Slider slider;
 
     public void SetEntry(Achievement achievement)
     {
@@ -37,5 +39,7 @@ public class AchievementEntry : MonoBehaviour
             rewardText.text = "" + achievement.Data.GetReward().GearReward.ToString() + " Gears";
         if(achievement.Data.GetReward().SkinReward != null && achievement.Data.GetReward().GearReward > 0)
             rewardText.text = ""+ achievement.Data.GetReward().SkinReward.SkinName + " Skin and " + achievement.Data.GetReward().GearReward.ToString() + " Gears";
+
+        slider.value = (achievement.Data.CurrentValue / achievement.Data.GetCurrentMaxValue());
     }
 }
