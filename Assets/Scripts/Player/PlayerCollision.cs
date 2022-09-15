@@ -126,6 +126,11 @@ public class PlayerCollision : MonoBehaviour
             }
             else // If invuln power up is active
             {
+                // Achievement value
+                AchievementManager.Instance.EnemiesKilledOneRun++;
+                AchievementManager.Instance.EnemiesKilledTotal++;
+                AchievementManager.Instance.UpdateAchievements();
+
                 enemy.Die();
                 EnemyCollisionCount++;
             }
