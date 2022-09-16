@@ -24,7 +24,7 @@ public class AchievementEntry : MonoBehaviour
             return;
 
         descriptionText.text = achievement.Data.Description;
-        tierText.text = "Tier " + achievement.Data.CurrentTier;
+        tierText.text = "Tier " + (achievement.Data.CurrentTier+1);
         completitionText.text = achievement.Data.CurrentValue.ToString() + "/" + achievement.Data.GetCurrentMaxValue().ToString();
 
         if (achievement.Data.IsMaxTier() && achievement.Data.CurrentValue == achievement.Data.GetCurrentMaxValue())
