@@ -46,8 +46,11 @@ public class MenuTrasher : MonoBehaviour
 
         }
         _animator.SetBool("IsMoving", IsMoving);
-        if(_movementCoroutine==null)
-            _movementCoroutine = StartCoroutine(COMove(OnMovementComplete));
+        if (_movementCoroutine != null)
+        {
+            StopAllCoroutines();
+        }
+        _movementCoroutine = StartCoroutine(COMove(OnMovementComplete));
     }
 
     private void Awake()

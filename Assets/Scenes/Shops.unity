@@ -1302,18 +1302,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1561016546}
-        m_TargetAssemblyTypeName: NavigationManager, Assembly-CSharp
-        m_MethodName: LoadSceneByName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ShopSkin
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 574917716}
         m_TargetAssemblyTypeName: UIAudioSearcher, Assembly-CSharp
         m_MethodName: PlayClip
@@ -1321,6 +1309,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 0f8013201de59bd40bba5f1a3bcd4754, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ShopSkin
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1561142855}
+        m_TargetAssemblyTypeName: MenuCinematicController, Assembly-CSharp
+        m_MethodName: StartGenericTransistionRight
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: ShopSkin
@@ -1742,18 +1742,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1561016546}
-        m_TargetAssemblyTypeName: NavigationManager, Assembly-CSharp
-        m_MethodName: LoadSceneByName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ShopPowerUps
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 812557260}
         m_TargetAssemblyTypeName: UIAudioSearcher, Assembly-CSharp
         m_MethodName: PlayClip
@@ -1761,6 +1749,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 0f8013201de59bd40bba5f1a3bcd4754, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ShopPowerUps
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1561142855}
+        m_TargetAssemblyTypeName: MenuCinematicController, Assembly-CSharp
+        m_MethodName: StartGenericTransistionRight
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: ShopPowerUps
