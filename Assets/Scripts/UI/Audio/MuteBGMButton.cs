@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class MuteBGMButton : MonoBehaviour
 {
@@ -14,10 +15,7 @@ public class MuteBGMButton : MonoBehaviour
 
     private void Start()
     {
-        if (AudioController.Instance.IsBGMMuted)
-            buttonText.text = AUDIO_MUTED_TEXT;
-        else
-            buttonText.text = AUDIO_UNMUTED_TEXT;
+        StartCoroutine(COWait(0.1f, UpdateUI));
     }
 
     public void MuteUnmuteBGM()
@@ -32,5 +30,19 @@ public class MuteBGMButton : MonoBehaviour
             AudioController.Instance.MuteBGM();
             buttonText.text = AUDIO_MUTED_TEXT;
         }
+    }
+
+    private void UpdateUI()
+    {
+        if (AudioController.Instance.IsBGMMuted)
+            buttonText.text = AUDIO_MUTED_TEXT;
+        else
+            buttonText.text = AUDIO_UNMUTED_TEXT;
+    }
+
+    private IEnumerator COWait(float seconds, Action action)
+    {
+        yield return new WaitForSeconds(seconds);
+        action?.Invoke();
     }
 }

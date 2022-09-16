@@ -31,8 +31,6 @@ public class AudioController : Singleton<AudioController>
     }
     public void FadeInBGM(float duration)
     {
-        if (IsBGMMuted)
-            return;
         StartCoroutine(COStartFade(bgmSource, duration, _bgmSourceInitVolume));
     }
 

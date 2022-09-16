@@ -67,8 +67,7 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
         foreach (MenuButtons button in menuButtons)
             button.Enter();
 
-        if(!AudioController.Instance.IsBGMPlaying)
-            AudioController.Instance.PlayBGM(BGMMenuClip);
+       AudioController.Instance.PlayBGM(BGMMenuClip);
 
     }
 
