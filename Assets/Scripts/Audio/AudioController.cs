@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioController : Singleton<AudioController>
 {
-    public bool IsBGMMuted { get => bgmSource.volume == 0.0f; }
+    public bool IsBGMMuted { get; private set; }
     public bool IsAudioMuted { get => sfxSources[0].volume == 0.0f; }
     public bool IsBGMPlaying{ get => bgmSource.isPlaying;}
 
@@ -31,14 +31,16 @@ public class AudioController : Singleton<AudioController>
     }
     public void FadeInBGM(float duration)
     {
+        if (IsBGMMuted)
+            return;
         StartCoroutine(COStartFade(bgmSource, duration, _bgmSourceInitVolume));
     }
 
     public void PauseBGM() => bgmSource.Pause();
     public void StopBGM() => bgmSource.Stop();
 
-    public void MuteBGM() => bgmSource.volume = 0.0f;
-    public void UnmuteBGM() => bgmSource.volume = _bgmSourceInitVolume;
+    public void MuteBGM() { bgmSource.volume = 0.0f; IsBGMMuted = true; }
+    public void UnmuteBGM() { bgmSource.volume = _bgmSourceInitVolume; IsBGMMuted = false; }
 
     public void MuteAudio()
     {
@@ -85,6 +87,7 @@ public class AudioController : Singleton<AudioController>
             return;
         _bgmSourceInitVolume = bgmSource.volume;
         _sfxSourceInitVolume = sfxSources[0].volume;
+        IsBGMMuted = false;
     }
 
     private IEnumerator COStartFade(AudioSource audioSource, float duration, float targetVolume)
