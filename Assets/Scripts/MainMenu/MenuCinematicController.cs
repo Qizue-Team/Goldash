@@ -10,40 +10,46 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
     [SerializeField]
     private MenuTrasher menuTrasher;
     [SerializeField]
-    private MenuButtons menuButtons;
-    [SerializeField]
     private CameraFollowPoint menuCameraFollowPoint;
+    [SerializeField]
+    private List<MenuButtons> menuButtons;
     [Header("Audio")]
     [SerializeField]
     private AudioClip BGMMenuClip;
 
     public void StartPlayTransition()
     {
-        menuTrasher.MoveToPoint(-12.5f);
-        menuButtons.Exit();
+        menuTrasher.MoveToPoint(-12.5f, () => { menuCameraFollowPoint.MoveToYValue(-11.0f); });
+        foreach(MenuButtons button in menuButtons)
+            button.Exit();
+        /*
         StartCoroutine(COWaitForAction(1.2f, () =>
         {
             menuCameraFollowPoint.MoveToYValue(-11.0f);
-        }));
+        }));*/
     }
 
     public void StartGenericTransistionLeft(string sceneName)
     {
-        menuTrasher.MoveToPoint(-12.5f);
-        menuButtons.Exit();
+        menuTrasher.MoveToPoint(-12.5f, () => { NavigationManager.Instance.LoadSceneByName(sceneName); });
+        foreach (MenuButtons button in menuButtons)
+            button.Exit();
+        /*
         StartCoroutine(COWaitForAction(1.2f, () =>
         {
             NavigationManager.Instance.LoadSceneByName(sceneName);
-        }));
+        }));*/
     }
     public void StartGenericTransistionRight(string sceneName)
     {
-        menuTrasher.MoveToPoint(12.5f);
-        menuButtons.Exit();
+        menuTrasher.MoveToPoint(12.5f, () => { NavigationManager.Instance.LoadSceneByName(sceneName); });
+        foreach (MenuButtons button in menuButtons)
+            button.Exit();
+        /*
         StartCoroutine(COWaitForAction(1.2f, () =>
         {
             NavigationManager.Instance.LoadSceneByName(sceneName);
-        }));
+        }));*/
     }
 
     private void OnEnable()
@@ -58,8 +64,11 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
 
     private void Start()
     {
-        menuButtons.Enter();
-        AudioController.Instance.PlayBGM(BGMMenuClip);
+        foreach (MenuButtons button in menuButtons)
+            button.Enter();
+
+        if(!AudioController.Instance.IsBGMPlaying)
+            AudioController.Instance.PlayBGM(BGMMenuClip);
 
     }
 

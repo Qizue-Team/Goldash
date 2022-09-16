@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class AudioController : Singleton<AudioController>
 {
-    public bool IsBGMMuted 
-    {
-        get => bgmSource.volume == 0.0f;
-    }
-    public bool IsAudioMuted
-    {
-        get => sfxSources[0].volume == 0.0f;
-    }
+    public bool IsBGMMuted { get => bgmSource.volume == 0.0f; }
+    public bool IsAudioMuted { get => sfxSources[0].volume == 0.0f; }
+    public bool IsBGMPlaying{ get => bgmSource.isPlaying;}
 
     [Header("Sources")]
     [SerializeField]

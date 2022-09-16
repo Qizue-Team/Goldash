@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,9 @@ public class MenuTrasher : MonoBehaviour
 
     private SkinAttachPoint _skinAttachPoint;
 
-    public void MoveToPoint(float xValue)
+    private Coroutine _movementCoroutine;
+
+    public void MoveToPoint(float xValue, Action OnMovementComplete)
     {
         IsMoving = true;
         _destination = new Vector3(xValue, transform.position.y, transform.position.z);
@@ -43,6 +46,8 @@ public class MenuTrasher : MonoBehaviour
 
         }
         _animator.SetBool("IsMoving", IsMoving);
+        if(_movementCoroutine==null)
+            _movementCoroutine = StartCoroutine(COMove(OnMovementComplete));
     }
 
     private void Awake()
@@ -56,23 +61,29 @@ public class MenuTrasher : MonoBehaviour
     {
         Physics2D.baumgarteScale = 0.2f;
         // TO-DO: Check if first time from Player Settings
-        MoveToPoint(startDestination);
+        MoveToPoint(startDestination, () => { });
     }
-    private void Update()
+
+    private IEnumerator COMove(Action OnMovementComplete)
     {
-        if (IsMoving)
+        while (IsMoving)
         {
             transform.position += Time.deltaTime * moveSpeed * _direction;
-            if((transform.position.x >= _destination.x) && _direction == Vector3.right)
+            if ((transform.position.x >= _destination.x) && _direction == Vector3.right)
             {
                 IsMoving = false;
                 _animator.SetBool("IsMoving", IsMoving);
+
             }
-            else if((transform.position.x <= _destination.x) && _direction == Vector3.left)
+            else if ((transform.position.x <= _destination.x) && _direction == Vector3.left)
             {
                 IsMoving = false;
                 _animator.SetBool("IsMoving", IsMoving);
+
             }
+            yield return null;
         }
+        OnMovementComplete?.Invoke();
+        _movementCoroutine = null;
     }
 }

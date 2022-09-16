@@ -2042,7 +2042,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuTrasher: {fileID: 2020521827}
-  menuButtons: {fileID: 1986064498}
+  menuButtons:
+  - {fileID: 1986064498}
   menuCameraFollowPoint: {fileID: 104862098}
   BGMMenuClip: {fileID: 8300000, guid: ed564f44d08a37b44a3e90668ac2ba62, type: 3}
 --- !u!4 &647402348
