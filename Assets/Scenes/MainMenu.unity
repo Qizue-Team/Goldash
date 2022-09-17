@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 89529123}
   - component: {fileID: 89529122}
   m_Layer: 5
-  m_Name: AchievementsButton
+  m_Name: ExtrasButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -461,7 +461,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Achievements
+          m_StringArgument: Extras
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1986064500}
@@ -1935,7 +1935,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A C H I E V E M E N T S
+  m_text: E X T R A S
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed93c0008c1eaf84aa18eb32a1d71419, type: 2}
   m_sharedMaterial: {fileID: 4162122238653314180, guid: ed93c0008c1eaf84aa18eb32a1d71419, type: 2}
@@ -2042,9 +2042,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuTrasher: {fileID: 2020521827}
+  menuCameraFollowPoint: {fileID: 104862098}
   menuButtons:
   - {fileID: 1986064498}
-  menuCameraFollowPoint: {fileID: 104862098}
   BGMMenuClip: {fileID: 8300000, guid: ed564f44d08a37b44a3e90668ac2ba62, type: 3}
 --- !u!4 &647402348
 Transform:
