@@ -5,18 +5,21 @@ using TMPro;
 using UnityEngine.UI;
 public class MuteAudioButton : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField]
-    private TextMeshProUGUI buttonText;
-
-    private const string AUDIO_MUTED_TEXT = "UNMUTE AUDIO";
-    private const string AUDIO_UNMUTED_TEXT = "MUTE AUDIO";
+    private Image imageIcon;
+    [Header("Icons")]
+    [SerializeField]
+    private Sprite unmutedIcon;
+    [SerializeField]
+    private Sprite mutedIcon;
 
     private void Start()
     {
-        if(AudioController.Instance.IsAudioMuted)
-            buttonText.text = AUDIO_MUTED_TEXT;
-       else
-            buttonText.text = AUDIO_UNMUTED_TEXT;
+        if (AudioController.Instance.IsAudioMuted)
+            imageIcon.sprite = mutedIcon;
+        else
+            imageIcon.sprite = unmutedIcon;
     }
 
     public void MuteUnmuteAudio()
@@ -24,12 +27,12 @@ public class MuteAudioButton : MonoBehaviour
         if (AudioController.Instance.IsAudioMuted)
         {
             AudioController.Instance.UnmuteAudio();
-            buttonText.text = AUDIO_UNMUTED_TEXT;
+            imageIcon.sprite = unmutedIcon;
         }
         else
         {
             AudioController.Instance.MuteAudio();
-            buttonText.text = AUDIO_MUTED_TEXT;
+            imageIcon.sprite = mutedIcon;
         }
     }
 }

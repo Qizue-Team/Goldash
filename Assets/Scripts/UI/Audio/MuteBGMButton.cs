@@ -7,11 +7,14 @@ using System;
 
 public class MuteBGMButton : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField]
-    private TextMeshProUGUI buttonText;
-
-    private const string AUDIO_MUTED_TEXT = "UNMUTE BGM";
-    private const string AUDIO_UNMUTED_TEXT = "MUTE BGM";
+    private Image imageIcon;
+    [Header("Icons")]
+    [SerializeField]
+    private Sprite unmutedIcon;
+    [SerializeField]
+    private Sprite mutedIcon;
 
     private void Start()
     {
@@ -23,21 +26,21 @@ public class MuteBGMButton : MonoBehaviour
         if (AudioController.Instance.IsBGMMuted)
         {
             AudioController.Instance.UnmuteBGM();
-            buttonText.text = AUDIO_UNMUTED_TEXT;
+            imageIcon.sprite = unmutedIcon;
         }
         else
         {
             AudioController.Instance.MuteBGM();
-            buttonText.text = AUDIO_MUTED_TEXT;
+            imageIcon.sprite = mutedIcon;
         }
     }
 
     private void UpdateUI()
     {
         if (AudioController.Instance.IsBGMMuted)
-            buttonText.text = AUDIO_MUTED_TEXT;
+            imageIcon.sprite = mutedIcon;
         else
-            buttonText.text = AUDIO_UNMUTED_TEXT;
+            imageIcon.sprite = unmutedIcon;
     }
 
     private IEnumerator COWait(float seconds, Action action)
