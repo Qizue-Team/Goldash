@@ -27,10 +27,12 @@ public class AudioController : Singleton<AudioController>
 
     public void FadeOutBGM(float duration)
     {
+        StopAllCoroutines();
         StartCoroutine(COStartFade(bgmSource, duration, 0.0f));
     }
     public void FadeInBGM(float duration)
     {
+        StopAllCoroutines();
         if (IsBGMMuted)
             return;
         StartCoroutine(COStartFade(bgmSource, duration, _bgmSourceInitVolume));
@@ -79,10 +81,8 @@ public class AudioController : Singleton<AudioController>
             }
         }
         DontDestroyOnLoad(this.gameObject);
-    }
 
-    private void Start()
-    {
+
         if (bgmSource == null || sfxSources[0] == null)
             return;
         _bgmSourceInitVolume = bgmSource.volume;

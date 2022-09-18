@@ -156,7 +156,7 @@ public class TutorialController : Singleton<TutorialController>
         yield return new WaitForSeconds(4.5f);
         StopTutorial();
         DataManager.Instance.WriteTutorialFlag();
-
+        AudioController.Instance.FadeOutBGM(5.0f);
         playerMovements.MoveToPoint(12.0f);
     }
 

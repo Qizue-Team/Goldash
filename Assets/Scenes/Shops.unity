@@ -269,7 +269,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &160228740
 GameObject:
@@ -517,6 +517,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &386507896
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 701011339697260917, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: m_Name
+      value: AudioPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 701011339697260919, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 701011339697260919, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 701011339697260919, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 701011339697260919, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 701011339697260919, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 701011339697260919, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 701011339697260919, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 701011339697260919, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 701011339697260919, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 701011339697260919, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 701011339697260919, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
 --- !u!1 &387188275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,6 +1110,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 532726464}
+        m_TargetAssemblyTypeName: UIAudioSearcher, Assembly-CSharp
+        m_MethodName: FadeOutBGM
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2.5
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &532726462
@@ -1844,7 +1913,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &909158686
 GameObject:
@@ -2152,7 +2221,7 @@ RectTransform:
   - {fileID: 532726460}
   - {fileID: 1567677530}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2922,7 +2991,6 @@ MonoBehaviour:
   menuButtons:
   - {fileID: 532726466}
   - {fileID: 1567677531}
-  BGMMenuClip: {fileID: 8300000, guid: ed564f44d08a37b44a3e90668ac2ba62, type: 3}
 --- !u!4 &1561142856
 Transform:
   m_ObjectHideFlags: 0
