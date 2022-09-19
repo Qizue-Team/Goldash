@@ -15,7 +15,7 @@ MonoBehaviour:
   description: Bags of chips collected in one run
   maxTier: 5
   currentTier: 0
-  currentValue: 2
+  currentValue: 0
   maxValues:
   - 10
   - 15

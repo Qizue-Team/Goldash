@@ -15,7 +15,7 @@ MonoBehaviour:
   description: Boxes collected in one run
   maxTier: 5
   currentTier: 0
-  currentValue: 4
+  currentValue: 0
   maxValues:
   - 5
   - 10

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Cans collected in one run
   maxTier: 5
-  currentTier: 1
-  currentValue: 11
+  currentTier: 0
+  currentValue: 0
   maxValues:
   - 10
   - 15

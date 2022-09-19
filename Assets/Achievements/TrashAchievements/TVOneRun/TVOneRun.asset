@@ -15,7 +15,7 @@ MonoBehaviour:
   description: TVs collected in one run
   maxTier: 5
   currentTier: 0
-  currentValue: 1
+  currentValue: 0
   maxValues:
   - 3
   - 5
