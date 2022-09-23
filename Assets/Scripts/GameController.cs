@@ -31,6 +31,7 @@ public class GameController : Singleton<GameController>
     private AudioClip BGMRunClip;
 
     private GameObject _player;
+    private bool _isResetting = false;
 
     public void IncreaseScore(int amount)
     {
@@ -101,6 +102,11 @@ public class GameController : Singleton<GameController>
 
     public void ResetGame(float waitTimeToReset = 1.0f)
     {
+        if (_isResetting)
+            return;
+
+        _isResetting = true;
+
         CustomLog.Log(CustomLog.CustomLogType.GAMEPLAY, "Game Reset");
 
         UIController.Instance.SetOpenGameMenuPanel(false);
@@ -132,6 +138,7 @@ public class GameController : Singleton<GameController>
 
             // Audio
             AudioController.Instance.PlayBGM(BGMRunClip);
+            _isResetting = false;
         }));
     }
 
