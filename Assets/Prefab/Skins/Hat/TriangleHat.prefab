@@ -97,7 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 6
   skinName: Triangle Hat
-  cost: 1
+  cost: 1500
   isHidden: 0
   isUnlocked: 0
   spawnPosition: {x: -0.033, y: -0.041, z: 0}
+  shouldFlip: 0

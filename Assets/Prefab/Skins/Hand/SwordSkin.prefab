@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   skinName: Sword
-  cost: 1
+  cost: 1000
   isHidden: 0
   isUnlocked: 0
   spawnPosition: {x: 0.717, y: -0.59, z: 0}

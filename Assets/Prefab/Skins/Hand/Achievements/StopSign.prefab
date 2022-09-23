@@ -97,7 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 12
   skinName: Stop Sign
-  cost: 1
-  isHidden: 0
+  cost: 0
+  isHidden: 1
   isUnlocked: 0
   spawnPosition: {x: 0.608, y: -0.581, z: 0}
+  shouldFlip: 0

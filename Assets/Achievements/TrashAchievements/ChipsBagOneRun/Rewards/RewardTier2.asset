@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10185cdc1c3112a4082bf9cf75ebeb63, type: 3}
   m_Name: RewardTier2
   m_EditorClassIdentifier: 
-  gearReward: 85
-  skinReward: {fileID: 0}
+  gearReward: 180
+  skinReward: {fileID: 7953747091538019500, guid: 983168dde9d4e27429b035f58bd48e5f, type: 3}

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 18
   skinName: Fez Hat
-  cost: 1
+  cost: 1300
   isHidden: 0
   isUnlocked: 0
   spawnPosition: {x: -0.033, y: -0.041, z: 0}

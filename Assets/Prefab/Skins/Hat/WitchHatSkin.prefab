@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   skinName: Witch Hat
-  cost: 1
+  cost: 2000
   isHidden: 0
   isUnlocked: 0
   spawnPosition: {x: -0.02, y: -0.21, z: 0}

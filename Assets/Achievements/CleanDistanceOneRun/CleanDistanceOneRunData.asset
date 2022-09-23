@@ -18,10 +18,10 @@ MonoBehaviour:
   currentValue: 0
   maxValues:
   - 150
-  - 250
   - 400
-  - 800
-  - 1200
+  - 650
+  - 900
+  - 1150
   rewards:
   - {fileID: 11400000, guid: 5e690744d376fd14ebd3ee2355940ac6, type: 2}
   - {fileID: 11400000, guid: cd2cee40b15b3c04c8c91d70879accc7, type: 2}

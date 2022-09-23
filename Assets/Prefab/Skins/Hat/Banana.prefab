@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   skinName: Banana
-  cost: 1
+  cost: 800
   isHidden: 0
   isUnlocked: 0
   spawnPosition: {x: 0, y: -0.24, z: 0}
