@@ -44,8 +44,14 @@ public class AudioPlayer : Singleton<AudioPlayer>
         }
         else if (SceneManager.GetActiveScene().name.Equals("Tutorial"))
         {
-            AudioController.Instance.PlayBGM(BGMTutorialClip);
-            AudioController.Instance.FadeInBGM(1.0f);
+            StartCoroutine(COPlayTutorialBGM());
         }
+    }
+
+    private IEnumerator COPlayTutorialBGM()
+    {
+        yield return new WaitForSeconds(2.1f);
+        AudioController.Instance.PlayBGM(BGMTutorialClip);
+        AudioController.Instance.FadeInBGM(1.0f);
     }
 }
