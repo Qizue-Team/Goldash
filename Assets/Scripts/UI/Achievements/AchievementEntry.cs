@@ -27,6 +27,8 @@ public class AchievementEntry : MonoBehaviour
         tierText.text = "Tier " + (achievement.Data.CurrentTier+1);
         completitionText.text = achievement.Data.CurrentValue.ToString() + "/" + achievement.Data.GetCurrentMaxValue().ToString();
 
+        slider.value = (achievement.Data.CurrentValue / achievement.Data.GetCurrentMaxValue());
+
         if (achievement.Data.IsMaxTier() && achievement.Data.CurrentValue == achievement.Data.GetCurrentMaxValue())
         {
             rewardText.text = "COMPLETED";
@@ -39,7 +41,5 @@ public class AchievementEntry : MonoBehaviour
             rewardText.text = "" + achievement.Data.GetReward().GearReward.ToString() + " Gears";
         if(achievement.Data.GetReward().SkinReward != null && achievement.Data.GetReward().GearReward > 0)
             rewardText.text = ""+ achievement.Data.GetReward().SkinReward.SkinName + " Skin and " + achievement.Data.GetReward().GearReward.ToString() + " Gears";
-
-        slider.value = (achievement.Data.CurrentValue / achievement.Data.GetCurrentMaxValue());
     }
 }
