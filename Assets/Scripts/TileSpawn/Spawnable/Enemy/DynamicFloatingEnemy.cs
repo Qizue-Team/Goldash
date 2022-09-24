@@ -6,7 +6,9 @@ public class DynamicFloatingEnemy : Enemy
 {
     [Header("Floating Settings")]
     [SerializeField]
-    private float floatingSpeed = 1.0f;
+    private float normalFloatingSpeed = 1.3f;
+    [SerializeField]
+    private float slowFloatingSpeed = 0.5f;
 
     [SerializeField]
     private float minWaitTime = 0.2f;
@@ -19,12 +21,17 @@ public class DynamicFloatingEnemy : Enemy
     private const float MAX_Y = 2.7f;
     private const float MIN_Y = 1.0f;
 
+    private float _floatingSpeed = 1.0f;
+    private PlayerOverheat _overheat;
+
     protected override void Start()
     {
         base.Start();
         _canFloat = false;
         float waitTime = Random.Range(minWaitTime, maxWaitTime);
         StartCoroutine(COWaitBeforeFloating(waitTime));
+        _overheat = FindObjectOfType<PlayerOverheat>();
+        _floatingSpeed = normalFloatingSpeed;
     }
 
     protected override void Update()
@@ -35,6 +42,11 @@ public class DynamicFloatingEnemy : Enemy
 
         if (!_canFloat)
             return;
+
+        if (_overheat.IsOverheated)
+            _floatingSpeed = slowFloatingSpeed;
+        else
+            _floatingSpeed = normalFloatingSpeed;
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector3.up, 1.3f);
 
@@ -62,7 +74,7 @@ public class DynamicFloatingEnemy : Enemy
             }
         }
 
-        transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(transform.localPosition.y, _destinationY, Time.deltaTime * floatingSpeed), transform.localPosition.z);
+        transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(transform.localPosition.y, _destinationY, Time.deltaTime * _floatingSpeed), transform.localPosition.z);
         if (transform.localPosition.y >= MAX_Y - 0.1f)
         {
             _destinationY = MIN_Y;

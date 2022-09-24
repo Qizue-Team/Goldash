@@ -17,7 +17,7 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
 
     public void StartPlayTransition()
     {
-        menuTrasher.MoveToPoint(-12.5f, () => { menuCameraFollowPoint.MoveToYValue(-11.0f, ()=> { NavigationManager.Instance.LoadGameScene(); }); });
+        menuTrasher.MoveToPoint(-12.5f, () => { menuCameraFollowPoint.MoveToYValue(-11.5f, ()=> { NavigationManager.Instance.LoadGameScene(); }); });
         foreach(MenuButtons button in menuButtons)
             button.Exit();
     }

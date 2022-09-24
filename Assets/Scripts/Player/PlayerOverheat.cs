@@ -8,6 +8,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class PlayerOverheat : MonoBehaviour
 {
     public float Overheat { get; private set; }
+    public bool IsOverheated { get { return Overheat >= slowDownLevel; } }
 
     [Header("References")]
     [SerializeField]
