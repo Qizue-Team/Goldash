@@ -22,7 +22,7 @@ public class MenuTrasher : MonoBehaviour
 
     private Coroutine _movementCoroutine;
 
-    public void MoveToPoint(float xValue, Action OnMovementComplete)
+    public void MoveToPoint(float xValue, Action OnMovementComplete = null)
     {
         IsMoving = true;
         _destination = new Vector3(xValue, transform.position.y, transform.position.z);
@@ -64,7 +64,7 @@ public class MenuTrasher : MonoBehaviour
     {
         Physics2D.baumgarteScale = 0.2f;
         // TO-DO: Check if first time from Player Settings
-        MoveToPoint(startDestination, () => { });
+        MoveToPoint(startDestination);
     }
 
     private IEnumerator COMove(Action OnMovementComplete)

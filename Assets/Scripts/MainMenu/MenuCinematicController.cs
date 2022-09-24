@@ -24,11 +24,19 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
 
     public void StartGenericTransistionLeft(string sceneName)
     {
-        menuCameraFollowPoint.MoveToXValue(11.0f, () => { });
         menuTrasher.MoveToPoint(-12.5f, () => { NavigationManager.Instance.LoadSceneByName(sceneName); });
         foreach (MenuButtons button in menuButtons)
             button.Exit();
     }
+
+    public void StartCameraTransitionRight(string sceneName)
+    {
+        menuCameraFollowPoint.MoveToXValue(23.8f, () => { NavigationManager.Instance.LoadSceneByName(sceneName); }, 3.3f);
+        menuTrasher.MoveToPoint(-12.5f);
+        foreach (MenuButtons button in menuButtons)
+            button.Exit();
+    }
+
     public void StartGenericTransistionRight(string sceneName)
     {
         menuTrasher.MoveToPoint(12.5f, () => { NavigationManager.Instance.LoadSceneByName(sceneName); });

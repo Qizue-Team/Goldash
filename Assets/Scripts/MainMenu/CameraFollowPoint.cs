@@ -13,8 +13,10 @@ public class CameraFollowPoint : MonoBehaviour
     private Vector3 _destination;
     private Vector3 _direction;
 
-    public void MoveToXValue(float xValue, Action OnMoveFinished)
+    public void MoveToXValue(float xValue, Action OnMoveFinished = null, float desiredTime = 0)
     {
+        if (desiredTime != 0)
+            moveSpeed = xValue / desiredTime;
         StopAllCoroutines();
         IsMoving = true;
         _destination = new Vector3(xValue,transform.position.y, transform.position.z);
@@ -29,8 +31,10 @@ public class CameraFollowPoint : MonoBehaviour
         StartCoroutine(COMove(OnMoveFinished));
     }
 
-    public void MoveToYValue(float yValue, Action OnMoveFinished)
+    public void MoveToYValue(float yValue, Action OnMoveFinished = null, float desiredTime = 0)
     {
+        if(desiredTime!=0)
+            moveSpeed = yValue/desiredTime;
         StopAllCoroutines();
         IsMoving = true;
         _destination = new Vector3(transform.position.x, yValue, transform.position.z);
