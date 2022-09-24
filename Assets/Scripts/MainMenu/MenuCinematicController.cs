@@ -17,13 +17,14 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
 
     public void StartPlayTransition()
     {
-        menuTrasher.MoveToPoint(-12.5f, () => { menuCameraFollowPoint.MoveToYValue(-11.0f); });
+        menuTrasher.MoveToPoint(-12.5f, () => { menuCameraFollowPoint.MoveToYValue(-11.0f, ()=> { NavigationManager.Instance.LoadGameScene(); }); });
         foreach(MenuButtons button in menuButtons)
             button.Exit();
     }
 
     public void StartGenericTransistionLeft(string sceneName)
     {
+        menuCameraFollowPoint.MoveToXValue(11.0f, () => { });
         menuTrasher.MoveToPoint(-12.5f, () => { NavigationManager.Instance.LoadSceneByName(sceneName); });
         foreach (MenuButtons button in menuButtons)
             button.Exit();
@@ -35,30 +36,9 @@ public class MenuCinematicController : Singleton<MenuCinematicController>
             button.Exit();
     }
 
-    private void OnEnable()
-    {
-        CameraFollowPoint.onMoveFinished += OnCameraMoveFinished;
-    }
-
-    private void OnDisable()
-    {
-        CameraFollowPoint.onMoveFinished -= OnCameraMoveFinished;
-    }
-
     private void Start()
     {
         foreach (MenuButtons button in menuButtons)
             button.Enter();
-    }
-
-    private IEnumerator COWaitForAction(float delay, Action Callback)
-    {
-        yield return new WaitForSeconds(delay);
-        Callback?.Invoke();
-    }
-
-    private void OnCameraMoveFinished()
-    {
-        NavigationManager.Instance.LoadGameScene();
     }
 }

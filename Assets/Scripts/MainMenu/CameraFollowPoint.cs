@@ -1,12 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollowPoint : MonoBehaviour
 {
-    public delegate void OnMoveFinished();
-    public static OnMoveFinished onMoveFinished;
-
     public bool IsMoving { get; private set; }
 
     [SerializeField]
@@ -15,8 +13,9 @@ public class CameraFollowPoint : MonoBehaviour
     private Vector3 _destination;
     private Vector3 _direction;
 
-    public void MoveToXValue(float xValue)
+    public void MoveToXValue(float xValue, Action OnMoveFinished)
     {
+        StopAllCoroutines();
         IsMoving = true;
         _destination = new Vector3(xValue,transform.position.y, transform.position.z);
         if(xValue >= transform.position.x)
@@ -27,10 +26,12 @@ public class CameraFollowPoint : MonoBehaviour
         {
             _direction = Vector3.left;
         }
+        StartCoroutine(COMove(OnMoveFinished));
     }
 
-    public void MoveToYValue(float yValue)
+    public void MoveToYValue(float yValue, Action OnMoveFinished)
     {
+        StopAllCoroutines();
         IsMoving = true;
         _destination = new Vector3(transform.position.x, yValue, transform.position.z);
         if (yValue >= transform.position.y)
@@ -41,11 +42,12 @@ public class CameraFollowPoint : MonoBehaviour
         {
             _direction = Vector3.down;
         }
+        StartCoroutine(COMove(OnMoveFinished));
     }
 
-    private void Update()
+    private IEnumerator COMove(Action OnMoveFinished)
     {
-        if (IsMoving)
+        while (IsMoving)
         {
             transform.position += Time.deltaTime * _direction * moveSpeed;
             if ((transform.position.x >= _destination.x) && _direction == Vector3.right)
@@ -56,18 +58,16 @@ public class CameraFollowPoint : MonoBehaviour
             {
                 IsMoving = false;
             }
-            else if((transform.position.y >= _destination.y) && _direction == Vector3.up)
+            else if ((transform.position.y >= _destination.y) && _direction == Vector3.up)
             {
                 IsMoving = false;
             }
-            else if((transform.position.y <= _destination.y) && _direction == Vector3.down)
+            else if ((transform.position.y <= _destination.y) && _direction == Vector3.down)
             {
                 IsMoving = false;
             }
-            if (!IsMoving)
-            {
-                onMoveFinished?.Invoke();
-            }
+            yield return null;
         }
+        OnMoveFinished?.Invoke();
     }
 }

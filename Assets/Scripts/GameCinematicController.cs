@@ -17,19 +17,9 @@ public class GameCinematicController : MonoBehaviour
         InitialTransitionMenuToGame();
     }
 
-    private void OnEnable()
-    {
-        CameraFollowPoint.onMoveFinished += ShowUI;
-    }
-
-    private void OnDisable()
-    {
-        CameraFollowPoint.onMoveFinished -= ShowUI;
-    }
-
     private void InitialTransitionMenuToGame()
     {
-        cameraFollowPoint.MoveToYValue(0.0f);
+        cameraFollowPoint.MoveToYValue(0.0f, ()=> { ShowUI(); });
     }
 
     private void ShowUI()
