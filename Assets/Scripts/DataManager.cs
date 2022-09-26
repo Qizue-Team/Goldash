@@ -306,6 +306,7 @@ public class SerializableAchievementData
 public class SerializableAchievementManagerData
 {
     public int EnemiesKilledOneRun;
+    public int TrashCollectedTotal;
     public List<string> TrashNames;
     public List<int> TrashCounts;
     public float TotalDistanceOneRun;

@@ -19,13 +19,15 @@ public class TrashCollectedManager : Singleton<TrashCollectedManager>
             {
                 _trashCountDictionary[name] = ++count;
                 AchievementManager.Instance.TrashCountDictionary[name]++;
+                AchievementManager.Instance.TrashCollectedTotal++;
             }
         }
         else
         {
             _trashCountDictionary.Add(name, 1);
             AchievementManager.Instance.TrashCountDictionary.Add(name, 1);
-            if(!_trashDictionary.ContainsKey(name))
+            AchievementManager.Instance.TrashCollectedTotal++;
+            if (!_trashDictionary.ContainsKey(name))
                 _trashDictionary.Add(name, trash);
         }
         AchievementManager.Instance.UpdateAchievements();
