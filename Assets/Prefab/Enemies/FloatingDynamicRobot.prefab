@@ -96,9 +96,9 @@ MonoBehaviour:
   scorePoints: 30
   fallingSpeed: 2.7
   normalFloatingSpeed: 1.3
-  slowFloatingSpeed: 0.5
-  minWaitTime: 0.2
-  maxWaitTime: 4
+  slowFloatingSpeed: 0.6
+  minWaitTime: 2
+  maxWaitTime: 2
 --- !u!1 &2773642591344229110
 GameObject:
   m_ObjectHideFlags: 0
