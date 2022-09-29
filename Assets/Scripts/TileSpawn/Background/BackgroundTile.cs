@@ -10,6 +10,12 @@ public class BackgroundTile : MonoBehaviour
     private float _speed = 0.0f;
     private bool _stop = false;
 
+    public void SetSpeeds(float normalSpeed, float slowSpeed)
+    {
+        _normalSpeed = normalSpeed;
+        _slowSpeed = slowSpeed;
+    }
+
     private void Start()
     {
         _speed = _normalSpeed;

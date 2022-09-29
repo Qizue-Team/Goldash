@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class BackgroundSpawner : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField]
     private GameObject[] backgroundObjs;
+
+    [Header("Spawner Settings")]
     [SerializeField]
     private Vector3 spawnPosition;
+    [SerializeField]
+    private float normalSpeed = 1.0f;
+    [SerializeField]
+    private float slowSpeed = 0.5f;
 
     private BackgroundTile _currentBackground;
 
@@ -15,6 +22,7 @@ public class BackgroundSpawner : MonoBehaviour
     {
         GameObject obj = Instantiate(backgroundObjs[Random.Range(0,backgroundObjs.Length)], pos, Quaternion.identity);
         _currentBackground = obj.GetComponent<BackgroundTile>();
+        _currentBackground.SetSpeeds(normalSpeed, slowSpeed);
     }
 
     private void Start()
