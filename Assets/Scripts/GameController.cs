@@ -25,6 +25,8 @@ public class GameController : Singleton<GameController>
     private TerrainTileSpawner terrainTileSpawner;
     [SerializeField]
     private PlatformSpawner platformSpawner;
+    [SerializeField]
+    private BackgroundSpawner backgroundSpawner;
 
     [Header("Audio")]
     [SerializeField]
@@ -133,6 +135,8 @@ public class GameController : Singleton<GameController>
             EnemyKilledManager.Instance.ResetManager();
 
             terrainTileSpawner.InitializeTerrainTiles();
+
+            backgroundSpawner.Spawn(Vector3.zero);
 
             _player = SpawnPlayer();
 
