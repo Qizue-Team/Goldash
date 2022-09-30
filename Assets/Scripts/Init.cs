@@ -18,8 +18,8 @@ public class Init : MonoBehaviour
     private void LoadTutorialOrMenu()
     {
         if (DataManager.Instance.ReadTutorialFlag() == 0)
-            SceneManager.LoadSceneAsync("Tutorial");
+            NavigationManager.Instance.LoadSceneByName("Tutorial");
         else
-            SceneManager.LoadSceneAsync("MainMenu");
+            NavigationManager.Instance.LoadSceneByName("MainMenu");
     }
 }
