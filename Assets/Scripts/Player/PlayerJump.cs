@@ -106,6 +106,7 @@ public class PlayerJump : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && _isJumpActive)
         {
+            Debug.Log("Jump pressed");
             Jump();
         }
     }
