@@ -50,7 +50,7 @@ public class AudioPlayer : Singleton<AudioPlayer>
 
     private IEnumerator COPlayTutorialBGM()
     {
-        yield return new WaitForSeconds(2.1f);
+        yield return new WaitForSeconds(0.1f);
         AudioController.Instance.PlayBGM(BGMTutorialClip);
         AudioController.Instance.FadeInBGM(1.0f);
     }
