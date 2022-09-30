@@ -29,8 +29,6 @@ public class TutorialController : Singleton<TutorialController>
     private TerrainTileSpawner tileSpawner;
     [SerializeField]
     private PlayerTutorialMovements playerMovements;
-    [SerializeField]
-    private LoadingScreen loadingScreen;
 
     private GameObject _enemyTarget;
     private RigidbodyConstraints2D _constraints;
@@ -75,7 +73,6 @@ public class TutorialController : Singleton<TutorialController>
             if (DataManager.Instance.ReadTutorialFlag() == 0 || DataManager.Instance.ReadShowTutorialFlag() == 1)
             {
                 DataManager.Instance.WriteShowTutorialFlag(0);
-                loadingScreen.Close();
                 StartCoroutine(COExecuteTutorialJump());
             }
             else
