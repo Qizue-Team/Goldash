@@ -22,7 +22,7 @@ public class AchievementPopUp : MonoBehaviour
     {
         if (IsPlaying)
             return;
-        descriptionText.text = info.Description + " Unlocked <Tier " + (info.CurrentTier+1) + ">";
+        descriptionText.text = info.Description + " Unlocked Tier " + (info.CurrentTier+1) + "";
         StartCoroutine(Play(callback));
     }
 
