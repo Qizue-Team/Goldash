@@ -367,7 +367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -98.611}
+  m_AnchoredPosition: {x: 0, y: -69}
   m_SizeDelta: {x: 0, y: 197.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &332567749
@@ -390,11 +390,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'When active, Glowing arrows appears
+  m_text: 'When active, Glowing arrows appear
 
 
-    check the shop to know what
-    each power-up does!'
+    check the shop to know what each
+    power-up does!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed93c0008c1eaf84aa18eb32a1d71419, type: 2}
   m_sharedMaterial: {fileID: 4162122238653314180, guid: ed93c0008c1eaf84aa18eb32a1d71419, type: 2}
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WHEN KILLING ENEMIES HEAT DECREASES
+  m_text: 'LANDING ON ENEMIES DECREASES THE HEAT
 
 
     Keep an eye on your character'
@@ -3348,7 +3348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -98.611}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 0, y: 197.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604487682
@@ -3373,8 +3373,13 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'COLLECT TRASH TO SCORE POINTS
 
+    AND EARN GEARS
 
-    exchange it for power-ups and skins!'
+
+    exchange the gears
+    for
+
+    power-ups and skins!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed93c0008c1eaf84aa18eb32a1d71419, type: 2}
   m_sharedMaterial: {fileID: 4162122238653314180, guid: ed93c0008c1eaf84aa18eb32a1d71419, type: 2}
@@ -3508,7 +3513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'THE GLOWING OBJECT ARE POWER-UPS
+  m_text: 'THE GLOWING OBJECTS ARE POWER-UPS
 
 
     try get one'
