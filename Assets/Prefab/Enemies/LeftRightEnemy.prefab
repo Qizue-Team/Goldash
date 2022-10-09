@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed1cd10a331ac44da4f56a894dfae96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appearDistance: 150
+  appearDistance: 0
   weight: 2
   scorePoints: 25
   fallingSpeed: 2.7
@@ -173,7 +173,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -7975113843939106252, guid: f3e156b3cf556174bac0b9ee6451d21d, type: 3}
+  m_Sprite: {fileID: -5241738807851639659, guid: d98643e00772c7545822b6ef29abd1ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
