@@ -13,6 +13,8 @@ public class TutorialSpawner : MonoBehaviour
     private GameObject enemyPrefab;
     [SerializeField]
     private GameObject trashPrefab;
+    [SerializeField]
+    private GameObject powerupPrefab;
 
     public GameObject SpawnTrash()
     {
@@ -24,5 +26,11 @@ public class TutorialSpawner : MonoBehaviour
     {
         GameObject enemyObj = Instantiate(enemyPrefab, tileSpawner.LastTileSpawned.transform);
         return enemyObj;
+    }
+
+    public GameObject SpawnPowerup()
+    {
+        GameObject powerObj = Instantiate(powerupPrefab, tileSpawner.LastTileSpawned.transform);
+        return powerObj;
     }
 }

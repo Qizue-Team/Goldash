@@ -15,6 +15,20 @@ public class UITutorialController : Singleton<UITutorialController>
     private GameObject heatDecreaseTutorialPanel;
     [SerializeField]
     private GameObject trashTutorialPanel;
+    [SerializeField]
+    private GameObject powerupTutorialPanel;
+    [SerializeField]
+    private GameObject powerupCollectedTutorialPanel;
+
+    public void ShowPowerupCollectedTutorialPanel()
+    {
+        powerupCollectedTutorialPanel.SetActive(true);
+    }
+
+    public void ShowPowerupTutorialPanel()
+    {
+        powerupTutorialPanel.SetActive(true);
+    }
 
     public void ShowJumpTutorialPanel() 
     {
@@ -81,6 +95,20 @@ public class UITutorialController : Singleton<UITutorialController>
          TutorialController.Instance.IsStopped && Input.GetKeyDown(KeyCode.Mouse0))
         {
             trashTutorialPanel.SetActive(false);
+            TutorialController.Instance.ResumeTutorial();
+        }
+
+        if (TutorialController.Instance.CurrentPhase == TutorialController.TutorialPhase.PowerupTutorial &&
+         TutorialController.Instance.IsStopped && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            powerupTutorialPanel.SetActive(false);
+            TutorialController.Instance.ResumeTutorial();
+        }
+
+        if (TutorialController.Instance.CurrentPhase == TutorialController.TutorialPhase.PowerupCollected &&
+        TutorialController.Instance.IsStopped && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            powerupCollectedTutorialPanel.SetActive(false);
             TutorialController.Instance.ResumeTutorial();
         }
     }

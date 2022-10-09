@@ -17,6 +17,8 @@ public class TutorialController : Singleton<TutorialController>
         FallTutorial,
         HeatDecreaseTutorial,
         TrashTutorial,
+        PowerupTutorial,
+        PowerupCollected,
         EndTutorial
     }
 
@@ -57,6 +59,12 @@ public class TutorialController : Singleton<TutorialController>
 
         if (CurrentPhase == TutorialPhase.TrashTutorial)
             StartCoroutine(COExecuteTrashTutorial());
+
+        if (CurrentPhase == TutorialPhase.PowerupTutorial)
+            StartCoroutine(COExecutePowerupTutorial());
+
+        if (CurrentPhase == TutorialPhase.PowerupCollected)
+            StartCoroutine(COExecutePowerupCollectedTutorial());
 
         if (CurrentPhase == TutorialPhase.EndTutorial)
             StartCoroutine(COExecuteFinalTransition());
@@ -146,6 +154,22 @@ public class TutorialController : Singleton<TutorialController>
         yield return new WaitForSeconds(3.0f);
         StopTutorial();
         UITutorialController.Instance.ShowTrashTutorialPanel();
+    }
+
+    private IEnumerator COExecutePowerupTutorial()
+    {
+        yield return new WaitForSeconds(2.0f);
+        tutorialSpawner.SpawnPowerup();
+        yield return new WaitForSeconds(3.0f);
+        StopTutorial();
+        UITutorialController.Instance.ShowPowerupTutorialPanel();
+    }
+
+    private IEnumerator COExecutePowerupCollectedTutorial()
+    {
+        yield return new WaitForSeconds(3.5f);
+        StopTutorial();
+        UITutorialController.Instance.ShowPowerupCollectedTutorialPanel();
     }
 
     private IEnumerator COExecuteFinalTransition()
