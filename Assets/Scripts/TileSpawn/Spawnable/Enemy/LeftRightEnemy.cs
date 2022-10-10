@@ -118,12 +118,12 @@ public class LeftRightEnemy : Enemy
         if(movingDirection == Vector3.left)
         {
             movingDirection = Vector3.right;
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
         }
         else
         {
             movingDirection = Vector3.left;
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         }
         StartCoroutine(COWaitAfterInverted(1.0f));
     }
