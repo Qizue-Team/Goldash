@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: b3b51744a6a362047be5d881b4ba2399
+guid: 9223b2da198870d4db60416ede91fd9d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7699944312649910767
-    second: PatrolUnitDying2_0
+      213: 1705610641326187451
+    second: BuddyDef_0
   - first:
-      213: 8584482908336831437
-    second: PatrolUnitDying2_1
+      213: -4129302443582808761
+    second: BuddyDef_1
+  - first:
+      213: -4587922558088352876
+    second: BuddyDef_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,7 +124,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PatrolUnitDying2_0
+      name: BuddyDef_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,14 +138,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1167636917d442590800000000000000
-      internalID: -7699944312649910767
+      spriteID: bb3af5177db8ba710800000000000000
+      internalID: 1705610641326187451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PatrolUnitDying2_1
+      name: BuddyDef_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74d18183e45c1b6c0800000000000000
+      internalID: -4129302443582808761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuddyDef_2
       rect:
         serializedVersion: 2
         x: 0
@@ -156,8 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcb34dbf8b5322770800000000000000
-      internalID: 8584482908336831437
+      spriteID: 49b6424cdbc6450c0800000000000000
+      internalID: -4587922558088352876
       vertices: []
       indices: 
       edges: []

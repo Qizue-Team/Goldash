@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: d98643e00772c7545822b6ef29abd1ad
+guid: 27221830fc85152479adb97deaad50e7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5241738807851639659
-    second: PatrolUnitAlive2_0
+      213: 8999676401305811974
+    second: NavyDef (1)_0
   - first:
-      213: -2336375104418829590
-    second: PatrolUnitAlive2_1
+      213: 7444889735369956693
+    second: NavyDef (1)_1
+  - first:
+      213: -3573636761924761605
+    second: NavyDef (1)_2
+  - first:
+      213: -3684144887662916798
+    second: NavyDef (1)_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,7 +127,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PatrolUnitAlive2_0
+      name: NavyDef (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,14 +141,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59c9f90835a9147b0800000000000000
-      internalID: -5241738807851639659
+      spriteID: 60c7c41310645ec70800000000000000
+      internalID: 8999676401305811974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PatrolUnitAlive2_1
+      name: NavyDef (1)_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55d9da405cf815760800000000000000
+      internalID: 7444889735369956693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NavyDef (1)_2
       rect:
         serializedVersion: 2
         x: 0
@@ -156,8 +183,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aeaac0f9837839fd0800000000000000
-      internalID: -2336375104418829590
+      spriteID: bf782398c44e76ec0800000000000000
+      internalID: -3573636761924761605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NavyDef (1)_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24bc7cd7eb94fdcc0800000000000000
+      internalID: -3684144887662916798
       vertices: []
       indices: 
       edges: []

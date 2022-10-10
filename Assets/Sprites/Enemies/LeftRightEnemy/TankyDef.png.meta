@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 59fa7c53ec6cc604aa2879509a790da7
+guid: 65787b2e3696560488641bea9c100b53
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2485709352622184557
-    second: NavyRedAlive_0
+      213: -5619417666589926721
+    second: TankyDef_0
   - first:
-      213: 1642281578533396338
-    second: NavyRedAlive_1
+      213: -4165100725208963785
+    second: TankyDef_1
   - first:
-      213: 3440458841217729813
-    second: NavyRedAlive_2
+      213: -8911680159193492436
+    second: TankyDef_2
   - first:
-      213: 1234219352358969354
-    second: NavyRedAlive_3
+      213: 1754994229738758099
+    second: TankyDef_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +127,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NavyRedAlive_0
+      name: TankyDef_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,14 +141,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 397a61e738cf08dd0800000000000000
-      internalID: -2485709352622184557
+      spriteID: fba5a5ab761d302b0800000000000000
+      internalID: -5619417666589926721
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavyRedAlive_1
+      name: TankyDef_1
       rect:
         serializedVersion: 2
         x: 16
@@ -162,14 +162,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27f96adf46e8ac610800000000000000
-      internalID: 1642281578533396338
+      spriteID: 735a23445f69236c0800000000000000
+      internalID: -4165100725208963785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavyRedAlive_2
+      name: TankyDef_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c24106f7c1a535480800000000000000
+      internalID: -8911680159193492436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TankyDef_3
       rect:
         serializedVersion: 2
         x: 0
@@ -183,29 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51582277617febf20800000000000000
-      internalID: 3440458841217729813
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavyRedAlive_3
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a00e44836f3d02110800000000000000
-      internalID: 1234219352358969354
+      spriteID: 3df507e14fdfa5810800000000000000
+      internalID: 1754994229738758099
       vertices: []
       indices: 
       edges: []
