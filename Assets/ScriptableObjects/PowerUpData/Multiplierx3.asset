@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 3
   icon: {fileID: 21300000, guid: 279fabfbf2d1b414691f75f832f9d17a, type: 3}
   currentLevel: 0
-  description: Multiply gear and points by 3
+  description: x3 on Gears and Points
   isAdditional: 1
   currentStat: 10
   statAmount: 3
