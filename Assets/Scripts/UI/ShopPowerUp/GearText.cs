@@ -11,13 +11,13 @@ public class GearText : MonoBehaviour
 
     public void UpdateGearText(int gearCount)
     {
-        gearText.text = "GEAR: " + gearCount.ToString();
+        gearText.text = "" + gearCount.ToString();
     }
 
     private void Start()
     {
         int gearCount = DataManager.Instance.LoadTotalGearCount();
-        gearText.text = "GEAR: " + gearCount.ToString();
+        gearText.text = "" + gearCount.ToString();
     }
 
 }
