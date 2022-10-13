@@ -25,21 +25,21 @@ Press the left mouse button (or touch if you are on Android) to **Jump** and pre
 You can learn more about the commands and the overall game by playing through the tutorial!
 
 ## Gameplay
-Jump to avoid obstacle and enemies! Be careful to do not Jump too much because your heat will start increasing, if you reach the max level of heat, you will be overheated and you'll explode!
+Jump to avoid obstacles and enemies! Be careful to do not Jump too much because your heat will start increasing, if you reach the max level of heat, you will be overheated and you'll explode!
   
-During the run collect trash for gaining points and gears! And collects power-ups to score huge amounts of points!
+During the run collect trash for gaining points and Gears! And collects Power-Ups, which will help you to score huge amounts of points!
 
 <img src="https://github.com/Qizue-Team/Goldash/blob/main/Screenshots/goldash-gameplay.gif" width="750">
   
-The trash collected will be automatically exchanged for Gears: the currency that let you upgrade your power-ups AND ...
+The trash collected will be automatically exchanged for Gears: the currency that allows you upgrade your Power-Ups AND ...
   
 <img src="https://github.com/Qizue-Team/Goldash/blob/main/Screenshots/goldash-pu.png" width="750">
   
-... buy awesome skins!
+... buy awesome Skins!
   
 <img src="https://github.com/Qizue-Team/Goldash/blob/main/Screenshots/goldash-skins.png" width="750">
 
-If you want more gears and skins, make sure that you complete achievements!
+If you want more Gears and Skins, make sure that you complete Achievements!
   
 <img src="https://github.com/Qizue-Team/Goldash/blob/main/Screenshots/goldash-ach.png" width="750">
   
