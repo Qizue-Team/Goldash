@@ -422,6 +422,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 701011339697260918, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: BGMMenuClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4ef7843260db105478056b383d8c5804, type: 3}
+    - target: {fileID: 701011339697260918, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
+      propertyPath: BGMShopsClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1cac5a1955604ea438b6f29579ddc7f1, type: 3}
     - target: {fileID: 701011339697260919, guid: 71f8d65c58862404fa80fceda35c6e8b, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -5707,7 +5715,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1900942901}
   m_HandleRect: {fileID: 1900942899}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

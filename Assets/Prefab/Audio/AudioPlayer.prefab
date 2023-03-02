@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446bcc07b1e5f224793a4b863c014222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGMMenuClip: {fileID: 8300000, guid: ed564f44d08a37b44a3e90668ac2ba62, type: 3}
+  BGMMenuClip: {fileID: 8300000, guid: 4ef7843260db105478056b383d8c5804, type: 3}
   BGMTutorialClip: {fileID: 8300000, guid: 4ef7843260db105478056b383d8c5804, type: 3}
-  BGMShopsClip: {fileID: 8300000, guid: b97d272f65ec6e9499eab2c8f6777942, type: 3}
+  BGMShopsClip: {fileID: 8300000, guid: 1cac5a1955604ea438b6f29579ddc7f1, type: 3}
