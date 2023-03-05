@@ -300,7 +300,7 @@ RectTransform:
   m_GameObject: {fileID: 21334420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7999976, y: 0.7999976, z: 1.0000191}
+  m_LocalScale: {x: 0.7999936, y: 0.7999936, z: 1.0000118}
   m_Children:
   - {fileID: 1474578148}
   - {fileID: 504405824}
@@ -309,7 +309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 374.00003, y: -106}
+  m_AnchoredPosition: {x: 373.9999, y: -105.99985}
   m_SizeDelta: {x: 856.9698, y: 147.55792}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &21334422
@@ -372,7 +372,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -2488,7 +2488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &504405824
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2501,13 +2501,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2118956510}
+  - {fileID: 1925298236}
   m_Father: {fileID: 21334421}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 570.8942, y: -63.702}
-  m_SizeDelta: {x: 488.671, y: 127.404}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 389.4977, y: 127.4037}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &504405825
 Animator:
@@ -3454,23 +3455,23 @@ MonoBehaviour:
     - Pixel art effect by nyknck\n\n- UI Design -\n\nMichele Buonocunto\nSebastiano
     Clon\nLaura DeCarli\nCristian Ghiorzi\n\n- UI Sprites -\n\nMichele Buonocunto\nSebastiano
     Clon\nLaura DeCarli\n\n- Background composition -\n\nSebastiano Clon\n\n* MUSIC
-    & SFX *\n\n- Soundtracks -\n\nCherry Cola by Cody O\u2019Quinn\r\nVanilla Cola
-    by Cody O\u2019Quinn\r\nCoffe at Night by Cody O\u2019Quinn\r\nScrub Slayers
-    by Cody O\u2019Quinn\r\n\n- Audio Editing -\n\nSebastiano Clon\n\n- SFX -\n\nSebastiano
-    Clon\n\n* Documentation *\n\n- Risk Analysis document-\n\nLaura DeCarli\nSebastiano
-    Clon\n\n- Pitch Document -\n\nSebastiano Clon\nLaura DeCarli\n\n- Pitch Presentation
-    -\n\nMichele Buonocunto\n\n- Vertical Slice Presentation -\n\nMichele Buonocunto\n\n-
-    Final Presentation -\n\nMichele Buonocunto\nSebastiano Clon\nLaura DeCarli\nCristian
-    Ghiorzi\n\n- Report on User Testing -\n\nLaura DeCarli\n\n- Final GDD -\n\nMichele
-    Buonocunto\nSebastiano Clon\nLaura DeCarli\n\n- Final Report -\n\nMichele Buonocunto\nSebastiano
-    Clon\nLaura DeCarli\nCristian Ghiorzi\n\n- Weekly Reports -\n\nMichele Buonocunto\nSebastiano
-    Clon\nLaura DeCarli\nCristian Ghiorzi\n\n- Additional Documentations -\n\nLaura
-    DeCarli\nCristian Ghiorzi\n\n* Playtesting *\n\n- Playtesting Questionaries -\n\nLaura
-    DeCarli\n\n- Playtesting Survey -\n\nMichele Buonocunto\nSebastiano Clon\nLaura
-    DeCarli\nCristian Ghiorzi\n\n- In-House PlayTesting -\n\nMichele Buonocunto\nSebastiano
-    Clon\nLaura DeCarli\n\n- Testers from DBGA -\n\nGianluca Micella\r\nMattia Solimeno\r\nRoberto
-    Gagliardi\r\n\n- External Playtesters -\n\nAdele Galli\r\nAlessandro Lombardi\r\nAlice
-    Vananti\r\nAmi DeCarli\r\nCecilia Bortoluzzi\r\nJun\r\nLorenzo\r\nLuca Galli\r\nMary\r\nMattia\r\nSamuele
+    & SFX *\n\n- Soundtracks -\n\n\rCoffe at Night by Cody O\u2019Quinn\nSunny Dreams
+    by Cody O'Quinn\r\nScrub Slayers by Cody O\u2019Quinn\r\n\n- Audio Editing -\n\nSebastiano
+    Clon\n\n- SFX -\n\nSebastiano Clon\n\n* Documentation *\n\n- Risk Analysis document-\n\nLaura
+    DeCarli\nSebastiano Clon\n\n- Pitch Document -\n\nSebastiano Clon\nLaura DeCarli\n\n-
+    Pitch Presentation -\n\nMichele Buonocunto\n\n- Vertical Slice Presentation -\n\nMichele
+    Buonocunto\n\n- Final Presentation -\n\nMichele Buonocunto\nSebastiano Clon\nLaura
+    DeCarli\nCristian Ghiorzi\n\n- Report on User Testing -\n\nLaura DeCarli\n\n-
+    Final GDD -\n\nMichele Buonocunto\nSebastiano Clon\nLaura DeCarli\n\n- Final
+    Report -\n\nMichele Buonocunto\nSebastiano Clon\nLaura DeCarli\nCristian Ghiorzi\n\n-
+    Weekly Reports -\n\nMichele Buonocunto\nSebastiano Clon\nLaura DeCarli\nCristian
+    Ghiorzi\n\n- Additional Documentations -\n\nLaura DeCarli\nCristian Ghiorzi\n\n*
+    Playtesting *\n\n- Playtesting Questionaries -\n\nLaura DeCarli\n\n- Playtesting
+    Survey -\n\nMichele Buonocunto\nSebastiano Clon\nLaura DeCarli\nCristian Ghiorzi\n\n-
+    In-House PlayTesting -\n\nMichele Buonocunto\nSebastiano Clon\nLaura DeCarli\n\n-
+    Testers from DBGA -\n\nGianluca Micella\r\nMattia Solimeno\r\nRoberto Gagliardi\r\n\n-
+    External Playtesters -\n\nAdele Galli\r\nAlessandro Lombardi\r\nAlice Vananti\r\nAmi
+    DeCarli\r\nCecilia Bortoluzzi\r\nJun\r\nLorenzo\r\nLuca Galli\r\nMary\r\nMattia\r\nSamuele
     DeCarli\r\n\n* Credits *\n\n- Written by -\n\nLaura DeCarli"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed93c0008c1eaf84aa18eb32a1d71419, type: 2}
@@ -6367,6 +6368,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1425999085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1425999086}
+  - component: {fileID: 1425999088}
+  - component: {fileID: 1425999087}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1425999086
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425999085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1474578148}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1425999087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425999085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 85c0f9e16941d834f9d6bff46ca2ee0c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1425999088
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425999085}
+  m_CullTransparentMesh: 1
 --- !u!1 &1438531802
 GameObject:
   m_ObjectHideFlags: 0
@@ -6879,13 +6955,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1777270417}
+  - {fileID: 1425999086}
   m_Father: {fileID: 21334421}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 284.81873, y: 127.40369}
+  m_SizeDelta: {x: 389.4977, y: 127.40369}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1474578149
 Animator:
@@ -6995,7 +7072,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainMenu
+          m_StringArgument: Extras
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1474578153
@@ -7822,7 +7899,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1821673037}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.08495915
+  m_Size: 0.08495916
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8925,7 +9002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1777270417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10323,6 +10400,81 @@ Transform:
   m_Father: {fileID: 1594527244}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!1 &1925298235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1925298236}
+  - component: {fileID: 1925298238}
+  - component: {fileID: 1925298237}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1925298236
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925298235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 504405824}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 5.2}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1925298237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925298235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 839f946459ad0c047ab769e77111dc98, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1925298238
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925298235}
+  m_CullTransparentMesh: 1
 --- !u!1 &1936897420
 GameObject:
   m_ObjectHideFlags: 0
@@ -10914,7 +11066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2118956510
 RectTransform:
   m_ObjectHideFlags: 0
