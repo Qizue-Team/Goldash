@@ -17,8 +17,8 @@ If you want to open, edit or see the Unity project:
 ## How to play
 
 <You can play by going on the following Itch.io page: TO-DO>You can play by downloading one of Goldash's builds:
-* [Goldash's Android Build](https://drive.google.com/file/d/1tbxc8ohUMl3efhR3jmpUSLAuXb9bKZpP/view?usp=sharing)
-* [Goldash's Windows Build](https://drive.google.com/file/d/1IAGv6KBykU5Ak2N6YhefvcFGS5wa3OCc/view?usp=sharing)
+* [Goldash's Android Build](https://drive.google.com/file/d/1yKM5fEnsw_WyP7RX-ZUG2ssSk7-9TfjR/view?usp=share_link)
+* [Goldash's Windows Build](https://drive.google.com/file/d/19uKL8XR4njXDiu_2zNOdb3vDqf21NJWH/view?usp=share_link)
 
 The commands are really simple: 
 
